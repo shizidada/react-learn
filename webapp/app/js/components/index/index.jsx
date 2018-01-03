@@ -5,6 +5,10 @@ import Category from "../category/Category";
 import BlogItem from "../blog/BlogItem";
 import Advert from "../advert/Advert";
 
+import api from "service/api";
+
+import { set, get } from "utils/StorageUtil";
+
 class IndexPage extends Component {
 	
 	constructor(params){
@@ -15,16 +19,27 @@ class IndexPage extends Component {
 	}
 
 	componentDidMount() {
-		let data = [];
-		for(var i = 0; i < 6; i++){
-			data.push(<BlogItem key={i} data={i}/>);
+		const value = get("recently", 60 * 1000 * 2);
+		if (value === -1) {
+			api.selectRecentlyArticle((results) => {
+				this.setState({
+					data: results.data
+				});
+				set("recently", JSON.stringify(results.data));
+			})
+		} else {
+			this.setState({
+				data: value
+			});
 		}
-		this.setState({
-			data
-		})
 	}
 
 	render() {
+		let blogs = [];
+		this.state.data.map((item, _)=>{
+			blogs.push(<BlogItem key={item.id} data={item}/>)
+		})	
+
 		return (
 			<div>
 				<Carousel/>
@@ -32,7 +47,7 @@ class IndexPage extends Component {
 				<div className="fh5co-narrow-content">
 					<h2 className="fh5co-heading">最近博客</h2>
 					<div className="row row-bottom-padded-md">
-						{this.state.data}
+						{ blogs }
 					</div>
 				</div>
 				<Advert/>

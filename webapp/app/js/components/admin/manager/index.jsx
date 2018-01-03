@@ -1,7 +1,9 @@
+import moment from "moment";
 import React, { Component } from "react";
-import { Table, Icon, Divider } from 'antd';
+import { Table, Icon, Popconfirm, message } from 'antd';
 
-import api from "./api";
+import dateUtil from "utils/DateUtil"
+import api from "service/api";
 
 class Manager extends Component {
 	constructor(props) {
@@ -12,29 +14,52 @@ class Manager extends Component {
 	}
 
 	componentDidMount() {
-		console.log("componentDidMount")
+		this.queryAllArticle();
+	}
+
+	queryAllArticle() {
 		api.queryAllArticle((results,err) => {
 			this.setState({
 				data: results.data
 			})
 		})
-
 	}
 
 	//去掉所有的html标记
-	 delHtmlTag(str) {
-		return str.replace(/<[^>]+>/g,"").replace("&nbsp","");
+	delHtmlTag(msg) {
+        var msg = msg.replace(/<\/?[^>]*>/g, ''); //去除HTML Tag
+        msg = msg.replace(/[|]*\n/, '') //去除行尾空格
+        msg = msg.replace(/&nbsp;/ig, ''); //去掉nbsp
+        return msg;
+	}
+
+	handleDelete = (key) => {
+		api.updateArticleByStatus(key,(results) =>{
+			console.log(results)
+			if (results.data === 1) {
+				this.queryAllArticle();
+				message.info("删除成功!")
+			} else {
+				message.info("删除失败!")
+			}
+		})
+	}
+
+	handleModified = (key) => {
+		console.log("handleModified" + key)
 	}
 
 	render() {
-
 		let dataSource = []
 		this.state.data.map((item, index)=>{
+			let content = this.delHtmlTag(item.content);
+			content = content.length > 20 ? content.slice(0,20)+"..." : content;
 			dataSource.push({
-				key: index,
+				key: item.id,
 				title: item.title,
 				category: item.category,
-				content:  this.delHtmlTag(item.content),
+				createTime: dateUtil.format(new Date(item.createTime),"yyyy-MM-dd"),
+				content: content
 			})
 		})
 
@@ -51,14 +76,27 @@ class Manager extends Component {
 				dataIndex: 'content',
 				key: 'content',
 			}, {
+				title: '创建时间',
+				dataIndex: 'createTime',
+				key: 'createTime',
+			}, {
 				title: '操作',
 				key: 'operation',
-				render:  (text, record) => (
-					<span>
-						<a href="#">修改 </a>
-						<a href="#">删除 </a>
-					</span>
-				)
+				render:  (text, record) => {
+					return (
+						dataSource.length > 0 ? 
+						(
+							<span>
+								<Popconfirm title="Sure to delete?" onConfirm={() => this.handleModified(record.key)}>
+									<a href="#">修改</a>&nbsp;|&nbsp;
+					            </Popconfirm>
+								<Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(record.key)}>
+									<a href="#">删除</a>
+					            </Popconfirm>
+							</span>
+						) : null
+					)
+				}
 			}
 		];
 

@@ -1,21 +1,22 @@
 import React, { Component }from "react";
 import { Link } from 'react-router-dom';
 import moment from "moment";
-import { Form, Input, Select, Button, Breadcrumb, Alert, DatePicker  } from 'antd';
+import { Form, Input, Select, Button, Breadcrumb, Alert, DatePicker, message } from 'antd';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-import data from "../category/data";
+import data from "./data";
 import style from "./style";
-import api from "./api";
+import api from "service/api";
 
 class AdminEditor extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: []
+			data: [],
+			createTime: null
 		}
 	}
 
@@ -38,12 +39,25 @@ class AdminEditor extends Component {
 	    const content = this.editor.getValue();
 	    this.props.form.validateFieldsAndScroll((err, values) => {
 	      	if (!err) {
-	        	const params = {...values, content:content}
+	        	const params = {...values, createTime: new Date(this.state.createTime), content:content}
+	    		console.log(params)
 	      		api.addArticle(params,(results) =>{
-	        		console.log("返回的结果" + results.data);
+	      			if (results.data === 1) {
+	      				message.success("添加成功!")
+	      			} else if (results.data === 0) {
+	      				message.success("添加失败!")
+	      			} else if (results.data === -1) {
+	      				message.success("发生错误!")
+	      			}
 	      		})
 	      	}
 	    });
+	}
+
+	handleDataChange = (_, value) => {
+		this.setState({
+			createTime: value
+		})
 	}
 
 	render() {
@@ -65,21 +79,42 @@ class AdminEditor extends Component {
 						<Breadcrumb.Item><span><Link to="/manager">管理</Link></span></Breadcrumb.Item>
 					</Breadcrumb>
 				</div>
-	        		<FormItem {...formItemLayout } label="标题:">
-			        	{ getFieldDecorator('title')(<Input />)}
+	        		<FormItem {...formItemLayout } label="请输入标题:">
+			        	{ getFieldDecorator('title', {
+			        		rules: [{
+				            	required: true, message: 'please input title!',
+				            }]
+			        	})(
+			        		<Input />)
+			        	}
 			        </FormItem>
-	        		<FormItem {...formItemLayout } label="创建时间:">
-			        	{ getFieldDecorator('createTime')(<DatePicker/>)}
+
+	        		<FormItem {...formItemLayout } label="请选择时间:">
+			        	{ getFieldDecorator('createTime', {
+			        		rules: [{
+				            	required: true, message: 'please choose time!',
+				            }]
+			        	})(
+			        		<DatePicker onChange={ this.handleDataChange }/>)
+			        	}
 			        </FormItem>
-	        		<FormItem {...formItemLayout } label="你是谁！:">
-			        	{ getFieldDecorator('author')(<Input />)}
+
+	        		<FormItem {...formItemLayout } label="请输入昵称:">
+			        	{ getFieldDecorator('author', {
+			        		rules: [{
+				            	required: true, message: 'please input nickname!',
+				            }]
+			        	})(
+			        		<Input />)
+			        	}
 			        </FormItem>
-	        		<FormItem {...formItemLayout } label="类型:">
+
+	        		<FormItem {...formItemLayout } label="请选择类型:">
 			        	{ getFieldDecorator('category', { initialValue: "Java" })
 			        		(
 						    	<Select>
 						    		{
-						    			this.state.data.map((item,index)=>{
+						    			this.state.data && this.state.data.map((item,index)=>{
 						    				return <Option key={index} value={item.desc}>{item.desc}</Option>
 						    			})
 						    		}
@@ -87,13 +122,15 @@ class AdminEditor extends Component {
 	      					)
 			        	}
 			        </FormItem>
+
 				<div className={style.inputTextArea}>
 					<textarea id="editor" placeholder="开始编辑..." autoFocus></textarea>
 				</div>
-			        <FormItem {...tailFormItemLayout}>
-			        	<Button style={{marginRight: 8}}>保存</Button>
-			         	<Button type="primary" htmlType="submit">提交</Button>
-			        </FormItem>
+
+		        <FormItem {...tailFormItemLayout}>
+		        	<Button style={{marginRight: 8}}>保存</Button>
+		         	<Button type="primary" htmlType="submit">提交</Button>
+		        </FormItem>
 			</Form>
 		)
 	}
