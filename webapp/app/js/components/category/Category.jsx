@@ -1,7 +1,6 @@
 import React,{ Component } from 'react';
 
 import CategoryItem from './CategoryItem';
-import api from './api';
 import data from './data.json';
 
 class Category extends Component {

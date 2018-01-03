@@ -8,9 +8,7 @@ class Carousel extends React.Component {
 
 	render() {
 		return (
-			<div style={{height: 256}}>
-				<img style={{height: 256,width: 3100}} src="/assets/images/carousel.jpg"/>
-		  	</div>
+			<div id="mydiv" style={{height: 256,background: "#0099FF"}}></div>
 		);
 	}
 }

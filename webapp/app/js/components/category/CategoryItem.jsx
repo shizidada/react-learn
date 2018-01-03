@@ -14,7 +14,7 @@ const CategoryItem = (props) => {
 						</div>
 						<div className="fh5co-text">
 							<h3>{props.data.desc}</h3>
-							<p>{props.data.content}</p>
+							<p>{props.data.content.length > 26 ? props.data.content.slice(0,26)+"..." : props.data.content}</p>
 						</div>
 					</Card>
 				</Link>

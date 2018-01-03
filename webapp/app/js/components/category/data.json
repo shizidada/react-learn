@@ -1,21 +1,21 @@
 [{	
 	"id": 1,
 	"desc":"Java",
-	"content":"Java Web Java Web Java Web ",
+	"content":"Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。",
 	"icon":"icon-npm"
 },{
 	"id": 2,
 	"desc":"Node.js",
-	"content":"Node.js Node.js Node.js Node.js ",
+	"content":"Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。",
 	"icon":"icon-npm"
 },{
 	"id": 3,
 	"desc":"Python",
-	"content":"Python Python Python Python Python Python ",
+	"content":"Python是一种解释型、面向对象、动态数据类型的高级程序设计语言。",
 	"icon":"icon-npm"
 },{
 	"id": 4,
 	"desc":"Spring",
-	"content":"Spring Spring Spring Spring Spring Spring Spring ",
+	"content":"Spring的高度开放性，并不强制应用完全依赖于Spring，开发者可自由选用Spring框架的部分或全部。",
 	"icon":"icon-npm"
 }]
