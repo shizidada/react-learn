@@ -1,0 +1,16 @@
+[{
+	"path": "/",
+	"name": "首页"
+},{
+	"path": "/blog",
+	"name": "博客"
+},{
+	"path": "/portfolio",
+	"name": "展示"
+},{
+	"path": "/about",
+	"name": "关于"
+},{
+	"path": "/contact",
+	"name": "联系"
+}]

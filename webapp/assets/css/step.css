@@ -1,0 +1,1128 @@
+html {
+	overflow: hidden
+}
+
+body {
+	background: #f3f3f3
+		url(http://img.baidu.com/img/iknow/exp/step/step_bg.png) repeat;
+	min-height: 600px;
+	min-width: 1024px;
+	overflow: hidden
+}
+
+.header,.body,.footer {
+	width: auto;
+	padding: 0
+}
+
+.header {
+	height: 75px
+}
+
+.footer {
+	height: 55px
+}
+
+#album-box-content {
+	zoom: 1;
+	text-align: center
+}
+
+.step-brand-pro {
+	margin-top: 20px;
+	overflow: hidden;
+	position: relative;
+	height: 60px
+}
+
+.step-brand-pro .brand-pro-wrap {
+	position: absolute;
+	right: 60px;
+	width: 640px;
+	height: 60px;
+	margin: 0 auto
+}
+
+.step-brand-pro .brand-pro-wrap a {
+	filter: alpha(opacity = 0);
+	-khtml-opacity: 0;
+	-moz-opacity: 0;
+	opacity: 0;
+	background-color: #fff;
+	outline: 0;
+	position: absolute;
+	display: block;
+	height: 60px;
+	width: 640px;
+	top: 0
+}
+
+.brief-info .step-brand-pro {
+	margin-bottom: 20px
+}
+
+.step-item-recommand .step-brand-pro {
+	margin-bottom: 10px
+}
+
+.step-container {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: hidden
+}
+
+.step-container .left-cover,.step-container .right-cover {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	opacity: .95;
+	filter: alpha(opacity = 95);
+	z-index: 1;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer
+}
+
+.step-container .left-cover {
+	left: 0;
+	border-right: 1px solid #ccc;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/left-cover-edge.png) right
+		top repeat-y;
+	background-color: #f8f8f8
+}
+
+.step-container .left-cover .previous-arrow {
+	position: absolute;
+	width: 16px;
+	height: 29px;
+	top: 45%;
+	right: 15%;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png) 0
+		-280px
+}
+
+.step-container .right-cover .next-arrow {
+	position: absolute;
+	width: 38px;
+	height: 79px;
+	top: 40%;
+	left: 20%;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png) 0
+		-340px
+}
+
+.step-container .right-cover {
+	right: 0;
+	border-left: 1px solid #ccc;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/right-cover-edge.png) left
+		top repeat-y;
+	background-color: #f8f8f8
+}
+
+.step-container .cover-hover {
+	background: #ebebeb
+}
+
+.step-container .cover-hover .previous-arrow {
+	background-position: -40px -280px
+}
+
+.step-container .cover-hover .next-arrow {
+	background-position: -40px -340px
+}
+
+.header {
+	overflow: hidden;
+	color: #ccc;
+	font-size: 12px
+}
+
+.header .top {
+	height: 58px;
+	background-color: #555251;
+	border: 1px solid #474645
+}
+
+.header .top .title {
+	font-family: "å¾®è½¯é›…é»‘";
+	font-size: 24px;
+	color: #ccc;
+	top: 12px;
+	left: 90px;
+	position: absolute
+}
+
+.header .top .title h1 {
+	font-weight: 400
+}
+
+.header .top .good-exp {
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png)
+		no-repeat scroll 0 -210px transparent;
+	height: 55px;
+	width: 43px;
+	position: absolute;
+	top: -12px;
+	left: 0
+}
+
+.header .top .ml-55 {
+	margin-left: 55px
+}
+
+.header .top-left {
+	float: left
+}
+
+.header .top-left a.back {
+	display: block;
+	width: 82px;
+	height: 36px;
+	margin: 12px 0 0 15px;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png?t=1)
+		no-repeat 0 -430px
+}
+
+.header .top-left a.back:hover {
+	background-position: 0 -466px
+}
+
+.header .top-left a.back-mag {
+	display: block;
+	width: 82px;
+	height: 36px;
+	margin: 12px 0 0 15px;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png?t=1)
+		no-repeat 0 -502px
+}
+
+.header .top-left a.back-mag:hover {
+	background-position: 0 -538px
+}
+
+.header .top-right {
+	float: right;
+	_width: 140px
+}
+
+.header .top-right .options li {
+	float: left
+}
+
+.header .top-right a {
+	display: block;
+	width: 69px;
+	height: 58px;
+	border-left: 1px solid #474645;
+	font-family: arial;
+	color: #ccc;
+	font-size: 10px;
+	text-align: center;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png) -1000px
+		-1000px no-repeat
+}
+
+.header .top-right a b {
+	position: relative;
+	top: 35px;
+	font-weight: 400;
+	font-size: 10px
+}
+
+.header .top-right a .num {
+	display: block
+}
+
+.header .top-right a .hover-tip,.header .top-right a .tip {
+	display: none
+}
+
+.header .top-right a:hover {
+	text-decoration: none;
+	background-color: #484544;
+	color: #fe7e00
+}
+
+.header .top-right a:hover .num {
+	display: none
+}
+
+.header .top-right a:hover .hover-tip {
+	display: block
+}
+
+.header .top-right a.vote {
+	background:
+		url(http://exp.bdstatic.com/static/step/widget/header/vote_icon_6a17d3f.png)
+		no-repeat 28px 17px
+}
+
+.header .top-right a.vote:hover {
+	background-color: #484544
+}
+
+.header .top-right a.voted,.header .top-right a.favored {
+	border-left: 1px solid #3d3c3c
+}
+
+.header .top-right a.voted:hover {
+	color: #ccc
+}
+
+.header .top-right a.voted:hover .num,.header .top-right a.voted:hover .hover-tip
+	{
+	display: none
+}
+
+.header .top-right a.voted:hover .tip {
+	display: block
+}
+
+.header .top-right a.favored:hover {
+	background-position: -94px -272px;
+	color: #ccc
+}
+
+.header .top-right a.favored:hover .num,.header .top-right a.favored:hover .hover-tip
+	{
+	display: none
+}
+
+.header .top-right a.favored:hover .tip {
+	display: block
+}
+
+.header .top-right a.favor {
+	background-position: 15px -106px
+}
+
+.header .top-right a.favor:hover {
+	background-position: -36px -106px
+}
+
+.header .top-right a.favored:hover {
+	background-position: -94px -330px
+}
+
+.exp-has-used {
+	color: #888;
+	padding-right: 10px
+}
+
+.exp-tip {
+	color: #888;
+	text-align: center;
+	margin-top: 15px
+}
+
+.step-search-form {
+	position: absolute;
+	top: 15px;
+	display: none
+}
+
+.step-search-form .keyword {
+	border: 0;
+	width: 250px;
+	background: #f8f8f8;
+	height: 28px;
+	line-height: 28px\9;
+	padding: 0 5px;
+	outline: 0;
+	float: left;
+	margin-right: 3px
+}
+
+.step-search-form .submit {
+	float: left;
+	border: 0;
+	outline: 0;
+	height: 28px;
+	width: 67px;
+	color: #fff;
+	background: #45BA51;
+	cursor: pointer
+}
+
+.footer {
+	font-family: "å®‹ä½“";
+	color: #fff
+}
+
+.footer .step-pager {
+	padding-top: 15px
+}
+
+.footer ul {
+	margin: 0 auto;
+	width: 549px
+}
+
+.footer li {
+	display: none;
+	float: left;
+	margin-right: 15px;
+	position: relative
+}
+
+.footer li a:link,.footer li a:visited {
+	color: #fff;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png) -120px
+		-50px no-repeat;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 2.2
+}
+
+.footer li a:hover {
+	text-decoration: none;
+	background-position: -120px -80px
+}
+
+.footer li a:active,.footer li a:focus {
+	background-position: -120px -110px
+}
+
+.footer li a.current,.footer li a.current:hover,.footer li a.current:visited
+	{
+	background-position: -120px -140px
+}
+
+.footer li .preview-data {
+	position: absolute;
+	width: 115px;
+	height: 43px;
+	top: -67px;
+	left: -50px;
+	padding: 5px;
+	line-height: 1.2;
+	background-color: #333;
+	z-index: 10;
+	opacity: .7;
+	filter: alpha(opacity = 70);
+	white-space: normal;
+	text-align: left
+}
+
+.footer li .preview-img {
+	width: 80px;
+	height: 60px;
+	padding: 4px;
+	top: -81px;
+	left: -30px
+}
+
+.footer li .preview-img img {
+	opacity: 1
+}
+
+.footer li .triangle-icon {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #333;
+	top: -14px;
+	opacity: .65;
+	filter: alpha(opacity = 65);
+	*left: 0;
+	_display: none
+}
+
+.footer li .preview-img .triangle-icon {
+	left: 33px;
+	top: 68px
+}
+
+.footer #pre {
+	display: block;
+	float: right
+}
+
+.footer #next {
+	margin-right: 0;
+	float: right;
+	display: block
+}
+
+.footer .roman {
+	background-color: #333;
+	opacity: .2;
+	filter: alpha(opacity = 20);
+	border-radius: 3px;
+	padding: 2px 5px;
+	position: relative;
+	top: 2px
+}
+
+.footer .pagenate {
+	margin-right: 10px
+}
+
+.tao-info {
+	position: absolute;
+	left: 1px;
+	bottom: 1px;
+	height: 22px
+}
+
+.tao-info .tao-icon {
+	height: 22px;
+	width: 22px;
+	float: left;
+	background: url(http://img.baidu.com/img/iknow/exp/spread-cart.png)
+		no-repeat
+}
+
+.tao-info .tao-title {
+	float: left;
+	height: 22px;
+	font-size: 12px;
+	background: #777;
+	filter: alpha(opacity = 90);
+	-khtml-opacity: 90;
+	-moz-opacity: 90;
+	opacity: 90;
+	color: #fff;
+	padding: 0 8px;
+	line-height: 22px
+}
+
+.tao-info .tao-title a {
+	color: #fff
+}
+
+.tao-info .tao-round {
+	float: left;
+	background: url(http://img.baidu.com/img/iknow/exp/spread-round.png)
+		no-repeat;
+	height: 22px;
+	width: 9px;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,
+		Â sizingMethod=scale, Â src="http://img.baidu.com/img/iknow/exp/spread-round.png");
+	_background: 0 0
+}
+
+#step-item-0 {
+	width: 919px;
+	border-left: 1px solid #ccc
+}
+
+.step-item-brief {
+	font-family: "Microsoft YaHei"
+}
+
+.step-item-brief .writer-info {
+	width: 147px;
+	height: 469px;
+	padding: 0 20px;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/step-brief-bg.png) 0 0
+		repeat;
+	border: 1px solid #fafafa;
+	border-right-color: #E6E4E1;
+	border-bottom: 0
+}
+
+.step-item-brief .writer-info img {
+	display: block
+}
+
+.step-item-brief .writer-portrait {
+	margin-left: 30px
+}
+
+.step-item-brief .writer-portrait-container {
+	position: relative;
+	width: 87px;
+	height: 87px
+}
+
+.step-item-brief .portrait-cover {
+	width: 87px;
+	height: 87px;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/step-brief-portrait.png) 0
+		0 no-repeat;
+	position: absolute;
+	margin-top: -87px;
+	cursor: pointer
+}
+
+.step-item-brief .writer-basic {
+	margin-top: 15px
+}
+
+.step-item-brief .writer-basic-name {
+	font-size: 20px;
+	line-height: 24px;
+	text-align: center
+}
+
+.step-item-brief .writer-basic-intro {
+	line-height: 14px;
+	color: #666;
+	margin: 7px 5px
+}
+
+.step-item-brief .brief-info {
+	height: 100%
+}
+
+.step-item-brief .brief-info-inner {
+	margin: 0 80px;
+	width: 569px
+}
+
+.step-item-brief .brief-info-inner-withoutimg {
+	margin: 0 202px;
+	width: 325px
+}
+
+.step-item-brief .brief-info-text {
+	width: 325px;
+	height: 100%;
+	position: relative
+}
+
+.step-item-brief .brief-text-area {
+	width: 325px
+}
+
+.step-item-brief .brief-text-area:first-letter {
+	font-size: 34px
+}
+
+.step-item-brief .left-quote,.step-item-brief .right-quote {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/steppage_head.png) -120px
+		-170px no-repeat;
+	display: block;
+	overflow: hidden
+}
+
+.step-item-brief .left-quote {
+	left: -30px;
+	top: 0
+}
+
+.step-item-brief .right-quote {
+	background-position: -120px -200px;
+	right: -30px;
+	bottom: 0;
+	display: none
+}
+
+.step-item-brief .brief-info-img {
+	width: 200px;
+	height: 330px;
+	margin-left: 44px
+}
+
+.step-item-brief .brief-info-img .img-cover {
+	width: 200px;
+	height: 155px
+}
+
+.step-item-header {
+	height: 44px;
+	line-height: 44px;
+	border-bottom: 1px solid #E8E8E8;
+	color: #ccc;
+	font-size: 30px;
+	font-weight: 400
+}
+
+.step-item-header .current-order-in-step {
+	color: #59b84b;
+	font-size: 40px;
+	margin-right: 5px
+}
+
+.step-container {
+	
+}
+
+.step-container .step-img-wrapper {
+	background: url(http://img.baidu.com/img/iknow/exp/step/step-img-bg.png)
+		0 0 repeat;
+	overflow: hidden;
+	position: relative
+}
+
+.step-container .img-cover {
+	display: block;
+	position: relative;
+	cursor: pointer
+}
+
+.step-container .inner-img-cover {
+	position: absolute;
+	cursor: pointer;
+	left: 0;
+	top: 0
+}
+
+.step-container .img-cover:hover {
+	position: relative
+}
+
+.step-container .img-cover:hover .inner-img-cover {
+	background: #333;
+	opacity: .1;
+	filter: alpha(opacity = 10)
+}
+
+.step-item-recommand {
+	width: 919px;
+	border-right: 1px solid #ccc
+}
+
+.step-recommand-inner {
+	width: 720px;
+	margin: 0 99px 0 100px
+}
+
+.step-recommand-inner img {
+	display: block
+}
+
+.step-recommand-inner .replay {
+	padding-bottom: 24px;
+	border-bottom: 1px solid #e1e1e1
+}
+
+.step-recommand-inner .replay-img {
+	margin-right: 15px
+}
+
+.step-recommand-inner h4 {
+	color: #666;
+	font-weight: 400;
+	font-size: 14px;
+	margin-bottom: 20px
+}
+
+.step-recommand-inner a.replay-img-container .img-border {
+	width: 158px;
+	height: 118px;
+	margin-top: -120px;
+	cursor: pointer;
+	border: 1px solid #000;
+	opacity: .1;
+	filter: alpha(opacity = 10) \9
+}
+
+.step-recommand-inner a.replay-img-container:hover .img-border {
+	background: #333
+}
+
+.step-recommand-inner .replay-step {
+	font-size: 16px
+}
+
+.step-recommand-inner .recommand-list {
+	margin-top: 24px
+}
+
+.step-recommand-inner h3 {
+	font-size: 14px;
+	margin-bottom: 15px;
+	line-height: 15px;
+	_line-height: 16px
+}
+
+.step-recommand-inner .recommend-exp {
+	width: 120px;
+	margin-right: 30px;
+	float: left
+}
+
+.step-recommand-inner .recommend-exp .img-border {
+	width: 118px;
+	height: 88px;
+	margin-top: -90px;
+	cursor: pointer;
+	border: 1px solid #000;
+	opacity: .1;
+	filter: alpha(opacity = 10) \9
+}
+
+.step-recommand-inner .recommend-exp a:hover .img-border {
+	background: #333
+}
+
+.step-recommand-inner .last {
+	margin-right: 0
+}
+
+.step-recommand-inner .recommend-exp-title {
+	display: block;
+	margin-top: 7px
+}
+
+.recommand-list a {
+	position: relative;
+	width: 120px;
+	height: 90px;
+	display: block
+}
+
+.recommand-list a img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1
+}
+
+.step-recommand-inner .recommand-list .img-border {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 0;
+	z-index: 2
+}
+
+.step-item-text-inner {
+	margin: 0 60px
+}
+
+.step-item-text-inner .step-text-container {
+	width: 375px
+}
+
+.step-item-text-inner header {
+	margin-bottom: 7px
+}
+
+.step-item-text-inner .step-item-title {
+	font-size: 24px;
+	border-bottom: 1px solid #E8E8E8;
+	font-weight: 400;
+	line-height: 54px
+}
+
+.step-item-text-inner .step-text-right-contanier {
+	margin: 44px 0 0 48px;
+	border-top: 1px solid #ccc;
+	width: 375px;
+	padding-top: 7px
+}
+
+.step-item-text-inner .text {
+	font-size: 14px;
+	line-height: 28px;
+	overflow: hidden
+}
+
+.step-item-textimg-inner {
+	margin: 0 60px
+}
+
+.step-item-textimg-inner .step-text-container {
+	width: 270px;
+	margin-right: 48px
+}
+
+.step-item-textimg-inner header {
+	margin-bottom: 7px
+}
+
+.step-item-textimg-inner .step-item-title {
+	font-size: 24px;
+	border-bottom: 1px solid #E8E8E8;
+	font-weight: 400;
+	line-height: 54px
+}
+
+.step-item-textimg-inner .step-img-container {
+	margin-top: 45px
+}
+
+.step-item-textimg-inner .step-one-img {
+	width: 480px;
+	height: 346px
+}
+
+.step-item-textimg-inner .step-one-img .img-cover {
+	height: 346px;
+	width: 480px
+}
+
+.step-item-textimg-inner .step-two-img {
+	width: 480px;
+	height: 167px
+}
+
+.step-item-textimg-inner .step-two-img .img-cover {
+	width: 480px;
+	height: 167px
+}
+
+.step-item-textimg-inner .step-two-img-top {
+	margin-bottom: 10px
+}
+
+.step-item-textimg-inner .step-three-img-top {
+	width: 235px;
+	height: 176px
+}
+
+.step-item-textimg-inner .step-three-img-top .img-cover {
+	width: 235px;
+	height: 176px
+}
+
+.step-item-textimg-inner .step-three-img-topleft {
+	margin-right: 10px
+}
+
+.step-item-textimg-inner .step-three-img-bottom {
+	width: 480px;
+	height: 155px;
+	margin-top: 10px
+}
+
+.step-item-textimg-inner .step-three-img-bottom .img-cover {
+	width: 480px;
+	height: 155px
+}
+
+.step-item-imgonly-inner {
+	margin: 0 60px
+}
+
+.step-item-imgonly-inner .step-item-header {
+	margin-bottom: 20px
+}
+
+.step-item-imgonly-inner .step-only-img {
+	height: 325px;
+	padding-left: 175px
+}
+
+.step-item-imgonly-inner .step-only-img .img-cover {
+	height: 325px;
+	width: 450px
+}
+
+.step-text-wrapper {
+	font-size: 14px;
+	line-height: 28px;
+	color: #333;
+	overflow: hidden
+}
+
+.waiting-step-loading {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #f3f3f3
+		url(http://img.baidu.com/img/iknow/exp/step/step_bg.png) repeat;
+	text-align: center;
+	z-index: 10
+}
+
+.waiting-step-loading .tip-placehoder {
+	height: 30%
+}
+
+.waiting-step-loading .loading-tip {
+	font-family: "Microsoft YaHei";
+	color: #999
+}
+
+.waiting-step-loading .exp-tip {
+	font-size: 32px
+}
+
+.waiting-step-loading .loading-data-tip {
+	font-size: 16px
+}
+
+.icon-wrp {
+	margin-top: 10px;
+	height: 24px;
+	width: 128px
+}
+
+.icon-wrp .u-icon {
+	display: block;
+	width: 24px;
+	height: 24px;
+	float: left;
+	background: url(http://img.baidu.com/img/iknow/exp/user-badge-small.png)
+		no-repeat;
+	margin-right: 4px;
+	outline: 0
+}
+
+.icon-wrp .cpm3 {
+	background-position: 0 0
+}
+
+.icon-wrp .cpm4 {
+	background-position: 0 -24px
+}
+
+.icon-wrp .cpm5 {
+	background-position: 0 -48px
+}
+
+.icon-wrp .privilege1 {
+	background-position: -48px 0
+}
+
+.icon-wrp .privilege2 {
+	background-position: -48px -24px
+}
+
+.icon-wrp .admin1 {
+	background-position: -72px 0
+}
+
+.step-play-container {
+	width: 920px;
+	height: 100%;
+	position: relative
+}
+
+.step-play-list {
+	position: absolute;
+	height: 100%;
+	width: 92000px;
+	left: 0
+}
+
+.step-item-container {
+	width: 920px;
+	height: 100%;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	display: inline-block;
+	float: left;
+	background: #fff
+}
+
+.is-spread {
+	font-size: 12px;
+	color: #666;
+	background: #FDFDEE;
+	border-bottom: 1px solid #f0f0e1;
+	padding: 5px 10px
+}
+
+.tangram-scrollbar {
+	width: 100%;
+	height: 100%
+}
+
+.tangram-scrollbar-track {
+	overflow: hidden;
+	width: 100%;
+	height: 100%
+}
+
+.tangram-scrollbar-slider {
+	width: 100%;
+	height: 100%
+}
+
+.tangram-scrollbar-slider-thumb {
+	width: 100%;
+	height: 100%
+}
+
+.tangram-scrollbar-prev,.tangram-scrollbar-next,.tangram-scrollbar-thumb-btn
+	{
+	font-size: 0
+}
+
+.scrollbar-y {
+	background:
+		url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif)
+		no-repeat 3px center
+}
+
+.scrollbar-y-hover {
+	background-position: -3px center
+}
+
+.scrollbar-y-prev,.scrollbar-y-next {
+	width: 9px;
+	height: 0;
+	overflow: hidden
+}
+
+.scrollbar-y-thumb-btn {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif)
+		no-repeat -12px center
+}
+
+.scrollbar-y-thumb-prev {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 4px;
+	font-size: 0;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif) -36px 0
+}
+
+.scrollbar-y-thumb-next {
+	position: absolute;
+	bottom: 0 !important;
+	bottom: -1px;
+	width: 100%;
+	height: 4px;
+	font-size: 0;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/global/exp-scroll.gif) -36px
+		-4px
+}
+
+.scrollbar-y-thumb-btn-hover {
+	background-position: -24px center
+}
+
+.scrollbar-y-thumb-btn-hover .scrollbar-y-thumb-prev {
+	background-position: -36px -11px
+}
+
+.scrollbar-y-thumb-btn-hover .scrollbar-y-thumb-next {
+	background-position: -36px -15px
+}
+
+.guide-container {
+	position: absolute;
+	width: 500px;
+	height: 220px;
+	left: 210px;
+	overflow: hidden;
+	background:
+		url(http://img.baidu.com/img/iknow/exp/step/user-guide-bg.png)
+		no-repeat;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,
+		Â sizingMethod=scale, Â src="http://img.baidu.com/img/iknow/exp/step/user-guide-bg.png");
+	_background: 0 0
+}
