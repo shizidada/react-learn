@@ -62,6 +62,24 @@ function selectArticleById(id, callback) {
     });
 }
 
+
+
+
+
+///////////////////////
+//登录
+function login(data, callback) {
+    $.ajax({
+        url: '/account/login.json',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        dataType: 'json',
+        data: data,
+        success: callback
+    });
+}
+
+
 module.exports = {
     addArticle,
     queryAllArticle,
@@ -69,4 +87,5 @@ module.exports = {
     updateArticleByStatus,
     selectRecentlyArticle,
     selectArticleById,
+    login,
 };

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Table, Icon, Popconfirm, message } from 'antd';
 
 import dateUtil from "utils/DateUtil"
+import { get } from "utils/StorageUtil"
 import api from "service/api";
 
 class Manager extends Component {
@@ -10,6 +11,16 @@ class Manager extends Component {
 		super(props);
 		this.state = {
 			data: []
+		}
+	}
+
+	componentWillMount(){
+		const { history } = this.props;
+		const account = get("account");
+		// 未登录
+		if (account === -1) {
+			history.push("/login");
+			return;
 		}
 	}
 

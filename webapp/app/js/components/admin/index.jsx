@@ -1,4 +1,4 @@
-import React, { Component }from "react";
+import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import moment from "moment";
 import { Form, Input, Select, Button, Breadcrumb, Alert, DatePicker, message } from 'antd';
@@ -9,6 +9,7 @@ const Option = Select.Option;
 import data from "./data";
 import style from "./style";
 import api from "service/api";
+import { get } from "utils/StorageUtil"
 
 class AdminEditor extends Component {
 
@@ -17,6 +18,17 @@ class AdminEditor extends Component {
 		this.state = {
 			data: [],
 			createTime: null
+		}
+		// console.log("AdminEditor " , props)
+	}
+
+	componentWillMount(){
+		const { history } = this.props;
+		const account = get("account");
+		// 未登录
+		if (account === -1) {
+			history.push("/login");
+			return;
 		}
 	}
 

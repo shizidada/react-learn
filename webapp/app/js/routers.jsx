@@ -10,6 +10,7 @@ import BlogDetail from "./components/detail/BlogDetail";
 import CategoryDetail from "./components/detail/CategoryDetail";
 
 ////////////////////////////////////////
+import Login from "./components/login/index";
 import Admin from "./components/admin/index";
 import Manager from "./components/admin/manager/index";
 
@@ -29,6 +30,7 @@ class Routers extends React.Component {
                         <Route path="/blog_detail/:blogId" component={BlogDetail}/>
                         <Route path="/admin" component={Admin}/>
                         <Route path="/manager" component={Manager}/>
+                        <Route path="/login" component={Login}/>
                     </Switch>
                 </Router>
         );

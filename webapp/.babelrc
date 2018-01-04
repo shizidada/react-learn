@@ -1,5 +1,6 @@
 {
     "plugins": [
+        "transform-decorators-legacy",
         "transform-object-rest-spread",
         "react-html-attrs",
         "syntax-dynamic-import"

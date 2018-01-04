@@ -19,7 +19,6 @@ var config = {
     entry: {
         // app
         index: './app/js/index.jsx',
-        // admin: './app/js/admin.jsx',
     },
     output: {
         path: path.resolve(__dirname, "assets"), //打包后的文件存放的地方
