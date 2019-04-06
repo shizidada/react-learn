@@ -7,9 +7,8 @@ class App extends Component {
     render() {
         return (
             <div className={style.app}>
-                <span>React New</span>
-                <span>React New</span>
-                <span>React New</span>
+                <span>React Demo New~</span>
+                <h2>React Learn</h2>
             </div>
         )
     }
