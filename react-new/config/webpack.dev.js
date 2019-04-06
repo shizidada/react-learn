@@ -1,5 +1,5 @@
 const commonConfig = require('./webpack.config');
-const plugins = require('./plugins');
+const plugins = require('./webpack.plugins');
 const devServer = require('./webpack.server');
 
 module.exports = Object.assign(commonConfig, {

@@ -1,7 +1,7 @@
 // const webpack = require("webpack");
-const path = require("path")
+const path = require("path");
 
-const plugins = require("./plugins");
+const plugins = require("./webpack.plugins");
 
 console.log(process.env.NODE_ENV);
 console.log(process.env.DEV_SERVER_PORT);
@@ -23,7 +23,7 @@ module.exports = {
     entry: "./index.js",
 
     output: {
-        path: path.resolve(__dirname, "..", "dist"),// 默认 dist
+        path: path.resolve(__dirname, "..", "build"),// 默认 dist
         publicPath: "/assets/", // 发布部署
         filename: "[name]-bundle.js",
         chunkFilename: "[name].[chunkhash:8].js"
@@ -84,7 +84,7 @@ module.exports = {
                     "css-loader"
                 ]
             },
-            // 
+            //
             {
                 //文件加载器，处理文件静态资源
                 test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

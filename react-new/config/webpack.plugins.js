@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
-const lodash = require('lodash');
+const lodash = require("lodash");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const OpenBrowserPlugin = require("open-browser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -13,10 +13,10 @@ const UglifyJsPlugin = require("webpack-uglify-parallel");
 const StatsPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 const os = require("os");
 
-// const addAssetHtml = new AddAssetHtmlPlugin({
-//     filepath: path.resolve(__dirname, "build", "vendor.js"),
-//     includeSourcemap: false
-// });
+const addAssetHtml = new AddAssetHtmlPlugin({
+    filepath: path.resolve(__dirname, "..", "build", "vendor.js"),
+    includeSourcemap: false
+});
 
 const extractLess = new ExtractTextPlugin({
     filename: "[name].css",
@@ -82,6 +82,12 @@ const hmr = new webpack.HotModuleReplacementPlugin();
 
 const namedModules = new webpack.NamedModulesPlugin();
 
+const dll = new webpack.DllPlugin({
+    path: path.join(path.resolve(__dirname, ".."), "dll", "manifest.json"),
+    name: "[name]",
+    context: path.resolve(__dirname, "..", "src")
+});
+
 module.exports = {
     prodDefination,
     uglify,
@@ -91,9 +97,13 @@ module.exports = {
 
     extractLess,
     html,
-    
+
+    addAssetHtml,
+
     hmr,
     namedModules,
     progress,
-    openBrowser
+    openBrowser,
+
+    dll
 };
