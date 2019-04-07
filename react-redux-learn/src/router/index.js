@@ -1,14 +1,24 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, IndexRoute, Switch, Route } from "react-router-dom";
 
 import Index from "../components/index";
+import Detail from "../components/detail";
 
-const Router = () => (
+// HashRouter
+// BrowserRouter
+const RouterComponent = () => (
     <BrowserRouter>
-        <Route path="/" exact component={Index} />
+        <Index >
+            <Switch>
+                <Route path="/detail" exact component={Detail}></Route>
+            </Switch>
+        </Index>
     </BrowserRouter>
 );
 
-export default Router;
+export default RouterComponent;
 
+export {
+    RouterComponent as Router
+};
 
