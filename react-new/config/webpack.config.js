@@ -24,7 +24,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, "..", "build"),// 默认 dist
-        publicPath: "/assets/", // 发布部署
+        publicPath: "/build/", // 发布部署
         filename: "[name]-bundle.js",
         chunkFilename: "[name].[chunkhash:8].js"
     },

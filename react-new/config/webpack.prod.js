@@ -8,8 +8,8 @@ module.exports = Object.assign({}, commonConfig, {
         plugins.occurenceOrder,
         plugins.extractLess,
         plugins.uglify,
-        plugins.html,
-        plugins.addAssetHtml,
+        // plugins.html,
+        // plugins.addAssetHtml,
         plugins.progress(),
         plugins.stats
     ]
