@@ -1,0 +1,13 @@
+{
+    "presets": [
+        "react",
+        "env",
+        "es2015",
+        "stage-0"
+    ],
+    "plugins": [
+        "transform-runtime",
+        "transform-class-properties",
+        "transform-decorators-legacy"
+    ]
+}
