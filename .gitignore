@@ -12,3 +12,6 @@ webpack.test.js
 /react-new/dll/
 /react-mobx-learn/node_modules/
 /react-mobx-learn/package-lock.json
+/react-next-learn/package-lock.json
+/react-next-learn/node_modules/
+/react-next-learn/.next/
