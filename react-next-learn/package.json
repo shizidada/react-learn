@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_ENV=development node server.js",
     "build": "next build",
     "start": "next start"
   },
@@ -15,5 +15,9 @@
     "next": "^8.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1"
   }
 }

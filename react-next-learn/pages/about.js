@@ -1,6 +1,13 @@
+/*
+ * @Author: Jiang.Jing 
+ * @Date: 2019-04-11 22:17:54 
+ * @Last Modified by: Jiang.Jing
+ * @Last Modified time: 2019-04-11 22:33:15
+ */
 // export default () => <p>Welcome to About!</p>
 
 import React, { Component } from 'react';
+import { withRouter } from 'next/router'
 
 // import Router from 'next/router';
 // Router.beforePopState(({ url, as, options }) => {
@@ -30,18 +37,17 @@ class About extends Component {
         }
     }
 
-    componentDidMount() {
-        // console.log(this.props);
-    }
-
+    componentDidMount() { }
 
     render() {
+        // console.log(this.props);
+        const { name } = this.props.router.query;
         return (
-            <p>Welcome to About!</p>
+            <div> Hello <span>{name}</span> Welcome to About! </div>
         )
     }
 }
 
-export default About;
+export default withRouter(About);
 
 

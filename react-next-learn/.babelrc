@@ -1,0 +1,21 @@
+{
+    "presets": [
+        "next/babel"
+    ],
+    "plugins": [
+        // [
+        //     "@babel/plugin-proposal-decorators",
+        //     {
+        //         // "decoratorsBeforeExport": true,
+        //         // "legacy": true
+        //     }
+        // ],
+        // [
+        //     "import",
+        //     {
+        //         "libraryName": "antd",
+        //         "style": "css"
+        //     }
+        // ]
+    ]
+}
