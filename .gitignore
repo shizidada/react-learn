@@ -2,9 +2,11 @@
 # dependencies
 node_modules/
 .idea
+.DS_Store
 
 # misc
 *bundle.js
+*.lock
 webpack.test.js
 /react-new/node_modules/
 /react-new/build/
@@ -15,3 +17,7 @@ webpack.test.js
 /react-next-learn/package-lock.json
 /react-next-learn/node_modules/
 /react-next-learn/.next/
+
+
+/react-rx-learn/node_modules/
+/react-rx-learn/package-lock.json
