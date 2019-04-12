@@ -1,27 +1,31 @@
-// /* eslint-disable */
-// const withCss = require('@zeit/next-css');
-// const withLess = require('@zeit/next-less');
+const withCss = require('@zeit/next-css');
+const withLess = require('@zeit/next-less');
 
-// module.exports = withLess(withCss({
-//     webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
-//         // Perform customizations to webpack config
-//         // Important: return the modified config
+// const fs = require("fs");
 
-//         // console.log(" ############ webpack config ############ ", config);
-//         // console.log(" ############ webpack buildId ############ ", buildId, dev, isServer, defaultLoaders);
+module.exports = withCss(withLess({
+    // less 3.0 
+    lessLoaderOptions: {
+        javascriptEnabled: true,
+    },
 
-//         return config
-//     },
-//     webpackDevMiddleware: config => {
-//         // Perform customizations to webpack dev middleware config
-//         // Important: return the modified config
-//         // console.log(" ############ webpackDevMiddleware config ############ ", config);
-//         return config
-//     }
-// }));
+    webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
+        // Perform customizations to webpack config
+        // Important: return the modified config
+        // console.log(" ############ webpack config ############ ", config.module);
 
+        // fs.writeFile("./default.config.json", JSON.stringify(config), function (err) {
+        //     console.log(err);
+        // });
 
-// "@babel/plugin-proposal-decorators": "^7.4.0",
-// "babel-plugin-import": "^1.11.0"
-// "@zeit/next-css": "^1.0.1",
-// "@zeit/next-less": "^1.0.1"
+        // console.log(" ############ webpack buildId ############ ", buildId, dev, isServer, defaultLoaders);
+
+        return config
+    },
+    webpackDevMiddleware: config => {
+        // Perform customizations to webpack dev middleware config
+        // Important: return the modified config
+        // console.log(" ############ webpackDevMiddleware config ############ ", config);
+        return config
+    }
+}));
