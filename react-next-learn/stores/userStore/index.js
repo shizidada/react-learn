@@ -1,8 +1,8 @@
-import {observable} from "mobx";
+import { observable } from "mobx";
 
 class UserStore {
 
-    @observable userInfo;
+  @observable userInfo;
 
 }
 export default UserStore;

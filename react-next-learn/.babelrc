@@ -1,21 +1,33 @@
 {
-    "presets": [
-      [
-        "next/babel",
-        {
-          "preset-env": { "useBuiltIns": "usage" }
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": "usage"
         }
-      ]
-    ],
-    "plugins": [
-      ["@babel/plugin-proposal-decorators", { "legacy": true }],
-      ["@babel/plugin-proposal-class-properties", { "loose": true }],
-      [
-        "import",
-        {
-          "libraryName": "antd",
-          "style": "less"
-        }
-      ]
+      }
     ]
-  }
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "less"
+      }
+    ]
+  ]
+}

@@ -1,8 +1,8 @@
-import {observable} from "mobx";
+import { observable } from "mobx";
 
 class LoginStore {
 
-    @observable isLogin = false;
+  @observable isLogin = false;
 
 }
 export default LoginStore;

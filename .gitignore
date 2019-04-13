@@ -21,3 +21,5 @@ webpack.test.js
 
 /react-rx-learn/node_modules/
 /react-rx-learn/package-lock.json
+/react-next-learn/ctx.json
+/react-next-learn/default.config.json
