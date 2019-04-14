@@ -1,0 +1,18 @@
+{
+  "presets": ["env", "react", "stage-0"],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-react-jsx",
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ],
+    "react-html-attrs"
+  ]
+}

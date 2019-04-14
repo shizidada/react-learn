@@ -23,3 +23,8 @@ webpack.test.js
 /react-rx-learn/package-lock.json
 /react-next-learn/ctx.json
 /react-next-learn/default.config.json
+
+*/package-lock.json
+.next/
+.cache/
+dist/
