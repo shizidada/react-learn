@@ -14,58 +14,60 @@ const StatsPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 const os = require("os");
 
 const addAssetHtml = new AddAssetHtmlPlugin({
-    filepath: path.resolve(__dirname, "..", "build", "vendor.js"),
-    includeSourcemap: false
+  filepath: path.resolve(__dirname, "..", "build", "vendor.js"),
+  includeSourcemap: false
 });
 
 const extractLess = new ExtractTextPlugin({
-    filename: "[name].css",
-    disable: process.env.NODE_ENV === "development"
+  filename: "[name].css",
+  disable: process.env.NODE_ENV === "development"
 });
 
 const html = new HtmlWebpackPlugin({
-    filename: "index.html",
-    template: "index.html"
+  filename: "index.html",
+  template: "index.html"
 });
 
-const progress = function () {
-    return new ProgressBar({
-        format: "compact"
-    });
+const progress = function() {
+  return new ProgressBar({
+    format: "compact"
+  });
 };
 
 const defaultOpenBrowserOptions = {
-    url: "http://localhost:8080",
-    delay: 1000
+  url: "http://localhost:8080",
+  delay: 1000
 };
 
-const openBrowser = function (options) {
-    const openBrowserOptions = Object.assign(
-        {}, defaultOpenBrowserOptions, options
-    );
-    return new OpenBrowserPlugin(openBrowserOptions);
+const openBrowser = function(options) {
+  const openBrowserOptions = Object.assign(
+    {},
+    defaultOpenBrowserOptions,
+    options
+  );
+  return new OpenBrowserPlugin(openBrowserOptions);
 };
 
 const uglify = new UglifyJsPlugin({
-    workers: os.cpus().length,
-    compress: {
-        warnings: false,
-        drop_console: true,
-        drop_debugger: true
-    },
-    mangle: false,
-    output: {
-        comments: false,
-        ascii_only: false
-    }
+  workers: os.cpus().length,
+  compress: {
+    warnings: false,
+    drop_console: true,
+    drop_debugger: true
+  },
+  mangle: false,
+  output: {
+    comments: false,
+    ascii_only: false
+  }
 });
 
 const prodDefination = new webpack.DefinePlugin({
-    "process.env.NODE_ENV": JSON.stringify("production")
+  "process.env.NODE_ENV": JSON.stringify("production")
 });
 
-const createClean = function () {
-    return new CleanWebpackPlugin();
+const createClean = function() {
+  return new CleanWebpackPlugin();
 };
 
 const cleanBundle = createClean();
@@ -73,9 +75,9 @@ const cleanBundle = createClean();
 const occurenceOrder = new webpack.optimize.OccurrenceOrderPlugin();
 
 const stats = new StatsPlugin({
-    filename: "stats.json",
-    fields: null,
-    stats: { chunkModules: true }
+  filename: "stats.json",
+  fields: null,
+  stats: { chunkModules: true }
 });
 
 const hmr = new webpack.HotModuleReplacementPlugin();
@@ -83,27 +85,27 @@ const hmr = new webpack.HotModuleReplacementPlugin();
 const namedModules = new webpack.NamedModulesPlugin();
 
 const dll = new webpack.DllPlugin({
-    path: path.join(path.resolve(__dirname, ".."), "dll", "manifest.json"),
-    name: "[name]",
-    context: path.resolve(__dirname, "..", "src")
+  path: path.join(path.resolve(__dirname, ".."), "dll", "manifest.json"),
+  name: "[name]",
+  context: path.resolve(__dirname, "..", "src")
 });
 
 module.exports = {
-    prodDefination,
-    uglify,
-    cleanBundle,
-    occurenceOrder,
-    stats,
+  prodDefination,
+  uglify,
+  cleanBundle,
+  occurenceOrder,
+  stats,
 
-    extractLess,
-    html,
+  extractLess,
+  html,
 
-    addAssetHtml,
+  addAssetHtml,
 
-    hmr,
-    namedModules,
-    progress,
-    openBrowser,
+  hmr,
+  namedModules,
+  progress,
+  openBrowser,
 
-    dll
+  dll
 };

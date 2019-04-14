@@ -3,22 +3,21 @@ const plugins = require("./webpack.plugins");
 const devServer = require("./webpack.server");
 
 module.exports = Object.assign(commonConfig, {
+  devtool: "cheap-module-eval-source-map",
 
-    devtool: "cheap-module-eval-source-map",
+  entry: [
+    "react-hot-loader/patch",
+    `webpack-dev-server/client?${devServer.url}`,
+    "webpack/hot/only-dev-server",
+    "./index.js"
+  ],
 
-    entry: [
-        "react-hot-loader/patch",
-        `webpack-dev-server/client?${devServer.url}`,
-        "webpack/hot/only-dev-server",
-        "./index.js",
-    ],
+  devServer: devServer.init(),
 
-    devServer: devServer.init(),
-
-    plugins: [
-        // plugins.dllRefer,
-        ...(commonConfig.plugins || []),
-        plugins.progress(),
-        plugins.openBrowser({ url: devServer.url })
-    ]
+  plugins: [
+    // plugins.dllRefer,
+    ...(commonConfig.plugins || []),
+    plugins.progress(),
+    plugins.openBrowser({ url: devServer.url })
+  ]
 });

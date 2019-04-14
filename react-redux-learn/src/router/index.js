@@ -1,24 +1,30 @@
 import React, { Component } from "react";
-import { BrowserRouter, HashRouter, IndexRoute, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  IndexRoute,
+  Switch,
+  Route
+} from "react-router-dom";
 
-import Index from "../components/index";
-import Detail from "../components/detail";
+import Nav from "../components/nav";
+import Home from "../pages/home";
+import Detail from "../pages/detail";
+import Upload from "../pages/upload";
 
 // HashRouter
 // BrowserRouter
 const RouterComponent = () => (
-    <BrowserRouter>
-        <Index >
-            <Switch>
-                <Route path="/detail" exact component={Detail}></Route>
-            </Switch>
-        </Index>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Nav />
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/detail" exact component={Detail} />
+      <Route path="/upload" exact component={Upload} />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default RouterComponent;
 
-export {
-    RouterComponent as Router
-};
-
+export { RouterComponent as Router };

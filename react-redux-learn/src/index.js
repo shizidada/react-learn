@@ -4,18 +4,19 @@ import ReactDOM from "react-dom";
 // import { BrowserRouter, Route } from "react-router-dom";
 // import App from "../src/components/app";
 
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux";
 
 import Router from "../src/router";
 
 import { store } from "../src/store";
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router />
-    </Provider>,
-    document.getElementById("app")
+  <Provider store={store}>
+    <Router />
+  </Provider>,
+  document.getElementById("app")
 );
+
 // ReactDOM.render(
 //     <BrowserRouter>
 //         <Route path="/index" exact component={App} />
