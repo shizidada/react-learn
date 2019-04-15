@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "dva";
 
 const mapStateToProps = state => state.count;
-
 @connect(mapStateToProps)
-export default class Count extends React.Component {
+export default class Count extends Component {
   add = () => {
     this.props.dispatch({ type: "count/add" });
   };

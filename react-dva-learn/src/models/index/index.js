@@ -6,7 +6,9 @@ export default {
   namespace: NAMESPACE,
 
   state: {
-    count: 0
+    count: 0,
+    lists: [],
+    title: ""
   },
 
   // 处理同步动作，用来算出最新的 State
@@ -17,11 +19,12 @@ export default {
       // console.log("state ==> ", state);
       // list.push(param);
       return {
+        ...state,
         count: state.count + 1
       };
     },
     updateData(state, { payload }) {
-      // console.log("state ==> ", state, "payload ==> ", payload);
+      // console.log("updateData :: ", state, " - ", payload);
       return {
         ...state,
         ...payload
@@ -31,6 +34,17 @@ export default {
 
   // 处理异步动作
   effects: {
+    *fetch(action, { put, call, select }) {
+      let { lists } = yield select(state => state[NAMESPACE]);
+      let json = yield call(() =>
+        fetch("https://jsonplaceholder.typicode.com/todos/1")
+      );
+      let res = yield json.json();
+      yield put({
+        type: "updateData",
+        payload: { title: res.title, lists: ["1", "2"] }
+      });
+    },
     *addAsync(action, { put, call, select }) {
       let { count } = yield select(state => state[NAMESPACE]);
       yield sleep(1000);

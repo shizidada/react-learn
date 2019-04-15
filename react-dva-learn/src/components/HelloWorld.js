@@ -11,6 +11,9 @@ const mapDispatchToProps = dispatch => ({
   },
   addAsync() {
     dispatch({ type: `${NAMESPACE}/addAsync` });
+  },
+  fetch() {
+    dispatch({ type: `${NAMESPACE}/fetch` });
   }
 });
 
@@ -20,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
 )
 export default class HelloWorld extends Component {
   componentDidMount() {
+    this.props.fetch();
     // console.log("componentDidMount ==>", this.props);
   }
 
@@ -39,18 +43,16 @@ export default class HelloWorld extends Component {
   };
 
   render() {
-    const { count } = this.props;
+    console.log("render ==>", this.props);
+    const { count, lists, title } = this.props;
     return (
       <div className="hello-world">
         <p className="title">HelloWorld</p>
         <button onClick={this.add}>+</button>
         <span>{count}</span>
         <button onClick={this.addAsync}>+ async</button>
-        <div className="hello-wrapper">
-          {/* {list.map((item, index) => {
-            return <div key={index} />;
-          })} */}
-        </div>
+        <div className="hello-wrapper">{lists.length}</div>
+        <div>{title}</div>
       </div>
     );
   }
