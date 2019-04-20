@@ -3,7 +3,7 @@ import { connect } from "dva";
 
 const mapStateToProps = state => state.count;
 @connect(mapStateToProps)
-export default class Count extends Component {
+export default class Counter extends Component {
   add = () => {
     this.props.dispatch({ type: "count/add" });
   };
@@ -17,10 +17,10 @@ export default class Count extends Component {
     return (
       <div>
         <h2>{this.props.count}</h2>
-        <button key="add" onClick={this.add}>
+        <button key="add" id="counter-add" onClick={this.add}>
           +
         </button>
-        <button key="minus" onClick={this.minus}>
+        <button key="minus" id="counter-minus" onClick={this.minus}>
           -
         </button>
       </div>

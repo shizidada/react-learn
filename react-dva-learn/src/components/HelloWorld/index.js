@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "dva";
 
-import { getIndexState } from "../models/index";
-import { NAMESPACE } from "../models/index/constants";
+import { getIndexState } from "../../models/index";
+import { NAMESPACE } from "../../models/index/constants";
 
 const mapStateToProps = state => getIndexState(state);
 const mapDispatchToProps = dispatch => ({
@@ -43,15 +43,21 @@ export default class HelloWorld extends Component {
   };
 
   render() {
-    console.log("render ==>", this.props);
+    // console.log("HelloWorld render ==>", this.props);
     const { count, lists, title } = this.props;
     return (
-      <div className="hello-world">
+      <div className="hello-world" id="hello-world">
         <p className="title">HelloWorld</p>
-        <button onClick={this.add}>+</button>
+        <button className="sync-add" onClick={this.add}>
+          +
+        </button>
         <span>{count}</span>
-        <button onClick={this.addAsync}>+ async</button>
-        <div className="hello-wrapper">{lists.length}</div>
+        <button id="async-add" onClick={this.addAsync}>
+          + async
+        </button>
+        <div id="hello-wrapper" className="hello-wrapper">
+          {lists.length}
+        </div>
         <div>{title}</div>
       </div>
     );
