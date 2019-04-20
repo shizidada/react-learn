@@ -48,7 +48,7 @@ export default class HelloWorld extends Component {
     return (
       <div className="hello-world" id="hello-world">
         <p className="title">HelloWorld</p>
-        <button className="sync-add" onClick={this.add}>
+        <button className="aaa sync-add bbb" onClick={this.add}>
           +
         </button>
         <span>{count}</span>
