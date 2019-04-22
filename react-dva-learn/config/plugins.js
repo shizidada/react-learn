@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const ProgressBar = require("simple-progress-webpack-plugin");
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
 const os = require("os");
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
@@ -20,7 +21,15 @@ function resolve(dir) {
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: resolve("index.html"),
-  filename: "index.html"
+  filename: "index.html",
+  inject: true, // 指定生成的<script></script>放在那个目录
+  // 去掉空格、注释、多余的应用等等都在这里配置
+  minify: {
+    removeComments: true,
+    collapseWhitespace: true,
+    removeAttributeQuotes: true
+  },
+  chunksSortMode: "dependency" // 成产环境下的第三方依赖进行压缩
 });
 
 const happyPack = new HappyPack({
@@ -62,11 +71,20 @@ const dllReferencePlugin = new webpack.DllReferencePlugin({
   manifest: require("../dist/manifest.json")
 });
 
+const compressionWebpackPlugin = new CompressionWebpackPlugin({
+  filename: "[path].gz[query]",
+  algorithm: "gzip",
+  test: new RegExp("\\.(js|css)$"),
+  threshold: 10240,
+  minRatio: 0.8
+});
+
 module.exports = {
   htmlWebpackPlugin,
   happyPack,
   miniCssExtractPlugin,
   analyzerPlugin,
   progressBar,
-  dllReferencePlugin
+  dllReferencePlugin,
+  compressionWebpackPlugin
 };

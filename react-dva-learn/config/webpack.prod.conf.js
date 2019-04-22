@@ -24,12 +24,15 @@ const prodConfig = {
 
   optimization: {
     minimizer: [
+      new OptimizeCSSAssetsPlugin({}),
       new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true
-      }),
-      new OptimizeCSSAssetsPlugin({})
+        // 压缩 js
+        uglifyOptions: {
+          ecma: 6,
+          cache: true,
+          parallel: true
+        }
+      })
     ],
     runtimeChunk: {
       name: "manifest"
@@ -63,7 +66,7 @@ const prodConfig = {
       }
     ]
   },
-  plugins: [plugin.miniCssExtractPlugin]
+  plugins: [plugin.miniCssExtractPlugin, plugin.compressionWebpackPlugin]
 };
 
 module.exports = merge({
