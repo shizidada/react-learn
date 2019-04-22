@@ -30,7 +30,20 @@ const prodConfig = {
         sourceMap: true
       }),
       new OptimizeCSSAssetsPlugin({})
-    ]
+    ],
+    runtimeChunk: {
+      name: "manifest"
+    },
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          priority: -20,
+          chunks: "all"
+        }
+      }
+    }
   },
 
   module: {
