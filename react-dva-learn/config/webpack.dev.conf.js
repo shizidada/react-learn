@@ -3,6 +3,7 @@ const path = require("path");
 const baseConfig = require("./webpack.base.conf");
 const merge = require("webpack-merge");
 const loader = require("./loaders");
+const plugin = require("./plugins");
 
 const devConfig = {
   mode: config.dev.mode,
@@ -22,6 +23,9 @@ const devConfig = {
   module: {
     rules: [loader.cssLoader, loader.lessLoader]
   },
+
+  plugins: [plugin.progressBar, plugin.analyzerPlugin],
+
   devServer: {}
 };
 

@@ -11,7 +11,11 @@ module.exports = {
     rules: [loader.babelLoader]
   },
 
-  plugins: [plugin.htmlWebpackPlugin, plugin.happyPack],
+  plugins: [
+    plugin.happyPack,
+    plugin.htmlWebpackPlugin,
+    plugin.dllReferencePlugin
+  ],
 
   resolve: {
     alias: {

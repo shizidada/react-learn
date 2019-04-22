@@ -1,9 +1,13 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HappyPack = require("happypack");
 
 // const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const ProgressBar = require("simple-progress-webpack-plugin");
 
 const os = require("os");
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
@@ -40,11 +44,29 @@ const happyPack = new HappyPack({
 const miniCssExtractPlugin = new MiniCssExtractPlugin({
   //CSS提取
   filename: "css/[name].[contenthash:8].css",
-  chunkFilename: "css/[name].[contenthash:8].css"
+  chunkFilename: "css/[name].[contenthash:8].css",
+  disable: isDev
+});
+
+const analyzerOptions = {
+  openAnalyzer: false
+};
+const analyzerPlugin = new BundleAnalyzerPlugin(analyzerOptions);
+
+const progressBar = new ProgressBar({
+  format: "compact"
+});
+
+const dllReferencePlugin = new webpack.DllReferencePlugin({
+  context: __dirname,
+  manifest: require("../dist/manifest.json")
 });
 
 module.exports = {
   htmlWebpackPlugin,
   happyPack,
-  miniCssExtractPlugin
+  miniCssExtractPlugin,
+  analyzerPlugin,
+  progressBar,
+  dllReferencePlugin
 };

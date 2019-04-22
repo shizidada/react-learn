@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "dva";
 
+import { hot } from "react-hot-loader";
+
 import { getIndexState } from "../../models/index";
 import { NAMESPACE } from "../../models/index/constants";
 
@@ -21,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
   mapStateToProps,
   mapDispatchToProps
 )
-export default class HelloWorld extends Component {
+class HelloWorld extends Component {
   componentDidMount() {
     this.props.fetch();
     // console.log("componentDidMount ==>", this.props);
@@ -59,7 +61,12 @@ export default class HelloWorld extends Component {
           {lists.length}
         </div>
         <div>{title}</div>
+        <div>test hot replacement module</div>
+        <div>test hot replacement module</div>
+        <div>test hot replacement module</div>
+        <div>test hot replacement module</div>
       </div>
     );
   }
 }
+export default hot(module)(HelloWorld);
