@@ -48,11 +48,18 @@ module.exports = {
   extends: [
     // "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
+    // 不能同时使用？？？
+    // "plugin:@typescript-eslint/recommended",
   ],
 
-  plugins: ["react", "@typescript-eslint"],
+  plugins: [
+    "react",
+    "@typescript-eslint"
+  ],
   rules: {
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    // "react/jsx-indent-props": ["error", 4],
+
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/explicit-function-return-type": [
       // "warn",
@@ -62,7 +69,7 @@ module.exports = {
         allowTypedFunctionExpressions: true,
       },
     ],
-    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/interface-name-prefix": "off",
 
     // "@typescript-eslint/explicit-member-accessibility": ["error", { accessibility: "no-public" }],
 
@@ -72,16 +79,15 @@ module.exports = {
 
     // "@typescript-eslint/camelcase": ["off", { properties: "always" }],
 
-    // "@typescript-eslint/no-unused-vars": ["error", {
+    // "@typescript-eslint/no-unused-vars": ["warn", {
     //   "vars": "all",
     //   "args": "none",
     //   "ignoreRestSiblings": true,
     // }],
-
-    // -
-    "no-console": "warn",
-    semi: ["error", "always"],
-    quotes: ["error", "double"],
-    "arrow-parens": 0,
+    // - eslint
+    // "no-console": "warn",
+    // "semi": ["error", "always"],
+    // "quotes": ["error", "double"],
+    // "arrow-parens": 0,
   },
 };
