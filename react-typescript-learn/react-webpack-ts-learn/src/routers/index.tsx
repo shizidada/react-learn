@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, BrowserRouter, Switch, Route } from "react-router-dom";
 import Loadable from "react-loadable";
 
 // import HomePage from "../pages/home";
@@ -11,7 +11,7 @@ const Loading = () => {
 };
 
 const BasicRoute = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Switch>
       <Route
         exact
@@ -34,7 +34,7 @@ const BasicRoute = () => (
         })}
       />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default BasicRoute;

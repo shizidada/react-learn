@@ -17,5 +17,6 @@ module.exports = {
     plugin.progressPlugin,
     // context: __dirname,
     new webpack.DllPlugin({ name: "[name]_library", path: path.manifestPath }),
+    plugin.terserPlugin,
   ],
 };
