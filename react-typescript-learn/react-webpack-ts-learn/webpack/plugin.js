@@ -3,11 +3,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 
+const path = require("./path");
+
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  title: "This is Title",
+  title: "HtmlWebpackPlugin Title",
   filename: "index.html", //Name of file in ./dist/
-  template: "../public/index.html", //Name of template in ./src
+  template: path.templatePath, //Name of template in ./src
   hash: true,
+  inject: true, // 指定生成的<script></script>放在那个目录
   // minify: {
   //   removeRedundantAttributes: true, // 删除多余的属性
   //   collapseWhitespace: true, // 折叠空白区域
@@ -15,23 +18,29 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
   //   removeComments: true, // 移除注释
   //   collapseBooleanAttributes: true, // 省略只有 boolean 值的属性值 例如：readonly checked
   // }, // 压缩 html 文件
+  chunksSortMode: "dependency", // 成产环境下的第三方依赖进行压缩
 });
 
 const miniCssExtractPlugin = new MiniCssExtractPlugin({
-  filename: "assets/css/[name].css",
-  chunkFilename: "assets/css/[id].css",
+  filename: "css/[name].[contenthash:8].css",
+  chunkFilename: "css/[name].[contenthash:8].css",
 });
 
 const checkerPlugin = new CheckerPlugin();
 
 const hotModulePlugin = new webpack.HotModuleReplacementPlugin();
-// 跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误
-const noEmitErrorPlugin = new webpack.NoEmitOnErrorsPlugin();
+
+const progressPlugin = new webpack.ProgressPlugin();
+
+const dllReferencePlugin = new webpack.DllReferencePlugin({
+  manifest: require(path.manifestPath),
+});
 
 module.exports = {
   htmlWebpackPlugin,
   miniCssExtractPlugin,
   checkerPlugin,
   hotModulePlugin,
-  noEmitErrorPlugin,
+  progressPlugin,
+  dllReferencePlugin,
 };

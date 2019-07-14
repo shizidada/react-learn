@@ -1,23 +1,24 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const merge = require("webpack-merge");
-const baseConfig = require("./webpack.config.base");
-
 const plugin = require("./plugin");
+const path = require("./path");
 
-module.exports = merge(baseConfig, {
+module.exports = {
   mode: "development",
 
   devtool: "cheap-module-eval-source-map",
 
-  entry: ["@babel/polyfill", "./index.tsx"],
+  entry: {
+    app: ["@babel/polyfill", "./index.tsx"],
+  },
 
   devServer: {
-    contentBase: "../dist", // Content base
+    contentBase: path.contextPath, // Content base
     inline: true, // Enable watch and live reload
     host: "localhost",
     port: 3000,
     stats: "errors-only",
     hot: true, // enable HMR on the server
+    compress: true, // 开发服务器是否启动gzip等压缩
   },
   plugins: [plugin.hotModulePlugin],
-});
+};

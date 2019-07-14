@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-const webpack = require("webpack");
-
 const loader = require("./loader");
 const plugin = require("./plugin");
-
-const basePath = __dirname;
+const path = require("./path");
 
 module.exports = {
-  context: path.join(basePath, "..", "src"),
+  context: path.contextPath,
 
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
@@ -23,5 +19,11 @@ module.exports = {
       loader.fileLoader,
     ],
   },
-  plugins: [plugin.htmlWebpackPlugin, plugin.miniCssExtractPlugin, plugin.checkerPlugin],
+  plugins: [
+    plugin.progressPlugin,
+    plugin.htmlWebpackPlugin,
+    plugin.miniCssExtractPlugin,
+    plugin.checkerPlugin,
+    // plugin.dllReferencePlugin,
+  ],
 };

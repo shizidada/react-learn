@@ -1,8 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const path = require("path");
-
-const basePath = __dirname;
+const path = require("./path");
 
 const tsLoader = {
   test: /\.(ts|tsx)$/,
@@ -18,7 +16,7 @@ const eslintLoader = {
   test: /\.(js|jsx|ts|tsx)$/,
   loader: "eslint-loader",
   enforce: "pre",
-  include: [path.join(basePath, "..", "src")], // 指定检查的目录
+  include: [path.contextPath], // 指定检查的目录
   options: {
     // 这里的配置项参数将会被传递到 eslint 的 CLIEngine
     formatter: require("eslint-friendly-formatter"), // 指定错误报告的格式规范
@@ -38,9 +36,9 @@ const sassLoader = {
 const fileLoader = {
   test: /\.(png|jpg|gif|svg)$/,
   loader: "file-loader",
-  options: { 
+  options: {
     limit: 10240,
-    name: "assets/img/[name].[ext]?[hash]",
+    name: "img/[name].[ext]?[hash]",
   },
 };
 
