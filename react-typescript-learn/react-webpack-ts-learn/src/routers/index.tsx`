@@ -1,0 +1,50 @@
+import * as React from "react";
+import { HashRouter, BrowserRouter, Switch, Route } from "react-router-dom";
+import Loadable from "react-loadable";
+
+// import HomePage from "../pages/home";
+// import ArticlePage from "../pages/article";
+
+import ReactLoading from "react-loading";
+
+const Loading = () => {
+  return <ReactLoading type="spinningBubbles" color="red" />;
+};
+
+// const Loading = ({ isLoading, error }) => {
+//   // Handle the loading state
+//   if (isLoading) {
+//     return <ReactLoading type="spinningBubbles" color="red" />;
+//   }
+//   // Handle the error state
+//   else if (error) {
+//     return <div>Sorry, there was a problem loading the page.</div>;
+//   } else {
+//     return null;
+//   }
+// };
+
+const homePage = Loadable({
+  // /* webpackChunkName: 'page-home' */
+  loader: () => import("../pages/home"),
+  loading: Loading,
+  delay: 30000, // 0.3 seconds
+});
+
+const articlePage = Loadable({
+  // /* webpackChunkName: 'page-article' */
+  loader: () => import("../pages/article"),
+  loading: Loading,
+  delay: 30000, // 0.3 seconds
+});
+
+const BasicRoute = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={homePage} />
+      <Route exact path="/article" component={articlePage} />
+    </Switch>
+  </BrowserRouter>
+);
+
+export default BasicRoute;

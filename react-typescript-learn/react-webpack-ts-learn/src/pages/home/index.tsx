@@ -6,6 +6,7 @@ import Counter from "../../containers/Counter";
 export default class HomePage extends React.Component {
   public componentDidMount() {
     console.log("home page props : ", this.props);
+    // console.log(this.props);
   }
 
   public render() {
