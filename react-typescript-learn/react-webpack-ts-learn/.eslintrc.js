@@ -52,12 +52,9 @@ module.exports = {
     // "plugin:@typescript-eslint/recommended",
   ],
 
-  plugins: [
-    "react",
-    "@typescript-eslint"
-  ],
+  plugins: ["react", "@typescript-eslint"],
   rules: {
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
     // "react/jsx-indent-props": ["error", 4],
 
     "@typescript-eslint/indent": ["error", 2],
@@ -79,11 +76,14 @@ module.exports = {
 
     // "@typescript-eslint/camelcase": ["off", { properties: "always" }],
 
-    // "@typescript-eslint/no-unused-vars": ["warn", {
-    //   "vars": "all",
-    //   "args": "none",
-    //   "ignoreRestSiblings": true,
-    // }],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        args: "none",
+        ignoreRestSiblings: true,
+      },
+    ],
     // - eslint
     // "no-console": "warn",
     // "semi": ["error", "always"],

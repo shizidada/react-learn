@@ -2,6 +2,10 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
+const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const path = require("./path");
 
@@ -36,6 +40,30 @@ const dllReferencePlugin = new webpack.DllReferencePlugin({
   manifest: require(path.manifestPath),
 });
 
+// 传递给 UglifyJS ：并行压缩输出JS代码
+const parallelUglifyPlugin = new ParallelUglifyPlugin({
+  uglifyJS: {
+    compress: {
+      warnings: false,
+      drop_debugger: true,
+      drop_console: true,
+    },
+    output: { comments: false, beautify: false },
+  },
+  sourceMap: false,
+});
+
+const uglifyJsPlugin = new UglifyJsPlugin();
+
+const terserPlugin = new TerserPlugin();
+
+const copyPlugin = new CopyPlugin([
+  {
+    from: path.buildPath,
+    to: path.outputPath,
+  },
+]);
+
 module.exports = {
   htmlWebpackPlugin,
   miniCssExtractPlugin,
@@ -43,4 +71,8 @@ module.exports = {
   hotModulePlugin,
   progressPlugin,
   dllReferencePlugin,
+  parallelUglifyPlugin,
+  uglifyJsPlugin,
+  terserPlugin,
+  copyPlugin,
 };

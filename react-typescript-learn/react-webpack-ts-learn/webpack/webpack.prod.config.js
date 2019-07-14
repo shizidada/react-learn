@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// const plugin = require("./plugin");
+const plugin = require("./plugin");
 const path = require("./path");
 
 module.exports = {
   mode: "production",
 
-  devtool: "cheap-module-source-map",
+  devtool: "none", //"cheap-module-source-map",
 
   entry: {
     app: ["@babel/polyfill", "./index.tsx"],
@@ -18,11 +18,28 @@ module.exports = {
   },
 
   optimization: {
-    // splitChunks: {
-    //   chunks: "all",
-    // },
+    runtimeChunk: {
+      name: "manifest",
+    },
+    splitChunks: {
+      chunks: "all",
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: false,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          priority: -20,
+          chunks: "all",
+        },
+      },
+    },
     // noEmitOnErrors: true,
     // namedModules: true,
+    minimizer: [],
   },
-  plugins: [],
+  plugins: [plugin.terserPlugin, plugin.copyPlugin],
 };
