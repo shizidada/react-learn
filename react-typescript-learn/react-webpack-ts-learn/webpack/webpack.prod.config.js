@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.outputPath,
     filename: "js/[name].bundle.[chunkhash:8].js",
-    chunkFilename: "js/[id].chunk.[chunkhash:8].js",
+    chunkFilename: "js/[id].[chunkhash:8].chunk.js",
   },
 
   optimization: {
@@ -35,7 +35,7 @@ module.exports = {
           // 可匹配模块路径或 chunk 名字，当匹配的是 chunk 名字的时候，其里面的所有 modules 都会选中
           test: /[\\/]node_modules[\\/]/,
           chunks: "initial", // 只对入口文件处理
-          name: "chunks/vendor",
+          name: "vendor",
           priority: 1, // 表示抽取权重，数字越大表示优先级越高。
           reuseExistingChunk: true, // 可设置是否重用该chunk 表示是否使用已有的 chunk，如果为 true 则表示如果当前的 chunk 包含的模块已经被抽取出去了，那么将不会重新生成新的。
         },
