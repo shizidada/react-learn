@@ -1,0 +1,8 @@
+node_modules/*
+public/
+static/
+dist/
+config/**
+scripts/**
+
+postcss.config.js

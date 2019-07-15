@@ -3,11 +3,10 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import ReactPlaceholder from "react-placeholder";
 import "react-placeholder/lib/reactPlaceholder.css";
+
 import { increment, decrement } from "../store/counter/actions";
 import { CounterAction } from "../store/counter/types";
 import { AppState } from "../store";
-
-import "./App.scss";
 
 interface IProps {}
 
@@ -15,7 +14,7 @@ interface IState {
   ready: boolean;
 }
 
-class App extends React.Component<IProps, IState> {
+class Counter extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -29,27 +28,28 @@ class App extends React.Component<IProps, IState> {
       this.setState({
         ready: true,
       });
-    }, 3000);
+    }, 500);
   }
 
   setShowButton = (enter: boolean) => {
-    this.setState({
-    })
-  }
+    this.setState({});
+  };
 
   render() {
     return (
       <div>
-          <ReactPlaceholder
-            rows={70}
-            ready={this.state.ready}
-            showLoadingAnimation={true}
-            delay={1000}
-            style={{ width: 152 }}
-            color="#eff9fa"
-          >
-            <span>ReactPlaceholder</span>
-          </ReactPlaceholder>
+        <ReactPlaceholder 
+          rows={70} 
+          ready={this.state.ready}
+          showLoadingAnimation={true}
+          delay={1000}
+          color="#eff9fa"
+        >
+          <span>Counter</span>
+          <span>Counter</span>
+          <span>Counter</span>
+          <span>Counter</span>
+        </ReactPlaceholder>
       </div>
     );
   }
@@ -68,4 +68,4 @@ function mapDispatchToProps(dispatch: Dispatch<CounterAction>) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Counter);

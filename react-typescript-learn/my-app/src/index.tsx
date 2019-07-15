@@ -6,13 +6,14 @@ import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
 import configureStore from "./store"
-import App from "./containers/App";
+
+import BasicRouter from "./routers";
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BasicRouter />
   </Provider>,
   document.getElementById("root")
 );
