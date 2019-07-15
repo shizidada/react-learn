@@ -1,9 +1,9 @@
 {
-  "name": "webpack-app",
+  "name": "react-webpack-ts-learn",
   "version": "1.0.0",
   "description": "this react app for typescript by webpack ",
   "repository": {
-    "url": "https://www.github.com/shizidada/typescript-demo"
+    "url": "git+https://github.com/shizidada/react-learn.git"
   },
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "build": "npm run clean && cross-env NODE_ENV=production webpack",
     "build:dll": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.dll.config.js"
   },
-  "author": "",
+  "author": "shizidada",
   "license": "MIT",
   "dependencies": {
     "core-js": "^3.1.4",

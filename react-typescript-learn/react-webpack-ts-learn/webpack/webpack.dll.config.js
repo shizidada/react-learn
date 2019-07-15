@@ -1,6 +1,6 @@
 const webpack = require("webpack");
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require("./path");
-const plugin = require("./plugin");
 const pkg = require("../package.json");
 
 module.exports = {
@@ -14,9 +14,8 @@ module.exports = {
     library: "[name]_library", // 与webpack.DllPlugin中的`name: '[name]_library',`保持一致。
   },
   plugins: [
-    plugin.progressPlugin,
-    // context: __dirname,
+    new webpack.ProgressPlugin(),
     new webpack.DllPlugin({ name: "[name]_library", path: path.manifestPath }),
-    plugin.terserPlugin,
+    new TerserPlugin(),
   ],
 };
