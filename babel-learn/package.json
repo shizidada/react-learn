@@ -1,0 +1,19 @@
+{
+  "name": "babel-demo",
+  "version": "1.0.0",
+  "description": "babel demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d build"
+  },
+  "author": "江景",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/runtime": "^7.5.4"
+  },
+  "dependencies": {}
+}

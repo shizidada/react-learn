@@ -25,6 +25,8 @@ webpack.test.js
 /react-next-learn/ctx.json
 /react-next-learn/default.config.json
 
+/babel-learn/build/
+
 */package-lock.json
 .next/
 .cache/
