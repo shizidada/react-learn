@@ -38,7 +38,7 @@ class App extends React.Component<IProps, IState> {
       },
       () => {
         console.log(this.state);
-      },
+      }
     );
     // this.state.count = 33;
   }

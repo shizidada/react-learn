@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, } from "./types";
+import { INCREMENT, DECREMENT } from "./types";
 import { CounterState, CounterAction } from "./types";
 
 const initSate: CounterState = {

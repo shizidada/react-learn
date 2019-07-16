@@ -7,15 +7,15 @@ import Loading from "../components/Loading";
 const LoginPage = Loadable({
   loader: () => import("../pages/login"),
   loading() {
-    return <Loading/>;
-  }
+    return <Loading />;
+  },
 });
 
 const HomePage = Loadable({
   loader: () => import("../pages/home"),
   loading() {
-    return <Loading/>;
-  }
+    return <Loading />;
+  },
 });
 
 const BasicRouter = () => (

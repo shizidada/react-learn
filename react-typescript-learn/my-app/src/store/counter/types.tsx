@@ -15,4 +15,3 @@ export interface Decrement {
 }
 
 export type CounterAction = Increment | Decrement;
-

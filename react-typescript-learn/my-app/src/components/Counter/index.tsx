@@ -37,10 +37,6 @@ export default class Counter extends React.Component<IProps, IState> {
           delay={1000}
           color="#eff9fa"
         >
-          <span>Counter</span>
-          <span>Counter</span>
-          <span>Counter</span>
-          <span>Counter</span>
           <Button>Button</Button>
         </ReactPlaceholder>
       </div>
