@@ -2,6 +2,8 @@ import * as React from "react";
 import ReactPlaceholder from "react-placeholder";
 import "react-placeholder/lib/reactPlaceholder.css";
 
+import { Button } from "antd";
+
 interface IProps {}
 
 interface IState {
@@ -39,6 +41,7 @@ export default class Counter extends React.Component<IProps, IState> {
           <span>Counter</span>
           <span>Counter</span>
           <span>Counter</span>
+          <Button>Button</Button>
         </ReactPlaceholder>
       </div>
     );
