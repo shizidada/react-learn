@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import "./index.css";
-
 import * as serviceWorker from "./serviceWorker";
 import configureStore from "./store"
 
 import BasicRouter from "./routers";
+
+import "./index.less";
 
 const store = configureStore();
 
