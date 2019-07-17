@@ -10,7 +10,7 @@ export default class HomePage extends React.Component {
       <div>
         <Counter />
         <HookItem />
-        <HOC name="HOC NAME" loading={true}/>
+        <HOC name="HOC NAME" loading={false}/>
       </div>
     );
   }
