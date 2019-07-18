@@ -27,7 +27,7 @@ export default class Counter extends React.Component<IProps, IState> {
   }
 
   render() {
-    console.log("Counter :: ", this.props);
+    // console.log("Counter :: ", this.props);
     return (
       <div>
         <ReactPlaceholder

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 
-const logger = (options: object, ) => <P extends object>(Component: React.ComponentType<P>) =>
+import "./test/Decorators.test";
+
+const logger = (options: object) => <P extends object>(Component: React.ComponentType<P>) =>
   class Logger extends React.Component<P> {
     componentDidMount() {
-      console.log(`${Logger.name} props %s options %s`, JSON.stringify(this.props), JSON.stringify(options));
+      console.log("Logger:: ", options, this.props);
     }
     render() {
       return <Component {...(this.props as P)} />;
@@ -15,15 +17,20 @@ interface IProps {
 }
 
 @logger({
-  name:  "jiangjing",
-  age: 18
+  ajax: true,
 })
 export default class Decorators extends Component<IProps, {}> {
   componentDidMount() {
-    console.log("Logger componentDidMount :: ", this.props);
+    console.log("Decorators componentDidMount :: ", this.props);
   }
 
   render() {
-    return <div>Decorators</div>;
+    return (
+      <div>
+        Decorators
+        {/* <Link to={{ pathname: "javascript:void(0)" }}> jump </Link> */}
+        {/* <a href="javascript:void(0)"> jump:void(0) </a> */}
+      </div>
+    );
   }
 }
