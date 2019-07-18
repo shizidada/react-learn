@@ -1,27 +1,42 @@
 import React, { Component } from "react";
 
-import "./test/Decorators.test";
+// import "./test/Decorators.test";
 
-const logger = (options: object) => <P extends object>(Component: React.ComponentType<P>) =>
-  class Logger extends React.Component<P> {
+interface HOCConfig {
+  ajax: boolean;
+}
+
+const config = (options: HOCConfig) => <P extends object>(Component: React.ComponentType<P>) => {
+  const { ajax } = options;
+
+  if (ajax) {
+    console.log("the config options :: ", options);
+  };
+
+  // const hocs = {};
+  
+  // @hocs
+  class HOCComponent extends React.Component<P> {
     componentDidMount() {
-      console.log("Logger:: ", options, this.props);
+      // console.log("HOCComponent:: ", options, this.props);
     }
     render() {
       return <Component {...(this.props as P)} />;
     }
-  };
+  }
+  return HOCComponent;
+};
 
 interface IProps {
   decorator: string;
 }
 
-@logger({
+@config({
   ajax: true,
 })
 export default class Decorators extends Component<IProps, {}> {
   componentDidMount() {
-    console.log("Decorators componentDidMount :: ", this.props);
+    // console.log("Decorators componentDidMount :: ", this.props);
   }
 
   render() {

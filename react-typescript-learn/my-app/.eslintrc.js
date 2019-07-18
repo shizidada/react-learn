@@ -76,14 +76,14 @@ module.exports = {
 
     // "@typescript-eslint/camelcase": ["off", { properties: "always" }],
 
-    // "@typescript-eslint/no-unused-vars": [
-    //   "warn",
-    //   {
-    //     vars: "all",
-    //     args: "none",
-    //     ignoreRestSiblings: true,
-    //   },
-    // ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        args: "none",
+        ignoreRestSiblings: true,
+      },
+    ],
     // - eslint
     // "no-console": "warn",
     // "semi": ["error", "always"],

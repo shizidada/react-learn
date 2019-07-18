@@ -7,6 +7,10 @@ let message = indentity<string>("this is message");
 console.log("message :: >> ", message);
 
 let myIndentity: <T>(args: T) => T = indentity;
+const myMessage = myIndentity("this is my message");
+console.log(myMessage)
+
+
 let myIndentity2: { <T>(args: T): T } = indentity;
 let message2 = myIndentity2<string>("this is message2");
 console.log("message2 :: >> ", message2);
@@ -55,24 +59,22 @@ let obj = { x: 1, y: 2, z: 3 };
 let value = getProperty2(obj, "x");
 console.log("value :: ", value);
 
-class BeeKeeper {
-  hasMask: boolean = false;
-}
-
-class ZooKeeper {
-  nametag: string = "zoom";
-}
-class Animal {
-  numLegs: number = 4;
-}
-class Bee extends Animal {
-  keeper: BeeKeeper;
-}
-class Lion extends Animal {
-  keeper: ZooKeeper;
-}
-
-function createInstance<A extends Animal>(c: new () => A): A {
-  return new c();
-}
-console.log("createInstance :: ", createInstance(Lion).keeper.nametag)
+// class BeeKeeper {
+//   hasMask: boolean = false;
+// }
+// class ZooKeeper {
+//   nametag: string = "zoom";
+// }
+// class Animal {
+//   numLegs: number = 4;
+// }
+// class Bee extends Animal {
+//   keeper: BeeKeeper;
+// }
+// class Lion extends Animal {
+//   keeper: ZooKeeper;
+// }
+// function createInstance<A extends Animal>(c: new () => A): A {
+//   return new c();
+// }
+// console.log("createInstance :: ", createInstance(Lion).keeper.nametag)

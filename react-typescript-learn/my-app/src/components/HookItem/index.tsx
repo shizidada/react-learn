@@ -3,7 +3,7 @@ import { Button } from "antd";
 
 const HookItem: React.FC = () => {
   const [hide, setHide] = React.useState(false);
-  console.log("HookItem :: ", hide);
+  // console.log("HookItem :: ", hide);
   return (
     <Button
       onClick={() => {

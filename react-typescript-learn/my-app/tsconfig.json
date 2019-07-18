@@ -13,13 +13,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    // "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "preserve",
     "strict": true,
     "target": "es5",
-    "experimentalDecorators": true ,
-    "isolatedModules": false
+    "experimentalDecorators": true
   },
   "include": [
     "src"

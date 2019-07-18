@@ -19,7 +19,7 @@ const withLoading = <P extends object>(Component: React.ComponentType<P>) =>
     //   return WrapperComponent.displayName || WrapperComponent.name || "Component";
     // }
     componentDidMount() {
-      console.log("WithLoading props :: ", this.props);
+      // console.log("WithLoading props :: ", this.props);
     }
 
     render() {
