@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-// import "./test/Decorators.test";
+import "./test/typescript.test";
 
 interface HOCConfig {
   ajax: boolean;

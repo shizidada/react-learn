@@ -8,8 +8,7 @@ console.log("message :: >> ", message);
 
 let myIndentity: <T>(args: T) => T = indentity;
 const myMessage = myIndentity("this is my message");
-console.log(myMessage)
-
+console.log(myMessage);
 
 let myIndentity2: { <T>(args: T): T } = indentity;
 let message2 = myIndentity2<string>("this is message2");
@@ -78,3 +77,23 @@ console.log("value :: ", value);
 //   return new c();
 // }
 // console.log("createInstance :: ", createInstance(Lion).keeper.nametag)
+
+interface IPerson {
+  id: number;
+  name: string;
+}
+const list: Array<IPerson> = [
+  { id: 1001, name: "zs", },
+  { id: 1002, name: "li", },
+  { id: 1003, name: "ww", },
+  { id: 1004, name: "zl", },
+];
+
+function getById(id: number): IPerson[] {
+  return list.filter((item: IPerson) => {
+    return item.id === id;
+  });
+}
+let newList: IPerson[] = getById(1001);
+
+console.log("newList :: ", newList)
