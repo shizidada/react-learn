@@ -7,6 +7,8 @@ const { override, useBabelRc, fixBabelImports, addLessLoader } = require("custom
 //   return config;
 // };
 
+const theme = require("./src/theme");
+
 module.exports = override(
   useBabelRc(),
 
@@ -18,6 +20,6 @@ module.exports = override(
 
   addLessLoader({
     javascriptEnabled: true,
-    // modifyVars: { "@primary-color": "#1DA57A" },
+    modifyVars: { ...theme },
   })
 );

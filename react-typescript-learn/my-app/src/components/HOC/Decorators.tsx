@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./test/typescript.test";
+// import "./test/typescript.test";
 
 interface HOCConfig {
   ajax: boolean;
@@ -10,7 +10,7 @@ const config = (options: HOCConfig) => <P extends object>(Component: React.Compo
   const { ajax } = options;
 
   if (ajax) {
-    console.log("the config options :: ", options);
+    // console.log("the config options :: ", options);
   };
 
   // const hocs = {};
