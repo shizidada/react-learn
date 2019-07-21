@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ChromePicker, SketchPicker } from "react-color";
+import { ChromePicker, SketchPicker, ChromePickerProps } from "react-color";
 import theme from "../../theme";
 import { loadScript, getRandomColor } from "./util";
 
@@ -21,7 +21,11 @@ const noop = () => {};
 
 // type Picker = { chrome: typeof ChromePicker; sketch: typeof SketchPicker };
 
-const pickers = { chrome: ChromePicker, sketch: SketchPicker };
+interface Picker {
+  [key: string]: React.ReactType<ChromePickerProps>;
+}
+
+const pickers: Picker = { chrome: ChromePicker, sketch: SketchPicker };
 
 interface ColorPickerProps {
   type: "chrome" | "sketch";
