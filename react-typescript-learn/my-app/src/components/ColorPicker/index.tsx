@@ -5,17 +5,6 @@ import { loadScript, getRandomColor } from "./util";
 
 import "./index.less";
 
-// interface Picker {
-//   type: typeof ChromePicker | typeof SketchPicker;
-// }
-// interface PickerMap {
-//   [key: string]: Picker;
-// }
-
-const pickers = { chrome: ChromePicker, sketch: SketchPicker };
-
-const noop = () => {};
-
 const ROUTE_BASE_NAME = process.env.PUBLIC_URL || "";
 const BASE_NAME = ROUTE_BASE_NAME ? ROUTE_BASE_NAME.replace("/", "") : "";
 const OLD_LESS_ID = `less:${BASE_NAME ? BASE_NAME + "-" : ""}color:old`;
@@ -28,9 +17,14 @@ const LESS_URL = `${ROUTE_BASE_NAME}/less.min.js`;
 //     less: any;
 //   }
 // }
+const noop = () => {};
+
+// type Picker = { chrome: typeof ChromePicker; sketch: typeof SketchPicker };
+
+const pickers = { chrome: ChromePicker, sketch: SketchPicker };
 
 interface ColorPickerProps {
-  type?: ChromePicker | SketchPicker;
+  type: "chrome" | "sketch";
 }
 interface ColorPickerState {}
 
@@ -106,9 +100,18 @@ export default class ColorPicker extends Component<ColorPickerProps, ColorPicker
 
   render() {
     const { type } = this.props;
-    // const Picker = pickers[type];
-    console.log("coor-picker-container", this.props);
+    const Picker = pickers[type];
+    // console.log("coor-picker-container", this.props);
+    // console.log("coor-picker-container Picker", Picker);
 
-    return <div className="coor-picker-container" onClick={this.handleColorChange}></div>;
+    return (
+      <div className="coor-picker-container" onClick={this.handleColorChange}>
+        {/* <Picker
+          color="red"
+          onChange={this.handleChange}
+          onChangeComplete={this.handleChangeComplete}
+        /> */}
+      </div>
+    );
   }
 }

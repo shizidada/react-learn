@@ -34,7 +34,7 @@ class CustomHeader extends Component<HeaderProps, HeaderState> {
           </Col>
           <Col span={16} order={2}></Col>
           <Col span={2} order={3}>
-            <ColorPicker />
+            <ColorPicker type="chrome" />
           </Col>
           <Col span={2} order={3}>
             admin
