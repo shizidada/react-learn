@@ -39,8 +39,9 @@ export default class HOC extends React.Component<HocProps, HocState> {
   render() {
     return (
       <div>
-        {this.props.name}
-        <hr />
+        <pre>
+          <code>{JSON.stringify(this.props, undefined, 2)}</code>
+        </pre>
         <Decorators decorator="hi"></Decorators>
       </div>
     );

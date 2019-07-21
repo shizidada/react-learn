@@ -1,29 +1,36 @@
 import * as React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+// , Redirect
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Loadable from "react-loadable";
 
+import BasicLayout from "../layouts/BasicLayout";
 import Loading from "../components/Loading";
 
-const LoginPage = Loadable({
-  loader: () => import("../pages/login"),
-  loading() {
-    return <Loading />;
-  },
-});
-
-const HomePage = Loadable({
-  loader: () => import("../pages/home"),
-  loading() {
-    return <Loading />;
-  },
+import { routes } from "./router";
+const allRoutes = routes.map(item => {
+  const { path, component, ...reset } = item;
+  return {
+    path: path,
+    component: Loadable({
+      loader: () => component,
+      loading() {
+        return <Loading />;
+      },
+    }),
+    ...reset,
+  };
 });
 
 const BasicRouter = () => (
   <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/login" component={LoginPage} />
-    </Switch>
+    <BasicLayout>
+      <Switch>
+        {allRoutes.map(item => {
+          const { id, path, component: Component } = item;
+          return <Route exact key={id} path={path} component={Component} />;
+        })}
+      </Switch>
+    </BasicLayout>
   </BrowserRouter>
 );
 

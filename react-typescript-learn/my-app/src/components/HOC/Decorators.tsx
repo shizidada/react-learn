@@ -11,10 +11,10 @@ const config = (options: HOCConfig) => <P extends object>(Component: React.Compo
 
   if (ajax) {
     // console.log("the config options :: ", options);
-  };
+  }
 
   // const hocs = {};
-  
+
   // @hocs
   class HOCComponent extends React.Component<P> {
     componentDidMount() {

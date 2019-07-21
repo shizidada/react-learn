@@ -83,10 +83,10 @@ interface IPerson {
   name: string;
 }
 const list: Array<IPerson> = [
-  { id: 1001, name: "zs", },
-  { id: 1002, name: "li", },
-  { id: 1003, name: "ww", },
-  { id: 1004, name: "zl", },
+  { id: 1001, name: "zs" },
+  { id: 1002, name: "li" },
+  { id: 1003, name: "ww" },
+  { id: 1004, name: "zl" },
 ];
 
 function getById(id: number): IPerson[] {
@@ -96,4 +96,16 @@ function getById(id: number): IPerson[] {
 }
 let newList: IPerson[] = getById(1001);
 
-console.log("newList :: ", newList)
+console.log("newList :: ", newList);
+
+const obj2 = {
+  a: {
+    name: "az",
+  },
+  b: {
+    name: "as",
+  },
+};
+
+const type = "a";
+const name2 = obj2[type];

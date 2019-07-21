@@ -3,7 +3,7 @@
  * @param src
  * @returns {Promise<any>}
  */
-export function loadScript(src: string) {
+export function loadScript(src: string): Promise<any> {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.type = "text/javascript";

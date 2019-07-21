@@ -1,0 +1,52 @@
+.page-tab-container {
+  display: flex;
+  background: #fff;
+  margin-top: 5px;
+  height: 40px;
+  line-height: 40px;
+  // width: 100%;
+  // overflow-x: auto;
+  // -ms-overflow-style: none; // IE 10+
+  // scrollbar-width: none;
+
+  // &::-webkit-scrollbar {
+  //   display: none; // Safari and Chrome
+  // }
+
+  .page-tab-item-wrapper {
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 160px;
+    // padding: 0 8px;
+    border: 1px solid #e8e8e8;
+    border-bottom: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #fafafa;
+    color: #333;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+    .tab-item-text {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      position: relative;
+      // height: 100%;
+      margin-left: 10px;
+      overflow: hidden;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .tab-item-del-icon {
+      width: 30px;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+    }
+  }
+}

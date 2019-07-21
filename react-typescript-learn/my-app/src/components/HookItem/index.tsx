@@ -10,7 +10,7 @@ const HookItem: React.FC = () => {
         setHide(!hide);
       }}
     >
-      HookItem
+      {HookItem.name}
     </Button>
   );
 };

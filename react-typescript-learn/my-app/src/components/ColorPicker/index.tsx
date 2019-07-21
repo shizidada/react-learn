@@ -1,9 +1,20 @@
 import React, { Component } from "react";
-import { Button } from "antd";
+import { ChromePicker, SketchPicker } from "react-color";
 import theme from "../../theme";
 import { loadScript, getRandomColor } from "./util";
 
 import "./index.less";
+
+// interface Picker {
+//   type: typeof ChromePicker | typeof SketchPicker;
+// }
+// interface PickerMap {
+//   [key: string]: Picker;
+// }
+
+const pickers = { chrome: ChromePicker, sketch: SketchPicker };
+
+const noop = () => {};
 
 const ROUTE_BASE_NAME = process.env.PUBLIC_URL || "";
 const BASE_NAME = ROUTE_BASE_NAME ? ROUTE_BASE_NAME.replace("/", "") : "";
@@ -12,15 +23,27 @@ const LESS_ID = `less:${BASE_NAME ? BASE_NAME + "-" : ""}color`;
 const LESS_URL = `${ROUTE_BASE_NAME}/less.min.js`;
 
 // declare const window: Window & { less: any };
-declare global {
-  interface Window {
-    less: any;
-  }
-}
+// declare global {
+//   interface Window {
+//     less: any;
+//   }
+// }
 
-export default class ColorPicker extends Component {
+interface ColorPickerProps {
+  type?: ChromePicker | SketchPicker;
+}
+interface ColorPickerState {}
+
+export default class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
   lessLoaded: boolean = false;
-  constructor(props: any) {
+
+  static defaultProps = {
+    onChange: noop,
+    onChangeComplete: noop,
+    position: "bottom",
+  };
+
+  constructor(props: ColorPickerProps) {
     super(props);
 
     // 快速生效
@@ -41,6 +64,7 @@ export default class ColorPicker extends Component {
         .modifyVars({
           ...theme,
           "@primary-color": color,
+          "@transparent-color": "transparent",
         })
         .then(() => {
           // 先清除缓存样式
@@ -81,12 +105,10 @@ export default class ColorPicker extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <div className="color-picker">ColorPicker</div>
-        <br />
-        <Button onClick={() => this.handleColorChange()}>切换随机颜色</Button>
-      </div>
-    );
+    const { type } = this.props;
+    // const Picker = pickers[type];
+    console.log("coor-picker-container", this.props);
+
+    return <div className="coor-picker-container" onClick={this.handleColorChange}></div>;
   }
 }
