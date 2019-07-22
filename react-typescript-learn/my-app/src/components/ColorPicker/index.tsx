@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { ChromePicker, SketchPicker, ChromePickerProps } from "react-color";
+import React, { Component, CSSProperties } from "react";
+import { ChromePicker, SketchPicker, ChromePickerProps, ColorResult } from "react-color";
 import theme from "../../theme";
 import { loadScript, getRandomColor } from "./util";
 
@@ -29,8 +29,12 @@ const pickers: Picker = { chrome: ChromePicker, sketch: SketchPicker };
 
 interface ColorPickerProps {
   type: "chrome" | "sketch";
+  position?: string;
+  small?: string;
 }
-interface ColorPickerState {}
+interface ColorPickerState {
+  displayColorPicker: boolean;
+}
 
 export default class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
   lessLoaded: boolean = false;
@@ -53,6 +57,10 @@ export default class ColorPicker extends Component<ColorPickerProps, ColorPicker
       themeStyle.innerHTML = themeStyleContent;
       document.body.insertBefore(themeStyle, document.body.firstChild);
     }
+
+    this.state = {
+      displayColorPicker: false,
+    };
   }
 
   handleColorChange = () => {
@@ -102,20 +110,112 @@ export default class ColorPicker extends Component<ColorPickerProps, ColorPicker
     }
   };
 
-  render() {
-    const { type } = this.props;
-    const Picker = pickers[type];
-    // console.log("coor-picker-container", this.props);
-    // console.log("coor-picker-container Picker", Picker);
+  handleClick = () => {
+    const { displayColorPicker } = this.state;
+    this.setState({ displayColorPicker: !displayColorPicker });
+  };
 
-    return (
-      <div className="coor-picker-container" onClick={this.handleColorChange}>
-        {/* <Picker
-          color="red"
-          onChange={this.handleChange}
-          onChangeComplete={this.handleChangeComplete}
-        /> */}
+  handleClose = () => {
+    this.setState({ displayColorPicker: false });
+  };
+
+  handleChange = (color: ColorResult) => {
+    console.log(color);
+    // const { onChange } = this.props;
+    // this.setState({ color: color.hex });
+    // onChange(color.hex, color);
+  };
+
+  handleChangeComplete = (color: ColorResult) => {
+    console.log(color);
+    // const { onChangeComplete } = this.props;
+    // this.setState({ color: color.hex });
+    // onChangeComplete(color.hex);
+  };
+
+  render() {
+    const { small, type, position } = this.props;
+    const { displayColorPicker } = this.state;
+    const Picker = pickers[type];
+    const styles: any = {
+      color: {
+        width: small ? "30px" : "120px",
+        height: small ? "16px" : "24px",
+        borderRadius: "2px",
+        // background: color,
+      },
+      swatch: {
+        padding: "1px",
+        background: "#fff",
+        borderRadius: "2px",
+        boxShadow: "0 0 0 1px rgba(0,0,0,.1)",
+        display: "inline-block",
+        cursor: "pointer",
+      },
+      popover: {
+        position: "absolute",
+        zIndex: "2",
+      },
+      cover: {
+        position: "fixed",
+        top: "0px",
+        right: "0px",
+        bottom: "0px",
+        left: "0px",
+      },
+      wrapper: {
+        position: "inherit",
+        zIndex: "100",
+      },
+    };
+
+    if (position === "top") {
+      styles.wrapper.transform = "translateY(-100%)";
+      styles.wrapper.paddingBottom = 8;
+    }
+
+    const swatch = (
+      <div style={styles.swatch} onClick={this.handleClick}>
+        <div style={styles.color} />
       </div>
     );
+    const picker = displayColorPicker ? (
+      <div style={styles.popover}>
+        <div style={styles.cover} onClick={this.handleClose} />
+        <div style={styles.wrapper}>
+          <Picker
+            {...this.props}
+            // color={color}
+            onChange={this.handleChange}
+            onChangeComplete={this.handleChangeComplete}
+          />
+        </div>
+      </div>
+    ) : null;
+
+    if (position === "top") {
+      return (
+        <div className="coor-picker-container">
+          {picker}
+          {swatch}
+        </div>
+      );
+    }
+    return (
+      <div className="coor-picker-container">
+        {swatch}
+        {picker}
+      </div>
+    );
+
+    // return (
+    //   <div className="coor-picker-container" onClick={this.handleColorChange}>
+    //     <Picker
+    //       // color="red"
+    //       // onChange={this.handleChange}
+    //       // onChangeComplete={this.handleChangeComplete}
+    //     />
+    //   </div>
+    // );
   }
 }
