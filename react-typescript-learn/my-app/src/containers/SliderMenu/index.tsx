@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import { Layout, Menu, Icon } from "antd";
+import { addTabFromSlidMenu } from "../../store/system/actions";
 import { AppState } from "../../store";
 
-import { Layout, Menu, Icon } from "antd";
+import { menus, SliderMenuConfig } from "./menu-config";
 
 import "./index.less";
 
@@ -12,24 +13,32 @@ const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 interface SliderMenuProps {
-  isOpenSlider: boolean;
+  isCloseSlider: boolean;
+  addTabFromSlidMenu: (payload: SliderMenuConfig) => void;
 }
 interface SliderMenuState {}
 
 class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
+  menuItemClick = (payload: SliderMenuConfig) => {
+    const parms: SliderMenuConfig = {
+      ...payload,
+    };
+    this.props.addTabFromSlidMenu(parms);
+  };
+
   render() {
     console.log(SliderMenu.name, this.props);
-    const { isOpenSlider } = this.props;
+    const { isCloseSlider } = this.props;
     return (
       // {/* light dark */}
       <Sider
         className="slider-menu-container"
         breakpoint="lg"
         theme="light"
-        // collapsedWidth="0"
         trigger={null}
         collapsible
-        collapsed={isOpenSlider}
+        collapsed={isCloseSlider}
+        // collapsedWidth="0"
         // onBreakpoint={broken => {
         //   console.log(broken);
         // }}
@@ -39,27 +48,40 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
       >
         <div className="logo" />
         {/* light dark */}
-        <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="1">
-            <Icon type="book" />
-            <span className="nav-text">Home</span>
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Icon type="user" />
-            <span className="nav-text">Login</span>
-            <Link to="/login">Login</Link>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Icon type="skin" />
-            <span className="nav-text">Skin</span>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Icon type="setting" />
-            <span className="nav-text">Setting</span>
-          </Menu.Item>
-
-          <SubMenu
+        <Menu theme="light" mode="inline" defaultSelectedKeys={["home"]}>
+          {menus.map((item: SliderMenuConfig, index: number) => {
+            if (!item.childs) {
+              return (
+                <Menu.Item key={`${item.activeKey}`} onClick={() => this.menuItemClick(item)}>
+                  <Icon type={item.type} />
+                  <span className="nav-text">{item.name}</span>
+                  <Link to={`${item.path}`}></Link>
+                </Menu.Item>
+              );
+            }
+            return (
+              <SubMenu
+                key={`${item.activeKey}`}
+                title={
+                  <span>
+                    <Icon type={item.type} />
+                    {item.name}
+                  </span>
+                }
+              >
+                {item.childs &&
+                  item.childs.map((item: SliderMenuConfig) => {
+                    return (
+                      <Menu.Item key={`${item.activeKey}`} onClick={() => this.menuItemClick(item)}>
+                        <span className="nav-text">{item.name}</span>
+                        <Link to={`${item.path}`}></Link>
+                      </Menu.Item>
+                    );
+                  })}
+              </SubMenu>
+            );
+          })}
+          {/* <SubMenu
             key="sub2"
             title={
               <span>
@@ -72,7 +94,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
             <Menu.Item key="6">option6</Menu.Item>
             <Menu.Item key="7">option7</Menu.Item>
             <Menu.Item key="8">option8</Menu.Item>
-          </SubMenu>
+          </SubMenu> */}
         </Menu>
       </Sider>
     );
@@ -84,5 +106,5 @@ function mapStateToProps({ system }: AppState) {
 }
 export default connect(
   mapStateToProps,
-  {}
+  { addTabFromSlidMenu }
 )(SliderMenu);

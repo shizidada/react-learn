@@ -1,7 +1,8 @@
-import React, { Component, CSSProperties } from "react";
+import React, { Component } from "react"; // , CSSProperties
 import { ChromePicker, SketchPicker, ChromePickerProps, ColorResult } from "react-color";
 import theme from "../../theme";
-import { loadScript, getRandomColor } from "./util";
+// , getRandomColor
+import { loadScript } from "./util";
 
 import "./index.less";
 
@@ -116,8 +117,7 @@ export default class ColorPicker extends Component<ColorPickerProps, ColorPicker
     // this.setState({ displayColorPicker: false });
   };
 
-  handleChange = (color: ColorResult) => {
-  };
+  handleChange = (color: ColorResult) => {};
 
   handleChangeComplete = (color: ColorResult) => {
     this.handleColorChange(color.hex);
