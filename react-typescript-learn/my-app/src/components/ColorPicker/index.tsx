@@ -29,8 +29,6 @@ const pickers: Picker = { chrome: ChromePicker, sketch: SketchPicker };
 
 interface ColorPickerProps {
   type: "chrome" | "sketch";
-  position?: string;
-  small?: string;
 }
 interface ColorPickerState {
   displayColorPicker: boolean;
@@ -63,8 +61,7 @@ export default class ColorPicker extends Component<ColorPickerProps, ColorPicker
     };
   }
 
-  handleColorChange = () => {
-    const color = getRandomColor();
+  handleColorChange = (color: string) => {
     const changeColor = () => {
       window.less
         .modifyVars({
@@ -111,111 +108,41 @@ export default class ColorPicker extends Component<ColorPickerProps, ColorPicker
   };
 
   handleClick = () => {
-    const { displayColorPicker } = this.state;
-    this.setState({ displayColorPicker: !displayColorPicker });
+    // const { displayColorPicker } = this.state;
+    this.setState({ displayColorPicker: true });
   };
 
   handleClose = () => {
-    this.setState({ displayColorPicker: false });
+    // this.setState({ displayColorPicker: false });
   };
 
   handleChange = (color: ColorResult) => {
-    console.log(color);
-    // const { onChange } = this.props;
-    // this.setState({ color: color.hex });
-    // onChange(color.hex, color);
   };
 
   handleChangeComplete = (color: ColorResult) => {
-    console.log(color);
-    // const { onChangeComplete } = this.props;
-    // this.setState({ color: color.hex });
-    // onChangeComplete(color.hex);
+    this.handleColorChange(color.hex);
   };
 
   render() {
-    const { small, type, position } = this.props;
+    const { type } = this.props;
     const { displayColorPicker } = this.state;
     const Picker = pickers[type];
-    const styles: any = {
-      color: {
-        width: small ? "30px" : "120px",
-        height: small ? "16px" : "24px",
-        borderRadius: "2px",
-        // background: color,
-      },
-      swatch: {
-        padding: "1px",
-        background: "#fff",
-        borderRadius: "2px",
-        boxShadow: "0 0 0 1px rgba(0,0,0,.1)",
-        display: "inline-block",
-        cursor: "pointer",
-      },
-      popover: {
-        position: "absolute",
-        zIndex: "2",
-      },
-      cover: {
-        position: "fixed",
-        top: "0px",
-        right: "0px",
-        bottom: "0px",
-        left: "0px",
-      },
-      wrapper: {
-        position: "inherit",
-        zIndex: "100",
-      },
-    };
 
-    if (position === "top") {
-      styles.wrapper.transform = "translateY(-100%)";
-      styles.wrapper.paddingBottom = 8;
-    }
-
-    const swatch = (
-      <div style={styles.swatch} onClick={this.handleClick}>
-        <div style={styles.color} />
-      </div>
-    );
-    const picker = displayColorPicker ? (
-      <div style={styles.popover}>
-        <div style={styles.cover} onClick={this.handleClose} />
-        <div style={styles.wrapper}>
-          <Picker
-            {...this.props}
-            // color={color}
-            onChange={this.handleChange}
-            onChangeComplete={this.handleChangeComplete}
-          />
-        </div>
-      </div>
-    ) : null;
-
-    if (position === "top") {
-      return (
-        <div className="coor-picker-container">
-          {picker}
-          {swatch}
-        </div>
-      );
-    }
     return (
-      <div className="coor-picker-container">
-        {swatch}
-        {picker}
+      <div className="color-picker-container" onClick={this.handleClick}>
+        {displayColorPicker ? (
+          <div className="color-picker-popover">
+            <div className="color-picker-wrapper">
+              <Picker
+                {...this.props}
+                // color={color}
+                onChange={this.handleChange}
+                onChangeComplete={this.handleChangeComplete}
+              />
+            </div>
+          </div>
+        ) : null}
       </div>
     );
-
-    // return (
-    //   <div className="coor-picker-container" onClick={this.handleColorChange}>
-    //     <Picker
-    //       // color="red"
-    //       // onChange={this.handleChange}
-    //       // onChangeComplete={this.handleChangeComplete}
-    //     />
-    //   </div>
-    // );
   }
 }

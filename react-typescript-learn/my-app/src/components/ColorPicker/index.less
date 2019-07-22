@@ -1,4 +1,4 @@
-.coor-picker-container {
+.color-picker-container {
   position: absolute;
   width: 80px;
   height: 20px;
@@ -6,4 +6,14 @@
   top: 22px;
   left: 0;
   cursor: pointer;
+
+  .color-picker-popover {
+    position: absolute;
+    z-index: 2;
+    .color-picker-wrapper {
+      position: inherit;
+      z-index: 100;
+      top: 25px;
+    }
+  }
 }
