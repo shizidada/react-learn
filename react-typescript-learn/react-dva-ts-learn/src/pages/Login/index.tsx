@@ -1,12 +1,7 @@
 import * as React from "react";
-import Counter from "../../containers/Counter";
 
-export default class Login extends React.Component {
+export default class LoginPage extends React.Component {
   public render() {
-    return (
-      <div>
-        <Counter/>
-      </div>
-    );
+    return <div>LoginPage</div>;
   }
-};
+}
