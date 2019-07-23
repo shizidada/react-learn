@@ -12,7 +12,7 @@ const app = dva({
 import Router from "./routers";
 app.router(Router);
 
-import counterModel from "./models/counter";
+import counterModel from "./models/home";
 app.model(counterModel);
 
 app.start("#root");

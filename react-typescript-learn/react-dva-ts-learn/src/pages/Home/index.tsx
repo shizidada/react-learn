@@ -1,12 +1,13 @@
 import * as React from "react";
+import Counter from "../../containers/Counter";
 
-
-export default class Home extends React.Component {
+export default class HomePage extends React.Component {
   public render() {
     return (
       <div>
-        Home
+        HomePage
+        <Counter />
       </div>
     );
   }
-};
+}
