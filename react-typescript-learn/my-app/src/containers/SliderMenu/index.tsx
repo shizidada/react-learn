@@ -14,6 +14,7 @@ const { SubMenu } = Menu;
 
 interface SliderMenuProps {
   isCloseSlider: boolean;
+  currentTab: string;
   addTabFromSlidMenu: (payload: SliderMenuConfig) => void;
 }
 interface SliderMenuState {}
@@ -28,7 +29,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
 
   render() {
     console.log(SliderMenu.name, this.props);
-    const { isCloseSlider } = this.props;
+    const { isCloseSlider, currentTab } = this.props;
     return (
       // {/* light dark */}
       <Sider
@@ -38,21 +39,20 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
         trigger={null}
         collapsible
         collapsed={isCloseSlider}
-        // collapsedWidth="0"
-        // onBreakpoint={broken => {
-        //   console.log(broken);
-        // }}
-        // onCollapse={(collapsed, type) => {
-        //   console.log(collapsed, type);
-        // }}
       >
         <div className="logo" />
         {/* light dark */}
-        <Menu theme="light" mode="inline" defaultSelectedKeys={["home"]}>
+        <Menu
+          theme="light"
+          mode="inline"
+          defaultSelectedKeys={[currentTab]}
+          // openKeys={[`${currentTab}`]}
+          selectedKeys={[`${currentTab}`]}
+        >
           {menus.map((item: SliderMenuConfig, index: number) => {
             if (!item.childs) {
               return (
-                <Menu.Item key={`${item.activeKey}`} onClick={() => this.menuItemClick(item)}>
+                <Menu.Item key={`${item.path}`} onClick={() => this.menuItemClick(item)}>
                   <Icon type={item.type} />
                   <span className="nav-text">{item.name}</span>
                   <Link to={`${item.path}`}></Link>
