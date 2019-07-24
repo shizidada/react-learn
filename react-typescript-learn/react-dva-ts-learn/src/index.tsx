@@ -1,6 +1,6 @@
 // import * as React from "react";
 import dva from "dva";
-import { createHashHistory as createHistory } from "history";
+import { createBrowserHistory as createHistory } from "history";
 
 const app = dva({
   history: createHistory(),
@@ -12,8 +12,8 @@ const app = dva({
 import Router from "./routers";
 app.router(Router);
 
-import counterModel from "./models/home";
-app.model(counterModel);
+import homeModel from "./models/home";
+app.model(homeModel);
 
 app.start("#root");
 

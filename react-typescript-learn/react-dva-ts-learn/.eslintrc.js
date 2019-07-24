@@ -54,6 +54,7 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-empty-interface": "warn",
     "@typescript-eslint/explicit-function-return-type": [
       // "warn",
       "off",
@@ -82,8 +83,8 @@ module.exports = {
 
     // -
     "no-console": "warn",
-    semi: ["error", "always"],
-    quotes: ["error", "double"],
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
     "arrow-parens": 0,
   },
 };

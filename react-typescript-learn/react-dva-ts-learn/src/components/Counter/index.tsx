@@ -2,15 +2,14 @@ import * as React from "react";
 
 import "./index.scss";
 
-export interface Props {
+export interface CounterProps {
   name: string;
   count?: number;
   add?: () => void;
   minus?: () => void;
 }
 
-export default class Counter extends React.Component<Props> {
-
+export default class Counter extends React.Component<CounterProps, {}> {
   public componentDidMount() {
     console.log("Counter :: ", this.props);
   }
@@ -19,13 +18,12 @@ export default class Counter extends React.Component<Props> {
     const { name, count = 1, add, minus } = this.props;
     return (
       <>
-        {/* <img src={require("./pic.png")} width="120px" height="120px" /> */}
         <div className="greeting">
-          <span>Hello {name} {count}</span>
+            Hello {name} {count}
         </div>
         <div className="greeting">
-          <button onClick={minus}>-</button>
-          <button onClick={add}>+</button>
+          <button onClick={() => minus()}>-</button>
+          <button onClick={() => add()}>+</button>
         </div>
       </>
     );
