@@ -1,6 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "dva/router";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loadable from "react-loadable";
+
+import ConstomLayout from "../layouts/ConstomLayout";
 
 import { routes } from "./routes";
 
@@ -23,13 +25,15 @@ const allRoutes = routes.map(item => {
 const RouterConfig = ({ app, history }) => {
   return (
     <Router>
-      <Switch>
-        {allRoutes.map(item => {
-          const { path, component: Component } = item;
-          return <Route exact key={path} path={path} component={Component} />;
-        })}
-        <Route component={Error} />
-      </Switch>
+      <ConstomLayout>
+        <Switch>
+          {allRoutes.map(item => {
+            const { path, component: Component } = item;
+            return <Route exact key={path} path={path} component={Component} />;
+          })}
+        </Switch>
+        <Route path="/error" component={Error} />
+      </ConstomLayout>
     </Router>
   );
 };

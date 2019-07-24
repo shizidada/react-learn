@@ -20,6 +20,7 @@ module.exports = {
       loader.tsLoader,
       loader.cssLoader,
       loader.sassLoader,
+      loader.lessLoader,
       loader.fileLoader,
     ],
   },

@@ -35,10 +35,23 @@ const sassLoader = {
   use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"],
 };
 
+const lessLoader = {
+  test: /\.less$/,
+  use: [
+    MiniCssExtractPlugin.loader,
+    "css-loader",
+    "postcss-loader",
+    {
+      loader: "less-loader",
+      options: { javascriptEnabled: true },
+    },
+  ],
+};
+
 const fileLoader = {
   test: /\.(png|jpg|gif|svg)$/,
   loader: "file-loader",
-  options: { 
+  options: {
     limit: 10240,
     name: "assets/img/[name].[ext]?[hash]",
   },
@@ -49,5 +62,6 @@ module.exports = {
   eslintLoader,
   cssLoader,
   sassLoader,
+  lessLoader,
   fileLoader,
 };
