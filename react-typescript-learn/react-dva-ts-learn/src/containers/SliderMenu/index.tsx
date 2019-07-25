@@ -58,9 +58,18 @@ export default class SliderMenu extends Component<SliderMenuProps, SliderMenuSta
               </span>
             }
           >
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
+            <Menu.Item key="3">
+              <Icon type="compass" />
+              <span>Tom</span>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Icon type="picture" />
+              <span>Bill</span>
+            </Menu.Item>
+            <Menu.Item key="5">
+              <Icon type="tablet" />
+              <span>Alex</span>
+            </Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub2"
@@ -71,8 +80,14 @@ export default class SliderMenu extends Component<SliderMenuProps, SliderMenuSta
               </span>
             }
           >
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
+            <Menu.Item key="6">
+              <Icon type="deployment-unit" />
+              <span>Team 1</span>
+            </Menu.Item>
+            <Menu.Item key="8">
+              <Icon type="pull-request" />
+              <span>Team 2</span>
+            </Menu.Item>
           </SubMenu>
 
           <Menu.Item key="9">
