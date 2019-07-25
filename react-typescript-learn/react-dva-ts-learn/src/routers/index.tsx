@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loadable from "react-loadable";
 
-import ConstomLayout from "../layouts/ConstomLayout";
+import BasicLayout from "../layouts/BasicLayout";
 
 import { routes } from "./routes";
 
@@ -25,7 +25,7 @@ const allRoutes = routes.map(item => {
 const RouterConfig = ({ app, history }) => {
   return (
     <Router>
-      <ConstomLayout>
+      <BasicLayout>
         <Switch>
           {allRoutes.map(item => {
             const { path, component: Component } = item;
@@ -33,7 +33,7 @@ const RouterConfig = ({ app, history }) => {
           })}
         </Switch>
         <Route path="/error" component={Error} />
-      </ConstomLayout>
+      </BasicLayout>
     </Router>
   );
 };
