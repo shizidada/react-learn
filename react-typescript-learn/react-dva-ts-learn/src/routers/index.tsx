@@ -1,12 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "dva/router";
 import Loadable from "react-loadable";
 
 import BasicLayout from "../layouts/BasicLayout";
 
 import { routes } from "./routes";
 
-import Error from "../pages/Error";
+import ErrorPage from "../pages/Error";
+import LoginPage from "../pages/Login";
 
 const allRoutes = routes.map(item => {
   const { path, component, ...reset } = item;
@@ -25,15 +26,16 @@ const allRoutes = routes.map(item => {
 const RouterConfig = ({ app, history }) => {
   return (
     <Router>
-      <BasicLayout>
-        <Switch>
+      <Switch>
+        <BasicLayout>
           {allRoutes.map(item => {
             const { path, component: Component } = item;
             return <Route exact key={path} path={path} component={Component} />;
           })}
-        </Switch>
-        <Route path="/error" component={Error} />
-      </BasicLayout>
+        </BasicLayout>
+        <Route path="/login" exact component={LoginPage} />
+        <Route path="/error" exact component={ErrorPage} />
+      </Switch>
     </Router>
   );
 };

@@ -1,49 +1,64 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Layout, Menu, Icon } from "antd";
+import React, { Component } from "react";
+import { Layout, Menu, Breadcrumb, Icon } from "antd";
 
-const { Header, Content, Footer, Sider } = Layout;
+import SliderMenu from "../../containers/SliderMenu";
 
-interface BasicLayoutProps extends React.Props<BasicLayoutProps> {}
-// interface BasicLayoutState {}
+const { Sider, Header, Content, Footer } = Layout;
 
-const ConstomLayout = (props: BasicLayoutProps) => {
-  console.log(props);
-  return (
-    <Layout>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={broken => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-      >
-        <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["/"]}>
-          <Menu.Item key="/">
-            <Icon type="user" />
-            <span className="nav-text">首页</span>
-            <Link to="/"></Link>
-          </Menu.Item>
-          <Menu.Item key="/login">
-            <Icon type="video-camera" />
-            <span className="nav-text">登录</span>
-            <Link to="/login"></Link>
-          </Menu.Item>
-        </Menu>
-      </Sider>
-      <Layout>
-        <Header style={{ background: "#fff", padding: 0 }} />
-        <Content style={{ margin: "24px 16px 0" }}>
-          <div style={{ padding: 24, background: "#fff", minHeight: 560 }}>{props.children}</div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>©2019 Created by 江景</Footer>
+import "./index.less";
+
+interface BasicLayoutProps {}
+interface BasicLayoutState {
+  collapsed: boolean;
+}
+
+class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
+  public constructor(props: BasicLayoutProps) {
+    super(props);
+    this.state = {
+      collapsed: false,
+    };
+  }
+
+  private sliderMenuToggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
+
+  private onCollapse = (collapsed: boolean) => {
+    this.setState({ collapsed });
+  };
+
+  public render() {
+    return (
+      <Layout style={{ minHeight: "100vh" }}>
+        <SliderMenu collapsed={this.state.collapsed} onCollapse={this.onCollapse}></SliderMenu>
+
+        <Layout style={{ marginLeft: this.state.collapsed ? 80 : 200 }}>
+          <Header
+            style={{ background: "#fff", padding: 0, position: "fixed", zIndex: 1, width: "100%" }}
+          >
+            <Icon
+              className="trigger"
+              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              onClick={this.sliderMenuToggle}
+            />
+          </Header>
+          <Content style={{ margin: "64px 16px", overflow: "initial" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
+              {this.props.children}
+            </div>
+          </Content>
+          <Footer style={{ textAlign: "center" }}>©2019 Created by 江景</Footer>
+        </Layout>
       </Layout>
-    </Layout>
-  );
-};
+    );
+  }
+}
 
-export default ConstomLayout;
+export default BasicLayout;
