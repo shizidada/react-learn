@@ -6,13 +6,15 @@ const app = dva({
   history: createHistory(),
   onError: (err, dispatch) => {
     // console.log("onError  ===> ", err, dispatch);
-  }
+  },
 });
 
 import Router from "./routers";
 app.router(Router);
 
+import loginModel from "./models/login";
 import homeModel from "./models/home";
+app.model(loginModel);
 app.model(homeModel);
 
 app.start("#root");

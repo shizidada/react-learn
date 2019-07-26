@@ -10,3 +10,11 @@ export const basicRoutes = [
     component: import("../pages/Order"),
   },
 ];
+
+export const userRoutes = [
+  {
+    id: 2001,
+    path: "/login",
+    component: import("../pages/Login"),
+  },
+];

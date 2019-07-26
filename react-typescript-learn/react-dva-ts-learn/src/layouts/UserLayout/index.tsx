@@ -1,29 +1,17 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Layout } from "antd";
 
-import Login from "../../pages/Login";
+const { Content } = Layout;
 
-// interface UserLayoutProps {}
-// const allRoutes = routes.map(item => {
-//   const { path, component, ...reset } = item;
-//   return {
-//     path: path,
-//     component: Loadable({
-//       loader: () => component,
-//       loading() {
-//         return <div>Loading ...</div>;
-//       },
-//     }),
-//     ...reset,
-//   };
-// });
+interface UserLayoutProps {}
 
-export default class UserLayout extends Component {
+export default class UserLayout extends Component<UserLayoutProps, {}> {
   public render() {
+    console.log("UserLayout :: ", this.props);
     return (
-      <Switch>
-        <Route to="/login" component={Login}></Route>
-      </Switch>
+      <Layout style={{ height: "100vh" }}>
+        <Content>{this.props.children}</Content>
+      </Layout>
     );
   }
 }

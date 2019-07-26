@@ -6,11 +6,10 @@ import "./index.less";
 
 export default class LoginPage extends React.Component {
   public render() {
+    console.log(this.props);
     return (
       <div className="login-page">
-        <div className="login-form">
-          <LoginForm />
-        </div>
+        <LoginForm />
       </div>
     );
   }
