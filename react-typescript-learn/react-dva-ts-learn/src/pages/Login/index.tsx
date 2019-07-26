@@ -1,11 +1,16 @@
 import * as React from "react";
 
+import LoginForm from "../../containers/LoginForm";
+
+import "./index.less";
+
 export default class LoginPage extends React.Component {
   public render() {
     return (
-      <div>
-        <h2>LoginPageLoginPageLoginPage</h2>
-        <h2>LoginPageLoginPageLoginPage</h2>
+      <div className="login-page">
+        <div className="login-form">
+          <LoginForm />
+        </div>
       </div>
     );
   }

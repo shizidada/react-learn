@@ -26,6 +26,7 @@ function RouterConfig({ history, app }) {
   return (
     <ConnectedRouter history={history}>
       <Switch>
+        <Route path="/login" component={LoginPage} />;
         <BasicLayout>
           <Switch>
             {allRoutes.map(item => {
@@ -34,7 +35,6 @@ function RouterConfig({ history, app }) {
             })}
           </Switch>
         </BasicLayout>
-        <Route path="/login" component={LoginPage} />;
       </Switch>
     </ConnectedRouter>
   );
