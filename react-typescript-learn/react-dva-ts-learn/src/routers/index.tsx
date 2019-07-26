@@ -1,27 +1,44 @@
 import React from "react";
-// HashRouter, BrowserRouter as Router,
-import { Switch, Route, routerRedux } from "dva/router";
-// import { createBrowserHistory } from "history";
+import { BrowserRouter as Router, Switch, Route, routerRedux, Link } from "dva/router";
+const { ConnectedRouter } = routerRedux;
+import Loadable from "react-loadable";
 
 import BasicLayout from "../layouts/BasicLayout";
-import UserLayout from "../layouts/UserLayout";
 
-const { ConnectedRouter } = routerRedux;
+import LoginPage from "../pages/Login";
 
-import ErrorPage from "../pages/Error";
-// import LoginPage from "../pages/Login";
+import { basicRoutes } from "./config";
+const allRoutes = basicRoutes.map(item => {
+  const { path, component, ...reset } = item;
+  return {
+    path: path,
+    component: Loadable({
+      loader: () => component,
+      loading() {
+        return <div>Loading...</div>;
+      },
+    }),
+    ...reset,
+  };
+});
 
-const RouterConfig = ({ app, history }) => {
+function RouterConfig({ history, app }) {
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact={true} path="/" render={routeProps => <BasicLayout {...routeProps} />} />
-        <Route path="/login" render={routeProps => <UserLayout {...routeProps} />} />
-        <Route path="/error" exact={true} render={({ location }) => <ErrorPage />} />
+        <BasicLayout>
+          <Switch>
+            {allRoutes.map(item => {
+              const { id, path, component: Component } = item;
+              return <Route exact={path === "/"} key={id} path={path} component={Component} />;
+            })}
+          </Switch>
+        </BasicLayout>
+        <Route path="/login" component={LoginPage} />;
       </Switch>
     </ConnectedRouter>
   );
-};
+}
 
 export default RouterConfig;
 

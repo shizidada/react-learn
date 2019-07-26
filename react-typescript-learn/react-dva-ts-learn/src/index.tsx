@@ -5,7 +5,7 @@ import { createBrowserHistory as createHistory } from "history";
 const app = dva({
   history: createHistory(),
   onError: (err, dispatch) => {
-    console.log("onError  ===> ", err, dispatch);
+    // console.log("onError  ===> ", err, dispatch);
   }
 });
 

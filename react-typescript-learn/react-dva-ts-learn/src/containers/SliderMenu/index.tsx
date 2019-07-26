@@ -43,11 +43,11 @@ export default class SliderMenu extends Component<SliderMenuProps, SliderMenuSta
             <Link to="/"></Link>
           </Menu.Item>
 
-          {/* <Menu.Item key="2">
-        <Icon type="desktop" />
-        <span>Login</span>
-        <Link to="/login">Login</Link>
-      </Menu.Item> */}
+          <Menu.Item key="2">
+            <Icon type="desktop" />
+            <span>Order</span>
+            <Link to="/order"></Link>
+          </Menu.Item>
 
           <SubMenu
             key="sub1"

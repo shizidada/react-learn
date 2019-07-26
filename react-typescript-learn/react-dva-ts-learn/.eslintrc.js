@@ -81,6 +81,8 @@ module.exports = {
 
     "react/prop-types": "off",
 
+    "react/display-name": "warn",
+
     // -
     "no-console": "warn",
     "semi": ["error", "always"],

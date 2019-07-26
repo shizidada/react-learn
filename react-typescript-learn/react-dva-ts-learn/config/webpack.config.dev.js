@@ -18,6 +18,7 @@ module.exports = merge(baseConfig, {
     port: 3000,
     stats: "errors-only",
     hot: true, // enable HMR on the server
+    historyApiFallback: true
   },
   plugins: [plugin.hotModulePlugin],
 });

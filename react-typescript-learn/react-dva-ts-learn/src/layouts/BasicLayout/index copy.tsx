@@ -7,7 +7,9 @@ const { SubMenu } = Menu;
 
 import "./index.less";
 
-interface BasicLayoutProps {}
+interface BasicLayoutProps {
+  temp: number;
+}
 interface BasicLayoutState {
   collapsed: boolean;
 }

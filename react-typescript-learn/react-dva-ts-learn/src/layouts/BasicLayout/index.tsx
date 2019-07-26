@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { Layout, Breadcrumb, Icon } from "antd";
+const { Header, Content, Footer } = Layout;
 
 import SliderMenu from "../../containers/SliderMenu";
-
-import ChildRoute from "../../routers/routes";
-const { Header, Content, Footer } = Layout;
 
 import "./index.less";
 
@@ -32,6 +30,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   };
 
   public render() {
+    console.log("BasicLayout :: ", this.props);
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <SliderMenu collapsed={this.state.collapsed} onCollapse={this.onCollapse}></SliderMenu>
@@ -52,7 +51,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-              <ChildRoute />
+              {this.props.children}
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>©2019 Created by 江景</Footer>
