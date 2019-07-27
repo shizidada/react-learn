@@ -1,32 +1,17 @@
-import { Reducer } from "redux";
-import { Subscription } from "dva";
+import { Model } from "dva";
 
-import { Effect } from "../global";
 import { NAMESPACE } from "./constants";
-
 export * from "./selectors";
+
+const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
+
+export interface HomeModelType extends Model {
+  state: HomeModelState;
+}
 
 export interface HomeModelState {
   name: string;
   count: number;
-}
-
-export interface HomeModelType {
-  namespace: string;
-
-  state: HomeModelState;
-
-  effects: {
-    addWithDelay: Effect;
-    redirect: Effect;
-  };
-
-  reducers: {
-    add: Reducer<HomeModelState>;
-    minus: Reducer<HomeModelState>;
-  };
-
-  subscriptions: { setup: Subscription };
 }
 
 const HomeModel: HomeModelType = {
@@ -38,17 +23,19 @@ const HomeModel: HomeModelType = {
   },
 
   reducers: {
-    add(state, action) {
+    add(state: HomeModelState, { payload }) {
       return { ...state, count: state.count + 1 };
     },
-    minus(state, { payload }) {
+    minus(state: HomeModelState, { payload }) {
       return { ...state, count: state.count - 1 };
     },
   },
 
   effects: {
-    *addWithDelay({ payload }, { put, select }) {},
-    *redirect(action, { put }) {},
+    *addWithDelay(action, { call, put, select }) {
+      yield call(delay, 500);
+      yield put({ type: "add" });
+    },
   },
 
   subscriptions: {

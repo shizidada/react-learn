@@ -5,8 +5,8 @@ import "./index.scss";
 export interface CounterProps {
   name: string;
   count?: number;
-  add?: () => void;
-  minus?: () => void;
+  add: () => void;
+  minus: () => void;
 }
 
 export default class Counter extends React.Component<CounterProps, {}> {

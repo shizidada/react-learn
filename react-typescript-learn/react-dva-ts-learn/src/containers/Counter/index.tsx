@@ -1,19 +1,18 @@
 import { Dispatch } from "redux";
 import { connect } from "dva";
 
+import { GlobalState } from "../../typings";
 import { NAMESPACE } from "../../models/home/constants";
 import { getCounterState } from "../../models/home";
 import Counter from "../../components/Counter";
 
-import { GlobalState } from "../../models/global";
-
 const mapStateToProps = (state: GlobalState) => getCounterState(state);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  add(record) {
+  add(record: object) {
     dispatch({ type: `${NAMESPACE}/add`, payload: record });
   },
-  minus(record) {
+  minus(record: object) {
     dispatch({ type: `${NAMESPACE}/minus`, payload: record });
   },
 });

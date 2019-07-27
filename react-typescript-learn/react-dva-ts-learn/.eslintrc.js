@@ -81,7 +81,7 @@ module.exports = {
 
     "react/prop-types": "off",
 
-    "react/display-name": "warn",
+    "react/display-name": "off",
 
     // -
     "no-console": "warn",

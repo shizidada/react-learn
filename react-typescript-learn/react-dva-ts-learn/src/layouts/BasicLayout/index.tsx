@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Layout, Breadcrumb, Icon } from "antd";
-const { Header, Content, Footer } = Layout;
 
 import SliderMenu from "../../containers/SliderMenu";
 
 import "./index.less";
+
+const { Header, Content, Footer } = Layout;
 
 interface BasicLayoutProps {}
 interface BasicLayoutState {

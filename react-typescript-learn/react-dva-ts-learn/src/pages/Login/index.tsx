@@ -6,7 +6,7 @@ import "./index.less";
 
 export default class LoginPage extends React.Component {
   public render() {
-    console.log(this.props);
+    console.log("LoginPage :: ", this.props);
     return (
       <div className="login-page">
         <LoginForm />

@@ -4,48 +4,69 @@ import { connect } from "dva";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import { WrappedFormUtils } from "antd/lib/form/Form";
 
+import { GlobalState } from "../../typings";
 import { NAMESPACE } from "../../models/login/constants";
-import { getLoginState } from "../../models/login";
-import { GlobalState } from "../../models/global";
+import { LoginModelState, getLoginState } from "../../models/login";
+
+import "./index.less";
 
 const mapStateToProps = (state: GlobalState) => getLoginState(state);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  changeLoginType(record: object) {
-    dispatch({ type: `${NAMESPACE}/changeLoginType`, payload: record });
+  updateStoreData(record: object) {
+    dispatch({ type: `${NAMESPACE}/updateData`, payload: record });
+  },
+  login(record: object) {
+    dispatch({ type: `${NAMESPACE}/login`, payload: record });
+  },
+  redirect() {
+    dispatch({ type: `${NAMESPACE}/redirect` });
   },
 });
 
-import "./index.less";
-
-interface LoginFormProps {
-  form?: WrappedFormUtils;
-  isLoginType: boolean;
-  changeLoginType: (type: object) => void;
+interface LoginFormProps extends LoginModelState {
+  form: WrappedFormUtils;
+  updateStoreData: (type: object) => void;
+  login: (type: object) => void;
+  redirect: () => void;
 }
 interface LoginFormState {}
 
 class LoginForm extends Component<LoginFormProps, LoginFormState> {
+
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const isLoginType = this.props.isLoginType;
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        // current is login status
+        if (isLoginType) {
+          if (values.username != "" && values.password != "") {
+            this.props.login(values);
+          }
+        } else {
+          // current is register status
+        }
       }
     });
   };
 
   private changeType = () => {
     let type = this.props.isLoginType;
-    this.props.changeLoginType({ isLoginType: !type });
+    this.props.updateStoreData({ isLoginType: !type });
     this.props.form.resetFields();
+  };
+
+  private inputChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.props.updateStoreData({ errorMessage: "" });
   };
 
   public render() {
     const { getFieldDecorator } = this.props.form;
-    const { isLoginType } = this.props;
+    const { isLoginType, isLoading, errorMessage } = this.props;
 
-    console.log("LoginPage :: ", this.props);
+    console.log("LoginForm :: ", this.props);
     return (
       <div className="login-form-container">
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -56,24 +77,29 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
               <Input
                 prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
                 placeholder="请输入用户名"
+                onChange={e => this.inputChangeHandle(e)}
               />
             )}
           </Form.Item>
           <Form.Item>
-            {getFieldDecorator("repassword", {
+            {getFieldDecorator("password", {
               rules: [{ required: true, message: "请输入密码!" }],
             })(
               <Input.Password
                 prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
                 type="password"
                 placeholder="请输入密码"
+                onChange={e => this.inputChangeHandle(e)}
               />
             )}
           </Form.Item>
 
+          {/* error tips */}
+          {errorMessage !== "" && <span className="login-failed-message">{errorMessage}</span>}
+
           {!isLoginType && (
             <Form.Item>
-              {getFieldDecorator("password", {
+              {getFieldDecorator("repassword", {
                 rules: [{ required: true, message: "请再次输入密码!" }],
               })(
                 <Input.Password
@@ -91,18 +117,27 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                 valuePropName: "checked",
                 initialValue: true,
               })(<Checkbox>记住我</Checkbox>)}
-              <a className="login-form-forgot" href="">
+              <a className="login-form-forgot" href="javascript:void(0)">
                 忘记密码
               </a>
             </Form.Item>
           )}
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button
+              loading={isLoading}
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
               {isLoginType ? "登录" : "注册"}
             </Button>
             <a href="javascript:void(0)" onClick={() => this.changeType()}>
               {isLoginType ? "注册" : "登录"}
             </a>
+          </Form.Item>
+
+          <Form.Item>
+            <Button onClick={() => this.props.redirect()}>跳转</Button>
           </Form.Item>
         </Form>
       </div>

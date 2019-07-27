@@ -1,14 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, routerRedux, Link } from "dva/router";
-const { ConnectedRouter } = routerRedux;
+import { DvaInstance } from "dva";
+import { Switch, Route, routerRedux } from "dva/router";
+import H from "history";
 import Loadable from "react-loadable";
 
 import BasicLayout from "../layouts/BasicLayout";
 
-import LoginPage from "../pages/Login";
-
 import { basicRoutes, userRoutes } from "./config";
 import UserLayout from "../layouts/UserLayout";
+
+const { ConnectedRouter } = routerRedux;
+
 const basicAllRoutes = basicRoutes.map(item => {
   const { path, component, ...reset } = item;
   return {
@@ -16,7 +18,7 @@ const basicAllRoutes = basicRoutes.map(item => {
     component: Loadable({
       loader: () => component,
       loading() {
-        return <div>Loading...</div>;
+        return <div style={{ fontSize: 20 }}>Loading...</div>;
       },
     }),
     ...reset,
@@ -30,18 +32,23 @@ const userAllRoutes = userRoutes.map(item => {
     component: Loadable({
       loader: () => component,
       loading() {
-        return <div>Loading ...</div>;
+        return <div style={{ fontSize: 20 }}>Loading ...</div>;
       },
     }),
     ...reset,
   };
 });
 
-function RouterConfig({ history, app }) {
+interface RouterConfigProps {
+  history: H.History;
+  app: DvaInstance;
+}
+
+function RouterConfig({ history, app }: RouterConfigProps) {
+
   return (
     <ConnectedRouter history={history}>
-      <Switch>
-        {/* <Route path="/login" component={LoginPage} />; */}
+      {history.location.pathname === "/login" ? (
         <UserLayout>
           <Switch>
             {userAllRoutes.map(item => {
@@ -50,6 +57,7 @@ function RouterConfig({ history, app }) {
             })}
           </Switch>
         </UserLayout>
+      ) : (
         <BasicLayout>
           <Switch>
             {basicAllRoutes.map(item => {
@@ -58,7 +66,7 @@ function RouterConfig({ history, app }) {
             })}
           </Switch>
         </BasicLayout>
-      </Switch>
+      )}
     </ConnectedRouter>
   );
 }

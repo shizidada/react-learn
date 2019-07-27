@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Link } from "dva/router";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
 
+import "./index.less";
+
 const { Sider, Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
-
-import "./index.less";
 
 interface BasicLayoutProps {
   temp: number;
