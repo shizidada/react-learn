@@ -65,28 +65,35 @@ module.exports = {
     ],
     "@typescript-eslint/interface-name-prefix": 0,
 
-    // "@typescript-eslint/explicit-member-accessibility": ["error", { accessibility: "no-public" }],
-
-    // "@typescript-eslint/no-explicit-any": "off",
-
-    // "@typescript-eslint/no-use-before-define": "off",
-
-    // "@typescript-eslint/camelcase": ["off", { properties: "always" }],
-
-    "@typescript-eslint/no-unused-vars": ["warn", {
-      "vars": "all",
-      "args": "none",
-      "ignoreRestSiblings": true,
-    }],
+    "@typescript-eslint/explicit-member-accessibility": ["error", { accessibility: "no-public" }],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/camelcase": ["off", { properties: "always" }],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        args: "none",
+        ignoreRestSiblings: true,
+      },
+    ],
 
     "react/prop-types": "off",
-
     "react/display-name": "off",
+
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        components: ["Link"],
+        specialLink: ["hrefLeft", "hrefRight"],
+        aspects: ["noHref", "invalidHref", "preferButton"],
+      },
+    ],
 
     // -
     "no-console": "warn",
-    "semi": ["error", "always"],
-    "quotes": ["error", "double"],
+    semi: ["error", "always"],
+    quotes: ["error", "double"],
     "arrow-parens": 0,
   },
 };

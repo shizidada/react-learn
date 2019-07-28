@@ -43,16 +43,17 @@ const LoginModel: LoginModelType = {
       const { username, password } = payload;
       if (username === "admin" && password === "123") {
         yield put(routerRedux.replace("/"));
-        window.location.reload();
-        // localStorage.setItem("ISLOGIN", "true");
       } else {
         // login failed
-        yield put({ type: "updateData", payload: { errorMessage: "账号或密码不正确。", isLoading: false } });
+        yield put({
+          type: "updateData",
+          payload: { errorMessage: "账号或密码不正确。", isLoading: false },
+        });
       }
     },
     *register(action, { call, put, select }) {
       console.log("register");
-      return "";
+      yield "";
     },
     // *redirect(action, { call, put, select }) {
     //   yield put(routerRedux.push("/"));

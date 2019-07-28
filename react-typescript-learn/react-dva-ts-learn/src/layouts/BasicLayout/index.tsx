@@ -1,13 +1,17 @@
 import React, { Component } from "react";
+import { Location } from "history";
 import { Layout, Breadcrumb, Icon } from "antd";
 
 import SliderMenu from "../../containers/SliderMenu";
+import BasicRoute from "../../routers/BasicRoute";
 
 import "./index.less";
 
 const { Header, Content, Footer } = Layout;
 
-interface BasicLayoutProps {}
+interface BasicLayoutProps {
+  location: Location<any>;
+}
 interface BasicLayoutState {
   collapsed: boolean;
 }
@@ -52,7 +56,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-              {this.props.children}
+              <BasicRoute />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>©2019 Created by 江景</Footer>

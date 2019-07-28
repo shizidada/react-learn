@@ -1,29 +1,22 @@
-import React from "react";
+import React, { createElement } from "react";
 import { DvaInstance } from "dva";
 import { Switch, Route, routerRedux } from "dva/router";
 import H from "history";
 import Loadable from "react-loadable";
 
-import BasicLayout from "../layouts/BasicLayout";
+import { userRoutes } from "./config";
 
-import { basicRoutes, userRoutes } from "./config";
+import BasicLayout from "../layouts/BasicLayout";
 import UserLayout from "../layouts/UserLayout";
+
+import Error from "../pages/Error";
 
 const { ConnectedRouter } = routerRedux;
 
-const basicAllRoutes = basicRoutes.map(item => {
-  const { path, component, ...reset } = item;
-  return {
-    path: path,
-    component: Loadable({
-      loader: () => component,
-      loading() {
-        return <div style={{ fontSize: 20 }}>Loading...</div>;
-      },
-    }),
-    ...reset,
-  };
-});
+interface RouterConfigProps {
+  history: H.History;
+  app: DvaInstance;
+}
 
 const userAllRoutes = userRoutes.map(item => {
   const { path, component, ...reset } = item;
@@ -39,16 +32,57 @@ const userAllRoutes = userRoutes.map(item => {
   };
 });
 
-interface RouterConfigProps {
-  history: H.History;
-  app: DvaInstance;
-}
-
 function RouterConfig({ history, app }: RouterConfigProps) {
-
   return (
     <ConnectedRouter history={history}>
-      {history.location.pathname === "/login" ? (
+      <Switch>
+        {userAllRoutes.map(item => {
+          const { id, path, component: Component, ...reset } = item;
+          return (
+            <Route
+              key={id}
+              path={path}
+              render={routeProps =>
+                createElement<any>(UserLayout, {
+                  ...routeProps,
+                  ...reset,
+                  view: createElement<any>(Component, {
+                    ...routeProps,
+                    ...reset,
+                  }),
+                })
+              }
+            />
+          );
+        })}
+        <Route path="/error" render={routeProps => createElement<any>(Error, { ...routeProps })} />
+        <Route path="/" render={routeProps => createElement<any>(BasicLayout, { ...routeProps })} />
+      </Switch>
+    </ConnectedRouter>
+  );
+}
+
+export default RouterConfig;
+
+/* 
+        <Route
+          exact
+          path="/login"
+          render={({ location }) =>
+            createElement(
+              Loadable({
+                loader: () => import("../pages/Login"),
+                loading() {
+                  return <div style={{ fontSize: 20 }}>Loading ...</div>;
+                },
+                delay: 200,
+              }),
+              location
+            )
+          }
+        />
+        
+        {history.location.pathname === "/login" ? (
         <UserLayout>
           <Switch>
             {userAllRoutes.map(item => {
@@ -66,30 +100,4 @@ function RouterConfig({ history, app }: RouterConfigProps) {
             })}
           </Switch>
         </BasicLayout>
-      )}
-    </ConnectedRouter>
-  );
-}
-
-export default RouterConfig;
-
-/**
- * 2. 全部加载
- */
-
-// import Home from "../pages/Home";
-// import Login from "../pages/Login";
-// const RouterConfig = ({ app , history}) => {
-//   // console.log("RouterConfig :: ", app, history);
-//   return (
-//     <Router history={history}>
-//       <>
-//         <Switch>
-//           <Route exact path="/" component={HomePage} />
-//           <Route exact path="/login" component={LoginPage} />
-//         </Switch>
-//       </>
-//     </Router>
-//   );
-// };
-// export default RouterConfig;
+      )} */

@@ -33,7 +33,6 @@ interface LoginFormProps extends LoginModelState {
 interface LoginFormState {}
 
 class LoginForm extends Component<LoginFormProps, LoginFormState> {
-
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const isLoginType = this.props.isLoginType;
@@ -42,7 +41,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
         console.log("Received values of form: ", values);
         // current is login status
         if (isLoginType) {
-          if (values.username != "" && values.password != "") {
+          if (values.username !== "" && values.password !== "") {
             this.props.login(values);
           }
         } else {
