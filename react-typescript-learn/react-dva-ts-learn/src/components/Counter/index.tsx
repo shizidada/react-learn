@@ -1,6 +1,7 @@
 import * as React from "react";
+import { Button } from "antd";
 
-import "./index.scss";
+import "./index.less";
 
 export interface CounterProps {
   name: string;
@@ -19,11 +20,11 @@ export default class Counter extends React.Component<CounterProps, {}> {
     return (
       <>
         <div className="greeting">
-            Hello {name} {count}
+          Hello {name} {count}
         </div>
         <div className="greeting">
-          <button onClick={() => minus()}>-</button>
-          <button onClick={() => add()}>+</button>
+          <Button onClick={() => minus()}>-</Button>
+          <Button onClick={() => add()}>+</Button>
         </div>
       </>
     );

@@ -1,17 +1,40 @@
-.logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
+.basic-layout-container {
+  .basic-trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
 
-.trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+    &:hover {
+      color: #1890ff;
+    }
+  }
 
-.trigger:hover {
-  color: #1890ff;
+  .basic-layout-header {
+    padding: 0;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    background: #fff;
+  }
+
+  .basic-layout-header-top {
+    // box-shadow: 0px 1px 8px rgba(0, 21, 41, 0.08);
+  }
+
+  .basic-layout-header-tabs {
+    height: 50px;
+    line-height: 50px;
+    margin-top: 64px;
+    width: 100%;
+    text-align: center;
+    // border: 1px solid #333;
+    box-shadow: 0px 1px 4px rgba(0, 21, 41, 0.08);
+  }
+
+  .basic-layout-content {
+    margin: 114px 16px;
+    overflow: initial;
+  }
 }

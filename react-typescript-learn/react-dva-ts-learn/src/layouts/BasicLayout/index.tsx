@@ -37,22 +37,25 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   public render() {
     console.log("BasicLayout :: ", this.props);
     return (
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout className="basic-layout-container" style={{ minHeight: "100vh" }}>
         <SliderMenu collapsed={this.state.collapsed} onCollapse={this.onCollapse}></SliderMenu>
 
         <Layout style={{ marginLeft: this.state.collapsed ? 80 : 200 }}>
-          <Header
-            style={{ background: "#fff", padding: 0, position: "fixed", zIndex: 1, width: "100%" }}
-          >
+          <Header className="basic-layout-header basic-layout-header-top">
             <Icon
-              className="trigger"
+              className="basic-trigger"
               type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
               onClick={this.sliderMenuToggle}
             />
           </Header>
-          <Content style={{ margin: "64px 16px", overflow: "initial" }}>
+
+          <Header className="basic-layout-header basic-layout-header-tabs">
+            will fill click menu generator tab
+          </Header>
+
+          <Content className="basic-layout-content">
             <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Moose</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
