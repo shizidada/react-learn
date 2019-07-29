@@ -23,8 +23,9 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   }
 
   private toggle = () => {
+    const { collapsed } = this.state;
     this.setState({
-      collapsed: !this.state.collapsed,
+      collapsed: !collapsed,
     });
   };
 

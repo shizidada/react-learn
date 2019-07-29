@@ -25,8 +25,9 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   }
 
   private sliderMenuToggle = () => {
+    const { collapsed } = this.state;
     this.setState({
-      collapsed: !this.state.collapsed,
+      collapsed: !collapsed,
     });
   };
 

@@ -1,13 +1,15 @@
 {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "printWidth": 100,
-    "tabWidth": 2,
-    "endOfLine": "lf",
-    "overrides": [{
-        "files": ".prettierrc",
-        "options": {
-            "parser": "json"
-        }
-    }]
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
 }

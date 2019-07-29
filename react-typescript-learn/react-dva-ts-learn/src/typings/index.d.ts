@@ -1,8 +1,9 @@
-import { HomeModelState } from '../home';
-import { LoginModelState } from '../login';
+import { GlobalModelState } from '../models/global';
+import { HomeModelState } from '../models/home';
+import { LoginModelState } from '../models/login';
 
 export interface GlobalState {
-  [key: string]: HomeModelState | LoginModelState;
+  [key: string]: GlobalModelState | HomeModelState | LoginModelState;
 }
 
 declare const GlobalState: GlobalState;

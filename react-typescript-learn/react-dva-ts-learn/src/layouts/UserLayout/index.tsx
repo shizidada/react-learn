@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 
 interface UserLayoutProps {
-  view: any;
+  view: React.ReactNode;
 }
 
 export default class UserLayout extends Component<UserLayoutProps, {}> {

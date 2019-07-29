@@ -21,7 +21,7 @@ interface RouterConfigProps {
 const userAllRoutes = userRoutes.map(item => {
   const { path, component, ...reset } = item;
   return {
-    path: path,
+    path,
     component: Loadable({
       loader: () => component,
       loading() {
@@ -63,41 +63,3 @@ function RouterConfig({ history, app }: RouterConfigProps) {
 }
 
 export default RouterConfig;
-
-/* 
-        <Route
-          exact
-          path="/login"
-          render={({ location }) =>
-            createElement(
-              Loadable({
-                loader: () => import("../pages/Login"),
-                loading() {
-                  return <div style={{ fontSize: 20 }}>Loading ...</div>;
-                },
-                delay: 200,
-              }),
-              location
-            )
-          }
-        />
-        
-        {history.location.pathname === "/login" ? (
-        <UserLayout>
-          <Switch>
-            {userAllRoutes.map(item => {
-              const { id, path, component: Component } = item;
-              return <Route exact={path === "/login"} key={id} path={path} component={Component} />;
-            })}
-          </Switch>
-        </UserLayout>
-      ) : (
-        <BasicLayout>
-          <Switch>
-            {basicAllRoutes.map(item => {
-              const { id, path, component: Component } = item;
-              return <Route exact={path === "/"} key={id} path={path} component={Component} />;
-            })}
-          </Switch>
-        </BasicLayout>
-      )} */

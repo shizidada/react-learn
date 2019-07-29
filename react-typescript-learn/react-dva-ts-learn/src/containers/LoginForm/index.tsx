@@ -35,7 +35,7 @@ interface LoginFormState {}
 class LoginForm extends Component<LoginFormProps, LoginFormState> {
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isLoginType = this.props.isLoginType;
+    const { isLoginType } = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
@@ -52,11 +52,13 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
   };
 
   private changeType = () => {
-    let type = this.props.isLoginType;
+    const type = this.props.isLoginType;
     this.props.updateStoreData({ isLoginType: !type });
     this.props.form.resetFields();
   };
 
+  /**eslint-disable @typescript-eslint/no-unused-vars  */
+  // e: React.ChangeEvent<HTMLInputElement>
   private inputChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.props.updateStoreData({ errorMessage: '' });
   };
@@ -77,7 +79,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="请输入用户名"
                 onChange={e => this.inputChangeHandle(e)}
-              />
+              />,
             )}
           </Form.Item>
           <Form.Item>
@@ -89,7 +91,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                 type="password"
                 placeholder="请输入密码"
                 onChange={e => this.inputChangeHandle(e)}
-              />
+              />,
             )}
           </Form.Item>
 
@@ -105,7 +107,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   type="password"
                   placeholder="请再次输入密码"
-                />
+                />,
               )}
             </Form.Item>
           )}
@@ -146,5 +148,5 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Form.create({ name: 'login_form' })(LoginForm));

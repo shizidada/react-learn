@@ -6,7 +6,7 @@ export interface SliderMenuConfig {
   childs?: SliderMenuConfig[];
 }
 
-export const menus: SliderMenuConfig[] = [
+export const sliderMenus: SliderMenuConfig[] = [
   { type: 'pie-chart', activeKey: 'home', name: 'Home', path: '/' },
   { type: 'table', activeKey: 'order', name: 'Order', path: '/order' },
   { type: 'skin', activeKey: 'skin', name: 'Skin', path: '/skin' },

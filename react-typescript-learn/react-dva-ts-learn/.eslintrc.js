@@ -27,10 +27,11 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
     'generator-star-spacing': 0,
     'function-paren-newline': 0,
-    'import/no-unresolved': [2, { ignore: ['^@/', '^umi/'] }],
+    // 禁止使用外部包
+    'import/no-unresolved': [2, { ignore: ['typings'] }],
     'import/order': 'warn',
     'import/no-extraneous-dependencies': [
-      2,
+      1,
       {
         optionalDependencies: true,
         devDependencies: [
@@ -73,11 +74,18 @@ module.exports = {
     'unicorn/prevent-abbreviations': 'off',
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/interface-name-prefix': 0,
+    // add TODO:
+    // ts 空 interface
+    '@typescript-eslint/no-empty-interface': 'off',
+
     'import/no-cycle': 0,
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
 
     // issue https://github.com/facebook/react/issues/15204
     'react-hooks/exhaustive-deps': 'off', // Checks effect dependencies
+
+    // add TODO:
+    'react/prefer-stateless-function': 'off',
 
     // Conflict with prettier
     'arrow-body-style': ['error', 'as-needed'],
@@ -88,6 +96,13 @@ module.exports = {
     'eslint-comments/no-unlimited-disable': 1,
     'no-param-reassign': 1,
     'space-before-function-paren': 0,
+
+    // add TODO:
+    'max-len': ['error', 120],
+    'comma-dangle': 'warn',
+    'spaced-comment': 'warn',
+    'no-script-url': 'warn',
+    'arrow-body-style': 'off',
   },
   settings: {
     // support import modules from TypeScript files in JavaScript files
