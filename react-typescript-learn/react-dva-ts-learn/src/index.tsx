@@ -1,17 +1,17 @@
 // import * as React from "react";
-import dva, { Router as DvaRouter } from "dva";
-import { createBrowserHistory as createHistory } from "history";
+import dva, { Router as DvaRouter } from 'dva';
+import { createBrowserHistory as createHistory } from 'history';
 
-import Router from "./routers";
+import Router from './routers';
 
-import globalModel from "./models/global";
-import loginModel from "./models/login";
-import homeModel from "./models/home";
+import globalModel from './models/global';
+import loginModel from './models/login';
+import homeModel from './models/home';
 
 const app = dva({
   history: createHistory(),
   onError: (err, dispatch) => {
-    // console.log("onError  ===> ", err, dispatch);
+    console.log('onError  ===> ', err, dispatch);
   },
 });
 
@@ -21,7 +21,7 @@ app.model(globalModel);
 app.model(loginModel);
 app.model(homeModel);
 
-app.start("#root");
+app.start('#root');
 
 // import * as ReactDOM from "react-dom";
 // import { Provider } from "react-redux";

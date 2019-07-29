@@ -1,9 +1,9 @@
-import * as React from "react";
-import { Location } from "history";
+import * as React from 'react';
+import { Location } from 'history';
 
-import LoginForm from "../../containers/LoginForm";
+import LoginForm from '../../containers/LoginForm';
 
-import "./index.less";
+import './index.less';
 
 interface LoginPageProps {
   localtion: Location<any>;
@@ -11,7 +11,7 @@ interface LoginPageProps {
 
 export default class LoginPage extends React.Component<LoginPageProps, {}> {
   public render() {
-    console.log("LoginPage :: ", this.props);
+    console.log('LoginPage :: ', this.props);
     return (
       <div className="login-page">
         <LoginForm />

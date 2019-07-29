@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Location } from "history";
-import { Layout, Breadcrumb, Icon } from "antd";
+import React, { Component } from 'react';
+import { Location } from 'history';
+import { Layout, Breadcrumb, Icon } from 'antd';
 
-import SliderMenu from "../../containers/SliderMenu";
-import BasicRoute from "../../routers/BasicRoute";
+import SliderMenu from '../../containers/SliderMenu';
+import BasicRoute from '../../routers/BasicRoute';
 
-import "./index.less";
+import './index.less';
 
 const { Header, Content, Footer } = Layout;
 
@@ -35,16 +35,16 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   };
 
   public render() {
-    console.log("BasicLayout :: ", this.props);
+    console.log('BasicLayout :: ', this.props);
     return (
-      <Layout className="basic-layout-container" style={{ minHeight: "100vh" }}>
+      <Layout className="basic-layout-container" style={{ minHeight: '100vh' }}>
         <SliderMenu collapsed={this.state.collapsed} onCollapse={this.onCollapse}></SliderMenu>
 
         <Layout style={{ marginLeft: this.state.collapsed ? 80 : 200 }}>
           <Header className="basic-layout-header basic-layout-header-top">
             <Icon
               className="basic-trigger"
-              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.sliderMenuToggle}
             />
           </Header>
@@ -54,15 +54,15 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
           </Header>
 
           <Content className="basic-layout-content">
-            <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>Moose</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
               <BasicRoute />
             </div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>©2019 Created by 江景</Footer>
+          <Footer style={{ textAlign: 'center' }}>©2019 Created by 江景</Footer>
         </Layout>
       </Layout>
     );

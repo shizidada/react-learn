@@ -1,7 +1,7 @@
-import { Model } from "dva";
+import { Model } from 'dva';
+import { NAMESPACE } from './constants';
 
-import { NAMESPACE } from "./constants";
-export * from "./selectors";
+export * from './selectors';
 
 const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
 
@@ -18,7 +18,7 @@ const HomeModel: HomeModelType = {
   namespace: NAMESPACE,
 
   state: {
-    name: "TypeScript from dva",
+    name: 'TypeScript from dva',
     count: 0,
   },
 
@@ -34,7 +34,7 @@ const HomeModel: HomeModelType = {
   effects: {
     *addWithDelay(action, { call, put, select }) {
       yield call(delay, 500);
-      yield put({ type: "add" });
+      yield put({ type: 'add' });
     },
   },
 

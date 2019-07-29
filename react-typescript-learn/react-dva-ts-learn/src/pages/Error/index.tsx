@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Error: React.FC = props => <div>Error</div>;
 

@@ -1,7 +1,7 @@
-import { Model } from "dva";
-import { routerRedux } from "dva/router";
+import { Model } from 'dva';
+import { routerRedux } from 'dva/router';
 
-import { NAMESPACE } from "./constants";
+import { NAMESPACE } from './constants';
 
 export interface GlobalModelType extends Model {
   state: GlobalModelState;
@@ -16,13 +16,13 @@ const GlobalModel: GlobalModelType = {
 
   effects: {
     *redirect(action, { call, put, select }) {
-      yield put(routerRedux.push("/login"));
+      yield put(routerRedux.push('/login'));
     },
   },
   subscriptions: {
     setup({ history, dispatch }): void {
       history.listen(({ pathname, search }): void => {
-        console.log("GlobalModel : ", { pathname, search });
+        console.log('GlobalModel : ', { pathname, search });
         // const isLogin = localStorage.getItem("ISLOGIN");
         // if (pathname === "/" && isLogin === null) {
         //   routerRedux.push("/login");

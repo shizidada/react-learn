@@ -1,5 +1,5 @@
-import React from "react";
-import { DvaInstance } from "dva";
+import React from 'react';
+import { DvaInstance } from 'dva';
 
 interface Config {
   app: DvaInstance;

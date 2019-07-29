@@ -1,15 +1,15 @@
-import React, { createElement } from "react";
-import { DvaInstance } from "dva";
-import { Switch, Route, routerRedux } from "dva/router";
-import H from "history";
-import Loadable from "react-loadable";
+import React, { createElement } from 'react';
+import { DvaInstance } from 'dva';
+import { Switch, Route, routerRedux } from 'dva/router';
+import H from 'history';
+import Loadable from 'react-loadable';
 
-import { userRoutes } from "./config";
+import { userRoutes } from './config';
 
-import BasicLayout from "../layouts/BasicLayout";
-import UserLayout from "../layouts/UserLayout";
+import BasicLayout from '../layouts/BasicLayout';
+import UserLayout from '../layouts/UserLayout';
 
-import Error from "../pages/Error";
+import Error from '../pages/Error';
 
 const { ConnectedRouter } = routerRedux;
 

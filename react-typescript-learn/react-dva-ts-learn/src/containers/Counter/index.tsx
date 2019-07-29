@@ -1,10 +1,10 @@
-import { Dispatch } from "redux";
-import { connect } from "dva";
+import { Dispatch } from 'redux';
+import { connect } from 'dva';
 
-import { GlobalState } from "../../typings";
-import { NAMESPACE } from "../../models/home/constants";
-import { getCounterState } from "../../models/home";
-import Counter from "../../components/Counter";
+import { GlobalState } from '../../typings';
+import { NAMESPACE } from '../../models/home/constants';
+import { getCounterState } from '../../models/home';
+import Counter from '../../components/Counter';
 
 const mapStateToProps = (state: GlobalState) => getCounterState(state);
 

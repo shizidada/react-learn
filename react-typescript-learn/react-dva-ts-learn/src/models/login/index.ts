@@ -1,9 +1,9 @@
-import { Model } from "dva";
-import { routerRedux } from "dva/router";
+import { Model } from 'dva';
+import { routerRedux } from 'dva/router';
 
-import { NAMESPACE } from "./constants";
+import { NAMESPACE } from './constants';
 // import { GlobalState } from "../../typings";
-export * from "./selectors";
+export * from './selectors';
 
 const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
 
@@ -23,7 +23,7 @@ const LoginModel: LoginModelType = {
   state: {
     isLoginType: true,
     isLoading: false,
-    errorMessage: "",
+    errorMessage: '',
   },
 
   reducers: {
@@ -35,25 +35,25 @@ const LoginModel: LoginModelType = {
 
   effects: {
     *login(action, { call, put, select }) {
-      yield put({ type: "updateData", payload: { errorMessage: "", isLoading: true } });
+      yield put({ type: 'updateData', payload: { errorMessage: '', isLoading: true } });
 
       const { payload } = action;
       yield call(delay, 500);
       // let state: LoginModelState = yield select((state: GlobalState) => state[NAMESPACE]);
       const { username, password } = payload;
-      if (username === "admin" && password === "123") {
-        yield put(routerRedux.replace("/"));
+      if (username === 'admin' && password === '123') {
+        yield put(routerRedux.replace('/'));
       } else {
         // login failed
         yield put({
-          type: "updateData",
-          payload: { errorMessage: "账号或密码不正确。", isLoading: false },
+          type: 'updateData',
+          payload: { errorMessage: '账号或密码不正确。', isLoading: false },
         });
       }
     },
     *register(action, { call, put, select }) {
-      console.log("register");
-      yield "";
+      console.log('register');
+      yield '';
     },
     // *redirect(action, { call, put, select }) {
     //   yield put(routerRedux.push("/"));

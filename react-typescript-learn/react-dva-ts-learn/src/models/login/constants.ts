@@ -1,1 +1,1 @@
-export const NAMESPACE = "@login";
+export const NAMESPACE = '@login';

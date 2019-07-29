@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "dva/router";
-import { Layout, Menu, Icon } from "antd";
+import React, { Component } from 'react';
+import { Link } from 'dva/router';
+import { Layout, Menu, Icon } from 'antd';
 
-import { menus, SliderMenuConfig } from "./slider-menu-config";
+import { menus, SliderMenuConfig } from './slider-menu-config';
 
-import "./index.less";
+import './index.less';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -18,6 +18,7 @@ interface SliderMenuState {}
 export default class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
   public constructor(props: SliderMenuProps) {
     super(props);
+    this.state = {};
   }
 
   private onCollapse = (collapsed: boolean) => {
@@ -30,7 +31,7 @@ export default class SliderMenu extends Component<SliderMenuProps, SliderMenuSta
     const parms: SliderMenuConfig = {
       ...payload,
     };
-    console.log("SliderMenu menuItemClick :: ", parms);
+    console.log('SliderMenu menuItemClick :: ', parms);
     // this.props.addTabFromSlidMenu(parms);
   };
 
@@ -42,9 +43,9 @@ export default class SliderMenu extends Component<SliderMenuProps, SliderMenuSta
         collapsed={this.props.collapsed}
         onCollapse={this.onCollapse}
         style={{
-          overflow: "auto",
-          height: "100vh",
-          position: "fixed",
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
           left: 0,
         }}
       >

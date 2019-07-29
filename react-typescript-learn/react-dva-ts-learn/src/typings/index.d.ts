@@ -1,5 +1,5 @@
-import { HomeModelState } from "../home";
-import { LoginModelState } from "../login";
+import { HomeModelState } from '../home';
+import { LoginModelState } from '../login';
 
 export interface GlobalState {
   [key: string]: HomeModelState | LoginModelState;

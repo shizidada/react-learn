@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "dva/router";
-import { Layout, Menu, Breadcrumb, Icon } from "antd";
+import React, { Component } from 'react';
+import { Link } from 'dva/router';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
-import "./index.less";
+import './index.less';
 
 const { Sider, Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
@@ -34,20 +34,20 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
 
   public render() {
     return (
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout style={{ minHeight: '100vh' }}>
         <Sider
           collapsible
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
           style={{
-            overflow: "auto",
-            height: "100vh",
-            position: "fixed",
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
             left: 0,
           }}
         >
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={["/"]} mode="inline">
+          <Menu theme="dark" defaultSelectedKeys={['/']} mode="inline">
             <Menu.Item key="/">
               <Icon type="pie-chart" />
               <span>Home</span>
@@ -95,24 +95,24 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
 
         <Layout style={{ marginLeft: this.state.collapsed ? 80 : 200 }}>
           <Header
-            style={{ background: "#fff", padding: 0, position: "fixed", zIndex: 1, width: "100%" }}
+            style={{ background: '#fff', padding: 0, position: 'fixed', zIndex: 1, width: '100%' }}
           >
             <Icon
               className="trigger"
-              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
           </Header>
-          <Content style={{ margin: "64px 16px", overflow: "initial" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
+          <Content style={{ margin: '64px 16px', overflow: 'initial' }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
               {this.props.children}
             </div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>©2019 Created by 江景</Footer>
+          <Footer style={{ textAlign: 'center' }}>©2019 Created by 江景</Footer>
         </Layout>
       </Layout>
     );

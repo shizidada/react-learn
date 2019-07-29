@@ -1,1 +1,1 @@
-export const NAMESPACE = "@global";
+export const NAMESPACE = '@global';

@@ -1,7 +1,7 @@
-import * as React from "react";
-import { Button } from "antd";
+import * as React from 'react';
+import { Button } from 'antd';
 
-import "./index.less";
+import './index.less';
 
 export interface CounterProps {
   name: string;
@@ -12,7 +12,7 @@ export interface CounterProps {
 
 export default class Counter extends React.Component<CounterProps, {}> {
   public componentDidMount() {
-    console.log("Counter :: ", this.props);
+    console.log('Counter :: ', this.props);
   }
 
   public render() {
