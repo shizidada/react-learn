@@ -102,6 +102,8 @@ module.exports = {
     'comma-dangle': 'warn',
     'spaced-comment': 'warn',
     'no-script-url': 'warn',
+    // 'sort-imports': 'error',
+    'array-callback-return': 'off',
     'arrow-body-style': 'off',
   },
   settings: {

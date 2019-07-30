@@ -10,13 +10,16 @@ export interface GlobalModelType extends Model {
 }
 
 export interface GlobalModelState {
-  currentTab: string;
+  // SliderMenu choose key
+  selectedKeys: string[];
+  openKeys: string[];
 }
 
 const GlobalModel: GlobalModelType = {
   namespace: NAMESPACE,
   state: {
-    currentTab: 'user',
+    selectedKeys: ['/'],
+    openKeys: [],
   },
   reducers: {
     updateGlobalData(state, { payload }) {
@@ -36,8 +39,8 @@ const GlobalModel: GlobalModelType = {
         dispatch({
           type: 'updateGlobalData',
           payload: {
-            // currentTab: 'user',
-            currentTab: pathname,
+            // key: 'user',
+            selectedKeys: [pathname],
           },
         });
         console.log('GlobalModel : ', { pathname, search });

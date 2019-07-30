@@ -8,24 +8,30 @@ import { TitleEventEntity } from 'antd/lib/menu/SubMenu';
 
 import { sliderMenus, SliderMenuConfig } from './slider-menu-config';
 
-import './index.less';
-
 import { GlobalState } from '../../typings';
-// import { NAMESPACE } from '../../models/global/constants';
-import { getGlobalState } from '../../models/global';
+import { NAMESPACE } from '../../models/global/constants';
+import { GlobalModelState, getGlobalState } from '../../models/global';
+
+import './index.less';
 
 const mapStateToProps = (state: GlobalState) => getGlobalState(state);
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({});
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  sliderMenuSelect(record: object) {
+    dispatch({
+      type: `${NAMESPACE}/updateGlobalData`,
+      payload: record,
+    });
+  },
+});
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-interface SliderMenuProps {
+interface SliderMenuProps extends GlobalModelState {
   collapsed: boolean;
-  currentTab: string;
   onCollapse: (collapsed: boolean) => void;
-  // onMenuSelect: (item: any, key: any, keyPath: any, selectedKeys: any, domEvent: any) => void;
+  sliderMenuSelect: (selectedKeys: object) => void;
 }
 interface SliderMenuState {}
 
@@ -34,6 +40,34 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
     super(props);
     this.state = {};
   }
+
+  private findParentNodeNameByChild = () => {
+    const { selectedKeys } = this.props;
+    selectedKeys.map(selectedKey => {
+      sliderMenus.map((parentItem, parentIndex) => {
+        if (parentItem.childs) {
+          parentItem.childs.find(childItem => {
+            if (`${childItem.path}` === selectedKey) {
+              // current path find parent node to open
+              // config file must have activeKey #see slider-menu-config.ts
+              this.props.sliderMenuSelect({ openKeys: [sliderMenus[parentIndex].activeKey] });
+              // console.log(
+              //   'componentDidMount sliderMenus[parentIndex] :: ',
+              //   selectedKey,
+              //   childItem.path,
+              //   sliderMenus[parentIndex],
+              //   { openKeys: [sliderMenus[parentIndex].activeKey] },
+              // );
+            }
+          });
+        }
+      });
+    });
+  };
+
+  public componentDidMount = () => {
+    this.findParentNodeNameByChild();
+  };
 
   private siderCollapseHandle = (collapsed: boolean) => {
     if (this.props.onCollapse) {
@@ -51,6 +85,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
 
   // https://ant.design/components/menu-cn/
   private sliderMenuOpenChangeHanlde = (openKeys: string[]) => {
+    this.props.sliderMenuSelect({ openKeys });
     console.log('sliderMenuOpenChangeHanlde :: ', openKeys);
     // const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
     // if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -63,7 +98,9 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
   };
 
   private sliderMenuSelectHanlde = (params: SelectParam) => {
-    console.log('sliderMenuSelectHanlde :: ', params);
+    const { key, keyPath, selectedKeys, item, domEvent } = params;
+    this.props.sliderMenuSelect({ selectedKeys });
+    console.log('sliderMenuSelectHanlde :: ', key, keyPath, selectedKeys, item, domEvent);
   };
 
   // key: string, domEvent: Event
@@ -73,7 +110,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
 
   public render() {
     console.log('SliderMenu render :: ', this.props);
-    // const { currentTab } = this.props;
+    const { selectedKeys, openKeys } = this.props;
     return (
       <Sider
         className="slider-menu-container"
@@ -92,10 +129,11 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['/bill']}
-          defaultOpenKeys={['user']}
-          // selectedKeys={['user']}
-          // openKeys={['/bill']}
+          // defaultSelectedKeys={[key]}
+          // defaultOpenKeys={['user']}
+          // selectedKeys={['/tom']}
+          selectedKeys={selectedKeys}
+          openKeys={openKeys}
           onSelect={this.sliderMenuSelectHanlde}
           onOpenChange={this.sliderMenuOpenChangeHanlde}
         >
