@@ -8,3 +8,5 @@ scripts/**
 postcss.config.js
 
 config-overrides.js
+
+setupProxy.js
