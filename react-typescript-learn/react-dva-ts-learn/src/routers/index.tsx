@@ -9,7 +9,7 @@ import { userRoutes } from './config';
 import BasicLayout from '../layouts/BasicLayout';
 import UserLayout from '../layouts/UserLayout';
 
-import Error from '../pages/Error';
+import Error from '../pages/error';
 
 const { ConnectedRouter } = routerRedux;
 

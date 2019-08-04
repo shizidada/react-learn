@@ -6,7 +6,7 @@ import { Layout, Menu, Icon } from 'antd';
 import { SelectParam } from 'antd/lib/menu';
 import { TitleEventEntity } from 'antd/lib/menu/SubMenu';
 
-import { sliderMenus, SliderMenuConfig } from './slider-menu-config';
+import { menus, MenuConfig } from '../../config/menu-config';
 
 import { GlobalState } from '../../typings';
 import { NAMESPACE } from '../../models/global/constants';
@@ -33,7 +33,7 @@ interface SliderMenuProps extends GlobalModelState {
   onCollapse: (collapsed: boolean) => void;
   sliderMenuSelect: (selectedKeys: object) => void;
 }
-interface SliderMenuState {}
+interface SliderMenuState { }
 
 class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
   public constructor(props: SliderMenuProps) {
@@ -44,20 +44,13 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
   private findParentNodeNameByChild = () => {
     const { selectedKeys } = this.props;
     selectedKeys.map(selectedKey => {
-      sliderMenus.map((parentItem, parentIndex) => {
+      menus.map((parentItem, parentIndex) => {
         if (parentItem.childs) {
           parentItem.childs.find(childItem => {
             if (`${childItem.path}` === selectedKey) {
               // current path find parent node to open
               // config file must have activeKey #see slider-menu-config.ts
-              this.props.sliderMenuSelect({ openKeys: [sliderMenus[parentIndex].activeKey] });
-              // console.log(
-              //   'componentDidMount sliderMenus[parentIndex] :: ',
-              //   selectedKey,
-              //   childItem.path,
-              //   sliderMenus[parentIndex],
-              //   { openKeys: [sliderMenus[parentIndex].activeKey] },
-              // );
+              this.props.sliderMenuSelect({ openKeys: [menus[parentIndex].activeKey] });
             }
           });
         }
@@ -75,7 +68,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
     }
   };
 
-  private sliderMenuItemClickHanlde = (params: SliderMenuConfig) => {
+  private sliderMenuItemClickHanlde = (params: MenuConfig) => {
     // const parms: SliderMenuConfig = {
     //   ...payload,
     // };
@@ -137,7 +130,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
           onSelect={this.sliderMenuSelectHanlde}
           onOpenChange={this.sliderMenuOpenChangeHanlde}
         >
-          {sliderMenus.map((item: SliderMenuConfig) => {
+          {menus.map((item: MenuConfig) => {
             // , index: number
             if (!item.childs) {
               return (
@@ -163,7 +156,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
                 }
               >
                 {item.childs &&
-                  item.childs.map((childItem: SliderMenuConfig) => (
+                  item.childs.map((childItem: MenuConfig) => (
                     <Menu.Item
                       key={`${childItem.path}`}
                       onClick={() => this.sliderMenuItemClickHanlde(childItem)}

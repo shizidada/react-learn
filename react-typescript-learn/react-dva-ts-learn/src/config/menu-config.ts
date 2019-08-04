@@ -1,14 +1,15 @@
-export interface SliderMenuConfig {
+export interface MenuConfig {
   type: string;
   activeKey: string;
   name: string;
   path?: string;
-  childs?: SliderMenuConfig[];
+  childs?: MenuConfig[];
 }
 
-export const sliderMenus: SliderMenuConfig[] = [
+export const menus: MenuConfig[] = [
   { type: 'pie-chart', activeKey: 'home', name: 'Home', path: '/' },
   { type: 'table', activeKey: 'order', name: 'Order', path: '/order' },
+  { type: 'crown', activeKey: 'product', name: 'Product', path: '/product' },
   { type: 'skin', activeKey: 'skin', name: 'Skin', path: '/skin' },
   { type: 'file', activeKey: 'file', name: 'File', path: '/file' },
   {
@@ -16,6 +17,12 @@ export const sliderMenus: SliderMenuConfig[] = [
     activeKey: 'user',
     name: 'User',
     childs: [
+      {
+        type: 'setting',
+        activeKey: 'setting',
+        name: 'Setting',
+        path: '/setting',
+      },
       {
         type: 'compass',
         activeKey: 'compass',
@@ -55,5 +62,4 @@ export const sliderMenus: SliderMenuConfig[] = [
       },
     ],
   },
-  { type: 'setting', activeKey: 'setting', name: 'Setting', path: '/setting' },
 ];
