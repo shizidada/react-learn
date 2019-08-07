@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node server.js",
+    "dev": "cross-env NODE_ENV=development PORT=9000 node server.js",
     "build": "next build",
     "start": "next start"
   },

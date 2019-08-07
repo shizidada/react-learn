@@ -16,7 +16,7 @@ class About extends Component {
   }
 
   componentDidMount() {
-    console.log("About  componentDidMount ==> ", this.props);
+    // console.log("About  componentDidMount ==> ", this.props);
   }
 
 

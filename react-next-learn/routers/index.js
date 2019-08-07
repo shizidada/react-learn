@@ -17,10 +17,22 @@ module.exports = (app, handle) => {
   server.get(/\/about$/, (req, res) => {
     // require("fs").writeFile("./req.json", JSON.stringify(req), (err) => {
     // })
-    console.log("about-req2 ===> ", req.url, req.path);
+    // console.log("about-req2 ===> ", req.url, req.path);
     const path = req.path;
     const nameServer = "Name From Server";
     renderAndCache(app, req, res, "/about", { path, nameServer });
+  });
+
+  // /Generalize/GeneralizeCat/cat
+  // /\/Generalize\/GeneralizeCat\/cat\/\d+$/
+  server.get(/\/Generalize\/GeneralizeCat\/cat\/\d+$/, (req, res) => {
+    // require("fs").writeFile("./req.json", JSON.stringify(req), (err) => {
+    // })
+    const articleId = req.path.match(/\d+/)[0];
+    console.log("Generalize-req2 ===> ", req.url, req.path, articleId);
+    const path = req.path;
+    const nameServer = "Name From Server";
+    renderAndCache(app, req, res, "/generalize", { path, nameServer, articleId });
   });
 
   server.get('*', (req, res) => {
