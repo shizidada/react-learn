@@ -47,6 +47,7 @@ const LoginModel: LoginModelType = {
         const { data } = res;
         if (data.status) {
           yield put(routerRedux.replace('/'));
+          yield put({ type: 'updateData', payload: { isLoading: false } });
         } else {
           // login failed
           yield put({

@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 // import { isPlainObject } from 'lodash'
 
-const BASE_URL = 'http://localhost:8001';
+const BASE_URL = 'http://moose.api.com:8080';
 
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -26,10 +26,10 @@ const instance = axios.create({
 //   return Promise.reject(error);
 // });
 
-export const get = (url: string, data: any = {}) => {
+export const get = (url: string, data: object = {}) => {
   return instance.get(url, data);
 }
 
-export const post = (url: string, data: any = {}) => {
+export const post = (url: string, data: object = {}) => {
   return instance.post(url, qs.stringify(data));
 }
