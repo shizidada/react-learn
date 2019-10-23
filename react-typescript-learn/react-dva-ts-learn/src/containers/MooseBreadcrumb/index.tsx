@@ -14,31 +14,30 @@ import './index.less';
 const mapStateToProps = (state: GlobalState) => getGlobalState(state);
 const mapDispatchToProps = (dispatch: Dispatch) => ({});
 
-interface MooseBreadcrumbProps extends GlobalModelState { }
-interface MooseBreadcrumbState { }
+interface MooseBreadcrumbProps extends GlobalModelState {}
+interface MooseBreadcrumbState {}
 
 class MooseBreadcrumb extends Component<MooseBreadcrumbProps, MooseBreadcrumbState> {
   public componentDidMount() {
-    console.log('MooseBreadcrumb ', this.props)
+    console.log('MooseBreadcrumb ', this.props);
   }
 
   public render() {
     const { selectedKeys } = this.props;
-    const currentSelect: any = findNameByPath(selectedKeys)
-    console.log('MooseBreadcrumb ', this.props, currentSelect, selectedKeys)
+    const currentSelect: any = findNameByPath(selectedKeys);
+    console.log('MooseBreadcrumb ', this.props, currentSelect, selectedKeys);
 
     return (
       <Breadcrumb className="moose-breadcrumb-container">
         <Breadcrumb.Item>Moose</Breadcrumb.Item>
-        {
-          currentSelect.parentName && <Breadcrumb.Item>{currentSelect.parentName}</Breadcrumb.Item>
-        }
-        {
-          currentSelect.childName && <Breadcrumb.Item>{currentSelect.childName}</Breadcrumb.Item>
-        }
+        {currentSelect.parentName && <Breadcrumb.Item>{currentSelect.parentName}</Breadcrumb.Item>}
+        {currentSelect.childName && <Breadcrumb.Item>{currentSelect.childName}</Breadcrumb.Item>}
       </Breadcrumb>
-    )
+    );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MooseBreadcrumb)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MooseBreadcrumb);

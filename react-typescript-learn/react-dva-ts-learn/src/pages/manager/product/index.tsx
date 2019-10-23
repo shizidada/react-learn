@@ -10,6 +10,6 @@ export default class ProductPage extends Component {
           <Link to="product/create">添加商品</Link>
         </Button>
       </div>
-    )
+    );
   }
 }

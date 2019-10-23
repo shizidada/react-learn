@@ -22,7 +22,8 @@ class MooseHeader extends React.Component<MooseHeaderProps, {}> {
               className="moose-header-trigger"
               type={collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={sliderMenuToggle}
-            /></Col>
+            />
+          </Col>
           <Col span={16}>
             <MooseBreadcrumb />
           </Col>
@@ -33,7 +34,7 @@ class MooseHeader extends React.Component<MooseHeaderProps, {}> {
           </Col>
         </Row>
       </Header>
-    )
+    );
   }
 }
 

@@ -42,11 +42,9 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
       <Layout className="basic-layout-container" style={{ minHeight: '100vh' }}>
         <SliderMenu collapsed={this.state.collapsed} onCollapse={this.onCollapse}></SliderMenu>
 
-        <Layout style={{ marginLeft: this.state.collapsed ? 80 : 200 }}>
-          <MooseHeader
-            collapsed={this.state.collapsed}
-            sliderMenuToggle={this.sliderMenuToggle}
-          />
+        {/*  style={{ marginLeft: this.state.collapsed ? 80 : 200 }} */}
+        <Layout>
+          <MooseHeader collapsed={this.state.collapsed} sliderMenuToggle={this.sliderMenuToggle} />
 
           <Header className="basic-layout-header basic-layout-header-tabs">
             will fill click menu generator tab

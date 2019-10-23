@@ -1,4 +1,4 @@
-import { post } from '../../util/request'
+import { post } from '../../util/request';
 
 export const login = (params: any) => post('/account/api/v1/account/login', params);
 

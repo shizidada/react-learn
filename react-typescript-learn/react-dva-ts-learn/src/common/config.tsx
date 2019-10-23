@@ -6,26 +6,29 @@ interface HOCConfig {
 }
 
 interface HOCProps {
-  history: History
+  history: History;
 }
 
-export const config = (options: HOCConfig) =>
-  <P extends HOCProps>(Component: React.ComponentType<P>) => {
-    return class extends React.Component<P> {
-      public componentDidMount() {
-        const { permission } = options;
-        if (permission) {
-          console.log('hoc checking auth ...', this.props)
-          const token = localStorage.getItem('token');
-          if (token === null) {
-            console.log('go to login')
-            this.props.history.replace('/login');
-          }
+export const config = (options: HOCConfig) => <P extends HOCProps>(
+  Component: React.ComponentType<P>,
+) => {
+  return class extends React.Component<P> {
+    public componentDidMount() {
+      const { permission } = options;
+      if (permission) {
+        // TODO:
+        console.log('hoc checking auth ...', this.props);
+        const token = localStorage.getItem('token');
+        if (token === null) {
+          // TODO:
+          console.log('go to login');
+          // this.props.history.replace('/login');
         }
       }
+    }
 
-      public render() {
-        return <Component {...this.props} {...options} />;
-      }
-    };
+    public render() {
+      return <Component {...this.props} {...options} />;
+    }
   };
+};

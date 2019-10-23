@@ -13,8 +13,8 @@ import './index.less';
 const mapStateToProps = (state: GlobalState) => getLoginState(state);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateStoreData(record: object) {
-    dispatch({ type: `${NAMESPACE}/updateData`, payload: record });
+  updateLoginStore(record: object) {
+    dispatch({ type: `${NAMESPACE}/updateLoginStore`, payload: record });
   },
   login(record: object) {
     dispatch({ type: `${NAMESPACE}/login`, payload: record });
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 interface LoginFormProps extends LoginModelState {
   form: WrappedFormUtils;
-  updateStoreData: (type: object) => void;
+  updateLoginStore: (type: object) => void;
   login: (type: object) => void;
   redirect: () => void;
 }
@@ -53,14 +53,14 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
 
   private changeType = () => {
     const type = this.props.isLoginType;
-    this.props.updateStoreData({ isLoginType: !type });
+    this.props.updateLoginStore({ isLoginType: !type });
     this.props.form.resetFields();
   };
 
   /**eslint-disable @typescript-eslint/no-unused-vars  */
   // e: React.ChangeEvent<HTMLInputElement>
   private inputChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.updateStoreData({ errorMessage: '' });
+    this.props.updateLoginStore({ errorMessage: '' });
   };
 
   public render() {

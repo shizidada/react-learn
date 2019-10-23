@@ -7,6 +7,6 @@ export default class ProductCreatePage extends Component {
       <div>
         <CreateProductForm />
       </div>
-    )
+    );
   }
 }

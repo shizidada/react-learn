@@ -8,28 +8,19 @@ axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const getToken = () => {
   return localStorage.getItem('token');
-}
+};
 
 const instance = axios.create({
   baseURL: BASE_URL,
   timeout: 15000,
   withCredentials: true, // 设置axios跨域
   headers: { Authorization: `Bearer ${getToken()}` },
-  // transformRequest(data: any) {
-  //   if (isPlainObject(data)) data = qs.stringify(data)
-  // },
 });
-
-// instance.interceptors.request.use((config: AxiosRequestConfig) => {
-//   return config;
-// }, (error: any) => {
-//   return Promise.reject(error);
-// });
 
 export const get = (url: string, data: object = {}) => {
   return instance.get(url, data);
-}
+};
 
 export const post = (url: string, data: object = {}) => {
   return instance.post(url, qs.stringify(data));
-}
+};

@@ -30,14 +30,14 @@ const LoginModel: LoginModelType = {
 
   reducers: {
     // change model data
-    updateData(state, { payload }) {
+    updateLoginStore(state, { payload }) {
       return { ...state, ...payload };
     },
   },
 
   effects: {
     *login(action, { call, put, select }) {
-      yield put({ type: 'updateData', payload: { errorMessage: '', isLoading: true } });
+      yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: true } });
       const { payload } = action;
       yield call(delay, 500);
       // let state: LoginModelState = yield select((state: GlobalState) => state[NAMESPACE]);
@@ -47,17 +47,17 @@ const LoginModel: LoginModelType = {
         const { data } = res;
         if (data.status) {
           yield put(routerRedux.replace('/'));
-          yield put({ type: 'updateData', payload: { isLoading: false } });
+          yield put({ type: 'updateLoginStore', payload: { isLoading: false } });
         } else {
           // login failed
           yield put({
-            type: 'updateData',
+            type: 'updateLoginStore',
             payload: { errorMessage: data.message, isLoading: false },
           });
         }
       } catch (error) {
         yield put({
-          type: 'updateData',
+          type: 'updateLoginStore',
           payload: { errorMessage: '系统繁忙', isLoading: false },
         });
       }
@@ -73,7 +73,7 @@ const LoginModel: LoginModelType = {
 
   subscriptions: {
     setup({ history }): void {
-      history.listen(({ pathname, search }): void => { });
+      history.listen(({ pathname, search }): void => {});
     },
   },
 };

@@ -19,17 +19,17 @@ export default class HomePage extends React.Component<any> {
       <div className="home-page-container">
         <div className="home-top-wrapper">
           {/*  style={{ width: 300, marginTop: 16 }}  */}
-          {
-            new Array(5).fill('temp').map((item, index) => (
-              <Card key={`${index + item}`} style={{ margin: '0 10px' }} loading={false}>
-                <Meta
-                  title="Card title"
-                  description="This is the description"
-                  avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                />
-              </Card>
-            ))
-          }
+          {new Array(5).fill('temp').map((item, index) => (
+            <Card key={`${index + item}`} style={{ margin: '0 10px' }} loading={false}>
+              <Meta
+                title="Card title"
+                description="This is the description"
+                avatar={
+                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                }
+              />
+            </Card>
+          ))}
         </div>
         <Counter />
       </div>

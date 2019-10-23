@@ -9,19 +9,23 @@ const { Meta } = Card;
 
 export default class CreateOrderPage extends Component {
   public render() {
-    return <div className="create-order-container">
-      <div className="create-order-wrapper">
-        <Row gutter={16}>
-          <Col span={18}>
-            <CreateOrderForm />
-          </Col>
-          <Col span={6}><Card title="Card title" >
-            <p>Card content</p>
-            <p>Card content</p>
-            <p>Card content</p>
-          </Card></Col>
-        </Row>
+    return (
+      <div className="create-order-container">
+        <div className="create-order-wrapper">
+          <Row gutter={16}>
+            <Col span={18}>
+              <CreateOrderForm />
+            </Col>
+            <Col span={6}>
+              <Card title="Card title">
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
-    </div>;
+    );
   }
 }

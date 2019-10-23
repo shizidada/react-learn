@@ -19,7 +19,7 @@ const mapStateToProps = (state: GlobalState) => getGlobalState(state);
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   sliderMenuSelect(record: object) {
     dispatch({
-      type: `${NAMESPACE}/updateGlobalData`,
+      type: `${NAMESPACE}/updateGlobalStore`,
       payload: record,
     });
   },
@@ -33,7 +33,7 @@ interface SliderMenuProps extends GlobalModelState {
   onCollapse: (collapsed: boolean) => void;
   sliderMenuSelect: (selectedKeys: object) => void;
 }
-interface SliderMenuState { }
+interface SliderMenuState {}
 
 class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
   public constructor(props: SliderMenuProps) {
@@ -80,14 +80,6 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
   private sliderMenuOpenChangeHanlde = (openKeys: string[]) => {
     this.props.sliderMenuSelect({ openKeys });
     console.log('sliderMenuOpenChangeHanlde :: ', openKeys);
-    // const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
-    // if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-    //   this.setState({ openKeys });
-    // } else {
-    //   this.setState({
-    //     openKeys: latestOpenKey ? [latestOpenKey] : [],
-    //   });
-    // }
   };
 
   private sliderMenuSelectHanlde = (params: SelectParam) => {
@@ -110,23 +102,16 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
         collapsible
         collapsed={this.props.collapsed}
         onCollapse={this.siderCollapseHandle}
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-        }}
       >
         <div className="slider-logo" />
         {/* light dark */}
         <Menu
           theme="dark"
           mode="inline"
-          // defaultSelectedKeys={[key]}
-          // defaultOpenKeys={['user']}
-          // selectedKeys={['/tom']}
-          selectedKeys={selectedKeys}
-          openKeys={openKeys}
+          defaultOpenKeys={openKeys}
+          defaultSelectedKeys={selectedKeys}
+          selectedKeys={this.props.collapsed ? [] : selectedKeys}
+          openKeys={this.props.collapsed ? [] : openKeys}
           onSelect={this.sliderMenuSelectHanlde}
           onOpenChange={this.sliderMenuOpenChangeHanlde}
         >
