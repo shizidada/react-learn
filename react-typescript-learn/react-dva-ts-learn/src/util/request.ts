@@ -1,20 +1,13 @@
 import axios from 'axios';
 import qs from 'qs';
-// import { isPlainObject } from 'lodash'
 
-const BASE_URL = 'http://moose.api.com:8080';
+const BASE_URL = 'http://localhost:8000';
 
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-
-const getToken = () => {
-  return localStorage.getItem('token');
-};
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
 
 const instance = axios.create({
   baseURL: BASE_URL,
   timeout: 15000,
-  withCredentials: true, // 设置axios跨域
-  headers: { Authorization: `Bearer ${getToken()}` },
 });
 
 export const get = (url: string, data: object = {}) => {

@@ -25,6 +25,12 @@ export const basicRoutes = [
     path: '/product/create',
     component: import('../pages/manager/product/create'),
   },
+
+  {
+    id: 4001,
+    path: '/file',
+    component: import('../pages/manager/file'),
+  },
 ];
 
 export const userRoutes = [

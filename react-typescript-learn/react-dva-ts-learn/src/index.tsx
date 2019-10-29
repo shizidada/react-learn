@@ -7,6 +7,7 @@ import Router from './routers';
 import globalModel from './models/global';
 import loginModel from './models/login';
 import homeModel from './models/home';
+import fileModel from './models/file';
 
 const app = dva({
   history: createHistory(),
@@ -20,6 +21,7 @@ app.router(Router as DvaRouter);
 app.model(globalModel);
 app.model(loginModel);
 app.model(homeModel);
+app.model(fileModel);
 
 app.start('#root');
 
