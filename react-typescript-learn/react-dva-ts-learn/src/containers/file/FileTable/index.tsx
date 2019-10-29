@@ -10,14 +10,14 @@ import { getFileState } from '../../../models/file';
 const mapStateToProps = (state: GlobalState) => getFileState(state);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  getExcelInfo() {
-    dispatch({ type: `${NAMESPACE}/getExcelInfo` });
+  getExcelInfo(record: object) {
+    dispatch({ type: `${NAMESPACE}/getExcelInfo`, payload: record });
   },
 });
 
 interface FileTableProps {
   recordList: [];
-  getExcelInfo: () => void;
+  getExcelInfo: (record: object) => void;
 }
 
 interface FileTableRecord {
@@ -30,7 +30,7 @@ interface FileTableRecord {
 
 class FileTable extends Component<FileTableProps, {}> {
   public componentDidMount() {
-    this.props.getExcelInfo();
+    this.props.getExcelInfo({ pageSize: 10, pageNum: 10 });
   }
 
   public render() {
@@ -94,6 +94,7 @@ class FileTable extends Component<FileTableProps, {}> {
     return (
       <div>
         <Table
+          // pagination={false}
           rowKey={(record: FileTableRecord) => record.iccid}
           columns={columns}
           dataSource={recordList}
