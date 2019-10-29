@@ -16,15 +16,16 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 interface FileTableProps {
+  recordList: [];
   getExcelInfo: () => void;
 }
 
 interface FileTableRecord {
-  key: string;
-  name: string;
-  age: number;
+  iccid: string;
+  operators: string;
+  receiver: string;
+  phone: string;
   address: string;
-  tags: string[];
 }
 
 class FileTable extends Component<FileTableProps, {}> {
@@ -35,26 +36,31 @@ class FileTable extends Component<FileTableProps, {}> {
   public render() {
     const columns = [
       {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
+        title: 'SIM卡卡号',
+        dataIndex: 'iccid',
+        key: 'iccid',
         render: (text: string) => <a>{text}</a>,
       },
       {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
+        title: '运营商',
+        dataIndex: 'operators',
+        key: 'operators',
       },
       {
-        title: 'Address',
+        title: '收货人',
+        dataIndex: 'receiver',
+        key: 'receiver',
+      },
+      {
+        title: '收货地址',
         dataIndex: 'address',
         key: 'address',
       },
       {
-        title: 'Tags',
+        title: '标签',
         key: 'tags',
         dataIndex: 'tags',
-        render: (tags: string[]) => (
+        render: (tags: string[] = ['xiha']) => (
           <span>
             {tags.map(tag => {
               let color = tag.length > 5 ? 'geekblue' : 'green';
@@ -71,11 +77,11 @@ class FileTable extends Component<FileTableProps, {}> {
         ),
       },
       {
-        title: 'Action',
+        title: '操作',
         key: 'action',
         render: (text: string, record: FileTableRecord) => (
           <span>
-            <a>Invite {record.name}</a>
+            <a>Invite</a>
             <Divider type="vertical" />
             <a>Delete</a>
           </span>
@@ -83,34 +89,15 @@ class FileTable extends Component<FileTableProps, {}> {
       },
     ];
 
-    const data = [
-      {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-        tags: ['nice', 'developer'],
-      },
-      {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-      },
-      {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-      },
-    ];
-
     console.log('this.props ', this.props);
+    const { recordList = [] } = this.props;
     return (
       <div>
-        <Table columns={columns} dataSource={data} />
+        <Table
+          rowKey={(record: FileTableRecord) => record.iccid}
+          columns={columns}
+          dataSource={recordList}
+        />
       </div>
     );
   }

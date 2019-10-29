@@ -14,7 +14,11 @@ export interface FileModelState {}
 const FileModel: FileModelType = {
   namespace: NAMESPACE,
 
-  state: {},
+  state: {
+    message: '',
+    isLoading: false,
+    recordList: [],
+  },
 
   reducers: {
     // change model data
@@ -25,14 +29,21 @@ const FileModel: FileModelType = {
 
   effects: {
     *getExcelInfo(action, { call, put, select }) {
-      yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: true } });
+      yield put({ type: 'updateLoginStore', payload: { message: '', isLoading: true } });
       try {
         const res = yield call(getExcelInfo);
-        console.log('getExcelInfo :: ', res);
+        const { status } = res;
+        if (status === 200) {
+          const { data } = res.data;
+          yield put({
+            type: 'updateFileStore',
+            payload: { message: '获取数据成功', recordList: data },
+          });
+        }
       } catch (error) {
         yield put({
-          type: 'updateLoginStore',
-          payload: { errorMessage: '获取数据失败', isLoading: false },
+          type: 'updateFileStore',
+          payload: { message: '获取数据失败', isLoading: false },
         });
       }
     },
