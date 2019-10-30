@@ -9,7 +9,7 @@ export interface FileModelType extends Model {
   state: FileModelState;
 }
 
-export interface FileModelState { }
+export interface FileModelState {}
 
 const FileModel: FileModelType = {
   namespace: NAMESPACE,
@@ -29,9 +29,9 @@ const FileModel: FileModelType = {
 
   effects: {
     *getExcelInfo(action, { call, put, select }) {
-      yield put({ type: 'updateLoginStore', payload: { message: '', isLoading: true } });
+      yield put({ type: 'updateFileStore', payload: { message: '', isLoading: true } });
       const { payload } = action;
-      console.log(payload)
+      console.log('getExcelInfo :: ', payload);
       try {
         const res = yield call(getExcelInfo, { ...payload });
         const { status } = res;
@@ -39,13 +39,14 @@ const FileModel: FileModelType = {
           const { data } = res.data;
           yield put({
             type: 'updateFileStore',
-            payload: { message: '获取数据成功', recordList: data },
+            payload: { message: '获取数据成功', recordList: data, isLoading: false },
           });
         }
       } catch (error) {
+        console.error('getExcelInfo :: ', error);
         yield put({
           type: 'updateFileStore',
-          payload: { message: '获取数据失败', isLoading: false },
+          payload: { message: error.message, isLoading: false },
         });
       }
     },
@@ -53,7 +54,7 @@ const FileModel: FileModelType = {
 
   subscriptions: {
     setup({ history }): void {
-      history.listen(({ pathname, search }): void => { });
+      history.listen(({ pathname, search }): void => {});
     },
   },
 };

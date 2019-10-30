@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 interface FileTableProps {
   recordList: [];
+  isLoading: boolean;
   getExcelInfo: (record: object) => void;
 }
 
@@ -90,11 +91,12 @@ class FileTable extends Component<FileTableProps, {}> {
     ];
 
     console.log('this.props ', this.props);
-    const { recordList = [] } = this.props;
+    const { recordList = [], isLoading } = this.props;
     return (
       <div>
         <Table
           // pagination={false}
+          loading={isLoading}
           rowKey={(record: FileTableRecord) => record.iccid}
           columns={columns}
           dataSource={recordList}
