@@ -4,13 +4,13 @@ import { connect } from 'dva';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
-import { GlobalState } from '../../typings';
+import { ConnectState } from '../../typings';
 import { NAMESPACE } from '../../models/login/constants';
 import { LoginModelState, getLoginState } from '../../models/login';
 
 import './index.less';
 
-const mapStateToProps = (state: GlobalState) => getLoginState(state);
+const mapStateToProps = (state: ConnectState) => getLoginState(state);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   updateLoginStore(record: object) {

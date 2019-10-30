@@ -1,24 +1,30 @@
 import React from 'react';
-import { Layout, Icon, Row, Col, Menu, Dropdown, Avatar } from 'antd';
-
-import MooseBreadcrumb from '../MooseBreadcrumb';
-import './index.less';
+import { Dispatch } from 'redux';
+import { connect } from 'dva';
 import { ClickParam } from 'antd/lib/menu';
+import { Icon, Menu, Dropdown, Avatar } from 'antd';
 
-const { Header } = Layout;
+// import MooseBreadcrumb from '../MooseBreadcrumb';
+import { ConnectState } from '../../typings';
+import { getGlobalState } from '../../models/global';
 
-interface MooseGlobalHeaderProps {
-  collapsed?: boolean;
-  sliderMenuToggle?: () => void;
+import './index.less';
+
+interface MooseGlobalHeaderProps extends ConnectState {
+  onSliderMenuToggle: () => void;
 }
 
 class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
-  onMenuClick = (param: ClickParam) => {
+  private onMenuClick = (param: ClickParam) => {
     console.log(param);
   };
 
+  private onHeaderTrigger = () => {
+    this.props.onSliderMenuToggle();
+  };
+
   public render() {
-    const { collapsed, sliderMenuToggle } = this.props;
+    const { collapsed } = this.props;
     const menu = (
       <Menu className="moose-global-header-menu" selectedKeys={[]} onClick={this.onMenuClick}>
         <Menu.Item key="userCenter">
@@ -39,7 +45,10 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
     return (
       <div className="moose-global-header-container">
         <span className="moose-global-header-trigger">
-          <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} onClick={sliderMenuToggle} />
+          <Icon
+            type={collapsed ? 'menu-unfold' : 'menu-fold'}
+            onClick={() => this.onHeaderTrigger()}
+          />
         </span>
         {/* <MooseBreadcrumb /> */}
 
@@ -56,4 +65,9 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
   }
 }
 
-export default MooseGlobalHeader;
+const mapStateToProps = (state: ConnectState) => getGlobalState(state);
+const mapDispatchToProps = (dispatch: Dispatch) => ({});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MooseGlobalHeader);

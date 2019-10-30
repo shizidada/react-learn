@@ -4,7 +4,7 @@ import { routerRedux } from 'dva/router';
 import { NAMESPACE } from './constants';
 import { login } from './service';
 
-// import { GlobalState } from "../../typings";
+// import { ConnectState } from "../../typings";
 export * from './selectors';
 
 const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
@@ -40,7 +40,7 @@ const LoginModel: LoginModelType = {
       yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: true } });
       const { payload } = action;
       yield call(delay, 500);
-      // let state: LoginModelState = yield select((state: GlobalState) => state[NAMESPACE]);
+      // let state: LoginModelState = yield select((state: ConnectState) => state[NAMESPACE]);
       const { username, password } = payload;
       try {
         const res = yield call(login, { username, password });

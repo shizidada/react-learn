@@ -3,16 +3,12 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Breadcrumb } from 'antd';
 
-import { GlobalState } from '../../typings';
+import { ConnectState } from '../../typings';
 // import { NAMESPACE } from '../../models/global/constants';
 import { GlobalModelState, getGlobalState } from '../../models/global';
-
 import { findNameByPath } from '../../config/menu-util';
 
 import './index.less';
-
-const mapStateToProps = (state: GlobalState) => getGlobalState(state);
-const mapDispatchToProps = (dispatch: Dispatch) => ({});
 
 interface MooseBreadcrumbProps extends GlobalModelState {}
 interface MooseBreadcrumbState {}
@@ -24,6 +20,7 @@ class MooseBreadcrumb extends Component<MooseBreadcrumbProps, MooseBreadcrumbSta
 
   public render() {
     const { selectedKeys } = this.props;
+    console.log('MooseBreadcrumb ', this.props);
     const currentSelect: any = findNameByPath(selectedKeys);
     console.log('MooseBreadcrumb ', this.props, currentSelect, selectedKeys);
 
@@ -37,6 +34,8 @@ class MooseBreadcrumb extends Component<MooseBreadcrumbProps, MooseBreadcrumbSta
   }
 }
 
+const mapStateToProps = (state: ConnectState) => getGlobalState(state);
+const mapDispatchToProps = (dispatch: Dispatch) => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps,

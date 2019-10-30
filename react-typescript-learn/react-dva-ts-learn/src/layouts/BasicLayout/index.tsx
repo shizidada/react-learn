@@ -1,49 +1,52 @@
 import React, { Component } from 'react';
 import { Location } from 'history';
+import { connect } from 'dva';
+import { Dispatch } from 'redux';
 import { Layout } from 'antd';
-
 import SliderMenu from '../../containers/SliderMenu';
 import MooseGlobalHeader from '../../containers/MooseGlobalHeader';
 import MooseTabsView from '../../containers/MooseTabsView';
 import BasicRoute from '../../routers/BasicRoute';
 
+import { ConnectState } from '../../typings';
+import { NAMESPACE } from '../../models/global/constants';
+import { getGlobalState } from '../../models/global';
+
 import './index.less';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
-interface BasicLayoutProps {
+interface BasicLayoutProps extends ConnectState {
   location: Location<any>;
+  updateGlobalStore: (collapsed: object) => void;
 }
-interface BasicLayoutState {
-  collapsed: boolean;
-}
+interface BasicLayoutState {}
 
 class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
-  public constructor(props: BasicLayoutProps) {
-    super(props);
-    this.state = {
-      collapsed: false,
+  private getLayoutStyle = () => {
+    const { collapsed } = this.props;
+    return {
+      paddingLeft: collapsed ? '80px' : '256px',
     };
-  }
-
-  private sliderMenuToggle = () => {
-    const { collapsed } = this.state;
-    this.setState({
-      collapsed: !collapsed,
-    });
   };
 
-  private onCollapse = (collapsed: boolean) => {
-    this.setState({ collapsed });
+  private onSliderMenuToggle = () => {
+    const { collapsed } = this.props;
+    this.props.updateGlobalStore({ collapsed: !collapsed });
   };
 
   public render() {
     console.log('BasicLayout :: ', this.props);
     return (
       <Layout>
-        <SliderMenu collapsed={this.state.collapsed} onCollapse={this.onCollapse}></SliderMenu>
-        <Layout style={{ minHeight: '100vh' }}>
-          <MooseGlobalHeader />
+        <SliderMenu />
+        <Layout
+          style={{
+            ...this.getLayoutStyle(),
+            minHeight: '100vh',
+          }}
+        >
+          <MooseGlobalHeader onSliderMenuToggle={this.onSliderMenuToggle} />
           <MooseTabsView />
           <Content>
             <BasicRoute />
@@ -55,4 +58,13 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   }
 }
 
-export default BasicLayout;
+const mapStateToProps = (state: ConnectState) => getGlobalState(state);
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  updateGlobalStore(record: object) {
+    dispatch({ type: `${NAMESPACE}/updateGlobalStore`, payload: record });
+  },
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(BasicLayout);

@@ -2,7 +2,7 @@ import { Model } from 'dva';
 import { NAMESPACE } from './constants';
 import { getExcelInfo } from './service';
 
-// import { GlobalState } from "../../typings";
+// import { ConnectState } from "../../typings";
 export * from './selectors';
 
 export interface FileModelType extends Model {

@@ -16,11 +16,14 @@ export interface GlobalModelState {
   openKeys: string[];
   // global cache route when close brower or tab
   cacheRouters?: object[];
+
+  collapsed: boolean;
 }
 
 const GlobalModel: GlobalModelType = {
   namespace: NAMESPACE,
   state: {
+    collapsed: false,
     selectedKeys: ['/'],
     openKeys: [],
     cacheRouters: [],

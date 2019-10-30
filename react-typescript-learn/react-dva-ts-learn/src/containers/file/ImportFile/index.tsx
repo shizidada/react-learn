@@ -5,11 +5,11 @@ import { UploadChangeParam } from 'antd/lib/upload';
 import { UploadFile } from 'antd/lib/upload/interface';
 import { Button, Upload } from 'antd';
 
-import { GlobalState } from '../../../typings';
+import { ConnectState } from '../../../typings';
 import { NAMESPACE } from '../../../models/file/constants';
 import { getFileState } from '../../../models/file';
 
-const mapStateToProps = (state: GlobalState) => getFileState(state);
+const mapStateToProps = (state: ConnectState) => getFileState(state);
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {

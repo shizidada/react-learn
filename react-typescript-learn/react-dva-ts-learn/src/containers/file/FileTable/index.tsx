@@ -3,11 +3,11 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Table, Divider, Tag } from 'antd';
 
-import { GlobalState } from '../../../typings';
+import { ConnectState } from '../../../typings';
 import { NAMESPACE } from '../../../models/file/constants';
 import { getFileState } from '../../../models/file';
 
-const mapStateToProps = (state: GlobalState) => getFileState(state);
+const mapStateToProps = (state: ConnectState) => getFileState(state);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   getExcelInfo(record: object) {

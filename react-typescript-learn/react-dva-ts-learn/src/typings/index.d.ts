@@ -3,11 +3,11 @@ import { HomeModelState } from '../models/home';
 import { LoginModelState } from '../models/login';
 import { FileModelState } from '../models/file';
 
-export interface GlobalState {
+export interface ConnectState {
   [key: string]: GlobalModelState | HomeModelState | LoginModelState | FileModelState;
 }
 
-declare const GlobalState: GlobalState;
+declare const ConnectState: ConnectState;
 
 interface System {
   import<T = any>(module: string): Promise<T>;

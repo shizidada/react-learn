@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import { GlobalState } from '../../typings';
+import { ConnectState } from '../../typings';
 import * as constants from './constants';
 
-const getModelState = (namespace: string) => (state: GlobalState) => state[namespace];
+const getModelState = (namespace: string) => (state: ConnectState) => state[namespace];
 export const getGlobalState = createSelector(
   getModelState(constants.NAMESPACE),
   state => state,
