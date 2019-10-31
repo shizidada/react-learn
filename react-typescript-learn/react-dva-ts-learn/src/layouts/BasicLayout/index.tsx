@@ -3,7 +3,8 @@ import { Location } from 'history';
 import { Layout } from 'antd';
 
 import SliderMenu from '../../containers/SliderMenu';
-import MooseHeader from '../../containers/MooseHeader';
+import MooseGlobalHeader from '../../containers/MooseGlobalHeader';
+import MooseTabsView from '../../containers/MooseTabsView';
 import BasicRoute from '../../routers/BasicRoute';
 
 import './index.less';
@@ -39,21 +40,13 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   public render() {
     console.log('BasicLayout :: ', this.props);
     return (
-      <Layout className="basic-layout-container" style={{ minHeight: '100vh' }}>
+      <Layout>
         <SliderMenu collapsed={this.state.collapsed} onCollapse={this.onCollapse}></SliderMenu>
-
-        {/*  style={{ marginLeft: this.state.collapsed ? 80 : 200 }} */}
-        <Layout>
-          <MooseHeader collapsed={this.state.collapsed} sliderMenuToggle={this.sliderMenuToggle} />
-
-          <Header className="basic-layout-header basic-layout-header-tabs">
-            will fill click menu generator tab
-          </Header>
-
-          <Content className="basic-layout-content">
-            <div className="basic-layout-content-wrapper">
-              <BasicRoute />
-            </div>
+        <Layout style={{ minHeight: '100vh' }}>
+          <MooseGlobalHeader />
+          <MooseTabsView />
+          <Content>
+            <BasicRoute />
           </Content>
           <Footer style={{ textAlign: 'center' }}>©2019 Created by 江景</Footer>
         </Layout>

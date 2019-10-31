@@ -9,6 +9,8 @@ import loginModel from './models/login';
 import homeModel from './models/home';
 import fileModel from './models/file';
 
+import './global.less';
+
 const app = dva({
   history: createHistory(),
   onError: (err, dispatch) => {

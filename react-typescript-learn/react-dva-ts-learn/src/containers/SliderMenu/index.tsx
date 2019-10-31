@@ -103,7 +103,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
         collapsed={this.props.collapsed}
         onCollapse={this.siderCollapseHandle}
       >
-        <div className="slider-logo" />
+        <div className="slider-menu-logo" />
         {/* light dark */}
         <Menu
           theme="dark"

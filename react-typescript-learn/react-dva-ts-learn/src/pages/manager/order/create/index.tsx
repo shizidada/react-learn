@@ -10,8 +10,8 @@ const { Meta } = Card;
 export default class CreateOrderPage extends Component {
   public render() {
     return (
-      <div className="create-order-container">
-        <div className="create-order-wrapper">
+      <div>
+        <div>
           <Row gutter={16}>
             <Col span={18}>
               <CreateOrderForm />
