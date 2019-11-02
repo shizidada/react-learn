@@ -1,4 +1,4 @@
-import { menus } from './menu-config';
+import { menus } from './menu.config';
 
 export const findNameByPath = (selectedKeys: string[]) => {
   let currentSelect = {};

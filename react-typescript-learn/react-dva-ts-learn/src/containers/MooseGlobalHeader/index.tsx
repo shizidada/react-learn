@@ -4,17 +4,22 @@ import { connect } from 'dva';
 import { ClickParam } from 'antd/lib/menu';
 import { Icon, Menu, Dropdown, Avatar } from 'antd';
 
-// import MooseBreadcrumb from '../MooseBreadcrumb';
+import MooseBreadcrumb from '../MooseBreadcrumb';
 import { ConnectState } from '../../typings';
-import { getGlobalState } from '../../models/global';
 
 import './index.less';
 
 interface MooseGlobalHeaderProps extends ConnectState {
   onSliderMenuToggle: () => void;
+  updateGlobalStore: () => void;
 }
 
 class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
+  componentDidMount() {
+    console.log('MooseGlobalHeader ', this.props);
+    this.props.updateGlobalStore();
+  }
+
   private onMenuClick = (param: ClickParam) => {
     console.log(param);
   };
@@ -44,13 +49,13 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
     );
     return (
       <div className="moose-global-header-container">
-        <span className="moose-global-header-trigger">
+        <span className="moose-global-header-trigger"
+          onClick={() => this.onHeaderTrigger()}>
           <Icon
             type={collapsed ? 'menu-unfold' : 'menu-fold'}
-            onClick={() => this.onHeaderTrigger()}
           />
         </span>
-        {/* <MooseBreadcrumb /> */}
+        <MooseBreadcrumb />
 
         <div className="moose-global-header-right">
           <Dropdown overlay={menu} trigger={['click']}>
@@ -65,9 +70,15 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
   }
 }
 
-const mapStateToProps = (state: ConnectState) => getGlobalState(state);
-const mapDispatchToProps = (dispatch: Dispatch) => ({});
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  (state: ConnectState) => {
+    return {
+      ...state.global,
+    };
+  },
+  (dispatch: Dispatch) => ({
+    updateGlobalStore(record: object = {}) {
+      dispatch({ type: 'global/updateGlobalStore', payload: record });
+    },
+  }),
 )(MooseGlobalHeader);

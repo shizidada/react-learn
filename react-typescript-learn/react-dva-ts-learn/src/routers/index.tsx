@@ -11,7 +11,13 @@ import UserLayout from '../layouts/UserLayout';
 
 import Error from '../pages/error';
 
+import routers from './router.config';
+import { findAllInstallRouter } from './router.util';
+
 const { ConnectedRouter } = routerRedux;
+
+const router = findAllInstallRouter(routers);
+console.log('router.config ', router)
 
 interface RouterConfigProps {
   history: H.History;

@@ -9,8 +9,7 @@ import MooseTabsView from '../../containers/MooseTabsView';
 import BasicRoute from '../../routers/BasicRoute';
 
 import { ConnectState } from '../../typings';
-import { NAMESPACE } from '../../models/global/constants';
-import { getGlobalState } from '../../models/global';
+import { NAMESPACE } from '../../models/global';
 
 import './index.less';
 
@@ -20,7 +19,7 @@ interface BasicLayoutProps extends ConnectState {
   location: Location<any>;
   updateGlobalStore: (collapsed: object) => void;
 }
-interface BasicLayoutState {}
+interface BasicLayoutState { }
 
 class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   private getLayoutStyle = () => {
@@ -29,6 +28,12 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
       paddingLeft: collapsed ? '80px' : '256px',
     };
   };
+
+  private getContentStyle = () => {
+    return {
+      margin: '24px 24px 0',
+    }
+  }
 
   private onSliderMenuToggle = () => {
     const { collapsed } = this.props;
@@ -48,7 +53,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
         >
           <MooseGlobalHeader onSliderMenuToggle={this.onSliderMenuToggle} />
           <MooseTabsView />
-          <Content>
+          <Content style={this.getContentStyle()}>
             <BasicRoute />
           </Content>
           <Footer style={{ textAlign: 'center' }}>©2019 Created by 江景</Footer>
@@ -58,13 +63,14 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   }
 }
 
-const mapStateToProps = (state: ConnectState) => getGlobalState(state);
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateGlobalStore(record: object) {
-    dispatch({ type: `${NAMESPACE}/updateGlobalStore`, payload: record });
-  },
-});
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  // state: ConnectState
+  ({ global }: ConnectState) => ({
+    ...global,
+  }),
+  (dispatch: Dispatch) => ({
+    updateGlobalStore(record: object) {
+      dispatch({ type: `${NAMESPACE}/updateGlobalStore`, payload: record });
+    },
+  }),
 )(BasicLayout);

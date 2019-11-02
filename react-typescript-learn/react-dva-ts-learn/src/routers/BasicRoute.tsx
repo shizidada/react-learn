@@ -27,7 +27,7 @@ const BasicRoute = () => (
           key={id}
           exact
           path={path}
-          render={routeProps => createElement<any>(Component, { ...routeProps, ...reset })}
+          render={routeProps => createElement<object>(Component, { ...routeProps, ...reset })}
         />
       );
     })}

@@ -37,6 +37,6 @@ export const userRoutes = [
   {
     id: 7001,
     path: '/login',
-    component: import('../pages/login'),
+    component: import('../pages/user/login'),
   },
 ];

@@ -3,39 +3,40 @@
 @pro-header-hover-bg: rgba(0, 0, 0, 0.025);
 
 .moose-global-header-container {
-  height: 64px;
-  padding: 0;
+  height    : 64px;
+  padding   : 0;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-  position: relative;
+  position  : relative;
 
   .moose-global-header-trigger {
-    height: 64px;
+    height     : 64px;
     line-height: 64px;
-    padding: 19px 24px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s, padding 0s;
+    padding    : 0px 24px;
+    font-size  : 20px;
+    cursor     : pointer;
+    transition : all 0.3s, padding 0s;
+    float      : left;
   }
 
   .moose-global-header-right {
-    float: right;
-    line-height: 64px;
+    float       : right;
+    line-height : 64px;
     margin-right: 24px;
-    margin-left: auto;
-    overflow: hidden;
+    margin-left : auto;
+    overflow    : hidden;
 
     .action {
-      display: inline-block;
-      height: 100%;
-      padding: 0 12px;
-      cursor: pointer;
+      display   : inline-block;
+      height    : 100%;
+      padding   : 0 12px;
+      cursor    : pointer;
       transition: all 0.3s;
 
       .avatar {
-        margin: 20px 8px 20px 0;
-        color: @primary-color;
-        // background: rgba(255, 255, 255, 0.85);
+        margin        : 20px 8px 20px 0;
+        color         : @primary-color;
+        // background : rgba(255, 255, 255, 0.85);
         vertical-align: top;
       }
     }
@@ -46,6 +47,7 @@
   :global(.anticon) {
     margin-right: 8px;
   }
+
   :global(.ant-dropdown-menu-item) {
     width: 160px;
   }

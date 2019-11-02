@@ -9,7 +9,7 @@ interface HOCProps {
   history: History;
 }
 
-export const config = (options: HOCConfig) => <P extends HOCProps>(
+export const HOCConfig = (options: HOCConfig) => <P extends HOCProps>(
   Component: React.ComponentType<P>,
 ) => {
   return class extends React.Component<P> {
@@ -22,7 +22,7 @@ export const config = (options: HOCConfig) => <P extends HOCProps>(
         if (token === null) {
           // TODO:
           console.log('go to login');
-          // this.props.history.replace('/login');
+          this.props.history.replace('/login');
         }
       }
     }

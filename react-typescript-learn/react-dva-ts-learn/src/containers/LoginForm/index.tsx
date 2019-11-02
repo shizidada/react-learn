@@ -5,24 +5,9 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 import { ConnectState } from '../../typings';
-import { NAMESPACE } from '../../models/login/constants';
-import { LoginModelState, getLoginState } from '../../models/login';
+import { NAMESPACE, LoginModelState } from '../../models/login';
 
 import './index.less';
-
-const mapStateToProps = (state: ConnectState) => getLoginState(state);
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateLoginStore(record: object) {
-    dispatch({ type: `${NAMESPACE}/updateLoginStore`, payload: record });
-  },
-  login(record: object) {
-    dispatch({ type: `${NAMESPACE}/login`, payload: record });
-  },
-  redirect() {
-    dispatch({ type: `${NAMESPACE}/redirect` });
-  },
-});
 
 interface LoginFormProps extends LoginModelState {
   form: WrappedFormUtils;
@@ -30,7 +15,7 @@ interface LoginFormProps extends LoginModelState {
   login: (type: object) => void;
   redirect: () => void;
 }
-interface LoginFormState {}
+interface LoginFormState { }
 
 class LoginForm extends Component<LoginFormProps, LoginFormState> {
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,7 +42,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
     this.props.form.resetFields();
   };
 
-  /**eslint-disable @typescript-eslint/no-unused-vars  */
+  /* eslint-disable @typescript-eslint/no-unused-vars, eslint-comments/disable-enable-pair  */
   // e: React.ChangeEvent<HTMLInputElement>
   private inputChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.props.updateLoginStore({ errorMessage: '' });
@@ -118,6 +103,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                 valuePropName: 'checked',
                 initialValue: true,
               })(<Checkbox>记住我</Checkbox>)}
+              {/* eslint-disable no-script-url */}
               <a className="login-form-forgot" href="javascript:void(0)">
                 忘记密码
               </a>
@@ -147,6 +133,20 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  (state: ConnectState) => {
+    return {
+      ...state.login,
+    }
+  },
+  (dispatch: Dispatch) => ({
+    updateLoginStore(record: object) {
+      dispatch({ type: `${NAMESPACE}/updateLoginStore`, payload: record });
+    },
+    login(record: object) {
+      dispatch({ type: `${NAMESPACE}/login`, payload: record });
+    },
+    redirect() {
+      dispatch({ type: `${NAMESPACE}/redirect` });
+    },
+  }),
 )(Form.create({ name: 'login_form' })(LoginForm));

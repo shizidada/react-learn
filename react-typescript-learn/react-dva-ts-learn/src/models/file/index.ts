@@ -1,15 +1,14 @@
 import { Model } from 'dva';
-import { NAMESPACE } from './constants';
 import { getExcelInfo } from './service';
 
 // import { ConnectState } from "../../typings";
-export * from './selectors';
+export const NAMESPACE = 'file';
 
 export interface FileModelType extends Model {
   state: FileModelState;
 }
 
-export interface FileModelState {}
+export interface FileModelState { }
 
 const FileModel: FileModelType = {
   namespace: NAMESPACE,
@@ -54,7 +53,7 @@ const FileModel: FileModelType = {
 
   subscriptions: {
     setup({ history }): void {
-      history.listen(({ pathname, search }): void => {});
+      history.listen(({ pathname, search }): void => { });
     },
   },
 };

@@ -1,9 +1,7 @@
 import { Model } from 'dva';
 import { routerRedux } from 'dva/router';
 
-import { NAMESPACE } from './constants';
-
-export * from './selectors';
+export const NAMESPACE = 'global';
 
 export interface GlobalModelType extends Model {
   state: GlobalModelState;
@@ -30,7 +28,7 @@ const GlobalModel: GlobalModelType = {
   },
   reducers: {
     updateGlobalStore(state, { payload }) {
-      console.log('updateGlobalStore :: ', payload);
+      console.log('MooseGlobalHeader :: ', payload);
       return { ...state, ...payload };
     },
   },

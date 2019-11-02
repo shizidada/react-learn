@@ -1,11 +1,11 @@
 import { Model } from 'dva';
 import { routerRedux } from 'dva/router';
 
-import { NAMESPACE } from './constants';
 import { login } from './service';
 
 // import { ConnectState } from "../../typings";
-export * from './selectors';
+
+export const NAMESPACE = 'login';
 
 const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
 
@@ -73,7 +73,7 @@ const LoginModel: LoginModelType = {
 
   subscriptions: {
     setup({ history }): void {
-      history.listen(({ pathname, search }): void => {});
+      history.listen(({ pathname, search }): void => { });
     },
   },
 };

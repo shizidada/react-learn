@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { Link } from 'dva/router';
 import { connect } from 'dva';
-import { SelectParam } from 'antd/lib/menu';
-import { TitleEventEntity } from 'antd/lib/menu/SubMenu';
+// import { SelectParam } from 'antd/lib/menu';
+// import { TitleEventEntity } from 'antd/lib/menu/SubMenu';
 import { Menu, Icon } from 'antd';
 
 import { ConnectState } from '../../typings';
-import { NAMESPACE } from '../../models/global/constants';
-import { GlobalModelState, getGlobalState } from '../../models/global';
-import { menus, MenuConfig } from '../../config/menu-config';
+import { NAMESPACE, GlobalModelState } from '../../models/global';
+import { menus, MenuConfig } from '../../config/menu.config';
 
 const { SubMenu } = Menu;
 
@@ -18,7 +17,7 @@ interface BaseMenuProps extends GlobalModelState {
   onCollapse: (collapsed: boolean) => void;
   sliderMenuSelect: (selectedKeys: object) => void;
 }
-interface BaseMenuState {}
+interface BaseMenuState { }
 
 class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
   public componentDidMount = () => {
@@ -42,46 +41,18 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
     });
   };
 
-  private sliderMenuItemClickHanlde = (params: MenuConfig) => {
-    console.log('sliderMenuItemClickHanlde :: ', params);
-  };
-
-  // https://ant.design/components/menu-cn/
-  private sliderMenuOpenChangeHanlde = (openKeys: string[]) => {
-    this.props.sliderMenuSelect({ openKeys });
-    console.log('sliderMenuOpenChangeHanlde :: ', openKeys);
-  };
-
-  private sliderMenuSelectHanlde = (params: SelectParam) => {
-    const { key, keyPath, selectedKeys, item, domEvent } = params;
-    this.props.sliderMenuSelect({ selectedKeys });
-    console.log('sliderMenuSelectHanlde :: ', key, keyPath, selectedKeys, item, domEvent);
-  };
-
-  // key: string, domEvent: Event
-  private sliderSubMenuTitleClickHanlde = (params: TitleEventEntity) => {
-    console.log('sliderSubMenuTitleClickHanlde :: ', params);
-  };
-
   public render() {
-    const { selectedKeys, openKeys } = this.props;
     return (
       <Menu
         theme="dark"
         mode="inline"
-        style={{ padding: '16px 0', width: '100%', overflowX: 'hidden' }}
-        defaultOpenKeys={openKeys}
-        defaultSelectedKeys={selectedKeys}
-        selectedKeys={this.props.collapsed ? [] : selectedKeys}
-        openKeys={this.props.collapsed ? [] : openKeys}
-        onSelect={this.sliderMenuSelectHanlde}
-        onOpenChange={this.sliderMenuOpenChangeHanlde}
+        style={{ padding: '16px 0', width: '100%' }}
       >
         {menus.map((item: MenuConfig) => {
           // , index: number
           if (!item.childs) {
             return (
-              <Menu.Item key={`${item.path}`} onClick={() => this.sliderMenuItemClickHanlde(item)}>
+              <Menu.Item key={`${item.path}`} onClick={() => { }}>
                 <Icon type={item.type} />
                 <span className="nav-text">{item.name}</span>
                 <Link to={`${item.path}`}></Link>
@@ -91,7 +62,7 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
           return (
             <SubMenu
               key={`${item.activeKey}`}
-              onTitleClick={this.sliderSubMenuTitleClickHanlde}
+              onTitleClick={() => { }}
               title={
                 <span className="nav-text">
                   <Icon type={item.type} />
@@ -103,7 +74,7 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
                 item.childs.map((childItem: MenuConfig) => (
                   <Menu.Item
                     key={`${childItem.path}`}
-                    onClick={() => this.sliderMenuItemClickHanlde(childItem)}
+                    onClick={() => { }}
                   >
                     <Icon type={childItem.type} />
                     <span className="nav-text">{childItem.name}</span>
@@ -117,19 +88,18 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
     );
   }
 }
-
-const mapStateToProps = (state: ConnectState) => getGlobalState(state);
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  sliderMenuSelect(record: object) {
-    dispatch({
-      type: `${NAMESPACE}/updateGlobalStore`,
-      payload: record,
-    });
-  },
-});
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  (state: ConnectState) => {
+    return {
+      ...state.global,
+    }
+  },
+  (dispatch: Dispatch) => ({
+    sliderMenuSelect(record: object) {
+      dispatch({
+        type: `${NAMESPACE}/updateGlobalStore`,
+        payload: record,
+      });
+    },
+  }),
 )(BaseMenu);

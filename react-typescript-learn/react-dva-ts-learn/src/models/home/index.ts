@@ -1,7 +1,6 @@
 import { Model } from 'dva';
-import { NAMESPACE } from './constants';
 
-export * from './selectors';
+export const NAMESPACE = 'home';
 
 const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
 
@@ -40,7 +39,7 @@ const HomeModel: HomeModelType = {
 
   subscriptions: {
     setup({ history }): void {
-      history.listen(({ pathname, search }): void => {});
+      history.listen(({ pathname, search }): void => { });
     },
   },
 };

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Layout, Icon, Row, Col, Avatar } from 'antd';
+// , Icon, Row, Col, Avatar
+import { Layout } from 'antd';
 
 import './index.less';
 
 const { Header } = Layout;
 
-interface MooseTabsViewProps {}
+interface MooseTabsViewProps { }
 
 class MooseTabsView extends React.Component<MooseTabsViewProps, {}> {
   public render() {

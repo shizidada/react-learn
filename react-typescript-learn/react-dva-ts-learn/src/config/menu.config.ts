@@ -10,7 +10,6 @@ export const menus: MenuConfig[] = [
   { type: 'pie-chart', activeKey: 'home', name: 'Home', path: '/' },
   { type: 'table', activeKey: 'order', name: 'Order', path: '/order' },
   { type: 'crown', activeKey: 'product', name: 'Product', path: '/product' },
-  { type: 'skin', activeKey: 'skin', name: 'Skin', path: '/skin' },
   { type: 'file', activeKey: 'file', name: 'File', path: '/file' },
   {
     type: 'user',
@@ -62,4 +61,5 @@ export const menus: MenuConfig[] = [
       },
     ],
   },
+  { type: 'skin', activeKey: 'skin', name: 'Skin', path: '/skin' },
 ];

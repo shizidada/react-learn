@@ -94,4 +94,4 @@
 // // };
 // // export default RouterConfig;
 
-export default class Index {}
+export default class Index { }

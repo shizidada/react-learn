@@ -6,18 +6,7 @@ import { UploadFile } from 'antd/lib/upload/interface';
 import { Button, Upload } from 'antd';
 
 import { ConnectState } from '../../../typings';
-import { NAMESPACE } from '../../../models/file/constants';
-import { getFileState } from '../../../models/file';
-
-const mapStateToProps = (state: ConnectState) => getFileState(state);
-
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return {
-    updateFileStore(record: object) {
-      dispatch({ type: `${NAMESPACE}/updateFileStore`, payload: record });
-    },
-  };
-};
+import { NAMESPACE } from '../../../models/file';
 
 class ImportFile extends Component {
   private onUploadChange = (info: UploadChangeParam<UploadFile>) => {
@@ -39,6 +28,15 @@ class ImportFile extends Component {
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  (state: ConnectState) => {
+    console.log('ConnectState  :: ', state)
+    return state
+  },
+  (dispatch: Dispatch) => {
+    return {
+      updateFileStore(record: object) {
+        dispatch({ type: `${NAMESPACE}/updateFileStore`, payload: record });
+      },
+    };
+  },
 )(ImportFile);

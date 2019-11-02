@@ -5,13 +5,13 @@ import { Breadcrumb } from 'antd';
 
 import { ConnectState } from '../../typings';
 // import { NAMESPACE } from '../../models/global/constants';
-import { GlobalModelState, getGlobalState } from '../../models/global';
-import { findNameByPath } from '../../config/menu-util';
+import { GlobalModelState } from '../../models/global';
+import { findNameByPath } from '../../config/menu.util';
 
 import './index.less';
 
-interface MooseBreadcrumbProps extends GlobalModelState {}
-interface MooseBreadcrumbState {}
+interface MooseBreadcrumbProps extends GlobalModelState { }
+interface MooseBreadcrumbState { }
 
 class MooseBreadcrumb extends Component<MooseBreadcrumbProps, MooseBreadcrumbState> {
   public componentDidMount() {
@@ -34,9 +34,11 @@ class MooseBreadcrumb extends Component<MooseBreadcrumbProps, MooseBreadcrumbSta
   }
 }
 
-const mapStateToProps = (state: ConnectState) => getGlobalState(state);
-const mapDispatchToProps = (dispatch: Dispatch) => ({});
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  (state: ConnectState) => {
+    return {
+      ...state.global,
+    }
+  },
+  (dispatch: Dispatch) => ({}),
 )(MooseBreadcrumb);
