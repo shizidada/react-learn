@@ -4,12 +4,11 @@ import { connect } from 'dva';
 import { Dispatch } from 'redux';
 import { Layout } from 'antd';
 import SliderMenu from '../../containers/SliderMenu';
-import MooseGlobalHeader from '../../containers/MooseGlobalHeader';
-import MooseTabsView from '../../containers/MooseTabsView';
+import GlobalHeader from '../../containers/GlobalHeader';
+import TabsView from '../../containers/TabsView';
 import BasicRoute from '../../routers/BasicRoute';
 
 import { ConnectState } from '../../typings';
-import { NAMESPACE } from '../../models/global';
 
 import './index.less';
 
@@ -17,7 +16,7 @@ const { Content, Footer } = Layout;
 
 interface BasicLayoutProps extends ConnectState {
   location: Location<any>;
-  updateGlobalStore: (collapsed: object) => void;
+  updateMenuStore: (collapsed: object) => void;
 }
 interface BasicLayoutState { }
 
@@ -37,7 +36,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
 
   private onSliderMenuToggle = () => {
     const { collapsed } = this.props;
-    this.props.updateGlobalStore({ collapsed: !collapsed });
+    this.props.updateMenuStore({ collapsed: !collapsed });
   };
 
   public render() {
@@ -51,8 +50,8 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
             minHeight: '100vh',
           }}
         >
-          <MooseGlobalHeader onSliderMenuToggle={this.onSliderMenuToggle} />
-          <MooseTabsView />
+          <GlobalHeader onSliderMenuToggle={this.onSliderMenuToggle} />
+          <TabsView />
           <Content style={this.getContentStyle()}>
             <BasicRoute />
           </Content>
@@ -65,12 +64,12 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
 
 export default connect(
   // state: ConnectState
-  ({ global }: ConnectState) => ({
-    ...global,
+  ({ global, menu }: ConnectState) => ({
+    ...menu,
   }),
   (dispatch: Dispatch) => ({
-    updateGlobalStore(record: object) {
-      dispatch({ type: `${NAMESPACE}/updateGlobalStore`, payload: record });
+    updateMenuStore(record: object) {
+      dispatch({ type: 'menu/updateMenuStore', payload: record });
     },
   }),
 )(BasicLayout);

@@ -7,12 +7,12 @@ import { connect } from 'dva';
 import { Menu, Icon } from 'antd';
 
 import { ConnectState } from '../../typings';
-import { NAMESPACE, GlobalModelState } from '../../models/global';
+import { MenuModelState } from '../../models/menu';
 import { menus, MenuConfig } from '../../config/menu.config';
 
 const { SubMenu } = Menu;
 
-interface BaseMenuProps extends GlobalModelState {
+interface BaseMenuProps extends MenuModelState {
   collapsed: boolean;
   onCollapse: (collapsed: boolean) => void;
   sliderMenuSelect: (selectedKeys: object) => void;
@@ -28,8 +28,8 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
     const { selectedKeys } = this.props;
     selectedKeys.map(selectedKey => {
       menus.map((parentItem, parentIndex) => {
-        if (parentItem.childs) {
-          parentItem.childs.find(childItem => {
+        if (parentItem.children) {
+          parentItem.children.find(childItem => {
             if (`${childItem.path}` === selectedKey) {
               // current path find parent node to open
               // config file must have activeKey #see slider-menu-config.ts
@@ -41,63 +41,64 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
     });
   };
 
-  public render() {
-    return (
-      <Menu
-        theme="dark"
-        mode="inline"
-        style={{ padding: '16px 0', width: '100%' }}
+  private getNavMenuItems = (item: MenuConfig) => {
+    return <Menu.Item key={`${item.path}`} onClick={() => { }}>
+      <Icon type={item.type} />
+      <span className="nav-text">{item.name}</span>
+      <Link to={`${item.path}`}></Link>
+    </Menu.Item>
+  }
+
+  private getSubMenuOrItem = (item: MenuConfig) => {
+    if (item.children) {
+      return <SubMenu
+        key={`${item.activeKey}`}
+        onTitleClick={() => { }}
+        title={
+          <span className="nav-text">
+            <Icon type={item.type} />
+            <span>{item.name}</span>
+          </span>
+        }
       >
-        {menus.map((item: MenuConfig) => {
-          // , index: number
-          if (!item.childs) {
-            return (
-              <Menu.Item key={`${item.path}`} onClick={() => { }}>
-                <Icon type={item.type} />
-                <span className="nav-text">{item.name}</span>
-                <Link to={`${item.path}`}></Link>
-              </Menu.Item>
-            );
-          }
-          return (
-            <SubMenu
-              key={`${item.activeKey}`}
-              onTitleClick={() => { }}
-              title={
-                <span className="nav-text">
-                  <Icon type={item.type} />
-                  <span>{item.name}</span>
-                </span>
-              }
-            >
-              {item.childs &&
-                item.childs.map((childItem: MenuConfig) => (
-                  <Menu.Item
-                    key={`${childItem.path}`}
-                    onClick={() => { }}
-                  >
-                    <Icon type={childItem.type} />
-                    <span className="nav-text">{childItem.name}</span>
-                    <Link to={`${childItem.path}`}></Link>
-                  </Menu.Item>
-                ))}
-            </SubMenu>
-          );
-        })}
-      </Menu>
-    );
+        {item.children &&
+          item.children.map((childItem: MenuConfig) => {
+            return this.getSubMenuOrItem(childItem)
+          })}
+      </SubMenu>
+    }
+    return this.getNavMenuItems(item);
+  }
+
+  private renderBaseMenu = () => {
+    return <Menu
+      theme="dark"
+      mode="inline"
+      style={{ padding: '16px 0', width: '100%' }}
+    >
+      {menus.map((item: MenuConfig) => {
+        if (!item.children) {
+          return this.getNavMenuItems(item);
+        }
+        return this.getSubMenuOrItem(item);
+      })}
+    </Menu>
+  }
+
+  public render() {
+    return this.renderBaseMenu();
   }
 }
 export default connect(
   (state: ConnectState) => {
     return {
-      ...state.global,
+      ...state.menu,
     }
   },
   (dispatch: Dispatch) => ({
     sliderMenuSelect(record: object) {
       dispatch({
-        type: `${NAMESPACE}/updateGlobalStore`,
+        type: 'menu/updateMenuStore',
         payload: record,
       });
     },

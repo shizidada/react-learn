@@ -4,8 +4,8 @@ import { connect } from 'dva';
 import { ClickParam } from 'antd/lib/menu';
 import { Icon, Menu, Dropdown, Avatar } from 'antd';
 
-import MooseBreadcrumb from '../MooseBreadcrumb';
 import { ConnectState } from '../../typings';
+import MooseBreadcrumb from '../Breadcrumb';
 
 import './index.less';
 
@@ -73,12 +73,12 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
 export default connect(
   (state: ConnectState) => {
     return {
-      ...state.global,
+      ...state.menu,
     };
   },
   (dispatch: Dispatch) => ({
     updateGlobalStore(record: object = {}) {
-      dispatch({ type: 'global/updateGlobalStore', payload: record });
+      dispatch({ type: 'menu/updateMenuStore', payload: record });
     },
   }),
 )(MooseGlobalHeader);

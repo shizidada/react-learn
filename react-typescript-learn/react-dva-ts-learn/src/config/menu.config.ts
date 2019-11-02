@@ -3,7 +3,7 @@ export interface MenuConfig {
   activeKey: string;
   name: string;
   path?: string;
-  childs?: MenuConfig[];
+  children?: MenuConfig[];
 }
 
 export const menus: MenuConfig[] = [
@@ -15,7 +15,7 @@ export const menus: MenuConfig[] = [
     type: 'user',
     activeKey: 'user',
     name: 'User',
-    childs: [
+    children: [
       {
         type: 'setting',
         activeKey: 'setting',
@@ -46,12 +46,20 @@ export const menus: MenuConfig[] = [
     type: 'team',
     activeKey: 'team',
     name: 'Team',
-    childs: [
+    children: [
       {
         type: 'deployment-unit',
         activeKey: 'deployment-unit',
         name: 'Team 1',
         path: '/team/team1',
+        children: [
+          {
+            type: 'deployment-unit',
+            activeKey: 'deployment-unit',
+            name: 'Sub Team 1-1',
+            path: '/team/team1/subteam',
+          },
+        ],
       },
       {
         type: 'pull-request',

@@ -5,12 +5,12 @@ import { Breadcrumb } from 'antd';
 
 import { ConnectState } from '../../typings';
 // import { NAMESPACE } from '../../models/global/constants';
-import { GlobalModelState } from '../../models/global';
+import { MenuModelState } from '../../models/menu';
 import { findNameByPath } from '../../config/menu.util';
 
 import './index.less';
 
-interface MooseBreadcrumbProps extends GlobalModelState { }
+interface MooseBreadcrumbProps extends MenuModelState { }
 interface MooseBreadcrumbState { }
 
 class MooseBreadcrumb extends Component<MooseBreadcrumbProps, MooseBreadcrumbState> {
@@ -35,9 +35,9 @@ class MooseBreadcrumb extends Component<MooseBreadcrumbProps, MooseBreadcrumbSta
 }
 
 export default connect(
-  (state: ConnectState) => {
+  ({ menu }: ConnectState) => {
     return {
-      ...state.global,
+      ...menu,
     }
   },
   (dispatch: Dispatch) => ({}),

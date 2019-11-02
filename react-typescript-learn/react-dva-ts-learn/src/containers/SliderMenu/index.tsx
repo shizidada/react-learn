@@ -4,14 +4,14 @@ import { connect } from 'dva';
 import { Layout } from 'antd';
 
 import { ConnectState } from '../../typings';
-import { NAMESPACE, GlobalModelState } from '../../models/global';
+import { MenuModelState } from '../../models/menu';
 import BaseMenu from './BaseMenu';
 
 import './index.less';
 
 const { Sider } = Layout;
 
-interface SliderMenuProps extends GlobalModelState {
+interface SliderMenuProps extends MenuModelState {
   onCollapse: (collapsed: boolean) => void;
   sliderMenuSelect: (selectedKeys: object) => void;
 }
@@ -45,7 +45,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
 export default connect(
   (state: ConnectState) => {
     return {
-      ...state.global,
+      ...state.menu,
     }
   },
   (dispatch: Dispatch) => ({}),

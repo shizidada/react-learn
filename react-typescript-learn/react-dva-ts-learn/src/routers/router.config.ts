@@ -8,8 +8,7 @@ export default [
         path: '/user',
         component: '../layouts/UserLayout',
         routes: [
-          { path: '/user/login', name: 'login', component: './User/Login' },
-          { path: '/user/register', name: 'register', component: './User/Register' },
+          { path: '/user/login', name: 'login', component: '../pages/user/login' },
         ],
       },
       // app
@@ -17,75 +16,22 @@ export default [
         path: '/',
         component: '../layouts/BasicLayout',
         routes: [
-          // dashboard
+          // home
           {
-            path: '/dashboard',
-            name: 'dashboard',
+            path: '/home',
+            name: 'Home',
             icon: 'dashboard',
-            routes: [
-              {
-                path: '/dashboard/analysis',
-                name: 'analysis',
-                component: './Dashboard/Analysis',
-              },
-              {
-                path: '/dashboard/monitor',
-                name: 'monitor',
-                component: './Dashboard/Monitor',
-              },
-              {
-                path: '/dashboard/workplace',
-                name: 'workplace',
-                component: './Dashboard/Workplace',
-              },
-            ],
           },
-          // list
+          // order
           {
-            path: '/list',
+            path: '/order',
             icon: 'table',
-            name: 'list',
+            name: 'Order',
             routes: [
               {
-                path: '/list/table-list',
+                path: '/order/create',
                 name: 'searchtable',
-                component: './list/Tablelist',
-              },
-              {
-                path: '/list/basic-list',
-                name: 'basiclist',
-                component: './list/Basiclist',
-              },
-              {
-                path: '/list/card-list',
-                name: 'cardlist',
-                component: './list/Cardlist',
-              },
-              {
-                path: '/list/search',
-                name: 'search-list',
-                component: './list/search',
-                routes: [
-                  {
-                    path: '/list/search/articles',
-                    name: 'articles',
-                    component: './list/Articles',
-                  },
-                  {
-                    path: '/list/search/projects',
-                    name: 'projects',
-                    component: './list/Projects',
-                  },
-                  {
-                    path: '/list/search/applications',
-                    name: 'applications',
-                    component: './list/Applications',
-                  },
-                  {
-                    path: '/list/search',
-                    redirect: '/list/search/articles',
-                  },
-                ],
+                component: '../pages/manager/order/create',
               },
             ],
           },
