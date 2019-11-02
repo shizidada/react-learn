@@ -6,7 +6,6 @@ import { UploadFile } from 'antd/lib/upload/interface';
 import { Button, Upload } from 'antd';
 
 import { ConnectState } from '../../../typings';
-import { NAMESPACE } from '../../../models/file';
 
 class ImportFile extends Component {
   private onUploadChange = (info: UploadChangeParam<UploadFile>) => {
@@ -17,7 +16,7 @@ class ImportFile extends Component {
     return (
       <Upload
         accept=".xlsx"
-        action="http://local-user.wanshifu.com:8000/api/v1/excel/import"
+        action="http://localhost:8000/api/v1/excel/import"
         showUploadList={false}
         onChange={this.onUploadChange}
       >
@@ -29,13 +28,14 @@ class ImportFile extends Component {
 
 export default connect(
   (state: ConnectState) => {
-    console.log('ConnectState  :: ', state)
-    return state
+    return {
+      ...state.file,
+    }
   },
   (dispatch: Dispatch) => {
     return {
       updateFileStore(record: object) {
-        dispatch({ type: `${NAMESPACE}/updateFileStore`, payload: record });
+        dispatch({ type: 'file/updateFileStore', payload: record });
       },
     };
   },

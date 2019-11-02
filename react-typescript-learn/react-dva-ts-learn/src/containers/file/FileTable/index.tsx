@@ -4,7 +4,6 @@ import { connect } from 'dva';
 import { Table, Divider, Tag } from 'antd';
 
 import { ConnectState } from '../../../typings';
-import { NAMESPACE } from '../../../models/file';
 
 interface FileTableProps {
   recordList: [];
@@ -98,10 +97,14 @@ class FileTable extends Component<FileTableProps, {}> {
 }
 
 export default connect(
-  (state: ConnectState) => state,
+  (state: ConnectState) => {
+    return {
+      ...state.file,
+    }
+  },
   (dispatch: Dispatch) => ({
     getExcelInfo(record: object) {
-      dispatch({ type: `${NAMESPACE}/getExcelInfo`, payload: record });
+      dispatch({ type: 'file/getExcelInfo', payload: record });
     },
   }),
 )(FileTable);
