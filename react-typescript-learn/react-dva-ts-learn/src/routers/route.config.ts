@@ -1,4 +1,17 @@
-export const basicRoutes = [
+interface BasicRouteConfig {
+  id: number;
+  path: string;
+  component: Promise<any>;
+  // router authority from permission manager/user
+  type?: string;
+  // menu
+  name?: string;
+  icon?: string;
+  activeKey?: string;
+  children?: BasicRouteConfig[];
+}
+
+export const basicRoutes: BasicRouteConfig[] = [
   {
     id: 1001,
     path: '/',

@@ -1,5 +1,5 @@
 export interface MenuConfig {
-  type: string;
+  icon: string;
   activeKey: string;
   name: string;
   path?: string;
@@ -7,35 +7,35 @@ export interface MenuConfig {
 }
 
 export const menus: MenuConfig[] = [
-  { type: 'pie-chart', activeKey: 'home', name: 'Home', path: '/' },
-  { type: 'table', activeKey: 'order', name: 'Order', path: '/order' },
-  { type: 'crown', activeKey: 'product', name: 'Product', path: '/product' },
-  { type: 'file', activeKey: 'file', name: 'File', path: '/file' },
+  { icon: 'pie-chart', activeKey: 'home', name: 'Home', path: '/' },
+  { icon: 'table', activeKey: 'order', name: 'Order', path: '/order' },
+  { icon: 'crown', activeKey: 'product', name: 'Product', path: '/product' },
+  { icon: 'file', activeKey: 'file', name: 'File', path: '/file' },
   {
-    type: 'user',
+    icon: 'user',
     activeKey: 'user',
     name: 'User',
     children: [
       {
-        type: 'setting',
+        icon: 'setting',
         activeKey: 'setting',
         name: 'Setting',
         path: '/user/setting',
       },
       {
-        type: 'compass',
+        icon: 'compass',
         activeKey: 'compass',
         name: 'Tom',
         path: '/user/tom',
       },
       {
-        type: 'picture',
+        icon: 'picture',
         activeKey: 'picture',
         name: 'Bill',
         path: '/user/bill',
       },
       {
-        type: 'tablet',
+        icon: 'tablet',
         activeKey: 'tablet',
         name: 'Alex',
         path: '/user/alex',
@@ -43,18 +43,18 @@ export const menus: MenuConfig[] = [
     ],
   },
   {
-    type: 'team',
+    icon: 'team',
     activeKey: 'team',
     name: 'Team',
     children: [
       {
-        type: 'deployment-unit',
+        icon: 'deployment-unit',
         activeKey: 'deployment-unit',
         name: 'Team 1',
         path: '/team/team1',
         children: [
           {
-            type: 'deployment-unit',
+            icon: 'deployment-unit',
             activeKey: 'deployment-unit',
             name: 'Sub Team 1-1',
             path: '/team/team1/subteam',
@@ -62,12 +62,12 @@ export const menus: MenuConfig[] = [
         ],
       },
       {
-        type: 'pull-request',
+        icon: 'pull-request',
         activeKey: 'pull-request',
         name: 'Team 2',
         path: '/team/team2',
       },
     ],
   },
-  { type: 'skin', activeKey: 'skin', name: 'Skin', path: '/skin' },
+  { icon: 'skin', activeKey: 'skin', name: 'Skin', path: '/skin' },
 ];

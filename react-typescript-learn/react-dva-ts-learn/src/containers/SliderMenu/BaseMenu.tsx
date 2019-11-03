@@ -43,7 +43,7 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
 
   private getNavMenuItems = (item: MenuConfig) => {
     return <Menu.Item key={`${item.path}`} onClick={() => { }}>
-      <Icon type={item.type} />
+      <Icon type={item.icon} />
       <span className="nav-text">{item.name}</span>
       <Link to={`${item.path}`}></Link>
     </Menu.Item>
@@ -56,7 +56,7 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
         onTitleClick={() => { }}
         title={
           <span className="nav-text">
-            <Icon type={item.type} />
+            <Icon type={item.icon} />
             <span>{item.name}</span>
           </span>
         }
