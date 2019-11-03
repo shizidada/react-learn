@@ -36,7 +36,7 @@ export const basicRoutes = [
 export const userRoutes = [
   {
     id: 7001,
-    path: '/login',
+    path: '/user/login',
     component: import('../pages/user/login'),
   },
 ];

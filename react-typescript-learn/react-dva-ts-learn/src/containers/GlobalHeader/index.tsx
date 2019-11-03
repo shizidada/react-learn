@@ -2,7 +2,7 @@ import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { ClickParam } from 'antd/lib/menu';
-import { Icon, Menu, Dropdown, Avatar } from 'antd';
+import { Icon, Menu, Dropdown, Avatar, Row, Col } from 'antd';
 
 import { ConnectState } from '../../typings';
 import MooseBreadcrumb from '../Breadcrumb';
@@ -48,24 +48,28 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
       </Menu>
     );
     return (
-      <div className="moose-global-header-container">
-        <span className="moose-global-header-trigger"
-          onClick={() => this.onHeaderTrigger()}>
-          <Icon
-            type={collapsed ? 'menu-unfold' : 'menu-fold'}
-          />
-        </span>
-        <MooseBreadcrumb />
+      <Row className="moose-global-header-container">
+        <Col span={2}>
+          <span className="moose-global-header-trigger"
+            onClick={() => this.onHeaderTrigger()}>
+            <Icon
+              type={collapsed ? 'menu-unfold' : 'menu-fold'}
+            />
+          </span>
+        </Col>
+        <Col span={6}>
+          <MooseBreadcrumb />
+        </Col>
 
-        <div className="moose-global-header-right">
+        <Col span={16} className="moose-global-header-right">
           <Dropdown overlay={menu} trigger={['click']}>
             <span className="action">
               <Avatar className="avatar" size="small" icon="user" />
               <span>username</span>
             </span>
           </Dropdown>
-        </div>
-      </div>
+        </Col>
+      </Row>
     );
   }
 }

@@ -4,20 +4,14 @@ import { Switch, Route, routerRedux } from 'dva/router';
 import H from 'history';
 import Loadable from 'react-loadable';
 
-import { userRoutes } from './config';
+import { userRoutes } from './route.config';
 
 import BasicLayout from '../layouts/BasicLayout';
 import UserLayout from '../layouts/UserLayout';
 
 import Error from '../pages/error';
 
-import routers from './router.config';
-import { findAllInstallRouter } from './router.util';
-
 const { ConnectedRouter } = routerRedux;
-
-const router = findAllInstallRouter(routers);
-console.log('router.config ', router)
 
 interface RouterConfigProps {
   history: H.History;

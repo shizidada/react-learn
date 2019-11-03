@@ -36,9 +36,10 @@ const FileModel: FileModelType = {
         const { status } = res;
         if (status === 200) {
           const { data } = res.data;
+          const { list } = data;
           yield put({
             type: 'updateFileStore',
-            payload: { message: '获取数据成功', recordList: data, isLoading: false },
+            payload: { message: '获取数据成功', recordList: list, isLoading: false },
           });
         }
       } catch (error) {

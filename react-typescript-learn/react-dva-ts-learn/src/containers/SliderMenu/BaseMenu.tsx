@@ -71,9 +71,12 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
   }
 
   private renderBaseMenu = () => {
+    // const { selectedKeys, openKeys } = this.props;
     return <Menu
       theme="dark"
       mode="inline"
+      // selectedKeys={selectedKeys}
+      // openKeys={openKeys}
       style={{ padding: '16px 0', width: '100%' }}
     >
       {menus.map((item: MenuConfig) => {

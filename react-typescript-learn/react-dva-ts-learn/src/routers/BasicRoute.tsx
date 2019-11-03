@@ -2,7 +2,7 @@ import React, { createElement } from 'react';
 import { Redirect, Route, Switch } from 'dva/router';
 import Loadable from 'react-loadable';
 
-import { basicRoutes } from './config';
+import { basicRoutes } from './route.config';
 
 const basicAllRoutes = basicRoutes.map(item => {
   const { path, component, ...reset } = item;

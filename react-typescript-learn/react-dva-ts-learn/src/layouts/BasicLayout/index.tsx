@@ -30,7 +30,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
 
   private getContentStyle = () => {
     return {
-      margin: '24px 24px 0',
+      margin: '16px 16px 0',
     }
   }
 
@@ -42,7 +42,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   public render() {
     console.log('BasicLayout :: ', this.props);
     return (
-      <Layout>
+      <Layout className="basic-layout-container">
         <SliderMenu />
         <Layout
           style={{
@@ -52,7 +52,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
         >
           <GlobalHeader onSliderMenuToggle={this.onSliderMenuToggle} />
           <TabsView />
-          <Content style={this.getContentStyle()}>
+          <Content className="basic-layout-content" style={this.getContentStyle()}>
             <BasicRoute />
           </Content>
           <Footer style={{ textAlign: 'center' }}>©2019 Created by 江景</Footer>
