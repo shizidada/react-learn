@@ -17,14 +17,14 @@ interface BaseMenuProps extends MenuModelState {
   onCollapse: (collapsed: boolean) => void;
   changeSliderMenuSelect: (selectedKeys: object) => void;
 }
-interface BaseMenuState {}
+interface BaseMenuState { }
 
 class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
-  public componentDidMount = () => {};
+  public componentDidMount = () => { };
 
   private getNavMenuItems = (item: MenuConfig) => {
     return (
-      <Menu.Item key={`${item.path}`} onClick={() => {}}>
+      <Menu.Item key={`${item.path}`} onClick={() => { }}>
         <Icon type={item.icon} />
         <span className="nav-text">{item.name}</span>
         <Link to={`${item.path}`}></Link>
@@ -36,8 +36,8 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
     if (item.children) {
       return (
         <SubMenu
-          key={`${item.activeKey}`}
-          onTitleClick={() => {}}
+          key={`${item.path}`}
+          onTitleClick={() => { }}
           title={
             <span className="nav-text">
               <Icon type={item.icon} />
@@ -56,10 +56,8 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
   };
 
   private onSliderOpenChange = (openKeys: string[]) => {
-    console.log('onSliderOpenChange ', openKeys);
     const latestOpenKey =
       (openKeys.find(key => this.props.openKeys.indexOf(key) === -1) as string) || '';
-      console.log('latestOpenKey', latestOpenKey)
     if (this.props.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
       this.props.changeSliderMenuSelect({ openKeys: openKeys as object });
     } else {

@@ -1,73 +1,53 @@
 export interface MenuConfig {
   icon: string;
-  activeKey: string;
   name: string;
-  path?: string;
+  path: string;
   children?: MenuConfig[];
 }
 
 export const menus: MenuConfig[] = [
-  { icon: 'pie-chart', activeKey: 'home', name: 'Home', path: '/' },
-  { icon: 'table', activeKey: 'order', name: 'Order', path: '/order' },
-  { icon: 'crown', activeKey: 'product', name: 'Product', path: '/product' },
-  { icon: 'file', activeKey: 'file', name: 'File', path: '/file' },
+  { icon: 'pie-chart', name: 'Home', path: '/' },
+  { icon: 'file', name: 'File', path: '/file' },
   {
     icon: 'user',
-    activeKey: 'user',
     name: 'User',
+    path: '/user',
     children: [
-      {
-        icon: 'setting',
-        activeKey: 'setting',
-        name: 'Setting',
-        path: '/user/setting',
-      },
-      {
-        icon: 'compass',
-        activeKey: 'compass',
-        name: 'Tom',
-        path: '/user/tom',
-      },
-      {
-        icon: 'picture',
-        activeKey: 'picture',
-        name: 'Bill',
-        path: '/user/bill',
-      },
-      {
-        icon: 'tablet',
-        activeKey: 'tablet',
-        name: 'Alex',
-        path: '/user/alex',
-      },
+      { icon: 'compass', name: 'Tom', path: '/user/tom' },
+      { icon: 'picture', name: 'Bill', path: '/user/bill' },
+      { icon: 'tablet', name: 'Alex', path: '/user/alex' },
+    ],
+  },
+  {
+    icon: 'crown',
+    name: 'Product',
+    path: '/product',
+    children: [
+      { icon: 'table', name: 'Order', path: '/product/order' },
+    ],
+  },
+  {
+    icon: 'setting',
+    name: 'Setting',
+    path: '/setting',
+    children: [
+      { icon: 'skin', name: 'Skin', path: '/setting/skin' },
     ],
   },
   {
     icon: 'team',
-    activeKey: 'team',
     name: 'Team',
+    path: '/team',
     children: [
       {
         icon: 'deployment-unit',
-        activeKey: 'deployment',
         name: 'Team 1',
         path: '/team/team1',
         children: [
-          {
-            icon: 'hourglass',
-            activeKey: 'hourglass',
-            name: 'Sub Team 1-1',
-            path: '/team/team1/subteam',
-          },
+          { icon: 'hourglass', name: 'Sub Team 1-1', path: '/team/team1/subteam' },
         ],
       },
-      {
-        icon: 'pull-request',
-        activeKey: 'pull-request',
-        name: 'Team 2',
-        path: '/team/team2',
-      },
+      { icon: 'pull-request', name: 'Team 2', path: '/team/team2' },
     ],
   },
-  { icon: 'skin', activeKey: 'skin', name: 'Skin', path: '/skin' },
 ];

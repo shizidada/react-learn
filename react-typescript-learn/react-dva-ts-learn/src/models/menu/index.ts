@@ -1,4 +1,5 @@
 import { Model } from 'dva';
+import { getFlatMenuKeys, getDefaultCollapsedSubMenus, getRootSubmenuKey } from '../../util/pathTools';
 import { menus, MenuConfig } from '../../config/menu.config';
 
 export const NAMESPACE = 'menu';
@@ -20,24 +21,12 @@ export interface MenuModelState {
   collapsed: boolean;
 }
 
-const rootKeys: string[] = [];
-const findRootSubmenuKey = (data: MenuConfig[]) => {
-  data.map((item: MenuConfig) => {
-    if (item.children) {
-      // findRootSubmenuKes(item.children);
-    }
-    rootKeys.push(item.activeKey);
-  });
-};
-findRootSubmenuKey(menus);
-console.log('findRootSubmenuKes ', rootKeys);
-
 const MenuModel: MenuModelType = {
   namespace: NAMESPACE,
 
   state: {
     menuData: menus,
-    rootSubmenuKeys: rootKeys,
+    rootSubmenuKeys: getRootSubmenuKey(menus),
 
     collapsed: false,
     selectedKeys: ['/'],
@@ -57,37 +46,11 @@ const MenuModel: MenuModelType = {
 
     changeSelectKeys(state, action) {
       const {
-        payload: { selectedKeys },
+        payload: { selectedKeys, pathname },
       } = action;
       const { menuData } = state;
-
-      // const find = () => {};
-      // TODO:
-      let openKeys: string[] = [];
-      console.log('changeSelectKeys 1 :: ', openKeys, selectedKeys);
-      selectedKeys.map((selectedKey: string) => {
-        menuData.map((parentItem: MenuConfig, parentIndex: number) => {
-          if (parentItem.path === selectedKey) {
-            openKeys = [menuData[parentIndex].activeKey] as string[];
-          }
-          if (parentItem.children) {
-            parentItem.children.find(childItem => {
-              if (`${childItem.path}` === selectedKey) {
-                openKeys = [menuData[parentIndex].activeKey] as string[];
-              }
-              if (childItem.children) {
-                childItem.children.find(subItem => {
-                  if (`${subItem.path}` === selectedKey) {
-                    openKeys.concat([menuData[parentIndex].activeKey] as string[]);
-                  }
-                });
-              }
-            });
-          }
-        });
-      });
-
-      console.log('changeSelectKeys 2 :: ', openKeys, selectedKeys);
+      const keys = getFlatMenuKeys(menuData);
+      const openKeys: string[] = getDefaultCollapsedSubMenus(pathname, keys);
       return {
         ...state,
         openKeys,
@@ -102,6 +65,7 @@ const MenuModel: MenuModelType = {
         dispatch({
           type: 'changeSelectKeys',
           payload: {
+            pathname,
             selectedKeys: [pathname],
           },
         });
