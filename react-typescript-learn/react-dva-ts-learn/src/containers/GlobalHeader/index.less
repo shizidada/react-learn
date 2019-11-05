@@ -23,11 +23,12 @@
     text-align : right;
 
     .action {
-      display   : inline-block;
-      height    : 100%;
-      padding   : 0 12px;
-      cursor    : pointer;
-      transition: all 0.3s;
+      display     : inline-block;
+      height      : 100%;
+      padding     : 0 12px;
+      margin-right: 32px;
+      cursor      : pointer;
+      transition  : all 0.3s;
 
       .avatar {
         margin        : 20px 8px 20px 0;
@@ -40,11 +41,8 @@
 }
 
 .moose-global-header-menu {
-  :global(.anticon) {
-    margin-right: 8px;
-  }
 
-  :global(.ant-dropdown-menu-item) {
+  .ant-dropdown-menu-item {
     width: 160px;
   }
 }

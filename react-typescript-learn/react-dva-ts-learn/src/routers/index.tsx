@@ -1,5 +1,6 @@
 import React, { createElement } from 'react';
 import { DvaInstance } from 'dva';
+import { Spin } from 'antd';
 import { Switch, Route, routerRedux } from 'dva/router';
 import H from 'history';
 import Loadable from 'react-loadable';
@@ -25,7 +26,9 @@ const userAllRoutes = userRoutes.map(item => {
     component: Loadable({
       loader: () => component,
       loading() {
-        return <div style={{ fontSize: 20 }}>Loading ...</div>;
+        return <div style={{ fontSize: 20, textAlign: 'center' }}>
+          <Spin />
+        </div>;
       },
     }),
     ...reset,

@@ -65,7 +65,7 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
           <Dropdown overlay={menu} trigger={['click']}>
             <span className="action">
               <Avatar className="avatar" size="small" icon="user" />
-              <span>username</span>
+              <span>admin</span>
             </span>
           </Dropdown>
         </Col>

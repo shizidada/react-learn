@@ -1,4 +1,5 @@
 import React, { createElement } from 'react';
+import { Spin } from 'antd';
 import { Redirect, Route, Switch } from 'dva/router';
 import Loadable from 'react-loadable';
 
@@ -11,7 +12,9 @@ const basicAllRoutes = basicRoutes.map(item => {
     component: Loadable({
       loader: () => component,
       loading() {
-        return <div style={{ fontSize: 20 }}>Loading...</div>;
+        return <div style={{ fontSize: 20, textAlign: 'center' }}>
+          <Spin size="large" />
+        </div>;
       },
     }),
     ...reset,
