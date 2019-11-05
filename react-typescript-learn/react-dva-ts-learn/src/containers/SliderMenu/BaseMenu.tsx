@@ -20,8 +20,7 @@ interface BaseMenuProps extends MenuModelState {
 interface BaseMenuState {}
 
 class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
-  public componentDidMount = () => {
-  };
+  public componentDidMount = () => {};
 
   private getNavMenuItems = (item: MenuConfig) => {
     return (
@@ -56,9 +55,11 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
     return this.getNavMenuItems(item);
   };
 
-  onSliderOpenChange = (openKeys: string[]) => {
+  private onSliderOpenChange = (openKeys: string[]) => {
+    console.log('onSliderOpenChange ', openKeys);
     const latestOpenKey =
       (openKeys.find(key => this.props.openKeys.indexOf(key) === -1) as string) || '';
+      console.log('latestOpenKey', latestOpenKey)
     if (this.props.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
       this.props.changeSliderMenuSelect({ openKeys: openKeys as object });
     } else {

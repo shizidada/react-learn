@@ -60,18 +60,34 @@ const MenuModel: MenuModelType = {
         payload: { selectedKeys },
       } = action;
       const { menuData } = state;
+
+      // const find = () => {};
+      // TODO:
       let openKeys: string[] = [];
+      console.log('changeSelectKeys 1 :: ', openKeys, selectedKeys);
       selectedKeys.map((selectedKey: string) => {
         menuData.map((parentItem: MenuConfig, parentIndex: number) => {
+          if (parentItem.path === selectedKey) {
+            openKeys = [menuData[parentIndex].activeKey] as string[];
+          }
           if (parentItem.children) {
             parentItem.children.find(childItem => {
               if (`${childItem.path}` === selectedKey) {
                 openKeys = [menuData[parentIndex].activeKey] as string[];
               }
+              if (childItem.children) {
+                childItem.children.find(subItem => {
+                  if (`${subItem.path}` === selectedKey) {
+                    openKeys.concat([menuData[parentIndex].activeKey] as string[]);
+                  }
+                });
+              }
             });
           }
         });
       });
+
+      console.log('changeSelectKeys 2 :: ', openKeys, selectedKeys);
       return {
         ...state,
         openKeys,
