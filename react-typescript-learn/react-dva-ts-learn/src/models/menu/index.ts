@@ -1,4 +1,5 @@
 import { Model } from 'dva';
+import { menus, MenuConfig } from '../../config/menu.config';
 
 export const NAMESPACE = 'menu';
 
@@ -7,22 +8,40 @@ export interface MenuModelType extends Model {
 }
 
 export interface MenuModelState {
+  menuData: MenuConfig[];
+
+  rootSubmenuKeys: string[];
+
   // SliderMenu selected key
   selectedKeys: string[];
   // SliderMenu selected open key
   openKeys: string[];
 
   collapsed: boolean;
-
 }
+
+const rootKeys: string[] = [];
+const findRootSubmenuKey = (data: MenuConfig[]) => {
+  data.map((item: MenuConfig) => {
+    if (item.children) {
+      // findRootSubmenuKes(item.children);
+    }
+    rootKeys.push(item.activeKey);
+  });
+};
+findRootSubmenuKey(menus);
+console.log('findRootSubmenuKes ', rootKeys);
 
 const MenuModel: MenuModelType = {
   namespace: NAMESPACE,
 
   state: {
+    menuData: menus,
+    rootSubmenuKeys: rootKeys,
+
     collapsed: false,
     selectedKeys: ['/'],
-    openKeys: [],
+    openKeys: ['/'],
   },
 
   effects: {},
@@ -35,13 +54,37 @@ const MenuModel: MenuModelType = {
         ...payload,
       };
     },
+
+    changeSelectKeys(state, action) {
+      const {
+        payload: { selectedKeys },
+      } = action;
+      const { menuData } = state;
+      let openKeys: string[] = [];
+      selectedKeys.map((selectedKey: string) => {
+        menuData.map((parentItem: MenuConfig, parentIndex: number) => {
+          if (parentItem.children) {
+            parentItem.children.find(childItem => {
+              if (`${childItem.path}` === selectedKey) {
+                openKeys = [menuData[parentIndex].activeKey] as string[];
+              }
+            });
+          }
+        });
+      });
+      return {
+        ...state,
+        openKeys,
+        selectedKeys,
+      };
+    },
   },
 
   subscriptions: {
     setup({ history, dispatch }): void {
       history.listen(({ pathname, search }): void => {
         dispatch({
-          type: 'updateMenuStore',
+          type: 'changeSelectKeys',
           payload: {
             selectedKeys: [pathname],
           },
@@ -49,6 +92,6 @@ const MenuModel: MenuModelType = {
       });
     },
   },
-}
+};
 
 export default MenuModel;

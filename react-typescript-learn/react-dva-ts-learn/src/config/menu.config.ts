@@ -49,13 +49,13 @@ export const menus: MenuConfig[] = [
     children: [
       {
         icon: 'deployment-unit',
-        activeKey: 'deployment-unit',
+        activeKey: 'deployment',
         name: 'Team 1',
         path: '/team/team1',
         children: [
           {
-            icon: 'deployment-unit',
-            activeKey: 'deployment-unit',
+            icon: 'hourglass',
+            activeKey: 'hourglass',
             name: 'Sub Team 1-1',
             path: '/team/team1/subteam',
           },
