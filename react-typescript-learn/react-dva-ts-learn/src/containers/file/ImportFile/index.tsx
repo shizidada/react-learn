@@ -3,25 +3,45 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { UploadChangeParam } from 'antd/lib/upload';
 import { UploadFile } from 'antd/lib/upload/interface';
-import { Button, Upload } from 'antd';
+import { Button } from 'antd';
+
+import ImportFileModal from './ImportFileModal';
 
 import { ConnectState } from '../../../typings';
 
-class ImportFile extends Component {
-  private onUploadChange = (info: UploadChangeParam<UploadFile>) => {
-    console.log('ImportFile onUploadChange ::', info);
+interface ImportFileProps {}
+
+interface ImportFileState {
+  visible: boolean;
+}
+
+class ImportFile extends Component<ImportFileProps, ImportFileState> {
+  constructor(props: ImportFileProps) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
+
+  private handleShowImportModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  private handleCancel = () => {
+    this.setState({
+      visible: false,
+    });
   };
 
   public render() {
+    const { visible } = this.state;
     return (
-      <Upload
-        accept=".xlsx"
-        action="http://localhost:8000/api/v1/excel/import"
-        showUploadList={false}
-        onChange={this.onUploadChange}
-      >
-        <Button>导入数据</Button>
-      </Upload>
+      <React.Fragment>
+        <Button onClick={this.handleShowImportModal}>导入数据</Button>
+        <ImportFileModal visible={visible} onCancel={this.handleCancel} />
+      </React.Fragment>
     );
   }
 }
@@ -30,7 +50,7 @@ export default connect(
   (state: ConnectState) => {
     return {
       ...state.file,
-    }
+    };
   },
   (dispatch: Dispatch) => {
     return {
