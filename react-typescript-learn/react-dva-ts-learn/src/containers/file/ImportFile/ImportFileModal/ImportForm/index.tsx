@@ -39,17 +39,18 @@ class ImportForm extends Component<ImportFormProps, ImportFormState> {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         const formData = new FormData();
-        values.file.forEach((file: any) => {
-          formData.append('file', file as File);
+        values.file.forEach((file: UploadFile) => {
+          formData.append('file', file.originFileObj as File);
         });
-        // formData.append('type', values.type);
+        formData.append('type', values.type);
+        console.log('formData :: ', formData);
         axios({
           method: 'POST',
           url: 'http://localhost:7000/api/v1/excel/import2',
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-          data: { file: formData },
+          data: formData,
         })
           .then(res => {
             console.log(res);
