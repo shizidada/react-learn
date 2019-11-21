@@ -39,11 +39,12 @@ const LoginModel: LoginModelType = {
     *login(action, { call, put, select }) {
       yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: true } });
       const { payload } = action;
-      yield call(delay, 500);
+      // yield call(delay, 500);
       // let state: LoginModelState = yield select((state: ConnectState) => state[NAMESPACE]);
       const { username, password } = payload;
       try {
         const res = yield call(login, { username, password });
+        console.log('res :: ', res);
         const { data } = res;
         if (data.status) {
           yield put(routerRedux.replace('/'));
