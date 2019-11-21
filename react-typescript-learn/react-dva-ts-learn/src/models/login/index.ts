@@ -1,7 +1,9 @@
 import { Model } from 'dva';
 import { routerRedux } from 'dva/router';
 
-import { login } from './service';
+import { MD5 } from '../../util/MD5Util';
+
+import { login, register } from './service';
 
 // import { ConnectState } from "../../typings";
 
@@ -41,9 +43,11 @@ const LoginModel: LoginModelType = {
       const { payload } = action;
       // yield call(delay, 500);
       // let state: LoginModelState = yield select((state: ConnectState) => state[NAMESPACE]);
-      const { username, password } = payload;
+      const { accountName } = payload;
+      let { password } = payload;
+      password = MD5(password);
       try {
-        const res = yield call(login, { username, password });
+        const res = yield call(login, { accountName, password });
         console.log('res :: ', res);
         const { data } = res;
         if (data.status) {
@@ -64,7 +68,15 @@ const LoginModel: LoginModelType = {
       }
     },
     *register(action, { call, put, select }) {
-      console.log('register');
+      console.log('register', action);
+      const { payload } = action;
+      const { accountName } = payload;
+      let { password, repassword: rePassword } = payload;
+      password = MD5(password);
+      rePassword = MD5(rePassword);
+      const res = yield call(register, { accountName, password, rePassword });
+      console.log(res);
+
       yield '';
     },
     // *redirect(action, { call, put, select }) {

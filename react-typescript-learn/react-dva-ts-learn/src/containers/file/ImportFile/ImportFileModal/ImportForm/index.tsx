@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
-import { Button, Upload, Form, Input, Icon, Select } from 'antd';
+import { Button, Upload, Form, Icon, Select } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { RcFile } from 'antd/lib/upload';
 import { UploadFile } from 'antd/lib/upload/interface';
@@ -46,7 +46,8 @@ class ImportForm extends Component<ImportFormProps, ImportFormState> {
         console.log('formData :: ', formData);
         axios({
           method: 'POST',
-          url: 'http://localhost:7000/api/v1/excel/import2',
+          withCredentials: true,
+          url: 'http://localhost:7000/api/v1/excel/import',
           headers: {
             'Content-Type': 'multipart/form-data',
           },

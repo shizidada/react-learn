@@ -11,6 +11,7 @@ const BASE_URL = 'http://localhost:7000';
 const instance = axios.create({
   baseURL: BASE_URL,
   timeout: 15000,
+  withCredentials: true,
 });
 
 // instance.interceptors.request.use(
@@ -36,7 +37,7 @@ const instance = axios.create({
 // );
 
 export const get = (url: string, data: object = {}) => {
-  return instance.get(url, data);
+  return instance.get(url, { params: { ...data } });
 };
 
 export const post = (url: string, data: object = {}) => {

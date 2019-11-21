@@ -8,7 +8,7 @@ export interface FileModelType extends Model {
   state: FileModelState;
 }
 
-export interface FileModelState {}
+export interface FileModelState { }
 
 const FileModel: FileModelType = {
   namespace: NAMESPACE,
@@ -38,9 +38,12 @@ const FileModel: FileModelType = {
     *getExcelInfo(action, { call, put, select }) {
       yield put({ type: 'updateFileStore', payload: { message: '', isLoading: true } });
       const { payload } = action;
-      console.log('getExcelInfo :: ', payload);
+      const params = {
+        ...payload,
+      }
+      console.log('getExcelInfo :: ', { ...payload });
       try {
-        const res = yield call(getExcelInfo, { ...payload });
+        const res = yield call(getExcelInfo, params);
         const { status } = res;
         if (status === 200) {
           const { data } = res.data;
@@ -62,7 +65,7 @@ const FileModel: FileModelType = {
 
   subscriptions: {
     setup({ history }): void {
-      history.listen(({ pathname, search }): void => {});
+      history.listen(({ pathname, search }): void => { });
     },
   },
 };

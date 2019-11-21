@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 import { ConnectState } from '../../typings';
@@ -13,6 +13,7 @@ interface LoginFormProps extends LoginModelState {
   form: WrappedFormUtils;
   updateLoginStore: (type: object) => void;
   login: (type: object) => void;
+  register: (type: object) => void;
   redirect: () => void;
 }
 interface LoginFormState { }
@@ -26,11 +27,19 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
         console.log('Received values of form: ', values);
         // current is login status
         if (isLoginType) {
-          if (values.username !== '' && values.password !== '') {
+          if (values.accountName !== '' && values.password !== '') {
             this.props.login(values);
           }
         } else {
           // current is register status
+          if (values.accountName !== '' && values.password !== '' && values.repassword !== '') {
+            if (values.password === values.repassword) {
+              this.props.register(values);
+            } else {
+              message.error('两次密码不一致。');
+            }
+          }
+          console.log('register :: ==> ', values)
         }
       }
     });
@@ -57,7 +66,7 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
       <div className="login-form-container">
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
-            {getFieldDecorator('username', {
+            {getFieldDecorator('accountName', {
               rules: [{ required: true, message: '请输入用户名!' }],
             })(
               <Input
@@ -144,6 +153,9 @@ export default connect(
     },
     login(record: object) {
       dispatch({ type: `${NAMESPACE}/login`, payload: record });
+    },
+    register(record: object) {
+      dispatch({ type: `${NAMESPACE}/register`, payload: record });
     },
     redirect() {
       dispatch({ type: `${NAMESPACE}/redirect` });

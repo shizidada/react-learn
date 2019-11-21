@@ -21,7 +21,7 @@ interface FileTableRecord {
 
 class FileTable extends Component<FileTableProps, {}> {
   public componentDidMount() {
-    // this.props.getExcelInfo({ pageSize: 10, pageNum: 10 });
+    this.props.getExcelInfo({ pageSize: 10, pageNum: 10 });
   }
 
   public render() {
