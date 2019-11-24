@@ -35,7 +35,7 @@ const FileModel: FileModelType = {
     // },
 
     // get record
-    *getExcelInfo(action, { call, put, select }) {
+    *getExcelInfo(action, { call, put }) {
       yield put({ type: 'updateFileStore', payload: { message: '', isLoading: true } });
       const { payload } = action;
       const params = {
@@ -43,10 +43,8 @@ const FileModel: FileModelType = {
       }
       console.log('getExcelInfo :: ', { ...payload });
       try {
-        const res = yield call(getExcelInfo, params);
-        const { status } = res;
-        if (status === 200) {
-          const { data } = res.data;
+        const data = yield call(getExcelInfo, params);
+        if (data.status) {
           const { list } = data;
           yield put({
             type: 'updateFileStore',
@@ -63,11 +61,11 @@ const FileModel: FileModelType = {
     },
   },
 
-  subscriptions: {
-    setup({ history }): void {
-      history.listen(({ pathname, search }): void => { });
-    },
-  },
+  // subscriptions: {
+  //   setup({ history }): void {
+  //     history.listen(({ pathname, search }): void => { });
+  //   },
+  // },
 };
 
 export default FileModel;

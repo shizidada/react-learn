@@ -105,6 +105,7 @@ module.exports = {
     // 'sort-imports': 'error',
     'array-callback-return': 'off',
     'arrow-body-style': 'off',
+    'consistent-return': 'off'
   },
   settings: {
     // support import modules from TypeScript files in JavaScript files

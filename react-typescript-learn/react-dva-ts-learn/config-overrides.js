@@ -1,5 +1,18 @@
 const { override, useBabelRc, fixBabelImports, addLessLoader } = require('customize-cra');
 
+const dropConsole = () => {
+  return (config) => {
+    if (config.optimization.minimizer) {
+      config.optimization.minimizer.forEach((minimizer) => {
+        if (minimizer.constructor.name === 'TerserPlugin') {
+          minimizer.options.terserOptions.compress.drop_console = true
+        }
+      })
+    }
+    return config;
+  }
+}
+
 module.exports = override(
   useBabelRc(),
 
@@ -13,4 +26,6 @@ module.exports = override(
     javascriptEnabled: true,
     modifyVars: {},
   }),
+
+  dropConsole(),
 );

@@ -9,7 +9,7 @@ import { login, register } from './service';
 
 export const NAMESPACE = 'login';
 
-const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
+// const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
 
 export interface LoginModelType extends Model {
   state: LoginModelState;
@@ -38,7 +38,7 @@ const LoginModel: LoginModelType = {
   },
 
   effects: {
-    *login(action, { call, put, select }) {
+    *login(action, { call, put }) {
       yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: true } });
       const { payload } = action;
       // yield call(delay, 500);
@@ -47,9 +47,8 @@ const LoginModel: LoginModelType = {
       let { password } = payload;
       password = MD5(password);
       try {
-        const res = yield call(login, { accountName, password });
-        console.log('res :: ', res);
-        const { data } = res;
+        const data = yield call(login, { accountName, password });
+        console.log('login data :: ', data);
         if (data.status) {
           yield put(routerRedux.replace('/'));
           yield put({ type: 'updateLoginStore', payload: { isLoading: false } });
@@ -67,7 +66,7 @@ const LoginModel: LoginModelType = {
         });
       }
     },
-    *register(action, { call, put, select }) {
+    *register(action, { call }) {
       console.log('register', action);
       const { payload } = action;
       const { accountName } = payload;
@@ -84,11 +83,11 @@ const LoginModel: LoginModelType = {
     // },
   },
 
-  subscriptions: {
-    setup({ history }): void {
-      history.listen(({ pathname, search }): void => { });
-    },
-  },
+  // subscriptions: {
+  //   setup({ history }): void {
+  //     history.listen(({ pathname, search }): void => { });
+  //   },
+  // },
 };
 
 export default LoginModel;
