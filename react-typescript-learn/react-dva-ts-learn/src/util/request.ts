@@ -4,12 +4,11 @@ import { message } from 'antd';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import qs from 'qs';
 
-const BASE_URL = 'http://localhost:7000';
-
+// const BASE_URL = 'http://localhost:7000';
 // axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
 
 const instance = axios.create({
-  baseURL: BASE_URL,
+  // baseURL: BASE_URL,
   timeout: 15000,
   withCredentials: true,
 });

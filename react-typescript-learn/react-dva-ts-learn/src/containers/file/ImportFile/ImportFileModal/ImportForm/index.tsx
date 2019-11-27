@@ -42,12 +42,12 @@ class ImportForm extends Component<ImportFormProps, ImportFormState> {
         values.file.forEach((file: UploadFile) => {
           formData.append('file', file.originFileObj as File);
         });
-        formData.append('type', values.type);
+        formData.append('platform', values.platform);
         console.log('formData :: ', formData);
         axios({
           method: 'POST',
           withCredentials: true,
-          url: 'http://localhost:7000/api/v1/excel/import',
+          url: '/api/v1/excel/import',
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -96,7 +96,7 @@ class ImportForm extends Component<ImportFormProps, ImportFormState> {
           <Input placeholder="input placeholder" />
         </Form.Item> */}
         <Form.Item label="选择类型" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('type', {
+          {getFieldDecorator('platform', {
             rules: [{ required: true, message: '请选择类型！' }],
           })(
             <Select placeholder="请选择类型！">
