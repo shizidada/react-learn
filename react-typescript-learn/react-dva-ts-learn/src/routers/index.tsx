@@ -5,8 +5,6 @@ import { Switch, Route, routerRedux } from 'dva/router';
 import H from 'history';
 import Loadable from 'react-loadable';
 
-import { userRoutes } from './route.config';
-
 import BasicLayout from '../layouts/BasicLayout';
 import UserLayout from '../layouts/UserLayout';
 
@@ -19,45 +17,32 @@ interface RouterConfigProps {
   app: DvaInstance;
 }
 
-const userAllRoutes = userRoutes.map(item => {
-  const { path, component, ...reset } = item;
-  return {
-    path,
-    component: Loadable({
-      loader: () => component,
-      loading() {
-        return <div style={{ fontSize: 20, textAlign: 'center' }}>
-          <Spin />
-        </div>;
-      },
-    }),
-    ...reset,
-  };
-});
-
 function RouterConfig({ history, app }: RouterConfigProps) {
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        {userAllRoutes.map(item => {
-          const { id, path, component: Component, ...reset } = item;
-          return (
-            <Route
-              key={id}
-              path={path}
-              render={routeProps =>
-                createElement<any>(UserLayout, {
-                  ...routeProps,
-                  ...reset,
-                  view: createElement<any>(Component, {
-                    ...routeProps,
-                    ...reset,
-                  }),
-                })
-              }
-            />
-          );
-        })}
+        <Route
+          path="/user/login"
+          render={routeProps =>
+            createElement<any>(UserLayout, {
+              ...routeProps,
+              view: createElement<any>(
+                Loadable({
+                  loader: () => import(/* webpackChunkName: "user.login" */ '../pages/user/login'),
+                  loading() {
+                    return (
+                      <div style={{ fontSize: 20, textAlign: 'center' }}>
+                        <Spin size="large" />
+                      </div>
+                    );
+                  },
+                }),
+                { ...routeProps },
+              ),
+            })
+          }
+        />
+        )
         <Route path="/error" render={routeProps => createElement<any>(Error, { ...routeProps })} />
         <Route path="/" render={routeProps => createElement<any>(BasicLayout, { ...routeProps })} />
       </Switch>

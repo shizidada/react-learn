@@ -5,7 +5,7 @@ import CreateOrderForm from '../../../../components/order/CreateOrderForm';
 
 import './index.less';
 
-const { Meta } = Card;
+// const { Meta } = Card;
 
 export default class CreateOrderPage extends Component {
   public render() {
