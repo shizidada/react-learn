@@ -29,6 +29,7 @@
     "koa-router": "^7.4.0",
     "less": "^3.9.0",
     "lodash": "^4.17.11",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "url-loader": "^0.6.2"
   }
 }

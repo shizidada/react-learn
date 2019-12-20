@@ -1,6 +1,6 @@
 const withCss = require('@zeit/next-css');
 const withLess = require('@zeit/next-less');
-
+const path = require("path");
 // const fs = require("fs");
 
 module.exports = withCss(withLess({
@@ -17,6 +17,12 @@ module.exports = withCss(withLess({
     // fs.writeFile("./default.config.json", JSON.stringify(config), function (err) {
     //     console.log(err);
     // });
+
+    config.module.rules.push({
+      test: /\.(png|jpg|gif|ico|jpeg|bmp)$/,
+      exclude: path.resolve(__dirname, './node_modules'),
+      use: [{ loader: 'url-loader' }]
+    })
 
     // console.log(" ############ webpack buildId ############ ", buildId, dev, isServer, defaultLoaders);
 
