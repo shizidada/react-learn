@@ -1,74 +1,52 @@
 import * as React from 'react';
-import { Card, Statistic, Icon, Badge, Row, Col } from 'antd';
 
-import DemoItem from '../../../components/chart/DemoItem';
-import ImportBrokenLine from '../../../components/chart/ImportBrokenLine';
-
-import { HOCConfig } from '../../../hoc/HOCConfig';
+import MDEditor, { commands } from '@uiw/react-md-editor';
 
 import './index.less';
 
-const { Countdown } = Statistic;
-const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; // Moment is also OK
+export default class HomePage extends React.Component<any, any> {
+  private mdEditor?: MDEditor | undefined | null;
 
-@HOCConfig({
-  permission: false,
-})
-export default class HomePage extends React.Component<any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      markedText: '**Hello world!!!**',
+      isFullScreen: false,
+    };
+  }
+
+  componentDidMount() {
+    if (this.mdEditor) {
+      this.mdEditor.handleCommand = this.handleExecuteCommand;
+    }
+  }
+
+  handleChange = (value?: string) => {
+    console.log(value)
+    this.setState({ markedText: value as string })
+  };
+
+  handleExecuteCommand = (command: commands.ICommand) => {
+    if (command.name === 'fullscreen') {
+      const { isFullScreen } = this.state;
+      this.setState({
+        isFullScreen: !isFullScreen,
+      })
+    }
+  }
+
   public render() {
     console.log('HomePage :: ', this.props);
+    const { markedText, isFullScreen } = this.state;
     return (
       <div className="home-page-container">
-        <Row type="flex" justify="space-between">
-          <Col span={5} >
-            <Card loading={false}>
-              <Statistic
-                title="天猫"
-                value={999.28}
-                precision={2}
-                valueStyle={{ color: 'red' }}
-                prefix={<Icon type="arrow-up" />}
-                suffix="%"
-              />
-            </Card>
-          </Col>
-          <Col span={5}>
-            <Card loading={false}>
-              <Statistic
-                title="咸鱼"
-                value={999.28}
-                precision={2}
-                valueStyle={{ color: 'blank' }}
-                prefix={<Icon type="arrow-up" />}
-                suffix="%"
-              />
-            </Card>
-          </Col>
-          <Col span={5}>
-            <Card loading={false}>
-              <Countdown title="Million Seconds" value={deadline} format="HH:mm:ss:SSS" />
-            </Card>
-          </Col>
-          <Col span={5}>
-            <Card loading={false}>
-              <Badge status="success" />
-              <Badge status="error" />
-              <Badge status="default" />
-              <Badge status="processing" />
-              <Badge status="warning" />
-              <Badge status="success" text="Success" />
-              <Badge status="error" text="Error" />
-              <Badge status="default" text="Default" />
-              <Badge status="processing" text="Processing" />
-              <Badge status="warning" text="Warning" />
-            </Card>
-          </Col>
-        </Row>
-
-        <Row className="home-page-echart-row">
-          <ImportBrokenLine />
-        </Row>
-        <DemoItem />
+        <MDEditor
+          ref={mdEditor => { this.mdEditor = mdEditor }}
+          value={markedText}
+          fullscreen={isFullScreen}
+          onChange={this.handleChange}
+        />
+        <MDEditor.Markdown source={markedText} />
       </div>
     );
   }

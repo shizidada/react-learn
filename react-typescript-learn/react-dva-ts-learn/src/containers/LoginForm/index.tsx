@@ -51,8 +51,6 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
     this.props.form.resetFields();
   };
 
-  /* eslint-disable @typescript-eslint/no-unused-vars, eslint-comments/disable-enable-pair  */
-  // e: React.ChangeEvent<HTMLInputElement>
   private inputChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.props.updateLoginStore({ errorMessage: '' });
   };
@@ -112,7 +110,6 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                 valuePropName: 'checked',
                 initialValue: true,
               })(<Checkbox>记住我</Checkbox>)}
-              {/* eslint-disable no-script-url */}
               <a className="login-form-forgot" href="javascript:void(0)">
                 忘记密码
               </a>
