@@ -275,9 +275,6 @@ class GeneratorImageCode {
   }
 }
 
-const generator = function (opts) {
+export default (opts) => {
   return new GeneratorImageCode(opts).init();
 }
-
-export default generator
-

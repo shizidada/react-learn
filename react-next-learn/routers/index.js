@@ -2,7 +2,7 @@
  * @Author: Jiang.Jing 
  * @Date: 2019-04-13 14:31:18 
  * @Last Modified by: Jiang.Jing
- * @Last Modified time: 2019-04-13 15:02:50
+ * @Last Modified time: 2019-12-22 09:24:24
  * Express 作为服务
  */
 const path = require('path');
@@ -23,16 +23,13 @@ module.exports = (app, handle) => {
     renderAndCache(app, req, res, "/about", { path, nameServer });
   });
 
-  // /Generalize/GeneralizeCat/cat
-  // /\/Generalize\/GeneralizeCat\/cat\/\d+$/
-  server.get(/\/Generalize\/GeneralizeCat\/cat\/\d+$/, (req, res) => {
+  server.get(/\/user\/detail$/, (req, res) => {
     // require("fs").writeFile("./req.json", JSON.stringify(req), (err) => {
     // })
-    const articleId = req.path.match(/\d+/)[0];
-    console.log("Generalize-req2 ===> ", req.url, req.path, articleId);
+    console.log("custom url :: ", req.url, req.path);
     const path = req.path;
     const nameServer = "Name From Server";
-    renderAndCache(app, req, res, "/generalize", { path, nameServer, articleId });
+    renderAndCache(app, req, res, "/detail", { path, nameServer });
   });
 
   server.get('*', (req, res) => {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ImageCode from "../components/ImageCode";
+import ImageCode from "../../components/ImageCode";
 
 export default class Index extends Component {
   onReload = () => {

@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 
-import GeneratorImageCode from '../components/GeneratorImageCode'
+import GeneratorImageCode from '../../components/GeneratorImageCode'
 
-class About extends Component {
+class AboutPage extends Component {
 
   /**
    * 
@@ -46,4 +46,4 @@ class About extends Component {
 
 }
 
-export default About;
+export default AboutPage;
