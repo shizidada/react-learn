@@ -17,8 +17,6 @@ import "./styles.css";
 
 const icoSuccess = require("./icons/success.png");
 const icoError = require("./icons/error.png");
-const icoReload = require("./icons/reload.png");
-const icoSlider = require("./icons/arrow.png");
 
 const STATUS_LOADING = 0; // 还没有图片
 const STATUS_READY = 1; // 图片渲染完成,可以开始滑动
@@ -280,7 +278,8 @@ class ImageCode extends React.Component {
         currX: 0, // 滑块当前 x,
         status: STATUS_LOADING,
         // 匹配状态
-        isMatch: false
+        isMatch: false,
+        useTime: 0
       },
       this.props.onReload
     );
@@ -343,10 +342,7 @@ class ImageCode extends React.Component {
 
         <div className="reload-container">
           <div className="reload-wrapper" onClick={this.onReload}>
-            <i
-              className="reload-ico"
-              style={{ backgroundImage: `url("${icoReload}")` }}
-            />
+            <i className="reload-ico" />
             <span className="reload-tips">刷新验证</span>
           </div>
         </div>
@@ -365,8 +361,7 @@ class ImageCode extends React.Component {
             onMouseDown={this.onMoveStart}
             onMouseUp={this.onMoveEnd}
             style={{
-              left: currX + "px",
-              backgroundImage: `url("${icoSlider}")`
+              left: currX + "px"
             }}
           />
         </div>

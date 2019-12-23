@@ -32,6 +32,7 @@
   margin-right: 10px;
   background: center/cover no-repeat;
   background-size: 100% 100%;
+  background-image: url(./icons/reload.png);
 }
 
 .reload-tips {
@@ -81,6 +82,12 @@
   transform: translateY(-50%);
   background: #fff center/80% 80% no-repeat;
   box-shadow: 0 2px 6px 0 #ccc;
+  background-image: url(./icons/arrow.png);
+}
+
+.slider-button:hover {
+  background-image: url(./icons/arrow.png);
+  background-color: #999;
 }
 
 /* 提示信息 */
