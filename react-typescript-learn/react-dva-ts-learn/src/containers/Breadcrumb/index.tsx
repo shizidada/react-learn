@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Breadcrumb } from 'antd';
 
+// eslint-disable-next-line import/extensions
 import { ConnectState } from '../../typings';
 // import { NAMESPACE } from '../../models/global/constants';
 import { MenuModelState } from '../../models/menu';

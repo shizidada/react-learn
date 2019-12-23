@@ -8,6 +8,7 @@ import GlobalHeader from '../../containers/GlobalHeader';
 import TabsView from '../../containers/TabsView';
 import BasicRoute from '../../routers/BasicRoute';
 
+// eslint-disable-next-line import/extensions
 import { ConnectState } from '../../typings';
 
 import './index.less';
@@ -18,21 +19,22 @@ interface BasicLayoutProps extends ConnectState {
   location: Location<any>;
   updateMenuStore: (collapsed: object) => void;
 }
-interface BasicLayoutState { }
+interface BasicLayoutState {}
 
 class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   private getLayoutStyle = () => {
     const { collapsed } = this.props;
     return {
       paddingLeft: collapsed ? '80px' : '256px',
+      minHeight: '100vh',
     };
   };
 
   private getContentStyle = () => {
     return {
       margin: '16px 16px 0',
-    }
-  }
+    };
+  };
 
   private onSliderMenuToggle = () => {
     const { collapsed } = this.props;
@@ -47,7 +49,6 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
         <Layout
           style={{
             ...this.getLayoutStyle(),
-            minHeight: '100vh',
           }}
         >
           <GlobalHeader onSliderMenuToggle={this.onSliderMenuToggle} />

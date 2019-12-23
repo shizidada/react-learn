@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'antd';
 
-export default class CreateOrderForm extends Component {
+export default class OrderCreateForm extends Component {
   private handleFormLayoutChange = () => {};
 
   public render() {

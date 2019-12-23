@@ -1,19 +1,17 @@
 import * as React from 'react';
 // import { Location, History } from 'history';
-import ImportFile from '../../../containers/file/ImportFile';
 import FileTable from '../../../containers/file/FileTable';
 
 import './index.less';
 
-interface ImportFilePageProps {}
+interface FileListPageProps {}
 
-export default class ImportFilePage extends React.Component<ImportFilePageProps, {}> {
+export default class FileListPage extends React.Component<FileListPageProps, {}> {
   public render() {
-    // console.log('ImportFilePage :: ', this.props);
+    // console.log('FileListPageProps :: ', this.props);
     return (
-      <div className="import-file-page">
-        <ImportFile />
-        <div className="import-file-table">
+      <div className="file-list-page">
+        <div className="file-list-table">
           <FileTable />
         </div>
       </div>

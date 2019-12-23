@@ -3,21 +3,24 @@ import { Spin } from 'antd';
 import { Redirect, Route, Switch } from 'dva/router';
 import Loadable from 'react-loadable';
 
+const Loading = () => {
+  return (
+    <div style={{ fontSize: 20, textAlign: 'center' }}>
+      <Spin size="large" />
+    </div>
+  );
+};
+
 const BasicRoute = () => (
   <Switch>
-
     <Route
-      path="/file"
+      path="/file/list"
       render={routeProps =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "file" */ '../pages/manager/file'),
             loading() {
-              return (
-                <div style={{ fontSize: 20, textAlign: 'center' }}>
-                  <Spin size="large" />
-                </div>
-              );
+              return <Loading />;
             },
           }),
           { ...routeProps },
@@ -26,17 +29,13 @@ const BasicRoute = () => (
     />
 
     <Route
-      path="/order"
+      path="/file/import"
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "order" */ '../pages/manager/order'),
+            loader: () => import(/* webpackChunkName: "file" */ '../pages/manager/file/import'),
             loading() {
-              return (
-                <div style={{ fontSize: 20, textAlign: 'center' }}>
-                  <Spin size="large" />
-                </div>
-              );
+              return <Loading />;
             },
           }),
           { ...routeProps },
@@ -44,18 +43,28 @@ const BasicRoute = () => (
       }
     />
     <Route
-      path="order/create"
+      path="/order/list"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(/* webpackChunkName: "order.list" */ '../pages/manager/order/list'),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+    <Route
+      path="/order/create"
       render={routeProps =>
         createElement<object>(
           Loadable({
             loader: () =>
               import(/* webpackChunkName: "order.create" */ '../pages/manager/order/create'),
             loading() {
-              return (
-                <div style={{ fontSize: 20, textAlign: 'center' }}>
-                  <Spin size="large" />
-                </div>
-              );
+              return <Loading />;
             },
           }),
           { ...routeProps },
@@ -64,17 +73,14 @@ const BasicRoute = () => (
     />
 
     <Route
-      path="/product"
+      path="/product/list"
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "product" */ '../pages/manager/product'),
+            loader: () =>
+              import(/* webpackChunkName: "product.list" */ '../pages/manager/product/list'),
             loading() {
-              return (
-                <div style={{ fontSize: 20, textAlign: 'center' }}>
-                  <Spin size="large" />
-                </div>
-              );
+              return <Loading />;
             },
           }),
           { ...routeProps },
@@ -89,11 +95,38 @@ const BasicRoute = () => (
             loader: () =>
               import(/* webpackChunkName: "product.create" */ '../pages/manager/product/create'),
             loading() {
-              return (
-                <div style={{ fontSize: 20, textAlign: 'center' }}>
-                  <Spin size="large" />
-                </div>
-              );
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+
+    <Route
+      path="/article/list"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(/* webpackChunkName: "article" */ '../pages/manager/article/list'),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+
+    <Route
+      path="/article/create"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () =>
+              import(/* webpackChunkName: "article.create" */ '../pages/manager/article/create'),
+            loading() {
+              return <Loading />;
             },
           }),
           { ...routeProps },
@@ -108,11 +141,7 @@ const BasicRoute = () => (
           Loadable({
             loader: () => import(/* webpackChunkName: "home" */ '../pages/manager/home'),
             loading() {
-              return (
-                <div style={{ fontSize: 20, textAlign: 'center' }}>
-                  <Spin size="large" />
-                </div>
-              );
+              return <Loading />;
             },
           }),
           { ...routeProps },

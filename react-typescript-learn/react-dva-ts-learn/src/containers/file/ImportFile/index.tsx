@@ -7,6 +7,7 @@ import { Button } from 'antd';
 
 import ImportFileModal from './ImportFileModal';
 
+// eslint-disable-next-line import/extensions
 import { ConnectState } from '../../../typings';
 
 interface ImportFileProps {}

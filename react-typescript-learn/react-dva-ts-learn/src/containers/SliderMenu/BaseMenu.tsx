@@ -6,6 +6,7 @@ import { connect } from 'dva';
 // import { TitleEventEntity } from 'antd/lib/menu/SubMenu';
 import { Menu, Icon } from 'antd';
 
+// eslint-disable-next-line import/extensions
 import { ConnectState } from '../../typings';
 import { MenuModelState } from '../../models/menu';
 import { MenuConfig } from '../../config/menu.config';
