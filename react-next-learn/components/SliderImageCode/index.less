@@ -1,0 +1,40 @@
+.slider-image-code-container {
+  position: relative;
+  width: 310px;
+  height: 155px;
+  margin: 0px auto;
+
+  .slider-image {
+    border: 1px solid #cccccc;
+  }
+
+  .slider-block-container {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 8px;
+    background: #ebebeb;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+
+    .slider-block {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      background: orange;
+
+      &:hover {
+        border: 1px solid #d1e9fe;
+        background: #1991fa;
+      }
+    }
+
+    .slider-text-tip {
+    }
+  }
+}

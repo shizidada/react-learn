@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import Header from "../../components/Header";
+import Header from "../Header";
 
-class Layout extends Component {
-
+class BasicLayout extends Component {
   render() {
     const { children, router } = this.props;
     // console.log(this.props);
@@ -12,9 +11,8 @@ class Layout extends Component {
         <Header router={router} />
         {children}
       </div>
-    )
+    );
   }
-
 }
 
-export default Layout;
+export default BasicLayout;
