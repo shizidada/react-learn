@@ -13,7 +13,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import "./styles.css";
+import "./index.less";
 
 const icoSuccess = require("./icons/success.png");
 const icoError = require("./icons/error.png");
@@ -93,19 +93,19 @@ class ImageCode extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMovable: false,
-      offsetX: 0, //图片截取的 x
-      offsetY: 0, //图片截取的 y
-      startX: 0, // 开始滑动的 x
-      oldX: 0,
+      offsetX: 0, // 图片截取 x
+      offsetY: 0, // 图片截取 y
+      startX: 0, // 滑块开始滑动 x
       currX: 0, // 滑块当前 x
-      status: STATUS_LOADING,
-      showTips: false,
-      tipsIndex: 0,
+      oldX: 0, // 记录上一个 x
 
-      isMatch: false,
-
-      useTime: 0
+      status: STATUS_LOADING, // 当前状态
+      tipsIndex: 0, // 显示 tip 索引
+      useTime: 0, // 当前滑动使用时间
+      isMovable: false, // 是否正在滑动
+      showTips: false, // 显示的 tip 状态
+      isChecking: false, // 是否正在提交 check
+      isLoading: false // 是否正在重新加载
     };
   }
 
@@ -125,10 +125,8 @@ class ImageCode extends React.Component {
     this.setState({ status: STATUS_LOADING });
 
     // 创建一个图片对象，主要用于canvas.context.drawImage()
-    const objImage = new Image();
-
-    objImage.addEventListener("load", () => {
-      console.log("load ....");
+    const newImage = new Image();
+    newImage.addEventListener("load", () => {
       const { imageWidth, imageHeight, fragmentSize } = this.props;
 
       // 先获取两个ctx
@@ -148,7 +146,7 @@ class ImageCode extends React.Component {
 
       // 让小块绘制出被裁剪的部分
       ctxFragment.drawImage(
-        objImage,
+        newImage,
         clipX,
         clipY,
         fragmentSize,
@@ -175,12 +173,13 @@ class ImageCode extends React.Component {
       this.setState({ status: STATUS_READY });
     });
 
-    objImage.src = this.props.imageUrl;
+    newImage.src = this.props.imageUrl;
   };
 
   // 滑块按下
   onMoveStart = e => {
-    if (this.state.status !== STATUS_READY) {
+    const { status } = this.state;
+    if (status !== STATUS_READY) {
       return;
     }
 
@@ -192,7 +191,8 @@ class ImageCode extends React.Component {
 
   // 滑块滑动
   onMoving = e => {
-    if (this.state.status !== STATUS_READY || !this.state.isMovable) {
+    const { status, isMovable, isChecking, isLoading } = this.state;
+    if (status !== STATUS_READY || !isMovable || isChecking || isLoading) {
       return;
     }
     const distance = e.clientX - this.state.startX;
@@ -207,34 +207,40 @@ class ImageCode extends React.Component {
 
   // onMouseLeave
   onMoveEnd = () => {
-    if (this.state.status !== STATUS_READY || !this.state.isMovable) {
+    const { status, isMovable, isChecking, isLoading } = this.state;
+    if (status !== STATUS_READY || !isMovable || isChecking || isLoading) {
       return;
     }
     // 将旧的固定坐标x更新
     this.setState(pre => ({ isMovable: false, oldX: pre.currX }));
 
-    const isMatch = Math.abs(this.state.currX - this.state.offsetX) < 5;
-    if (isMatch) {
-      // calc time
-      this.useTime = (Date.now() - this.startTime) / 1000;
+    this.setState({ isChecking: true });
 
-      this.setState(
-        pre => ({
-          useTime: this.useTime,
-          status: STATUS_MATCH,
-          currX: pre.offsetX,
-          isMatch: true
-        }),
-        this.onShowTips
-      );
-      this.props.onMatch();
-    } else {
-      this.setState({ status: STATUS_ERROR }, () => {
-        this.onReset();
-        this.onShowTips();
-      });
-      this.props.onError();
-    }
+    this.checkTimer = setTimeout(() => {
+      const isMatch = Math.abs(this.state.currX - this.state.offsetX) < 5;
+      if (isMatch) {
+        // calc time
+        this.useTime = (Date.now() - this.startTime) / 1000;
+
+        this.setState(
+          pre => ({
+            useTime: this.useTime,
+            status: STATUS_MATCH,
+            currX: pre.offsetX,
+            isChecking: false
+          }),
+          this.onShowTips
+        );
+        this.props.onMatch();
+        this.checkTimer && clearTimeout(this.checkTimer);
+      } else {
+        this.setState({ status: STATUS_ERROR, isChecking: false }, () => {
+          this.onReset();
+          this.onShowTips();
+        });
+        this.props.onError();
+      }
+    }, 1000);
   };
 
   onReset = () => {
@@ -242,17 +248,18 @@ class ImageCode extends React.Component {
       this.setState({
         oldX: 0,
         currX: 0,
-        status: STATUS_READY,
-        isMatch: false
+        status: STATUS_READY
       });
       clearTimeout(timer);
     }, 1000);
   };
 
   onReload = () => {
+    const { status, isChecking, isLoading } = this.state;
     if (
-      this.state.status !== STATUS_READY &&
-      this.state.status !== STATUS_MATCH
+      (status !== STATUS_READY && status !== STATUS_MATCH) ||
+      isChecking ||
+      isLoading
     ) {
       return;
     }
@@ -268,21 +275,24 @@ class ImageCode extends React.Component {
       this.props.fragmentSize
     );
 
-    this.setState(
-      {
-        isMovable: false,
-        offsetX: 0, //图片截取的x
-        offsetY: 0, //图片截取的y
-        startX: 0, // 开始滑动的 x
-        oldX: 0,
-        currX: 0, // 滑块当前 x,
-        status: STATUS_LOADING,
-        // 匹配状态
-        isMatch: false,
-        useTime: 0
-      },
-      this.props.onReload
-    );
+    this.setState({ isLoading: true });
+    this.reloadTimer = setTimeout(() => {
+      this.setState(
+        {
+          isMovable: false,
+          offsetX: 0, //图片截取的x
+          offsetY: 0, //图片截取的y
+          startX: 0, // 开始滑动的 x
+          oldX: 0,
+          currX: 0, // 滑块当前 x,
+          status: STATUS_LOADING,
+          useTime: 0,
+          isLoading: false
+        },
+        this.props.onReload
+      );
+      this.reloadTimer && clearTimeout(this.reloadTimer);
+    }, 1000);
   };
 
   onShowTips = () => {
@@ -295,12 +305,14 @@ class ImageCode extends React.Component {
     const timer = setTimeout(() => {
       this.setState({ showTips: false });
       clearTimeout(timer);
-    }, 2000);
+    }, 1000);
   };
 
   render() {
     const { imageUrl, imageWidth, imageHeight, fragmentSize } = this.props;
-    const { offsetX, offsetY, currX, showTips, tipsIndex } = this.state;
+    const { status, offsetX, offsetY, currX, showTips, tipsIndex } = this.state;
+    const { isChecking, isLoading } = this.state;
+
     const tips = arrTips[tipsIndex];
 
     return (
@@ -323,6 +335,18 @@ class ImageCode extends React.Component {
             height={fragmentSize}
             style={{ top: offsetY + "px", left: currX + "px" }}
           />
+
+          {(isChecking || isLoading) && (
+            <div className="refresh-wrapper">
+              <div className="refresh-mask"></div>
+              <div className="refresh-operation">
+                <span className="refresh-loading"></span>
+                <span className="refresh-tip">
+                  {isChecking ? "正在检验..." : isLoading ? "正在加载..." : ""}
+                </span>
+              </div>
+            </div>
+          )}
 
           <div
             className={showTips ? "tips-container--active" : "tips-container"}
@@ -349,13 +373,19 @@ class ImageCode extends React.Component {
 
         <div
           className={classNames("slider-wrpper", {
-            right: this.state.isMatch
+            "slider-wrpper-right": status === STATUS_MATCH,
+            "slider-wrpper-fail": status === STATUS_ERROR
           })}
           onMouseMove={this.onMoving}
           onMouseLeave={this.onMoveEnd}
         >
           <div className="slider-mask" style={{ width: currX }}></div>
-          <div className="slider-bar">按住滑块，拖动完成拼图</div>
+          <div className="slider-bar">
+            {(status === STATUS_LOADING || status === STATUS_READY) &&
+              "按住滑块，拖动完成拼图"}
+            {status === STATUS_MATCH && ""}
+            {status === STATUS_ERROR && "匹配失败，加载中..."}
+          </div>
           <div
             className="slider-button"
             onMouseDown={this.onMoveStart}
@@ -363,7 +393,9 @@ class ImageCode extends React.Component {
             style={{
               left: currX + "px"
             }}
-          />
+          >
+            <span className="slider-button-icon"></span>
+          </div>
         </div>
       </div>
     );
