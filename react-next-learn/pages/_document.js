@@ -1,11 +1,11 @@
 /*
- * @Author: Jiang.Jing 
- * @Date: 2019-04-13 10:04:37 
+ * @Author: Jiang.Jing
+ * @Date: 2019-04-13 10:04:37
  * @Last Modified by: Jiang.Jing
  * @Last Modified time: 2019-04-13 10:35:53
  */
 
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head, Main, NextScript } from "next/document";
 
 export default class LearnDocument extends Document {
   static async getInitialProps(ctx) {
@@ -17,7 +17,7 @@ export default class LearnDocument extends Document {
     return (
       <html>
         <Head></Head>
-        <body className="custom_class">
+        <body>
           <Main />
           <NextScript />
         </body>

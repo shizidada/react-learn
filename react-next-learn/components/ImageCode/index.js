@@ -12,6 +12,7 @@
 
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 
 import "./index.less";
 
@@ -401,5 +402,15 @@ class ImageCode extends React.Component {
     );
   }
 }
+
+ImageCode.propsTypes = {
+  imageUrl: PropTypes.string.isRequired,
+  imageWidth: PropTypes.number,
+  imageHeight: PropTypes.number,
+  fragmentSize: PropTypes.number,
+  onReload: PropTypes.func,
+  onMath: PropTypes.func,
+  onError: PropTypes.func
+};
 
 export default ImageCode;

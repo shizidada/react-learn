@@ -14,9 +14,12 @@
     "classnames": "^2.2.6",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
+    "lodash": "^4.17.11",
+    "normalize.css": "^8.0.1",
     "next": "^8.0.4",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "swiper": "^5.2.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.0",
@@ -29,8 +32,6 @@
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "less": "^3.9.0",
-    "lodash": "^4.17.11",
-    "normalize.css": "^8.0.1",
     "url-loader": "^0.6.2"
   }
 }

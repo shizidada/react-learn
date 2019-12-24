@@ -16,27 +16,29 @@ const navList = [
   {
     title: "About",
     path: "/about"
+  },
+  {
+    title: "Login",
+    path: "/login"
   }
 ];
 
-class Header extends Component {
-  render() {
-    return (
-      <div className="header-container">
-        <ul>
-          {navList.map(item => {
-            return (
-              <li key={item.title}>
-                <Link href={item.path}>
-                  <a>{item.title}</a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  }
+function Header() {
+  return (
+    <div className="header-container">
+      <ul>
+        {navList.map(item => {
+          return (
+            <li key={item.title}>
+              <Link href={item.path}>
+                <a>{item.title}</a>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 export default Header;
