@@ -11,12 +11,13 @@
   "author": "shizidada",
   "license": "MIT",
   "dependencies": {
+    "cacheable-response": "^1.10.0",
     "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
-    "lodash": "^4.17.11",
-    "normalize.css": "^8.0.1",
     "next": "^8.0.4",
+    "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "swiper": "^5.2.1"
