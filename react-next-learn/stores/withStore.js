@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import initStore from './index';
 
 const isServer = typeof window === 'undefined';
-const __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__';
+const __NEXT_MOBX_STORE__ = '__NEXT_MOBX_STORE__';
 
 const getOrCreateStore = (initialState) => {
   if (isServer) {
     return initStore(initialState)
   }
-  if (!window[__NEXT_REDUX_STORE__]) {
-    window[__NEXT_REDUX_STORE__] = initStore(initialState)
+  if (!window[__NEXT_MOBX_STORE__]) {
+    window[__NEXT_MOBX_STORE__] = initStore(initialState)
   }
-  return window[__NEXT_REDUX_STORE__]
+  return window[__NEXT_MOBX_STORE__]
 }
 
 export default App => class AppWithMobx extends Component {

@@ -1,19 +1,13 @@
-// export default () => <div>about</div>
+import React from "react";
+import axios from "axios";
 
-import React, { Component } from "react";
-
-class AboutPage extends Component {
-  /**
-   *
-   * @param {NextAppContext} ctx
-   */
-  static getInitialProps({ asPath, pathname, query }) {
-    // console.log("About  getInitialProps ==> ", ctx);
-    return {
-      name: query.name
-    };
-  }
-
+class AboutPage extends React.Component {
+  static getInitialProps = async props => {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
+    const errorCode = res.status > 200 ? res.status : false;
+    const json = await res.data;
+    return { errorCode, ...json };
+  };
   render() {
     return (
       <div>

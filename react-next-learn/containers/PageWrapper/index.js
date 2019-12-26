@@ -1,12 +1,11 @@
 import React from "react";
+import Link from "next/link";
 import { inject, observer } from "mobx-react";
-import Clock from "../../components/Clock";
-
-import "./index.less";
+import Clock from "./Clock";
 
 @inject("store")
 @observer
-class LoginPage extends React.Component {
+class PageWrapper extends React.Component {
   componentDidMount() {
     this.props.store.start();
   }
@@ -16,16 +15,21 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
-      <div className="login-page-container">
+      <div>
+        <h1>{this.props.title}</h1>
         <Clock
           lastUpdate={this.props.store.lastUpdate}
           light={this.props.store.light}
         />
+        <nav>
+          <Link href={this.props.linkTo}>
+            <a>Navigate</a>
+          </Link>
+        </nav>
       </div>
     );
   }
 }
 
-export default LoginPage;
+export default PageWrapper;

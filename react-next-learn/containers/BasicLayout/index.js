@@ -6,7 +6,7 @@ import "./index.less";
 
 const BasicLayout = props => {
   const { children, router } = props;
-  console.log("BasicLayout :: ", props);
+  // console.log("BasicLayout :: ", props);
   return (
     <div className="basic-layout-container">
       {router.route !== "/login" && (
