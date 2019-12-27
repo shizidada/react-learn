@@ -1,0 +1,52 @@
+{
+  "name": "react-electron-learn",
+  "version": "0.1.0",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "build": "react-app-rewired build",
+    "dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && npm run ele\"",
+    "ele": "nodemon --exec \"electron .\"",
+    "start": "react-app-rewired start",
+    "test": "react-app-rewired test"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "antd": "^3.26.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "babel-plugin-import": "^1.13.0",
+    "concurrently": "^5.0.2",
+    "cross-env": "^6.0.3",
+    "customize-cra": "^0.9.1",
+    "electron": "7.1.2",
+    "electron-is-dev": "^1.1.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "nodemon": "^2.0.2",
+    "react-app-rewired": "^2.1.5",
+    "wait-on": "^3.3.0"
+  }
+}
