@@ -4,14 +4,23 @@ const isDev = require("electron-is-dev");
 
 const MainAppWindow = require("./windows/BasicWindow");
 
-const { mainWindowConfig } = require("./config/widnow.config");
+const { mainWindowConfig, loginWindowConfig } = require("./config/widnow.config");
 
 function createMainWindow() {
+  const isLogin = false;
+
   const urlLocation = isDev
-    ? "http://localhost:3000/"
+    ? isLogin
+      ? "http://localhost:3000"
+      : "http://localhost:3000/login"
     : `file://${path.join(__dirname, "./index.html")}`;
 
-  let mainWindow = new MainAppWindow(mainWindowConfig, urlLocation);
+  let config = isLogin ? mainWindowConfig : loginWindowConfig;
+
+  let mainWindow = new MainAppWindow(config, urlLocation);
+  if (!isLogin) {
+    mainWindow.setFullScreen(isLogin);
+  }
 
   mainWindow.on("closed", () => {
     mainWindow = null;

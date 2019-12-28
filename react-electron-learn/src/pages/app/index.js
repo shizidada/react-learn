@@ -25,10 +25,10 @@ function App() {
       <Button onClick={send}>send event</Button>
       <Button onClick={showDialog}>showDialog</Button>
       <Link to="/login">
-        <Button>Button</Button>
+        <Button>Login</Button>
       </Link>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <img className="app-image" src={require("./images/ca.png")} />
+      <img className="app-image" src={require("../../images/ca.png")} />
     </div>
   );
 }

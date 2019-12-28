@@ -1,7 +1,7 @@
 const { BrowserWindow } = require("electron");
 const { basicConfig } = require("../config/widnow.config");
 
-class AppWindow extends BrowserWindow {
+class BasicWindow extends BrowserWindow {
   constructor(config, urlLocation) {
     // compose cinfig
     const finalConfig = { ...basicConfig, ...config };
@@ -17,4 +17,4 @@ class AppWindow extends BrowserWindow {
   }
 }
 
-module.exports = AppWindow;
+module.exports = BasicWindow;
