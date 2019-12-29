@@ -5,7 +5,9 @@ const basicConfig = {
     nodeIntegration: true
   },
   show: false,
-  backgroundColor: "#efefef"
+  backgroundColor: "#efefef",
+  frame: false,
+  center: true,
 };
 
 const loginWindowConfig = {
@@ -13,14 +15,12 @@ const loginWindowConfig = {
   height: 400,
   resizable: false,
   useContentSize: true,
-  frame: false, // 取消 window 自带的关闭最小化等
   fullScreenable: true,
-  center: true,
 };
 
 const mainWindowConfig = {
-  width: 1024,
-  height: 800
+  width: 1200,
+  height: 800,
 };
 
 module.exports = { basicConfig, mainWindowConfig, loginWindowConfig };

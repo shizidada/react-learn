@@ -1,7 +1,21 @@
-html,
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden; /* Prevents rubber-band scrolling of the whole "page" */
+  color: var(--color);
+  background-color: #fff; /* To cover OSes with no default background color */
+}
+
 body {
-  background-color: #FFf;
+  margin: 0;
+  height: 100%;
+  display: flex;
   user-select: none;
   -webkit-app-region: drag;
-  -webkit-user-select: none;
 }

@@ -1,12 +1,16 @@
 import React from "react";
 import { Layout } from "antd";
 
-import SliderMenu from '../../containers/SliderMenu';
-import './index.less';
+import BasicRoute from "../../routers/BasicRoute";
 
-const { Header, Footer, Content } = Layout;
+import SliderMenu from "../../containers/SliderMenu";
+import "./index.less";
 
-function BasicLayout({ children }) {
+const { Header, Content, Footer } = Layout;
+
+const process = window.process;
+
+function BasicLayout() {
   return (
     <div className="basic-layout-container">
       <Layout>
@@ -15,10 +19,14 @@ function BasicLayout({ children }) {
           <Header className="basic-header" />
           <Content className="basic-content-contaienr">
             <div className="basic-content-childern">
-              { children }
+              <BasicRoute />
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Moose Electron ©2020 Created by JJ</Footer>
+
+          <Footer className="basic-footer-container">
+            <span>Electron {process.versions.electron}</span>
+            <p>Moose ©2020 Created by 江景</p>
+          </Footer>
         </Layout>
       </Layout>
     </div>

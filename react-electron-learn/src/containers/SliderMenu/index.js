@@ -14,7 +14,7 @@ function SliderMenu() {
       return (
         <Menu.Item key={item.path}>
           <Link to={item.path}>
-            <Icon type="user" />
+            <Icon type={item.icon} />
             <span className="nav-text">{item.title}</span>
           </Link>
         </Menu.Item>

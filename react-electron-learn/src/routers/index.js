@@ -7,9 +7,6 @@ import UserLayout from '../layout/UserLayout';
 
 import Loading from '../components/Loading';
 
-import App from "../pages/app";
-import Login from "../pages/login";
-
 function RouterConfig() {
   return (
     <BrowserRouter>
@@ -28,7 +25,7 @@ function RouterConfig() {
             ),
           })
         } />
-        <Route path="/" exact component={App}></Route>
+        <Route path="/" render={routeProps => createElement(BasicLayout, { ...routeProps })} />
       </Switch>
     </BrowserRouter>
   );

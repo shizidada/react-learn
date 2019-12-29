@@ -6,10 +6,18 @@ import { Button } from "antd";
 import "./index.less";
 
 const { remote, ipcRenderer } = window.require("electron");
+// const Store = window.require('electron-store')
+// const loginStore = new Store({ configName: 'Login' })
 
-function App() {
+function Home() {
+  // let isLogin = loginStore.get('isLogin');
+  // if (isLogin) {
+  //   ipcRenderer.send("moose-need-login");
+  //   return;
+  // }
+
   const send = () => {
-    ipcRenderer.send("auth-fail", { key: 100, name: "jj" });
+    ipcRenderer.send("moose-auth-fail", { key: 100, name: "jj" });
   };
 
   const showDialog = () => {
@@ -21,16 +29,19 @@ function App() {
   };
 
   return (
-    <div className="app-page-container">
+    <div className="home-page-container">
       <Button onClick={send}>send event</Button>
       <Button onClick={showDialog}>showDialog</Button>
       <Link to="/login">
         <Button>Login</Button>
       </Link>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <img className="app-image" src={require("../../images/ca.png")} />
+      <img className="home-image" src={require("../../images/ca.png")} />
+      <div>
+        <pre>{JSON.stringify(window.process.versions, null, 2)}</pre>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default Home;
