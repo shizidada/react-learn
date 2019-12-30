@@ -13,62 +13,62 @@ import { fetchInitialStoreState, Store } from "../stores/store2";
 import BasicLayout from "../containers/BasicLayout";
 import "../common/interceptor";
 
-// class MooseMobxApp extends App {
-//   state = {
-//     store: new Store()
-//   };
-//   // Fetching serialized(JSON) store state
-//   static async getInitialProps(appContext) {
-//     const appProps = await App.getInitialProps(appContext);
-//     const initialStoreState = await fetchInitialStoreState();
-//     return {
-//       ...appProps,
-//       initialStoreState
-//     };
-//   }
-//   // Hydrate serialized state to store
-//   static getDerivedStateFromProps(props, state) {
-//     state.store.hydrate(props.initialStoreState);
-//     return state;
-//   }
-//   render() {
-//     const { Component, pageProps, router } = this.props;
-//     return (
-//       <Container>
-//         <Provider store={this.state.store}>
-//           <BasicLayout router={router}>
-//             <Component {...pageProps} />
-//           </BasicLayout>
-//         </Provider>
-//       </Container>
-//     );
-//   }
-// }
-
-function MooseMobxApp({ Component, pageProps, router }) {
-  const [store, setStore] = useState(new Store());
-  return (
-    <Container>
-      <Provider store={store}>
-        <BasicLayout router={router}>
-          <Component {...pageProps} />
-        </BasicLayout>
-      </Provider>
-    </Container>
-  );
-}
-MooseMobxApp.getInitialProps = async appContext => {
-  const appProps = await App.getInitialProps(appContext);
-  const initialStoreState = await fetchInitialStoreState();
-  return {
-    ...appProps,
-    initialStoreState
+class MooseMobxApp extends App {
+  state = {
+    store: new Store()
   };
-};
-MooseMobxApp.getDerivedStateFromProps = (props, state) => {
-  state.store.hydrate(props.initialStoreState);
-  return state;
-};
+  // Fetching serialized(JSON) store state
+  static async getInitialProps(appContext) {
+    const appProps = await App.getInitialProps(appContext);
+    const initialStoreState = await fetchInitialStoreState();
+    return {
+      ...appProps,
+      initialStoreState
+    };
+  }
+  // Hydrate serialized state to store
+  static getDerivedStateFromProps(props, state) {
+    state.store.hydrate(props.initialStoreState);
+    return state;
+  }
+  render() {
+    const { Component, pageProps, router } = this.props;
+    return (
+      <Container>
+        <Provider store={this.state.store}>
+          <BasicLayout router={router}>
+            <Component {...pageProps} />
+          </BasicLayout>
+        </Provider>
+      </Container>
+    );
+  }
+}
+
+// function MooseMobxApp({ Component, pageProps, router }) {
+//   const [store, setStore] = useState(new Store());
+//   return (
+//     <Container>
+//       <Provider store={store}>
+//         <BasicLayout router={router}>
+//           <Component {...pageProps} />
+//         </BasicLayout>
+//       </Provider>
+//     </Container>
+//   );
+// }
+// MooseMobxApp.getInitialProps = async appContext => {
+//   const appProps = await App.getInitialProps(appContext);
+//   const initialStoreState = await fetchInitialStoreState();
+//   return {
+//     ...appProps,
+//     initialStoreState
+//   };
+// };
+// MooseMobxApp.getDerivedStateFromProps = (props, state) => {
+//   state.store.hydrate(props.initialStoreState);
+//   return state;
+// };
 export default MooseMobxApp;
 
 // import withStore from "../stores/withStore";

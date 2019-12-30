@@ -1,27 +1,68 @@
 .basic-layout-container {
-  .basic-header {
-    background: #fff;
-    padding   : 0;
-    position  : fixed;
-    top       : 0;
-    width     : 100%;
-    height    : 64px;
-    z-index: 10;
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .slider-operator {
+    width: 80px;
+    background-color: #0089ff;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-app-region: drag;
   }
 
   .basic-content-contaienr {
-    margin  : 84px 16px 0;
-    overflow: initial;
+    flex: 1;
+    margin-left: 80px;
+    min-width: 1200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .basic-header-container {
+      background: #fff;
+      box-shadow: 0 0 5px #888;
+      padding: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 64px;
+      z-index: 10;
+      -webkit-app-region: drag;
+    }
 
     .basic-content-childern {
-      min-height: 600px;
-      padding   : 24;
+      height: 100%;
+      margin: 16px;
+      margin-top: 70px;
       background: #ccc;
       z-index: 9;
     }
+
+    .basic-footer-container {
+      text-align: center;
+      height: 64px;
+    }
   }
 
-  .basic-footer-container {
-    text-align: center;
+  .basic-content-contaienr::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #f5f5f5;
+  }
+  /*定义滚动条轨道 内阴影+圆角*/
+  .basic-content-contaienr::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+  /*定义滑块 内阴影+圆角*/
+  .basic-content-contaienr::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #999;
   }
 }

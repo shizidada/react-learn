@@ -1,33 +1,34 @@
 .login-page-container {
-  max-width : 300px;
+  max-width: 300px;
   max-height: 400px;
-  overflow  : hidden;
+  overflow: hidden;
 
   .login-closed-icon {
-    position        : absolute;
-    width           : 12px;
-    height          : 12px;
-    border-radius   : 50%;
-    line-height     : 12px;
-    text-align      : center;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    line-height: 12px;
+    text-align: center;
     background-color: #ccc;
-    font-size       : 8px;
-    left            : 12px;
-    top             : 12px;
+    font-size: 8px;
+    left: 12px;
+    top: 12px;
 
     &:hover {
       background-color: rgb(194, 104, 104);
     }
 
     &:hover:before {
-      content: 'x';
+      content: "x";
     }
   }
 
   .login-logo {
     // height : 100%;
     // margin-top: 20px;
-    height    : 150px;
-    width     : 100%;
+    -webkit-app-region: drag;
+    height: 150px;
+    width: 100%;
   }
 }

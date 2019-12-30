@@ -11,9 +11,9 @@ class BasicWindow extends BrowserWindow {
     // load url
     this.loadURL(urlLocation);
 
-    // this.once("ready-to-show", () => {
-    //   this.show();
-    // });
+    this.once("ready-to-show", () => {
+      this.show();
+    });
   }
 }
 

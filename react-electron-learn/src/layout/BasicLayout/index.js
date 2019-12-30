@@ -1,34 +1,40 @@
-import React from "react";
-import { Layout } from "antd";
+import React, { useEffect } from "react";
+
+import { Button } from "antd";
 
 import BasicRoute from "../../routers/BasicRoute";
 
-import SliderMenu from "../../containers/SliderMenu";
 import "./index.less";
-
-const { Header, Content, Footer } = Layout;
 
 const process = window.process;
 
 function BasicLayout() {
+  useEffect(() => {
+    const handleContextMenu = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(e)
+    };
+    window.addEventListener("contextmenu", handleContextMenu);
+    return () => {
+      window.removeEventListener("contextmenu", handleContextMenu);
+    };
+  });
   return (
     <div className="basic-layout-container">
-      <Layout>
-        <SliderMenu />
-        <Layout style={{ marginLeft: 200 }}>
-          <Header className="basic-header" />
-          <Content className="basic-content-contaienr">
-            <div className="basic-content-childern">
-              <BasicRoute />
-            </div>
-          </Content>
-
-          <Footer className="basic-footer-container">
-            <span>Electron {process.versions.electron}</span>
-            <p>Moose ©2020 Created by 江景</p>
-          </Footer>
-        </Layout>
-      </Layout>
+      <div className="slider-operator"></div>
+      <div className="basic-content-contaienr">
+        <div className="basic-header-container">
+          <Button>bbb</Button>
+        </div>
+        <div className="basic-content-childern">
+          <BasicRoute />
+        </div>
+        <div className="basic-footer-container">
+          <span>Electron {process.versions.electron}</span>
+          <p>Moose ©2020 Created by 江景</p>
+        </div>
+      </div>
     </div>
   );
 }

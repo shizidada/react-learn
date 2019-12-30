@@ -58,6 +58,16 @@ function createClipPath(ctx, size = 100, styleIndex = 0) {
   // left
   ctx.moveTo(r, r);
   ctx.lineTo(r, 0.5 * size - r);
+  // https://www.runoob.com/tags/canvas-arc.html
+  // context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+  /**
+   * x	圆的中心的 x 坐标。
+   * y	圆的中心的 y 坐标。
+   * r	圆的半径。
+   * sAngle	起始角，以弧度计（弧的圆形的三点钟位置是 0 度）。
+   * eAngle	结束角，以弧度计。
+   * counterclockwise	可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针
+   */
   ctx.arc(r, 0.5 * size, r, 1.5 * Math.PI, 0.5 * Math.PI, style[0]);
   ctx.lineTo(r, size - r);
 
@@ -321,6 +331,8 @@ class ImageCode extends React.Component {
         <div
           className="image-container"
           style={{ height: imageHeight, backgroundImage: `url("${imageUrl}")` }}
+          onMouseMove={this.onMoving}
+          onMouseLeave={this.onMoveEnd}
         >
           <canvas
             ref="shadowCanvas"
@@ -331,10 +343,12 @@ class ImageCode extends React.Component {
           />
           <canvas
             ref="fragmentCanvas"
-            className="canvas"
+            className="canvas fragmentCanvas"
             width={fragmentSize}
             height={fragmentSize}
             style={{ top: offsetY + "px", left: currX + "px" }}
+            onMouseDown={this.onMoveStart}
+            onMouseUp={this.onMoveEnd}
           />
 
           {(isChecking || isLoading) && (

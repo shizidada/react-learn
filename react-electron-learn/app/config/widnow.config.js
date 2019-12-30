@@ -8,6 +8,7 @@ const basicConfig = {
   backgroundColor: "#efefef",
   frame: false,
   center: true,
+  titleBarStyle: "hidden"
 };
 
 const loginWindowConfig = {
@@ -15,12 +16,12 @@ const loginWindowConfig = {
   height: 400,
   resizable: false,
   useContentSize: true,
-  fullScreenable: true,
+  fullScreenable: true
 };
 
 const mainWindowConfig = {
   width: 1200,
-  height: 800,
+  height: 800
 };
 
 module.exports = { basicConfig, mainWindowConfig, loginWindowConfig };
