@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { Button } from "antd";
 
+import SliderOperator from "../../containers/SliderOperator";
 import BasicRoute from "../../routers/BasicRoute";
 
 import "./index.less";
@@ -13,7 +14,7 @@ function BasicLayout() {
     const handleContextMenu = e => {
       e.preventDefault();
       e.stopPropagation();
-      console.log(e)
+      console.log(e);
     };
     window.addEventListener("contextmenu", handleContextMenu);
     return () => {
@@ -22,7 +23,9 @@ function BasicLayout() {
   });
   return (
     <div className="basic-layout-container">
-      <div className="slider-operator"></div>
+      <div className="slider-operator">
+        <SliderOperator />
+      </div>
       <div className="basic-content-contaienr">
         <div className="basic-header-container">
           <Button>bbb</Button>
