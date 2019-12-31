@@ -1,12 +1,11 @@
 const path = require("path");
 const glob = require("glob");
-const { app, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const isDev = require("electron-is-dev");
 const Store = require("electron-store");
 
-const MooseAppWindow = require("./windows/BasicWindow");
-
 const {
+  basicConfig,
   mainWindowConfig,
   loginWindowConfig
 } = require("./config/widnow.config");
@@ -33,7 +32,13 @@ function initialize() {
       ? "http://localhost:3000"
       : `file://${path.join(__dirname, "./index.html")}`;
 
-    mainWindow = new MooseAppWindow(loginWindowConfig, urlLocation);
+    const finalConfig = { ...basicConfig, ...loginWindowConfig };
+    mainWindow = new BrowserWindow(finalConfig);
+    mainWindow.loadURL(urlLocation);
+
+    mainWindow.once("ready-to-show", () => {
+      mainWindow.show();
+    });
 
     mainWindow.on("closed", () => {
       mainWindow = null;
@@ -50,16 +55,16 @@ function initialize() {
     loadAllMessagees();
 
     // console.log(app.getPath("userData"))
-    console.log(loginStore.delete("isLogin"))
-
+    console.log(loginStore.delete("isLogin"));
     if (loginStore.get("isLogin")) {
-      mainWindow.resizable = true;
+      mainWindow.setResizable(true);
       mainWindow.setSize(mainWindowConfig.width, mainWindowConfig.height);
       mainWindow.center();
     }
 
     ipcMain.on("moose-login-success", () => {
-      mainWindow.resizable = true;
+      mainWindow.setResizable(true);
+      // mainWindow.webContents.setLayoutZoomLevelLimits(800, 900);
       mainWindow.setSize(mainWindowConfig.width, mainWindowConfig.height);
       mainWindow.center();
     });

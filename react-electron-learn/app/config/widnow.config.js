@@ -8,15 +8,16 @@ const basicConfig = {
   backgroundColor: "#efefef",
   frame: false,
   center: true,
-  titleBarStyle: "hidden"
 };
 
 const loginWindowConfig = {
   width: 300,
   height: 400,
   resizable: false,
-  useContentSize: true,
-  fullScreenable: true
+  // useContentSize: true,
+  // fullscreenable: true,
+  // titleBarStyle: "hidden",
+  // titleBarStyle: 'hiddenInset',
 };
 
 const mainWindowConfig = {

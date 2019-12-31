@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+
 import { Icon } from "antd";
 
-function OperatorItem({ name, icon }) {
+function ActionBarItem({ type }) {
   const [isHover, setHover] = useState(false);
   const handleMouseEnter = e => {
     e.preventDefault();
@@ -12,21 +13,16 @@ function OperatorItem({ name, icon }) {
     setHover(false);
   };
 
+  const styles = { color: isHover ? "#0089ff" : "#ccc" };
+
   return (
-    <div
-      className="operator-item"
+    <Icon
+      type={type}
+      style={styles}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-    >
-      <Icon
-        type={icon}
-        style={{ fontSize: 28, color: isHover ? "#fff" : "#ccc" }}
-      />
-      <span className="item-text" style={{ color: isHover ? "#fff" : "#ccc" }}>
-        {name}
-      </span>
-    </div>
+    />
   );
 }
 
-export default OperatorItem;
+export default ActionBarItem;

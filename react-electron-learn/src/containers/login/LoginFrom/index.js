@@ -33,9 +33,12 @@ function LoginFrom(props) {
 
   return (
     <Form onSubmit={handleSubmit} className="login-form">
-      {isLoginFail && <Form.Item className="login-fail">用户名或密码错误！</Form.Item>}
+      {isLoginFail && (
+        <Form.Item className="login-fail">用户名或密码错误！</Form.Item>
+      )}
       <Form.Item>
         {getFieldDecorator("username", {
+          initialValue: "admin",
           rules: [{ required: true, message: "请输入用户名!" }]
         })(
           <Input
@@ -46,6 +49,7 @@ function LoginFrom(props) {
       </Form.Item>
       <Form.Item>
         {getFieldDecorator("password", {
+          initialValue: "admin",
           rules: [{ required: true, message: "请输入密码!" }]
         })(
           <Input
