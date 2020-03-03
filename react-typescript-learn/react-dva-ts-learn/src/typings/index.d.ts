@@ -6,11 +6,11 @@ import { MenuModelState } from '../models/menu';
 
 export interface ConnectState {
   [key: string]: GlobalModelState | HomeModelState | LoginModelState | FileModelState;
-  global: GlobalModelState,
-  menu: MenuModelState,
-  hoem: HomeModelState,
-  login: LoginModelState,
-  file: FileModelState,
+  global: GlobalModelState;
+  menu: MenuModelState;
+  hoem: HomeModelState;
+  login: LoginModelState;
+  file: FileModelState;
 }
 
 declare const ConnectState: ConnectState;

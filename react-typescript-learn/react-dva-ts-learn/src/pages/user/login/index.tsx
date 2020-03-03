@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Location } from 'history';
 
-import LoginForm from '../../../containers/LoginForm';
+import LoginForm from '../../../containers/login/LoginForm';
 
 import './index.less';
 

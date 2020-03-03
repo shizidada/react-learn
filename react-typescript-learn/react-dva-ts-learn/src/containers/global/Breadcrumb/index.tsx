@@ -4,10 +4,10 @@ import { connect } from 'dva';
 import { Breadcrumb } from 'antd';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../typings';
+import { ConnectState } from '../../../typings';
 // import { NAMESPACE } from '../../models/global/constants';
-import { MenuModelState } from '../../models/menu';
-import { findNameByPath } from '../../config/menu.util';
+import { MenuModelState } from '../../../models/menu';
+import { findNameByPath } from '../../../config/menu.util';
 
 import './index.less';
 

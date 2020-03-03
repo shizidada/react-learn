@@ -4,7 +4,8 @@ import { connect } from 'dva';
 import { ClickParam } from 'antd/lib/menu';
 import { Icon, Menu, Dropdown, Avatar, Row, Col } from 'antd';
 
-import { ConnectState } from '../../typings';
+// eslint-disable-next-line import/extensions
+import { ConnectState } from '../../../typings';
 import MooseBreadcrumb from '../Breadcrumb';
 
 import './index.less';

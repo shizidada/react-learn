@@ -3,9 +3,9 @@ import { Location } from 'history';
 import { connect } from 'dva';
 import { Dispatch } from 'redux';
 import { Layout } from 'antd';
-import SliderMenu from '../../containers/SliderMenu';
-import GlobalHeader from '../../containers/GlobalHeader';
-import TabsView from '../../containers/TabsView';
+import SliderMenu from '../../containers/global/SliderMenu';
+import GlobalHeader from '../../containers/global/GlobalHeader';
+import TabsView from '../../containers/global/TabsView';
 import BasicRoute from '../../routers/BasicRoute';
 
 // eslint-disable-next-line import/extensions

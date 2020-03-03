@@ -7,9 +7,9 @@ import { connect } from 'dva';
 import { Menu, Icon } from 'antd';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../typings';
-import { MenuModelState } from '../../models/menu';
-import { MenuConfig } from '../../config/menu.config';
+import { ConnectState } from '../../../typings';
+import { MenuModelState } from '../../../models/menu';
+import { MenuConfig } from '../../../config/menu.config';
 
 const { SubMenu } = Menu;
 

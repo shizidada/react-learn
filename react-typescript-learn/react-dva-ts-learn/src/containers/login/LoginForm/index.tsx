@@ -4,8 +4,9 @@ import { connect } from 'dva';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
-import { ConnectState } from '../../typings';
-import { NAMESPACE, LoginModelState } from '../../models/login';
+// eslint-disable-next-line import/extensions
+import { ConnectState } from '../../../typings';
+import { NAMESPACE, LoginModelState } from '../../../models/login';
 
 import './index.less';
 

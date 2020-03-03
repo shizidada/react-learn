@@ -4,8 +4,8 @@ import { connect } from 'dva';
 import { Layout } from 'antd';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../typings';
-import { MenuModelState } from '../../models/menu';
+import { ConnectState } from '../../../typings';
+import { MenuModelState } from '../../../models/menu';
 import BaseMenu from './BaseMenu';
 
 import './index.less';
