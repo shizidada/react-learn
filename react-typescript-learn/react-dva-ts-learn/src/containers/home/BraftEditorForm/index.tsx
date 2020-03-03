@@ -10,7 +10,6 @@ import 'braft-editor/dist/index.css';
 import BraftEditor, { ControlType } from 'braft-editor';
 
 import './index.less';
-import { ButtonHTMLType } from 'antd/lib/button/button';
 
 const defaultControls: ControlType[] = [
   'undo',
@@ -54,9 +53,7 @@ interface BraftEditorFormProps {
 }
 
 interface BraftEditorFormState {
-  buttonText: string;
-  htmlType: ButtonHTMLType;
-  controls: ControlType[];
+  isEditor: boolean;
 }
 
 class BraftEditorForm extends React.Component<BraftEditorFormProps, BraftEditorFormState> {
@@ -70,9 +67,7 @@ class BraftEditorForm extends React.Component<BraftEditorFormProps, BraftEditorF
   constructor(props: BraftEditorFormProps) {
     super(props);
     this.state = {
-      buttonText: '保存',
-      htmlType: 'button',
-      controls: [],
+      isEditor: false,
     };
   }
 
@@ -90,31 +85,24 @@ class BraftEditorForm extends React.Component<BraftEditorFormProps, BraftEditorF
   };
 
   changeBraftEditorStatusHandle = () => {
-    const { htmlType } = this.state;
-    const tempType = htmlType === 'submit' ? 'button' : 'submit';
-    const buttonText = htmlType === 'button' ? '编辑' : '保存';
-    const controls = htmlType === 'button' ? [] : defaultControls;
-    this.setState({ buttonText, controls, htmlType: tempType });
+    const { isEditor } = this.state;
+    this.setState({ isEditor: !isEditor });
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { buttonText, htmlType, controls } = this.state;
-    const formItemLayout = {
-      labelCol: { span: 1 },
-      wrapperCol: { span: 22, offset: 1 },
-    };
-    console.log('HomePage :: ', this.props);
+    const { isEditor } = this.state;
+    console.log('HomePage :: ', this.props, this.state);
     return (
       <Form className="home-form-container" onSubmit={this.handleSubmit}>
-        <Form.Item {...formItemLayout}>
+        <Form.Item>
           <Button
             size="large"
             type="primary"
-            htmlType={htmlType}
+            htmlType={isEditor ? 'button' : 'submit'}
             onClick={this.changeBraftEditorStatusHandle}
           >
-            {buttonText}
+            {isEditor ? '保存' : '编辑'}
           </Button>
         </Form.Item>
         <Form.Item>
@@ -135,9 +123,9 @@ class BraftEditorForm extends React.Component<BraftEditorFormProps, BraftEditorF
           })(
             <BraftEditor
               className="home-form-editor"
-              controls={controls}
-              readOnly
-              placeholder="请输入正文内容"
+              readOnly={!isEditor}
+              placeholder={isEditor ? '请输入正文内容' : ''}
+              controls={isEditor ? defaultControls : []}
             />,
           )}
         </Form.Item>
