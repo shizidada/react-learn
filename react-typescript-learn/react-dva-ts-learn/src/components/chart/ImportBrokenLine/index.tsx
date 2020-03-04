@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import G2, { TooltipItem } from '@antv/g2';
 import { importData } from './data/ImportItem';
 
-import './index.css'
+import './index.css';
 
 export default class ImportBrokenLine extends Component {
   public componentDidMount() {
     const chart: G2.Chart = new G2.Chart({
       container: 'importBrokenLine',
-      forceFit: true,
+      // forceFit: true,
       height: 380,
-      padding: [100, 30, 30, 60], // 上右下左
+      padding: [100, 60, 60, 60], // 上右下左
     });
     chart.source(importData);
     chart.tooltip({
@@ -58,16 +58,23 @@ export default class ImportBrokenLine extends Component {
         },
       },
     });
-    chart.legend(false);
+    // chart.legend(false);
+    // chart.legend({ position: 'bottom' });
+    chart.legend({
+      position: 'bottom',
+    });
+
     chart
       .line()
       .position('date*value')
       .color('type');
-    chart.render();
+
     chart.showTooltip({
       x: 80,
       y: 100,
     });
+
+    chart.render();
   }
 
   public render() {

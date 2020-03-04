@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import G2 from '@antv/g2';
 import { demoData } from './demo';
 
 export default class DemoItem extends Component {
   componentDidMount() {
     const chart: G2.Chart = new G2.Chart({
-      container: 'mountNode',
-      forceFit: true,
-      height: 280,
+      container: 'demoItem',
+      forceFit: false,
+      height: 380,
     });
     chart.source(demoData, {
       percent: {
         formatter: function formatter(val: number) {
-          return `${(val * 100)} %`;
+          return `${val * 100} %`;
         },
       },
     });
@@ -20,7 +20,8 @@ export default class DemoItem extends Component {
     chart.tooltip({
       showTitle: false,
     });
-    chart.intervalStack()
+    chart
+      .intervalStack()
       .position('percent')
       .color('item')
       .label('percent', {
@@ -35,7 +36,7 @@ export default class DemoItem extends Component {
       .tooltip('item*percent', (item: string, percent: number) => {
         return {
           name: item,
-          value: `${(percent * 100)} %`,
+          value: `${percent * 100} %`,
         };
       })
       .style({
@@ -46,8 +47,6 @@ export default class DemoItem extends Component {
   }
 
   render() {
-    return (
-      <div id="mountNode" className="home-page-echart"></div>
-    )
+    return <div id="demoItem" className="home-page-echart"></div>;
   }
 }

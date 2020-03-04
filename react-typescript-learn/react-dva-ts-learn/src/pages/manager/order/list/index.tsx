@@ -62,10 +62,14 @@ export default class OrderPage extends Component {
           </Col>
         </Row>
 
-        <Row className="home-page-echart-row">
-          <ImportBrokenLine />
+        <Row>
+          <Col span={8}>
+            <ImportBrokenLine />
+          </Col>
+          <Col span={5}>
+            <DemoItem />
+          </Col>
         </Row>
-        <DemoItem />
       </div>
     );
   }
