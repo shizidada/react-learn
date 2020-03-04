@@ -7,7 +7,8 @@ export default class DemoItem extends Component {
     const chart: G2.Chart = new G2.Chart({
       container: 'demoItem',
       forceFit: true,
-      height: 250,
+      height: 200,
+      padding: 'auto',
     });
     chart.source(demoData, {
       percent: {
@@ -20,12 +21,13 @@ export default class DemoItem extends Component {
     chart.tooltip({
       showTitle: true,
     });
+    chart.legend({ position: 'right' });
     chart
       .intervalStack()
       .position('percent')
       .color('item')
       .label('percent', {
-        // offset: -40,
+        offset: -40,
         autoRotate: false,
         textStyle: {
           textAlign: 'center',

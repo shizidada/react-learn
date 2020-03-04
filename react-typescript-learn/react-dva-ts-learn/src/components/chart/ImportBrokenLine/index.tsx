@@ -14,8 +14,8 @@ export default class ImportBrokenLine extends Component<ImportBrokenLineProps, {
     const chart: Chart = new Chart({
       container: renderId,
       forceFit: true,
-      height: 214,
-      padding: [20, 20, 20, 60], // 上右下左
+      height: 220,
+      padding: [20, 20, 60, 60], // 上右下左
     });
     chart.source(importData);
     chart.tooltip({
@@ -72,6 +72,8 @@ export default class ImportBrokenLine extends Component<ImportBrokenLineProps, {
       .line()
       .position('date*value')
       .color('type');
+
+    chart.point().position('date*value');
 
     chart.showTooltip({
       x: 80,

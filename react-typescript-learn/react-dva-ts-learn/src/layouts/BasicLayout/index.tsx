@@ -32,7 +32,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
 
   private getContentStyle = () => {
     return {
-      margin: '16px 16px 0',
+      margin: '24px 24px 0',
     };
   };
 
