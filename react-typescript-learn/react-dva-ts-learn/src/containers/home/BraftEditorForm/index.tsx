@@ -110,14 +110,14 @@ class BraftEditorForm extends React.Component<BraftEditorFormProps, BraftEditorF
             validateTrigger: 'onBlur',
             rules: [
               {
-                required: true,
-                validator: (_, value, callback) => {
-                  if (value.isEmpty()) {
-                    callback('请输入正文内容');
-                  } else {
-                    callback();
-                  }
-                },
+                required: false,
+                // validator: (_, value, callback) => {
+                //   if (value.isEmpty()) {
+                //     callback('请输入正文内容');
+                //   } else {
+                //     callback();
+                //   }
+                // },
               },
             ],
           })(

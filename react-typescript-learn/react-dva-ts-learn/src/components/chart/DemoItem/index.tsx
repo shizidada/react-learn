@@ -6,8 +6,8 @@ export default class DemoItem extends Component {
   componentDidMount() {
     const chart: G2.Chart = new G2.Chart({
       container: 'demoItem',
-      forceFit: false,
-      height: 380,
+      forceFit: true,
+      height: 250,
     });
     chart.source(demoData, {
       percent: {
@@ -18,14 +18,14 @@ export default class DemoItem extends Component {
     });
     chart.coord('theta');
     chart.tooltip({
-      showTitle: false,
+      showTitle: true,
     });
     chart
       .intervalStack()
       .position('percent')
       .color('item')
       .label('percent', {
-        offset: -40,
+        // offset: -40,
         autoRotate: false,
         textStyle: {
           textAlign: 'center',
