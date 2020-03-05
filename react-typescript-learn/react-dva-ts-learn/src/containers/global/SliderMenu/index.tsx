@@ -30,8 +30,8 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
     console.log('SliderMenu render :: ', this.props);
     return (
       <Sider
-        className="slider-menu-container fixSiderbar"
-        width={256}
+        className="slider-menu-container"
+        // width={256}
         // collapsible
         collapsed={collapsed}
         onCollapse={this.onSiderCollapseHandle}

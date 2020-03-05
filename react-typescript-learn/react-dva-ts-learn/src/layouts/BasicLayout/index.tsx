@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Location } from 'history';
-import { connect } from 'dva';
-import { Dispatch } from 'redux';
+// import { connect } from 'dva';
+// import { Dispatch } from 'redux';
 import { Layout } from 'antd';
 import SliderMenu from '../../containers/global/SliderMenu';
 import GlobalHeader from '../../containers/global/GlobalHeader';
@@ -21,19 +21,13 @@ interface BasicLayoutProps extends ConnectState {
 interface BasicLayoutState {}
 
 class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
-  private getLayoutStyle = () => {
-    const { collapsed } = this.props;
-    return {
-      paddingLeft: collapsed ? '80px' : '256px',
-      minHeight: '100vh',
-    };
-  };
-
-  private getContentStyle = () => {
-    return {
-      margin: '24px 24px 0',
-    };
-  };
+  // private getLayoutStyle = () => {
+  //   const { collapsed } = this.props;
+  //   return {
+  //     paddingLeft: collapsed ? '80px' : '200px',
+  //     minHeight: '100vh',
+  //   };
+  // };
 
   public render() {
     console.log('BasicLayout :: ', this.props);
@@ -41,13 +35,14 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
       <Layout className="basic-layout-container">
         <SliderMenu />
         <Layout
-          style={{
-            ...this.getLayoutStyle(),
-          }}
+          className="basic-layout-content"
+          // style={{
+          //   ...this.getLayoutStyle(),
+          // }}
         >
           <GlobalHeader />
           <TabsView />
-          <Content className="basic-layout-content" style={this.getContentStyle()}>
+          <Content className="basic-layout-wrapper">
             <BasicRoute />
           </Content>
           <Footer style={{ textAlign: 'center' }}>©2019 Created by 江景</Footer>
