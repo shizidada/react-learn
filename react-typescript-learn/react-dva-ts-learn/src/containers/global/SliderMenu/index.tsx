@@ -16,7 +16,7 @@ interface SliderMenuProps extends MenuModelState {
   onCollapse: (collapsed: boolean) => void;
   sliderMenuSelect: (selectedKeys: object) => void;
 }
-interface SliderMenuState { }
+interface SliderMenuState {}
 
 class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
   private onSiderCollapseHandle = (collapsed: boolean) => {
@@ -32,7 +32,7 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
       <Sider
         className="slider-menu-container fixSiderbar"
         width={256}
-        collapsible
+        // collapsible
         collapsed={collapsed}
         onCollapse={this.onSiderCollapseHandle}
       >
@@ -47,7 +47,7 @@ export default connect(
   (state: ConnectState) => {
     return {
       ...state.menu,
-    }
+    };
   },
   (dispatch: Dispatch) => ({}),
 )(SliderMenu);

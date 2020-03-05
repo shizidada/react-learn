@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Chart, TooltipItem } from '@antv/g2';
+import { Card } from 'antd';
 import { importData } from './data/ImportItem';
 
 import './index.css';
@@ -85,6 +86,10 @@ export default class ImportBrokenLine extends Component<ImportBrokenLineProps, {
 
   public render() {
     const { renderId } = this.props;
-    return <div id={renderId}></div>;
+    return (
+      <Card>
+        <div id={renderId}></div>
+      </Card>
+    );
   }
 }

@@ -12,13 +12,13 @@ import './index.less';
 
 interface MooseGlobalHeaderProps extends ConnectState {
   onSliderMenuToggle: () => void;
-  updateGlobalStore: () => void;
+  updateMenuStore: (collapsed?: object) => void;
 }
 
 class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
   componentDidMount() {
     console.log('MooseGlobalHeader ', this.props);
-    this.props.updateGlobalStore();
+    this.props.updateMenuStore();
   }
 
   private onMenuClick = (param: ClickParam) => {
@@ -26,7 +26,8 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
   };
 
   private onHeaderTrigger = () => {
-    this.props.onSliderMenuToggle();
+    const { collapsed } = this.props;
+    this.props.updateMenuStore({ collapsed: !collapsed });
   };
 
   public render() {
@@ -51,11 +52,8 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
     return (
       <Row className="moose-global-header-container">
         <Col span={2}>
-          <span className="moose-global-header-trigger"
-            onClick={() => this.onHeaderTrigger()}>
-            <Icon
-              type={collapsed ? 'menu-unfold' : 'menu-fold'}
-            />
+          <span className="moose-global-header-trigger" onClick={() => this.onHeaderTrigger()}>
+            <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
           </span>
         </Col>
         <Col span={6}>
@@ -82,7 +80,7 @@ export default connect(
     };
   },
   (dispatch: Dispatch) => ({
-    updateGlobalStore(record: object = {}) {
+    updateMenuStore(record: object) {
       dispatch({ type: 'menu/updateMenuStore', payload: record });
     },
   }),

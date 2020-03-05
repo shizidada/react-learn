@@ -17,7 +17,6 @@ const { Content, Footer } = Layout;
 
 interface BasicLayoutProps extends ConnectState {
   location: Location<any>;
-  updateMenuStore: (collapsed: object) => void;
 }
 interface BasicLayoutState {}
 
@@ -36,11 +35,6 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
     };
   };
 
-  private onSliderMenuToggle = () => {
-    const { collapsed } = this.props;
-    this.props.updateMenuStore({ collapsed: !collapsed });
-  };
-
   public render() {
     console.log('BasicLayout :: ', this.props);
     return (
@@ -51,7 +45,7 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
             ...this.getLayoutStyle(),
           }}
         >
-          <GlobalHeader onSliderMenuToggle={this.onSliderMenuToggle} />
+          <GlobalHeader />
           <TabsView />
           <Content className="basic-layout-content" style={this.getContentStyle()}>
             <BasicRoute />
@@ -63,14 +57,16 @@ class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
   }
 }
 
-export default connect(
-  // state: ConnectState
-  ({ global, menu }: ConnectState) => ({
-    ...menu,
-  }),
-  (dispatch: Dispatch) => ({
-    updateMenuStore(record: object) {
-      dispatch({ type: 'menu/updateMenuStore', payload: record });
-    },
-  }),
-)(BasicLayout);
+export default BasicLayout;
+
+// connect(
+//   // state: ConnectState
+//   ({ global, menu }: ConnectState) => ({
+//     ...menu,
+//   }),
+//   (dispatch: Dispatch) => ({
+//     updateMenuStore(record: object) {
+//       dispatch({ type: 'menu/updateMenuStore', payload: record });
+//     },
+//   }),
+// )(BasicLayout);

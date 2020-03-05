@@ -75,8 +75,8 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
         style={{ padding: '16px 0', width: '100%' }}
         defaultOpenKeys={openKeys}
         defaultSelectedKeys={selectedKeys}
-        selectedKeys={collapsed ? [] : selectedKeys}
-        openKeys={collapsed ? [] : openKeys}
+        // selectedKeys={collapsed ? [] : selectedKeys}
+        // openKeys={collapsed ? [] : openKeys}
         onOpenChange={this.onSliderOpenChange}
       >
         {menuData.map((item: MenuConfig) => {
