@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Divider, message } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 // eslint-disable-next-line import/extensions
 import { ConnectState } from '../../../typings';
-import { NAMESPACE, LoginModelState } from '../../../models/login';
+import { LoginModelState } from '../../../models/login';
 
 import './index.less';
+
+const { Item } = Form;
 
 interface LoginFormProps extends LoginModelState {
   form: WrappedFormUtils;
@@ -22,12 +24,12 @@ interface LoginFormState { }
 class LoginForm extends Component<LoginFormProps, LoginFormState> {
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { isLoginType } = this.props;
+    const { loginType } = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
         // current is login status
-        if (isLoginType) {
+        if (loginType === 'login') {
           if (values.accountName !== '' && values.password !== '') {
             this.props.login(values);
           }
@@ -47,8 +49,8 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
   };
 
   private changeType = () => {
-    const type = this.props.isLoginType;
-    this.props.updateLoginStore({ isLoginType: !type });
+    const { loginType } = this.props;
+    this.props.updateLoginStore({ loginType: loginType === 'login' ? 'registe' : 'login' });
     this.props.form.resetFields();
   };
 
@@ -56,15 +58,19 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
     this.props.updateLoginStore({ errorMessage: '' });
   };
 
+  private thirdAccountLogin = (type: string) => {
+    console.log('thirdAccountLogin', type)
+  }
+
   public render() {
     const { getFieldDecorator } = this.props.form;
-    const { isLoginType, isLoading, errorMessage } = this.props;
+    const { loginType, isLoading, errorMessage } = this.props;
 
     console.log('LoginForm :: ', this.props);
     return (
       <div className="login-form-container">
         <Form onSubmit={this.handleSubmit} className="login-form">
-          <Form.Item>
+          <Item>
             {getFieldDecorator('accountName', {
               rules: [{ required: true, message: '请输入用户名!' }],
             })(
@@ -74,8 +80,8 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                 onChange={e => this.inputChangeHandle(e)}
               />,
             )}
-          </Form.Item>
-          <Form.Item>
+          </Item>
+          <Item>
             {getFieldDecorator('password', {
               rules: [{ required: true, message: '请输入密码!' }],
             })(
@@ -86,13 +92,13 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                 onChange={e => this.inputChangeHandle(e)}
               />,
             )}
-          </Form.Item>
+          </Item>
 
           {/* error tips */}
           {errorMessage !== '' && <span className="login-failed-message">{errorMessage}</span>}
 
-          {!isLoginType && (
-            <Form.Item>
+          {loginType === 'registe' && (
+            <Item>
               {getFieldDecorator('repassword', {
                 rules: [{ required: true, message: '请再次输入密码!' }],
               })(
@@ -102,37 +108,41 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
                   placeholder="请再次输入密码"
                 />,
               )}
-            </Form.Item>
+            </Item>
           )}
 
-          {isLoginType && (
-            <Form.Item className="login-form-register">
+          {loginType === 'login' && (
+            <Item>
               {getFieldDecorator('remember', {
                 valuePropName: 'checked',
                 initialValue: true,
               })(<Checkbox>记住我</Checkbox>)}
+              {/* eslint-disable-next-line no-script-url */}
               <a className="login-form-forgot" href="javascript:void(0)">
                 忘记密码
               </a>
-            </Form.Item>
+            </Item>
           )}
-          <Form.Item>
+          <Item>
             <Button
               loading={isLoading}
               type="primary"
               htmlType="submit"
               className="login-form-button"
             >
-              {isLoginType ? '登录' : '注册'}
+              {loginType === 'login' ? '登录' : '注册'}
             </Button>
+          </Item>
+          <div className="login-form-register">
+            {/* eslint-disable-next-line no-script-url */}
             <a href="javascript:void(0)" onClick={() => this.changeType()}>
-              {isLoginType ? '注册' : '登录'}
+              {loginType === 'login' ? '立即注册' : '返回登录'}
             </a>
-          </Form.Item>
-
-          <Form.Item>
-            <Button onClick={() => this.props.redirect()}>跳转</Button>
-          </Form.Item>
+          </div>
+          <Item className="login-form-third">
+            <Divider />
+            <Icon type="github" theme="filled" onClick={() => this.thirdAccountLogin('github')} />
+          </Item>
         </Form>
       </div>
     );
@@ -147,16 +157,16 @@ export default connect(
   },
   (dispatch: Dispatch) => ({
     updateLoginStore(record: object) {
-      dispatch({ type: `${NAMESPACE}/updateLoginStore`, payload: record });
+      dispatch({ type: 'login/updateLoginStore', payload: record });
     },
     login(record: object) {
-      dispatch({ type: `${NAMESPACE}/login`, payload: record });
+      dispatch({ type: 'login/login', payload: record });
     },
     register(record: object) {
-      dispatch({ type: `${NAMESPACE}/register`, payload: record });
+      dispatch({ type: 'login/register', payload: record });
     },
     redirect() {
-      dispatch({ type: `${NAMESPACE}/redirect` });
+      dispatch({ type: 'login/redirect' });
     },
   }),
 )(Form.create({ name: 'login_form' })(LoginForm));

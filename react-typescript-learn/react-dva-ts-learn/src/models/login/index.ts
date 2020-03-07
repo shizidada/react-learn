@@ -16,7 +16,7 @@ export interface LoginModelType extends Model {
 }
 
 export interface LoginModelState {
-  isLoginType: boolean;
+  loginType: string;
   isLoading: boolean;
   errorMessage: string;
 }
@@ -25,7 +25,7 @@ const LoginModel: LoginModelType = {
   namespace: NAMESPACE,
 
   state: {
-    isLoginType: true,
+    loginType: 'login', // login registe reset
     isLoading: false,
     errorMessage: '',
   },
