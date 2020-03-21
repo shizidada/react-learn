@@ -6,17 +6,7 @@ export interface MenuConfig {
 }
 
 export const menus: MenuConfig[] = [
-  { icon: 'pie-chart', name: 'Home', path: '/' },
-  {
-    icon: 'user',
-    name: 'User',
-    path: '/user',
-    children: [
-      { icon: 'compass', name: 'Tom', path: '/user/tom' },
-      { icon: 'picture', name: 'Bill', path: '/user/bill' },
-      { icon: 'tablet', name: 'Alex', path: '/user/alex' },
-    ],
-  },
+  { icon: 'pie-chart', name: '首页', path: '/' },
   {
     icon: 'file',
     name: 'File',
@@ -49,28 +39,7 @@ export const menus: MenuConfig[] = [
     name: 'Article',
     path: '/article',
     children: [
-      { icon: 'compass', name: 'List', path: '/article/list' },
       { icon: 'compass', name: 'Create', path: '/article/create' },
-    ],
-  },
-  {
-    icon: 'setting',
-    name: 'Setting',
-    path: '/setting',
-    children: [{ icon: 'skin', name: 'Skin', path: '/setting/skin' }],
-  },
-  {
-    icon: 'team',
-    name: 'Team',
-    path: '/team',
-    children: [
-      {
-        icon: 'deployment-unit',
-        name: 'Team 1',
-        path: '/team/team1',
-        children: [{ icon: 'hourglass', name: 'Sub Team 1-1', path: '/team/team1/subteam' }],
-      },
-      { icon: 'pull-request', name: 'Team 2', path: '/team/team2' },
     ],
   },
 ];

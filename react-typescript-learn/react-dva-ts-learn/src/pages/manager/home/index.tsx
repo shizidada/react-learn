@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Button } from 'antd';
 
 import ImportBrokenLine from '../../../components/chart/ImportBrokenLine';
 import BraftEditorForm from '../../../containers/home/BraftEditorForm';
@@ -12,11 +12,25 @@ import TabContentCard from '../../../containers/home/TabContentCard';
 import './index.less';
 
 export default class HomePage extends React.Component {
+  changeStoreHandle = () => {
+    localStorage.removeItem('info');
+    const info = {
+      name: 'Tom',
+    }
+    localStorage.setItem('info', JSON.stringify(info));
+  }
+
   public render() {
     return (
       <React.Fragment>
         <Row gutter={[24, 24]} className="home-page-container">
           <Col span={19}>
+            <Row gutter={[24, 24]}>
+              <Col>
+                <Button onClick={this.changeStoreHandle}>change storage</Button>
+              </Col>
+            </Row>
+
             <Row gutter={[24, 24]}>
               <Col>
                 <BraftEditorForm />

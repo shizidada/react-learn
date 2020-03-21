@@ -15,10 +15,33 @@ interface MooseGlobalHeaderProps extends ConnectState {
   updateMenuStore: (collapsed?: object) => void;
 }
 
-class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
+interface MooseGlobalHeaderState {
+  accountName: string;
+}
+
+class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, MooseGlobalHeaderState> {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props: MooseGlobalHeaderProps) {
+    super(props);
+    this.state = {
+      accountName: 'Admin',
+    }
+  }
+
   componentDidMount() {
     console.log('MooseGlobalHeader ', this.props);
     this.props.updateMenuStore();
+
+    // eslint-disable-next-line prefer-arrow-callback
+    window.addEventListener('storage', this.storeChangeListener, false);
+  }
+
+  storeChangeListener = (event: StorageEvent) => {
+    console.log('received response:  ', event);
+    if (event.newValue) {
+      const info = JSON.parse(event.newValue);
+      this.setState({ accountName: info.name })
+    }
   }
 
   private onMenuClick = (param: ClickParam) => {
@@ -32,6 +55,7 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
 
   public render() {
     const { collapsed } = this.props;
+    const { accountName } = this.state;
     const menu = (
       <Menu className="moose-global-header-menu" selectedKeys={[]} onClick={this.onMenuClick}>
         <Menu.Item key="userCenter">
@@ -64,7 +88,7 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, {}> {
           <Dropdown overlay={menu} trigger={['click']}>
             <span className="action">
               <Avatar className="avatar" size="small" icon="user" />
-              <span>admin</span>
+              <span>{accountName}</span>
             </span>
           </Dropdown>
         </Col>
