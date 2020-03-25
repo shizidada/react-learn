@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Card, Row, Col, Button } from 'antd';
+import { Card, Row, Col } from 'antd';
 
 import ImportBrokenLine from '../../../components/chart/ImportBrokenLine';
-import BraftEditorForm from '../../../containers/home/BraftEditorForm';
 
 import AdvertisementCard from '../../../containers/home/AdvertisementCard';
 import NoticeCard from '../../../containers/home/NoticeCard';
@@ -11,82 +10,63 @@ import TabContentCard from '../../../containers/home/TabContentCard';
 
 import './index.less';
 
-export default class HomePage extends React.Component {
-  changeStoreHandle = () => {
-    localStorage.removeItem('info');
-    const info = {
-      name: 'Tom',
-    }
-    localStorage.setItem('info', JSON.stringify(info));
-  }
+const HomePage: React.FC = () => {
+  return (
+    <React.Fragment>
+      <Row gutter={[24, 24]} className="home-page-container">
+        <Col span={19}>
 
-  public render() {
-    return (
-      <React.Fragment>
-        <Row gutter={[24, 24]} className="home-page-container">
-          <Col span={19}>
-            <Row gutter={[24, 24]}>
-              <Col>
-                <Button onClick={this.changeStoreHandle}>change storage</Button>
-              </Col>
-            </Row>
+          <Row gutter={[24, 24]}>
+            <Col span={8}>
+              <ImportBrokenLine renderId="ImportBrokenLine_1" />
+            </Col>
+            <Col span={16}>
+              <ImportBrokenLine renderId="ImportBrokenLine_2" />
+            </Col>
+          </Row>
 
-            <Row gutter={[24, 24]}>
-              <Col>
-                <BraftEditorForm />
-              </Col>
-            </Row>
+          <Row gutter={[24, 24]}>
+            <Col>
+              <TabContentCard />
+            </Col>
+          </Row>
 
-            <Row gutter={[24, 24]}>
-              <Col span={8}>
-                <ImportBrokenLine renderId="ImportBrokenLine_1" />
-              </Col>
-              <Col span={16}>
-                <ImportBrokenLine renderId="ImportBrokenLine_2" />
-              </Col>
-            </Row>
+          <Row gutter={[24, 24]}>
+            <Col span={6}>
+              <Card>Card</Card>
+            </Col>
+            <Col span={6}>
+              <Card>Card</Card>
+            </Col>
+            <Col span={6}>
+              <Card>Card</Card>
+            </Col>
+            <Col span={6}>
+              <Card>Card</Card>
+            </Col>
+          </Row>
+        </Col>
 
-            <Row gutter={[24, 24]}>
-              <Col>
-                <TabContentCard />
-              </Col>
-            </Row>
-
-            <Row gutter={[24, 24]}>
-              <Col span={6}>
-                <Card>Card</Card>
-              </Col>
-              <Col span={6}>
-                <Card>Card</Card>
-              </Col>
-              <Col span={6}>
-                <Card>Card</Card>
-              </Col>
-              <Col span={6}>
-                <Card>Card</Card>
-              </Col>
-            </Row>
-          </Col>
-
-          <Col span={5}>
-            <Row gutter={[24, 24]}>
-              <Col>
-                <MessageCard />
-              </Col>
-            </Row>
-            <Row gutter={[24, 24]}>
-              <Col>
-                <NoticeCard />
-              </Col>
-            </Row>
-            <Row gutter={[24, 24]}>
-              <Col>
-                <AdvertisementCard />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </React.Fragment>
-    );
-  }
+        <Col span={5}>
+          <Row gutter={[24, 24]}>
+            <Col>
+              <MessageCard />
+            </Col>
+          </Row>
+          <Row gutter={[24, 24]}>
+            <Col>
+              <NoticeCard />
+            </Col>
+          </Row>
+          <Row gutter={[24, 24]}>
+            <Col>
+              <AdvertisementCard />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </React.Fragment>
+  );
 }
+
+export default HomePage

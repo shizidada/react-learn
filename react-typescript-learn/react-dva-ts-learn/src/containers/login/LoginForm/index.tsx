@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { Form, Icon, Input, Button, Checkbox, Divider, message } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Divider } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 // eslint-disable-next-line import/extensions

@@ -6,16 +6,14 @@ import LoginForm from '../../../containers/login/LoginForm';
 import './index.less';
 
 interface LoginPageProps {
-  localtion: Location<any>;
+  localtion: Location<{}>;
 }
 
-export default class LoginPage extends React.Component<LoginPageProps, {}> {
-  public render() {
-    console.log('LoginPage :: ', this.props);
-    return (
-      <div className="login-page">
-        <LoginForm />
-      </div>
-    );
-  }
-}
+const LoginPage: React.FC<LoginPageProps> = () => {
+  return (
+    <div className="login-page-container">
+      <LoginForm />
+    </div>
+  );
+};
+export default LoginPage

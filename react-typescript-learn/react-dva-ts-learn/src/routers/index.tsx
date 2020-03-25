@@ -6,7 +6,7 @@ import H from 'history';
 import Loadable from 'react-loadable';
 
 import BasicLayout from '../layouts/BasicLayout';
-import UserLayout from '../layouts/UserLayout';
+import UserLayout, { UserLayoutProps } from '../layouts/UserLayout';
 
 import Error from '../pages/error';
 
@@ -24,7 +24,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
         <Route
           path="/login"
           render={routeProps =>
-            createElement<any>(UserLayout, {
+            createElement<UserLayoutProps>(UserLayout, {
               ...routeProps,
               view: createElement<any>(
                 Loadable({

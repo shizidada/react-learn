@@ -31,17 +31,6 @@ class MooseGlobalHeader extends React.Component<MooseGlobalHeaderProps, MooseGlo
   componentDidMount() {
     console.log('MooseGlobalHeader ', this.props);
     this.props.updateMenuStore();
-
-    // eslint-disable-next-line prefer-arrow-callback
-    window.addEventListener('storage', this.storeChangeListener, false);
-  }
-
-  storeChangeListener = (event: StorageEvent) => {
-    console.log('received response:  ', event);
-    if (event.newValue) {
-      const info = JSON.parse(event.newValue);
-      this.setState({ accountName: info.name })
-    }
   }
 
   private onMenuClick = (param: ClickParam) => {

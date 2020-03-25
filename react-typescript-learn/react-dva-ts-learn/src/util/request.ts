@@ -1,5 +1,4 @@
 // import * as React from 'react';
-import { message } from 'antd';
 // , { AxiosRequestConfig, AxiosResponse }
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 // import qs from 'qs';

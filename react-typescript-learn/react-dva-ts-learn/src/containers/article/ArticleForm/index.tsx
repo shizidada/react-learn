@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, Card } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 // eslint-disable-next-line import/extensions
@@ -65,7 +65,7 @@ class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
     const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
     const articleTitleError = isFieldTouched('articleTitle') && getFieldError('articleTitle');
     return (
-      <div className="article-form-container">
+      <Card className="article-form-container">
         <Form layout="inline" onSubmit={this.handleSubmit}>
           <Form.Item
             label="Article Title"
@@ -92,7 +92,7 @@ class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
             onToggleFullScreenChange={this.handleToggleFullScreen}
           />
         </Form>
-      </div>
+      </Card>
     );
   }
 }

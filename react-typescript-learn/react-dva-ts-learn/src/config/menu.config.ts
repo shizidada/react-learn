@@ -8,38 +8,35 @@ export interface MenuConfig {
 export const menus: MenuConfig[] = [
   { icon: 'pie-chart', name: '首页', path: '/' },
   {
-    icon: 'file',
-    name: 'File',
-    path: '/file',
+    icon: 'appstore',
+    name: '订单',
+    path: '/order',
     children: [
-      { icon: 'compass', name: 'List', path: '/file/list' },
-      { icon: 'compass', name: 'Import', path: '/file/import' },
+      { icon: 'compass', name: '订单列表', path: '/order' },
     ],
   },
   {
     icon: 'crown',
-    name: 'Product',
+    name: '产品',
     path: '/product',
     children: [
-      { icon: 'compass', name: 'List', path: '/product/list' },
-      { icon: 'compass', name: 'Create', path: '/product/create' },
+      { icon: 'compass', name: '产品配置', path: '/product' },
     ],
   },
   {
-    icon: 'appstore',
-    name: 'Order',
-    path: '/order',
+    icon: 'setting',
+    name: '设置',
+    path: '/setting',
     children: [
-      { icon: 'compass', name: 'List', path: '/order/list' },
-      { icon: 'compass', name: 'Create', path: '/order/create' },
+      { icon: 'compass', name: '个人设置', path: '/setting' },
     ],
   },
   {
     icon: 'pic-left',
-    name: 'Article',
+    name: '文章',
     path: '/article',
     children: [
-      { icon: 'compass', name: 'Create', path: '/article/create' },
+      { icon: 'compass', name: '文章列表', path: '/article' },
     ],
   },
 ];

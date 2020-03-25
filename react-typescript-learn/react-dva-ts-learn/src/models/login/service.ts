@@ -10,6 +10,6 @@ export interface RegisterParam extends LoginParam {
   phone: string;
 }
 
-export const login = (params: LoginParam) => post('/api/v1/account/login', params);
+export const login = (params: LoginParam) => post('/api/user/login', params);
 
-export const register = (params: RegisterParam) => post('/api/v1/account/register', params);
+export const register = (params: RegisterParam) => post('/api/user/register', params);
