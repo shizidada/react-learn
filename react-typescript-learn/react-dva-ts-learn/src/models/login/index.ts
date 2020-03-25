@@ -62,25 +62,30 @@ const LoginModel: LoginModelType = {
       } catch (error) {
         yield put({
           type: 'updateLoginStore',
-          payload: { errorMessage: '系统繁忙', isLoading: false },
+          payload: { errorMessage: error.message, isLoading: false },
         });
       }
     },
-    *register(action, { call }) {
-      console.log('register', action);
-      const { payload } = action;
-      const { accountName } = payload;
-      let { password, repassword: rePassword } = payload;
-      password = MD5(password);
-      rePassword = MD5(rePassword);
-      const res = yield call(register, { accountName, password, rePassword });
-      console.log(res);
 
-      yield '';
+    *register(action, { call, put }) {
+      yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: true } });
+      try {
+        console.log('register', action);
+        const { payload } = action;
+        const { accountName } = payload;
+        let { password, repassword: rePassword } = payload;
+        password = MD5(password);
+        rePassword = MD5(rePassword);
+        const res = yield call(register, { accountName, password, rePassword });
+        yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: false } });
+        console.log('register res :: ', res, action);
+      } catch (error) {
+        yield put({
+          type: 'updateLoginStore',
+          payload: { errorMessage: error.message, isLoading: false },
+        });
+      }
     },
-    // *redirect(action, { call, put, select }) {
-    //   yield put(routerRedux.push("/"));
-    // },
   },
 
   // subscriptions: {

@@ -19,12 +19,12 @@ interface LoginFormProps extends LoginModelState {
   register: (type: object) => void;
   redirect: () => void;
 }
-interface LoginFormState { }
+interface LoginFormState {}
 
 class LoginForm extends Component<LoginFormProps, LoginFormState> {
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { loginType } = this.props;
+    const { loginType, updateLoginStore } = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
@@ -39,10 +39,10 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
             if (values.password === values.repassword) {
               this.props.register(values);
             } else {
-              message.error('两次密码不一致。');
+              updateLoginStore({ errorMessage: '两次密码不一致' });
             }
           }
-          console.log('register :: ==> ', values)
+          console.log('register :: ==> ', values);
         }
       }
     });
@@ -50,7 +50,10 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
 
   private changeType = () => {
     const { loginType } = this.props;
-    this.props.updateLoginStore({ loginType: loginType === 'login' ? 'registe' : 'login' });
+    this.props.updateLoginStore({
+      loginType: loginType === 'login' ? 'registe' : 'login',
+      errorMessage: '',
+    });
     this.props.form.resetFields();
   };
 
@@ -59,8 +62,8 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
   };
 
   private thirdAccountLogin = (type: string) => {
-    console.log('thirdAccountLogin', type)
-  }
+    console.log('thirdAccountLogin', type);
+  };
 
   public render() {
     const { getFieldDecorator } = this.props.form;
@@ -70,9 +73,11 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
     return (
       <div className="login-form-container">
         <Form onSubmit={this.handleSubmit} className="login-form">
+          <h3>用户{loginType === 'login' ? '登录' : '注册'}</h3>
           <Item>
             {getFieldDecorator('accountName', {
-              rules: [{ required: true, message: '请输入用户名!' }],
+              initialValue: 'admin',
+              rules: [{ required: true, message: '请输入用户名' }],
             })(
               <Input
                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -83,7 +88,8 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
           </Item>
           <Item>
             {getFieldDecorator('password', {
-              rules: [{ required: true, message: '请输入密码!' }],
+              initialValue: 'admin',
+              rules: [{ required: true, message: '请输入密码' }],
             })(
               <Input.Password
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -94,13 +100,11 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
             )}
           </Item>
 
-          {/* error tips */}
-          {errorMessage !== '' && <span className="login-failed-message">{errorMessage}</span>}
-
           {loginType === 'registe' && (
             <Item>
               {getFieldDecorator('repassword', {
-                rules: [{ required: true, message: '请再次输入密码!' }],
+                initialValue: 'admin',
+                rules: [{ required: true, message: '请再次输入密码' }],
               })(
                 <Input.Password
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -110,6 +114,24 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
               )}
             </Item>
           )}
+
+          {loginType === 'registe' && (
+            <Item>
+              {getFieldDecorator('phone', {
+                initialValue: '17812345678',
+                rules: [{ required: true, message: '请输入手机号码' }],
+              })(
+                <Input
+                  type="text"
+                  prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  placeholder="请输入手机号码"
+                />,
+              )}
+            </Item>
+          )}
+
+          {/* error tips */}
+          {errorMessage !== '' && <span className="login-failed-message">{errorMessage}</span>}
 
           {loginType === 'login' && (
             <Item>
@@ -141,7 +163,9 @@ class LoginForm extends Component<LoginFormProps, LoginFormState> {
           </div>
           <Item className="login-form-third">
             <Divider />
-            <Icon type="github" theme="filled" onClick={() => this.thirdAccountLogin('github')} />
+            <Icon type="github" onClick={() => this.thirdAccountLogin('github')} />
+            <Icon type="qq" onClick={() => this.thirdAccountLogin('qq')} />
+            <Icon type="wechat" onClick={() => this.thirdAccountLogin('wechat')} />
           </Item>
         </Form>
       </div>
@@ -153,7 +177,7 @@ export default connect(
   (state: ConnectState) => {
     return {
       ...state.login,
-    }
+    };
   },
   (dispatch: Dispatch) => ({
     updateLoginStore(record: object) {

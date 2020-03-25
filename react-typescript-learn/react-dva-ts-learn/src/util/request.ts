@@ -2,40 +2,47 @@
 import { message } from 'antd';
 // , { AxiosRequestConfig, AxiosResponse }
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import qs from 'qs';
+// import qs from 'qs';
 
-// const BASE_URL = 'http://localhost:7000';
-// axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
+interface ErrorMessage {
+  message: string;
+}
+
+const BASE_URL = 'http://localhost:7000';
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
 
 const instance = axios.create({
-  // baseURL: BASE_URL,
+  baseURL: BASE_URL,
   timeout: 15000,
   withCredentials: true,
 });
 
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    // eslint-disable-next-line no-console
     console.log('instance.interceptors.request.cinfig :: ', config);
     return config;
   },
-  (error: any) => {
+  (error: ErrorMessage) => {
+    // eslint-disable-next-line no-console
     console.log('instance.interceptors.request.error :: ', error);
   },
 );
 
 instance.interceptors.response.use(
   (res: AxiosResponse) => {
-    console.log('instance.interceptors.response.data :: ', res.data);
     const { data } = res;
+    // eslint-disable-next-line no-console
+    console.log('instance.interceptors.response.data :: ', data);
     if (data.code === 403) {
-      console.log('re login ...')
-      window.location.href = '/user/login';
+      window.location.href = '/login';
     } else {
       return data;
     }
   },
-  (error: any) => {
-    message.error(error.message);
+  (error: ErrorMessage) => {
+    // message.error(error.message);
+    // eslint-disable-next-line no-console
     console.log('instance.interceptors.response.error :: ', error);
     return Promise.reject(error);
   },
@@ -46,5 +53,5 @@ export const get = (url: string, data: object = {}) => {
 };
 
 export const post = (url: string, data: object = {}) => {
-  return instance.post(url, qs.stringify(data));
+  return instance.post(url, data);
 };

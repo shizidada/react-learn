@@ -1,5 +1,15 @@
 import { post } from '../../util/request';
 
-export const login = (params: any) => post('/api/v1/account/login', params);
+export interface LoginParam {
+  accountName: string;
+  password: string;
+}
 
-export const register = (params: any) => post('/api/v1/account/register', params);
+export interface RegisterParam extends LoginParam {
+  rePassword: string;
+  phone: string;
+}
+
+export const login = (params: LoginParam) => post('/api/v1/account/login', params);
+
+export const register = (params: RegisterParam) => post('/api/v1/account/register', params);

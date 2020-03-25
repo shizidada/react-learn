@@ -22,7 +22,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
     <ConnectedRouter history={history}>
       <Switch>
         <Route
-          path="/user/login"
+          path="/login"
           render={routeProps =>
             createElement<any>(UserLayout, {
               ...routeProps,

@@ -67,7 +67,8 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
   };
 
   public render() {
-    const { collapsed, selectedKeys, openKeys, menuData } = this.props;
+    // collapsed,
+    const { selectedKeys, openKeys, menuData } = this.props;
     return (
       <Menu
         theme="dark"

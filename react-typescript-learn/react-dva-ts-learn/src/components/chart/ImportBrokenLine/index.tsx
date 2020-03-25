@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Chart, TooltipItem } from '@antv/g2';
+import { Chart } from '@antv/g2'; // , TooltipItem
 import { Card } from 'antd';
 import { importData } from './data/ImportItem';
 
