@@ -9,7 +9,7 @@ interface LoginPageProps {
   localtion: Location<{}>;
 }
 
-const LoginPage: React.FC<LoginPageProps> = () => {
+const LoginPage: React.FunctionComponent<LoginPageProps> = () => {
   return (
     <div className="login-page-container">
       <LoginForm />

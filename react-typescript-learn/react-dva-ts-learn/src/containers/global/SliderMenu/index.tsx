@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Layout } from 'antd';
@@ -16,32 +16,25 @@ interface SliderMenuProps extends MenuModelState {
   onCollapse: (collapsed: boolean) => void;
   sliderMenuSelect: (selectedKeys: object) => void;
 }
-interface SliderMenuState {}
 
-class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
-  private onSiderCollapseHandle = (collapsed: boolean) => {
-    if (this.props.onCollapse) {
-      this.props.onCollapse(collapsed);
+const SliderMenu: FunctionComponent<SliderMenuProps> = ({ collapsed, onCollapse }) => {
+  const onSiderCollapseHandle = (isCollapsed: boolean) => {
+    if (onCollapse) {
+      onCollapse(isCollapsed);
     }
   };
 
-  public render() {
-    const { collapsed } = this.props;
-    console.log('SliderMenu render :: ', this.props);
-    return (
-      <Sider
-        className="slider-menu-container"
-        // width={256}
-        // collapsible
-        collapsed={collapsed}
-        onCollapse={this.onSiderCollapseHandle}
-      >
-        <div className="slider-menu-logo" />
-        <BaseMenu />
-      </Sider>
-    );
-  }
-}
+  return (
+    <Sider
+      className="slider-menu-container"
+      collapsed={collapsed}
+      onCollapse={onSiderCollapseHandle}
+    >
+      <div className="slider-menu-logo" />
+      <BaseMenu />
+    </Sider>
+  );
+};
 
 export default connect(
   (state: ConnectState) => {

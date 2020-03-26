@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 // import { UploadChangeParam } from 'antd/lib/upload';
@@ -12,40 +12,24 @@ import { ConnectState } from '../../../typings';
 
 interface ImportFileProps {}
 
-interface ImportFileState {
-  visible: boolean;
-}
+const ImportFile: FunctionComponent<ImportFileProps> = () => {
+  const [visible, setVisible] = useState(false);
 
-class ImportFile extends Component<ImportFileProps, ImportFileState> {
-  constructor(props: ImportFileProps) {
-    super(props);
-    this.state = {
-      visible: false,
-    };
-  }
-
-  private handleShowImportModal = () => {
-    this.setState({
-      visible: true,
-    });
+  const handleShowImportModal = () => {
+    setVisible(true);
   };
 
-  private handleCancel = () => {
-    this.setState({
-      visible: false,
-    });
+  const handleCancel = () => {
+    setVisible(false);
   };
 
-  public render() {
-    const { visible } = this.state;
-    return (
-      <React.Fragment>
-        <Button onClick={this.handleShowImportModal}>导入数据</Button>
-        <ImportFileModal visible={visible} onCancel={this.handleCancel} />
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <Button onClick={handleShowImportModal}>导入数据</Button>
+      <ImportFileModal visible={visible} onCancel={handleCancel} />
+    </React.Fragment>
+  );
+};
 
 export default connect(
   (state: ConnectState) => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './index.less'
-import BraftEditorForm from '../../../containers/home/BraftEditorForm';
+import BraftEditorForm from '../../containers/home/BraftEditorForm';
 
 const ArticlePage = () => {
   return (

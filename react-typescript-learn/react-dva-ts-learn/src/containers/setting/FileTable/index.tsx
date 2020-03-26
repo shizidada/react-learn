@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Table, Divider, Tag } from 'antd';
@@ -19,88 +19,89 @@ interface FileTableRecord {
   address: string;
 }
 
-class FileTable extends Component<FileTableProps, {}> {
-  public componentDidMount() {
-    this.props.getExcelInfo({ pageSize: 10, pageNum: 10 });
-  }
+const FileTable: FunctionComponent<FileTableProps> = ({
+  recordList = [],
+  isLoading,
+  getExcelInfo,
+}) => {
+  useEffect(() => {
+    getExcelInfo({ pageSize: 10, pageNum: 10 });
+    return () => {};
+  }, []);
 
-  public render() {
-    const columns = [
-      {
-        title: 'SIM卡卡号',
-        dataIndex: 'iccid',
-        key: 'iccid',
-        render: (text: string) => <a>{text}</a>,
-      },
-      {
-        title: '运营商',
-        dataIndex: 'operators',
-        key: 'operators',
-      },
-      {
-        title: '收货人',
-        dataIndex: 'receiver',
-        key: 'receiver',
-      },
-      {
-        title: '收货地址',
-        dataIndex: 'address',
-        key: 'address',
-      },
-      {
-        title: '标签',
-        key: 'tags',
-        dataIndex: 'tags',
-        render: (tags: string[] = ['xiha']) => (
-          <span>
-            {tags.map(tag => {
-              let color = tag.length > 5 ? 'geekblue' : 'green';
-              if (tag === 'loser') {
-                color = 'volcano';
-              }
-              return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
-              );
-            })}
-          </span>
-        ),
-      },
-      {
-        title: '操作',
-        key: 'action',
-        render: (text: string, record: FileTableRecord) => (
-          <span>
-            <a>Invite</a>
-            <Divider type="vertical" />
-            <a>Delete</a>
-          </span>
-        ),
-      },
-    ];
+  const columns = [
+    {
+      title: 'SIM卡卡号',
+      dataIndex: 'iccid',
+      key: 'iccid',
+      render: (text: string) => <a>{text}</a>,
+    },
+    {
+      title: '运营商',
+      dataIndex: 'operators',
+      key: 'operators',
+    },
+    {
+      title: '收货人',
+      dataIndex: 'receiver',
+      key: 'receiver',
+    },
+    {
+      title: '收货地址',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: '标签',
+      key: 'tags',
+      dataIndex: 'tags',
+      render: (tags: string[] = ['xiha']) => (
+        <span>
+          {tags.map(tag => {
+            let color = tag.length > 5 ? 'geekblue' : 'green';
+            if (tag === 'loser') {
+              color = 'volcano';
+            }
+            return (
+              <Tag color={color} key={tag}>
+                {tag.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </span>
+      ),
+    },
+    {
+      title: '操作',
+      key: 'action',
+      render: (text: string, record: FileTableRecord) => (
+        <span>
+          <a>Invite</a>
+          <Divider type="vertical" />
+          <a>Delete</a>
+        </span>
+      ),
+    },
+  ];
 
-    console.log('this.props ', this.props);
-    const { recordList = [], isLoading } = this.props;
-    return (
-      <div>
-        <Table
-          // pagination={false}
-          loading={isLoading}
-          rowKey={(record: FileTableRecord) => record.iccid}
-          columns={columns}
-          dataSource={recordList}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Table
+        // pagination={false}
+        loading={isLoading}
+        rowKey={(record: FileTableRecord) => record.iccid}
+        columns={columns}
+        dataSource={recordList}
+      />
+    </div>
+  );
+};
 
 export default connect(
   (state: ConnectState) => {
     return {
       ...state.file,
-    }
+    };
   },
   (dispatch: Dispatch) => ({
     getExcelInfo(record: object) {

@@ -5,10 +5,10 @@ import './index.less';
 
 interface SettingPageProps { }
 
-const SettingPage: React.FC<SettingPageProps> = () => {
+const SettingPage: React.FunctionComponent<SettingPageProps> = () => {
   return (
     <div className="setting-page">
-      设置
+      SettingPage
     </div>
   );
 }

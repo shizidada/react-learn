@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import G2 from '@antv/g2';
 import { demoData } from './demo';
 
-export default class DemoItem extends Component {
-  componentDidMount() {
+const DemoItem: FunctionComponent = () => {
+  const initCaht = () => {
     const chart: G2.Chart = new G2.Chart({
       container: 'demoItem',
       forceFit: true,
@@ -46,9 +46,13 @@ export default class DemoItem extends Component {
         stroke: '#fff',
       });
     chart.render();
-  }
+  };
 
-  render() {
-    return <div id="demoItem" className="home-page-echart"></div>;
-  }
-}
+  useEffect(() => {
+    initCaht();
+    return () => {};
+  }, []);
+
+  return <div id="demoItem" className="home-page-echart"></div>;
+};
+export default DemoItem;

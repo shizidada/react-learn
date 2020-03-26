@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Error: React.FC = props => <div>Error</div>;
+const Error: React.FunctionComponent = () => <div>Error</div>;
 
 export default Error;

@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-const ProductPage: React.FC = () => {
+const ProductPage: React.FunctionComponent = () => {
   return (<div>ProductPage</div>)
 }
 

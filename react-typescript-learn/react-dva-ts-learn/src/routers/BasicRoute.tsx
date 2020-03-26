@@ -18,7 +18,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "setting.page" */ '../pages/manager/setting'),
+            loader: () => import(/* webpackChunkName: "setting.page" */ '../pages/setting'),
             loading() {
               return <Loading />;
             },
@@ -33,7 +33,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "order.page" */ '../pages/manager/order'),
+            loader: () => import(/* webpackChunkName: "order.page" */ '../pages/order'),
             loading() {
               return <Loading />;
             },
@@ -49,7 +49,7 @@ const BasicRoute = () => (
         createElement<object>(
           Loadable({
             loader: () =>
-              import(/* webpackChunkName: "product.page" */ '../pages/manager/product'),
+              import(/* webpackChunkName: "product.page" */ '../pages/product'),
             loading() {
               return <Loading />;
             },
@@ -64,7 +64,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "article.page" */ '../pages/manager/article'),
+            loader: () => import(/* webpackChunkName: "article.page" */ '../pages/article'),
             loading() {
               return <Loading />;
             },
@@ -79,7 +79,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "home.page" */ '../pages/manager/home'),
+            loader: () => import(/* webpackChunkName: "home.page" */ '../pages/home'),
             loading() {
               return <Loading />;
             },

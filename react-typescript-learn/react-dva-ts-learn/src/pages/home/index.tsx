@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Card, Row, Col } from 'antd';
 
-import ImportBrokenLine from '../../../components/chart/ImportBrokenLine';
+import ImportBrokenLine from '../../components/chart/ImportBrokenLine';
 
-import AdvertisementCard from '../../../containers/home/AdvertisementCard';
-import NoticeCard from '../../../containers/home/NoticeCard';
-import MessageCard from '../../../containers/home/MessageCard';
-import TabContentCard from '../../../containers/home/TabContentCard';
+import AdvertisementCard from '../../containers/home/AdvertisementCard';
+import NoticeCard from '../../containers/home/NoticeCard';
+import MessageCard from '../../containers/home/MessageCard';
+import TabContentCard from '../../containers/home/TabContentCard';
 
 import './index.less';
 
-const HomePage: React.FC = () => {
+const HomePage: React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <Row gutter={[24, 24]} className="home-page-container">

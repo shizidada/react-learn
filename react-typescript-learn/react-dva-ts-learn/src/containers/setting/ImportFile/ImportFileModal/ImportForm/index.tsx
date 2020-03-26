@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Dispatch } from 'redux';
 import { Button, Upload, Form, Icon, Select } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
@@ -14,29 +14,33 @@ interface ImportFormProps {
   form: WrappedFormUtils;
 }
 
-interface ImportFormState {
-  fileList: any[];
-}
+const ImportForm: FunctionComponent<ImportFormProps> = ({ form }) => {
+  const files: UploadFile[] = [];
+  const [fileList, setFileList] = useState(files);
 
-class ImportForm extends Component<ImportFormProps, ImportFormState> {
-  constructor(props: ImportFormProps) {
-    super(props);
-    this.state = {
-      fileList: [],
-    };
-  }
-
-  normFile = (e: any) => {
-    console.log('Upload event:', e);
+  const uploadFile = (e: any) => {
+    console.log('uploadFile event:', e);
     if (Array.isArray(e)) {
       return e;
     }
     return e && e.fileList;
   };
 
-  handleSubmit = (e: React.FormEvent) => {
+  const onRemove = (file: UploadFile) => {
+    const index = fileList.indexOf(file);
+    const newFileList = fileList.slice();
+    newFileList.splice(index, 1);
+    setFileList(newFileList);
+  };
+
+  const beforeUpload = (file: RcFile, fileLists: RcFile[]) => {
+    console.log('beforeUpload event:', file, fileLists);
+    return false;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (!err) {
         const formData = new FormData();
         values.file.forEach((file: UploadFile) => {
@@ -63,76 +67,48 @@ class ImportForm extends Component<ImportFormProps, ImportFormState> {
     });
   };
 
-  onRemove = (file: UploadFile) => {
-    this.setState(state => {
-      const index = state.fileList.indexOf(file);
-      const newFileList = state.fileList.slice();
-      newFileList.splice(index, 1);
-      return {
-        fileList: newFileList,
-      };
-    });
-  };
-
-  beforeUpload = (file: RcFile, fileList: RcFile[]) => {
-    return false;
-  };
-
-  render() {
-    const formItemLayout = {
-      labelCol: { span: 4 },
-      wrapperCol: { span: 18 },
-    };
-
-    const buttonItemLayout = {
-      wrapperCol: { span: 14, offset: 4 },
-    };
-
-    const { getFieldDecorator } = this.props.form;
-
-    return (
-      <Form layout="horizontal" onSubmit={this.handleSubmit}>
-        {/* <Form.Item label="选择类型" {...formItemLayout}>
-          <Input placeholder="input placeholder" />
-        </Form.Item> */}
-        <Form.Item label="选择类型" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('platform', {
-            rules: [{ required: true, message: '请选择类型！' }],
-          })(
-            <Select placeholder="请选择类型！">
-              <Option value="tianpeng">天蓬</Option>
-              <Option value="xiaoming">小茗</Option>
-            </Select>,
-          )}
-        </Form.Item>
-        <Form.Item label="上传文件" {...formItemLayout}>
-          {getFieldDecorator('file', {
-            rules: [{ required: true, message: '请选择上传文件！' }],
-            valuePropName: 'fileList',
-            getValueFromEvent: this.normFile,
-          })(
-            <Upload.Dragger
-              accept=".xlsx"
-              name="file"
-              onRemove={this.onRemove}
-              beforeUpload={this.beforeUpload}
-            >
-              <p className="ant-upload-drag-icon">
-                <Icon type="inbox" />
-              </p>
-              <p className="ant-upload-text">点击或拖拽上传文件</p>
-            </Upload.Dragger>,
-          )}
-        </Form.Item>
-        <Form.Item {...buttonItemLayout}>
-          <Button type="primary" htmlType="submit">
-            提交
-          </Button>
-        </Form.Item>
-      </Form>
-    );
-  }
-}
+  const formItemLayout = { labelCol: { span: 4 }, wrapperCol: { span: 18 } };
+  const buttonItemLayout = { wrapperCol: { span: 14, offset: 4 } };
+  const { getFieldDecorator } = form;
+  return (
+    <Form layout="horizontal" onSubmit={handleSubmit}>
+      <Form.Item label="选择类型" hasFeedback {...formItemLayout}>
+        {getFieldDecorator('platform', {
+          rules: [{ required: true, message: '请选择类型！' }],
+        })(
+          <Select placeholder="请选择类型！">
+            <Option value="tianpeng">天蓬</Option>
+            <Option value="xiaoming">小茗</Option>
+          </Select>,
+        )}
+      </Form.Item>
+      <Form.Item label="上传文件" {...formItemLayout}>
+        {getFieldDecorator('file', {
+          rules: [{ required: true, message: '请选择上传文件！' }],
+          valuePropName: 'fileList',
+          getValueFromEvent: uploadFile,
+        })(
+          <Upload.Dragger
+            accept=".xlsx"
+            name="file"
+            onRemove={onRemove}
+            beforeUpload={beforeUpload}
+          >
+            <p className="ant-upload-drag-icon">
+              <Icon type="inbox" />
+            </p>
+            <p className="ant-upload-text">点击或拖拽上传文件</p>
+          </Upload.Dragger>,
+        )}
+      </Form.Item>
+      <Form.Item {...buttonItemLayout}>
+        <Button type="primary" htmlType="submit">
+          提交
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
 export default connect(
   (state: ConnectState) => {
     return {

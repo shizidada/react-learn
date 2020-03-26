@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
 import { Link } from 'dva/router';
 import { connect } from 'dva';
@@ -18,14 +18,17 @@ interface BaseMenuProps extends MenuModelState {
   onCollapse: (collapsed: boolean) => void;
   changeSliderMenuSelect: (selectedKeys: object) => void;
 }
-interface BaseMenuState { }
 
-class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
-  public componentDidMount = () => { };
-
-  private getNavMenuItems = (item: MenuConfig) => {
+const BaseMenu: FunctionComponent<BaseMenuProps> = ({
+  changeSliderMenuSelect,
+  menuData,
+  selectedKeys,
+  openKeys,
+  rootSubmenuKeys,
+}) => {
+  const getNavMenuItems = (item: MenuConfig) => {
     return (
-      <Menu.Item key={`${item.path}`} onClick={() => { }}>
+      <Menu.Item key={`${item.path}`} onClick={() => {}}>
         <Icon type={item.icon} />
         <span className="nav-text">{item.name}</span>
         <Link to={`${item.path}`}></Link>
@@ -33,12 +36,12 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
     );
   };
 
-  private getSubMenuOrItem = (item: MenuConfig) => {
+  const getSubMenuOrItem = (item: MenuConfig) => {
     if (item.children) {
       return (
         <SubMenu
           key={`${item.path}`}
-          onTitleClick={() => { }}
+          onTitleClick={() => {}}
           title={
             <span className="nav-text">
               <Icon type={item.icon} />
@@ -48,48 +51,43 @@ class BaseMenu extends Component<BaseMenuProps, BaseMenuState> {
         >
           {item.children &&
             item.children.map((childItem: MenuConfig) => {
-              return this.getSubMenuOrItem(childItem);
+              return getSubMenuOrItem(childItem);
             })}
         </SubMenu>
       );
     }
-    return this.getNavMenuItems(item);
+    return getNavMenuItems(item);
   };
 
-  private onSliderOpenChange = (openKeys: string[]) => {
-    const latestOpenKey =
-      (openKeys.find(key => this.props.openKeys.indexOf(key) === -1) as string) || '';
-    if (this.props.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      this.props.changeSliderMenuSelect({ openKeys: openKeys as object });
+  const onSliderOpenChange = (openKeyParams: string[]) => {
+    const latestOpenKey = (openKeyParams.find(key => openKeys.indexOf(key) === -1) as string) || '';
+    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      changeSliderMenuSelect({ openKeys: openKeys as object });
     } else {
-      this.props.changeSliderMenuSelect({ openKeys: latestOpenKey ? [latestOpenKey] : [] });
+      changeSliderMenuSelect({ openKeys: latestOpenKey ? [latestOpenKey] : [] });
     }
   };
 
-  public render() {
-    // collapsed,
-    const { selectedKeys, openKeys, menuData } = this.props;
-    return (
-      <Menu
-        theme="dark"
-        mode="inline"
-        style={{ padding: '16px 0', width: '100%' }}
-        defaultOpenKeys={openKeys}
-        defaultSelectedKeys={selectedKeys}
-        // selectedKeys={collapsed ? [] : selectedKeys}
-        // openKeys={collapsed ? [] : openKeys}
-        onOpenChange={this.onSliderOpenChange}
-      >
-        {menuData.map((item: MenuConfig) => {
-          if (!item.children) {
-            return this.getNavMenuItems(item);
-          }
-          return this.getSubMenuOrItem(item);
-        })}
-      </Menu>
-    );
-  }
-}
+  return (
+    <Menu
+      theme="dark"
+      mode="inline"
+      style={{ padding: '16px 0', width: '100%' }}
+      defaultOpenKeys={openKeys}
+      defaultSelectedKeys={selectedKeys}
+      // selectedKeys={collapsed ? [] : selectedKeys}
+      // openKeys={collapsed ? [] : openKeys}
+      onOpenChange={onSliderOpenChange}
+    >
+      {menuData.map((item: MenuConfig) => {
+        if (!item.children) {
+          return getNavMenuItems(item);
+        }
+        return getSubMenuOrItem(item);
+      })}
+    </Menu>
+  );
+};
 export default connect(
   (state: ConnectState) => {
     return {

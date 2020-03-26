@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Modal } from 'antd';
 import ImportForm from './ImportForm';
 
@@ -8,17 +8,11 @@ interface ImportFileModalProps {
   onImpoetComplete?: () => void;
 }
 
-export default class ImportFileModal extends Component<ImportFileModalProps, {}> {
-  private handleCancel = () => {};
-
-  private handleImportComplete = () => {};
-
-  render() {
-    const { visible, onCancel } = this.props;
-    return (
-      <Modal title="文件上传" visible={visible} footer={null} onCancel={onCancel}>
-        <ImportForm />
-      </Modal>
-    );
-  }
-}
+const ImportFileModal: FunctionComponent<ImportFileModalProps> = ({ visible, onCancel }) => {
+  return (
+    <Modal title="文件上传" visible={visible} footer={null} onCancel={onCancel}>
+      <ImportForm />
+    </Modal>
+  );
+};
+export default ImportFileModal;

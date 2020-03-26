@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Chart } from '@antv/g2'; // , TooltipItem
 import { Card } from 'antd';
 import { importData } from './data/ImportItem';
@@ -9,9 +9,8 @@ interface ImportBrokenLineProps {
   renderId: string;
 }
 
-export default class ImportBrokenLine extends Component<ImportBrokenLineProps, {}> {
-  public componentDidMount() {
-    const { renderId } = this.props;
+const ImportBrokenLine: FunctionComponent<ImportBrokenLineProps> = ({ renderId }) => {
+  const initCahrt = () => {
     const chart: Chart = new Chart({
       container: renderId,
       forceFit: true,
@@ -82,14 +81,17 @@ export default class ImportBrokenLine extends Component<ImportBrokenLineProps, {
     });
 
     chart.render();
-  }
+  };
 
-  public render() {
-    const { renderId } = this.props;
-    return (
-      <Card>
-        <div id={renderId}></div>
-      </Card>
-    );
-  }
-}
+  useEffect(() => {
+    initCahrt();
+    return () => {};
+  }, []);
+
+  return (
+    <Card>
+      <div id={renderId}></div>
+    </Card>
+  );
+};
+export default ImportBrokenLine;

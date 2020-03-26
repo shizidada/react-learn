@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderPage: React.FC = () => {
+const OrderPage: React.FunctionComponent = () => {
   return (
     <div>
       OrderPage
