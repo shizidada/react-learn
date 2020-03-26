@@ -86,7 +86,7 @@ const ImportBrokenLine: FunctionComponent<ImportBrokenLineProps> = ({ renderId }
   useEffect(() => {
     initCahrt();
     return () => {};
-  }, []);
+  });
 
   return (
     <Card>

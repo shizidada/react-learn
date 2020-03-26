@@ -21,8 +21,8 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
 }) => {
   useEffect(() => {
     updateMenuStore();
-    return () => {};
-  }, []);
+    return () => { };
+  });
 
   const onMenuClick = (param: ClickParam) => {
     console.log(param);
@@ -61,7 +61,7 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
       </Col>
 
       <Col span={16} className="moose-global-header-right">
-        <Dropdown overlay={menu} trigger={['click']}>
+        <Dropdown overlay={menu} trigger={['hover']}>
           <span className="action">
             <Avatar className="avatar" size="small" icon="user" />
             <span>Tom</span>

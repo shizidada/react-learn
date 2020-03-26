@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 
-import { Card, Form, Button } from 'antd';
+import { Form, Button } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 // 引入编辑器样式
@@ -73,45 +73,43 @@ const BraftEditorForm: FunctionComponent<BraftEditorFormProps> = ({ form }) => {
 
   const { getFieldDecorator } = form;
   return (
-    <Card>
-      <Form className="home-form-container" onSubmit={handleSubmit}>
-        <Form.Item>
-          <Button
-            size="large"
-            type="primary"
-            htmlType={isEditor ? 'button' : 'submit'}
-            onClick={() => changeBraftEditorStatusHandle()}
-          >
-            {isEditor ? '保存' : '编辑'}
-          </Button>
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('content', {
-            validateTrigger: 'onBlur',
-            rules: [
-              {
-                required: false,
-                // validator: (_, value, callback) => {
-                //   if (value.isEmpty()) {
-                //     callback('请输入正文内容');
-                //   } else {
-                //     callback();
-                //   }
-                // },
-              },
-            ],
-          })(
-            <BraftEditor
-              className="home-form-editor"
-              readOnly={!isEditor}
-              placeholder={isEditor ? '请输入正文内容...' : ''}
-              controls={isEditor ? defaultControls : []}
-            />,
-          )}
-        </Form.Item>
-        {/* <div dangerouslySetInnerHTML={{ __html: this.state.content }}></div> */}
-      </Form>
-    </Card>
+    <Form className="home-form-container" onSubmit={handleSubmit}>
+      <Form.Item>
+        <Button
+          size="large"
+          type="primary"
+          htmlType={isEditor ? 'button' : 'submit'}
+          onClick={() => changeBraftEditorStatusHandle()}
+        >
+          {isEditor ? '保存' : '编辑'}
+        </Button>
+      </Form.Item>
+      <Form.Item>
+        {getFieldDecorator('content', {
+          validateTrigger: 'onBlur',
+          rules: [
+            {
+              required: false,
+              // validator: (_, value, callback) => {
+              //   if (value.isEmpty()) {
+              //     callback('请输入正文内容');
+              //   } else {
+              //     callback();
+              //   }
+              // },
+            },
+          ],
+        })(
+          <BraftEditor
+            className="home-form-editor"
+            readOnly={!isEditor}
+            placeholder={isEditor ? '请输入正文内容...' : ''}
+            controls={isEditor ? defaultControls : []}
+          />,
+        )}
+      </Form.Item>
+      {/* <div dangerouslySetInnerHTML={{ __html: this.state.content }}></div> */}
+    </Form>
   );
 };
 

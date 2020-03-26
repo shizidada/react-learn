@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Error: React.FunctionComponent = () => <div>Error</div>;
+const ErrorPage: React.FunctionComponent = () => <div>Error Page</div>;
 
-export default Error;
+export default ErrorPage;

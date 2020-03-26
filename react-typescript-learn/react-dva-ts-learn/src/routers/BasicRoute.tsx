@@ -14,11 +14,11 @@ const Loading = () => {
 const BasicRoute = () => (
   <Switch>
     <Route
-      path="/setting"
+      path="/setting/profile"
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "setting.page" */ '../pages/setting'),
+            loader: () => import(/* webpackChunkName: "setting.profile.page" */ '../pages/setting/profile'),
             loading() {
               return <Loading />;
             },
@@ -27,44 +27,12 @@ const BasicRoute = () => (
         )
       }
     />
-
     <Route
-      path="/order"
+      path="/setting/category"
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "order.page" */ '../pages/order'),
-            loading() {
-              return <Loading />;
-            },
-          }),
-          { ...routeProps },
-        )
-      }
-    />
-
-    <Route
-      path="/product"
-      render={routeProps =>
-        createElement<object>(
-          Loadable({
-            loader: () =>
-              import(/* webpackChunkName: "product.page" */ '../pages/product'),
-            loading() {
-              return <Loading />;
-            },
-          }),
-          { ...routeProps },
-        )
-      }
-    />
-
-    <Route
-      path="/article"
-      render={routeProps =>
-        createElement<object>(
-          Loadable({
-            loader: () => import(/* webpackChunkName: "article.page" */ '../pages/article'),
+            loader: () => import(/* webpackChunkName: "setting.category.page" */ '../pages/setting/category'),
             loading() {
               return <Loading />;
             },

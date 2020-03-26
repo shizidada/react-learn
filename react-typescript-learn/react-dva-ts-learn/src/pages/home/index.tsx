@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Card, Row, Col } from 'antd';
 
 import ImportBrokenLine from '../../components/chart/ImportBrokenLine';
@@ -10,17 +10,17 @@ import TabContentCard from '../../containers/home/TabContentCard';
 
 import './index.less';
 
-const HomePage: React.FunctionComponent = () => {
+const HomePage: FunctionComponent = () => {
   return (
     <React.Fragment>
       <Row gutter={[24, 24]} className="home-page-container">
-        <Col span={19}>
+        <Col span={18}>
 
           <Row gutter={[24, 24]}>
-            <Col span={8}>
+            <Col span={10}>
               <ImportBrokenLine renderId="ImportBrokenLine_1" />
             </Col>
-            <Col span={16}>
+            <Col span={14}>
               <ImportBrokenLine renderId="ImportBrokenLine_2" />
             </Col>
           </Row>
@@ -47,7 +47,7 @@ const HomePage: React.FunctionComponent = () => {
           </Row>
         </Col>
 
-        <Col span={5}>
+        <Col span={6}>
           <Row gutter={[24, 24]}>
             <Col>
               <MessageCard />
