@@ -1,20 +1,33 @@
 import React, { FunctionComponent } from 'react';
 // , Icon, Row, Col, Avatar
-import { Layout } from 'antd';
+import { Tabs } from 'antd';
 
 // import SortableComponent from './SortableComponent';
 
 import './index.less';
 
-const { Header } = Layout;
+const { TabPane } = Tabs;
 
-interface MooseTabsViewProps {}
+interface MooseTabsViewProps { }
 
 const MooseTabsView: FunctionComponent<MooseTabsViewProps> = () => {
+
+  const callback = (key: string) => {
+    console.log(key);
+  }
+
   return (
-    <Header className="moose-tabs-view-container">
-      {/* <SortableComponent /> */}
-    </Header>
+    <Tabs className="moose-tabs-view-container" defaultActiveKey="1" onChange={callback}>
+      <TabPane tab="Tab 1" key="1">
+        Content of Tab Pane 1
+    </TabPane>
+      <TabPane tab="Tab 2" key="2">
+        Content of Tab Pane 2
+    </TabPane>
+      <TabPane tab="Tab 3" key="3">
+        Content of Tab Pane 3
+    </TabPane>
+    </Tabs>
   );
 };
 

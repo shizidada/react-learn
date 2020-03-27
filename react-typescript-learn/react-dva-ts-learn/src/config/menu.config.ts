@@ -8,6 +8,14 @@ export interface MenuConfig {
 export const menus: MenuConfig[] = [
   { icon: 'pie-chart', name: '首页', path: '/' },
   {
+    icon: 'user',
+    name: '用户管理',
+    path: '/user',
+    children: [
+      { icon: 'compass', name: '用户列表', path: '/user/list' },
+    ],
+  },
+  {
     icon: 'setting',
     name: '设置',
     path: '/setting',

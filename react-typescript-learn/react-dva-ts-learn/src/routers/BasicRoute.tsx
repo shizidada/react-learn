@@ -14,6 +14,21 @@ const Loading = () => {
 const BasicRoute = () => (
   <Switch>
     <Route
+      path="/user/list"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/list'),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+
+    <Route
       path="/setting/profile"
       render={routeProps =>
         createElement<object>(
