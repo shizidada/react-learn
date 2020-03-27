@@ -1,22 +1,25 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "useBuiltIns": "entry",
-        "corejs": 3
-      }
-    ]
-  ],
-  "plugins": [
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": true // or 'css'
-      }
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "useBuiltIns": "entry",
+                "corejs": 3
+            }
+        ]
     ],
+    "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "antd",
+                "style": true // or 'css'
+            }
+        ],
 
-	"syntax-dynamic-import"
-  ]
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-transform-arrow-functions",
+        "@babel/plugin-transform-modules-commonjs",
+        "@babel/plugin-transform-runtime"
+    ]
 }

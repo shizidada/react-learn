@@ -1,4 +1,7 @@
 // import * as React from "react";
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import dva, { Router as DvaRouter } from 'dva';
 import { createBrowserHistory as createHistory } from 'history';
 
