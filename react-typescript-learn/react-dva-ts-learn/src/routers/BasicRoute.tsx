@@ -13,6 +13,8 @@ const Loading = () => {
 
 const BasicRoute = () => (
   <Switch>
+
+    {/* user router config start */}
     <Route
       path="/user/list"
       render={routeProps =>
@@ -27,7 +29,58 @@ const BasicRoute = () => (
         )
       }
     />
+    {/* user router config end */}
 
+    {/* order router config start */}
+    <Route
+      path="/order/list"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/list'),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+    {/* order router config end */}
+
+    {/* product router config start */}
+    <Route
+      path="/product/list"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+    <Route
+      path="/product/category"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(/* webpackChunkName: "product.category.page" */ '../pages/product/category'),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+    {/* product router config end */}
+
+
+    {/* setting router config start */}
     <Route
       path="/setting/profile"
       render={routeProps =>
@@ -43,11 +96,11 @@ const BasicRoute = () => (
       }
     />
     <Route
-      path="/setting/category"
+      path="/setting/advertisement"
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "setting.category.page" */ '../pages/setting/category'),
+            loader: () => import(/* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'),
             loading() {
               return <Loading />;
             },
@@ -56,6 +109,7 @@ const BasicRoute = () => (
         )
       }
     />
+    {/* setting router config end */}
 
     <Route
       path="/"

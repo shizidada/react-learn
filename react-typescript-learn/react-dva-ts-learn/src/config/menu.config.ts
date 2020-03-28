@@ -16,12 +16,29 @@ export const menus: MenuConfig[] = [
     ],
   },
   {
+    icon: 'to-top',
+    name: '订单管理',
+    path: '/order',
+    children: [
+      { icon: 'bars', name: '订单列表', path: '/order/list' },
+    ],
+  },
+  {
+    icon: 'gold',
+    name: '商品管理',
+    path: '/product',
+    children: [
+      { icon: 'bars', name: '商品列表', path: '/product/list' },
+      { icon: 'compass', name: '商品分类', path: '/product/category' },
+    ],
+  },
+  {
     icon: 'setting',
     name: '设置',
     path: '/setting',
     children: [
-      { icon: 'compass', name: '分类设置', path: '/setting/category' },
       { icon: 'compass', name: '个人设置', path: '/setting/profile' },
+      { icon: 'compass', name: '广告设置', path: '/setting/advertisement' },
     ],
   },
 ];
