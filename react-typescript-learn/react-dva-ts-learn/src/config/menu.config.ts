@@ -29,15 +29,21 @@ export const menus: MenuConfig[] = [
     path: '/product',
     children: [
       { icon: 'bars', name: '商品列表', path: '/product/list' },
-      { icon: 'compass', name: '商品分类', path: '/product/category' },
+    ],
+  },
+  {
+    icon: 'crown',
+    name: '个人中心',
+    path: '/profile',
+    children: [
+      { icon: 'skin', name: '个人信息', path: '/profile/personal' },
     ],
   },
   {
     icon: 'setting',
-    name: '设置',
+    name: '设置管理',
     path: '/setting',
     children: [
-      { icon: 'compass', name: '个人设置', path: '/setting/profile' },
       { icon: 'compass', name: '广告设置', path: '/setting/advertisement' },
     ],
   },

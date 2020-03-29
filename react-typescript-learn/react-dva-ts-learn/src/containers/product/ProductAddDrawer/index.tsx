@@ -9,7 +9,7 @@ interface ProductAddDrawerProps {
 const ProductAddDrawer: FunctionComponent<ProductAddDrawerProps> = ({ visible, onProductAddDrawerClose }) => {
   return <Drawer
     title="商品添加"
-    width="520"
+    width={640}
     placement="right"
     closable={false}
     onClose={() => onProductAddDrawerClose(false)}

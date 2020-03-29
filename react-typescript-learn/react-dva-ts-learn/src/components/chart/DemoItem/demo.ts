@@ -6,27 +6,27 @@ export interface DemoItem {
 
 export const demoData: DemoItem[] = [
   {
-    item: '事例一',
+    item: '电脑整机',
     count: 40,
     percent: 0.4,
   },
   {
-    item: '事例二',
+    item: '电脑配件',
     count: 21,
     percent: 0.21,
   },
   {
-    item: '事例三',
+    item: '外设产品',
     count: 17,
     percent: 0.17,
   },
   {
-    item: '事例四',
+    item: '游戏设备',
     count: 13,
     percent: 0.13,
   },
   {
-    item: '事例五',
+    item: '摄影摄像',
     count: 9,
     percent: 0.09,
   },

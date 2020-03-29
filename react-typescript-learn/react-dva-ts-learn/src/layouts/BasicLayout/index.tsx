@@ -5,7 +5,6 @@ import { Location } from 'history';
 import { Layout } from 'antd';
 import SliderMenu from '../../containers/global/SliderMenu';
 import GlobalHeader from '../../containers/global/GlobalHeader';
-import TabsView from '../../containers/global/TabsView';
 import BasicRoute from '../../routers/BasicRoute';
 
 // eslint-disable-next-line import/extensions
@@ -23,11 +22,8 @@ const BasicLayout: SFC<BasicLayoutProps> = ({ location, login }) => {
   return (
     <Layout className="basic-layout-container" >
       <SliderMenu />
-      <Layout
-        className="basic-layout-content"
-      >
+      <Layout className="basic-layout-content" >
         <GlobalHeader />
-        <TabsView />
         <Content className="basic-layout-wrapper">
           <BasicRoute />
         </Content>

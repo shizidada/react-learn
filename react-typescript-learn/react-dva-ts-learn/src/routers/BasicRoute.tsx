@@ -31,6 +31,23 @@ const BasicRoute = () => (
     />
     {/* user router config end */}
 
+    {/* profile router config end */}
+    <Route
+      path="/profile"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
+    {/* profile router config end */}
+
     {/* order router config start */}
     <Route
       path="/order/list"
@@ -63,38 +80,10 @@ const BasicRoute = () => (
         )
       }
     />
-    <Route
-      path="/product/category"
-      render={routeProps =>
-        createElement<object>(
-          Loadable({
-            loader: () => import(/* webpackChunkName: "product.category.page" */ '../pages/product/category'),
-            loading() {
-              return <Loading />;
-            },
-          }),
-          { ...routeProps },
-        )
-      }
-    />
     {/* product router config end */}
 
 
     {/* setting router config start */}
-    <Route
-      path="/setting/profile"
-      render={routeProps =>
-        createElement<object>(
-          Loadable({
-            loader: () => import(/* webpackChunkName: "setting.profile.page" */ '../pages/setting/profile'),
-            loading() {
-              return <Loading />;
-            },
-          }),
-          { ...routeProps },
-        )
-      }
-    />
     <Route
       path="/setting/advertisement"
       render={routeProps =>

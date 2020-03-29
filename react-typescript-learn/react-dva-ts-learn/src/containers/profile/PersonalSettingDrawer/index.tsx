@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Drawer, Button } from 'antd'
 
-interface OpenDrawerProps {
+interface PersonalSettingDrawerProps {
   visible?: boolean;
   onCloseParentDrawer?: (visible: boolean) => void;
 }
 
-const OpenDrawer: FunctionComponent<OpenDrawerProps> = ({ visible, onCloseParentDrawer }) => {
+const PersonalSettingDrawer: FunctionComponent<PersonalSettingDrawerProps> = ({ visible, onCloseParentDrawer }) => {
   const [childrenDrawer, setChildrenDrawer] = useState(false)
 
   const onClose = () => {
@@ -21,11 +21,10 @@ const OpenDrawer: FunctionComponent<OpenDrawerProps> = ({ visible, onCloseParent
     setChildrenDrawer(false)
   };
 
-
   return (
     <Drawer
       title="Multi-level drawer"
-      width={520}
+      width={640}
       closable={false}
       onClose={onClose}
       visible={visible}
@@ -35,7 +34,7 @@ const OpenDrawer: FunctionComponent<OpenDrawerProps> = ({ visible, onCloseParent
     </Button>
       <Drawer
         title="Two-level Drawer"
-        width={320}
+        width={640}
         closable={false}
         onClose={onChildrenDrawerClose}
         visible={childrenDrawer}
@@ -61,14 +60,14 @@ const OpenDrawer: FunctionComponent<OpenDrawerProps> = ({ visible, onCloseParent
           }}
           onClick={onClose}
         >
-          Cancel
+          取消
       </Button>
         <Button onClick={onClose} type="primary">
-          Submit
+          提交
       </Button>
       </div>
     </Drawer>
   )
 }
 
-export default OpenDrawer
+export default PersonalSettingDrawer

@@ -28,7 +28,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
 }) => {
   const getNavMenuItems = (item: MenuConfig) => {
     return (
-      <Menu.Item key={`${item.path}`} onClick={() => {}}>
+      <Menu.Item key={`${item.path}`} onClick={() => { }}>
         <Icon type={item.icon} />
         <span className="nav-text">{item.name}</span>
         <Link to={`${item.path}`}></Link>
@@ -41,7 +41,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
       return (
         <SubMenu
           key={`${item.path}`}
-          onTitleClick={() => {}}
+          onTitleClick={() => { }}
           title={
             <span className="nav-text">
               <Icon type={item.icon} />
@@ -62,7 +62,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
   const onSliderOpenChange = (openKeyParams: string[]) => {
     const latestOpenKey = (openKeyParams.find(key => openKeys.indexOf(key) === -1) as string) || '';
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      changeSliderMenuSelect({ openKeys: openKeys as object });
+      changeSliderMenuSelect({ openKeys: openKeys as string[] });
     } else {
       changeSliderMenuSelect({ openKeys: latestOpenKey ? [latestOpenKey] : [] });
     }

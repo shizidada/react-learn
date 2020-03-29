@@ -56,11 +56,12 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
           <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
         </span>
       </Col>
-      <Col span={6}>
+      <Col span={16}>
         <MooseBreadcrumb />
       </Col>
 
-      <Col span={16} className="moose-global-header-right">
+      <Col span={6} className="moose-global-header-right">
+        <Icon type="bell" style={{ fontSize: 18 }} />
         <Dropdown overlay={menu} trigger={['hover']}>
           <span className="action">
             <Avatar className="avatar" size="small" icon="user" />

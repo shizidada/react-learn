@@ -3,11 +3,13 @@
 @pro-header-hover-bg: rgba(0, 0, 0, 0.025);
 
 .moose-global-header-container {
-  height    : 64px;
-  padding   : 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-  position  : relative;
+  position   : relative;
+  display    : flex;
+  align-items: center;
+  height     : 64px;
+  padding    : 0;
+  background : #fff;
+  box-shadow : 0 1px 4px rgba(0, 21, 41, .08);
 
   .moose-global-header-trigger {
     height     : 64px;
@@ -19,21 +21,24 @@
   }
 
   .moose-global-header-right {
-    line-height: 64px;
-    text-align : right;
+    display        : flex;
+    align-items    : center;
+    justify-content: flex-end;
+    line-height    : 64px;
+    text-align     : right;
 
     .action {
       display     : inline-block;
       height      : 100%;
       padding     : 0 12px;
-      margin-right: 32px;
+      margin-right: 24px;
       cursor      : pointer;
       transition  : all 0.3s;
 
       .avatar {
         margin        : 20px 8px 20px 0;
         color         : @primary-color;
-        // background : rgba(255, 255, 255, 0.85);
+        // background    : rgba(255, 255, 255, 0.85);
         vertical-align: top;
       }
     }
