@@ -61,10 +61,8 @@ const HomePage: FunctionComponent = () => {
           <UserActivityList />
         </Col>
       </Row>
-
-
     </React.Fragment>
   );
-}
+};
 
-export default HomePage
+export default HomePage;

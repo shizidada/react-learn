@@ -1,8 +1,9 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { ClickParam } from 'antd/lib/menu';
 import { Icon, Menu, Dropdown, Avatar, Row, Col } from 'antd';
+import ColorPicker from '../../../components/ColorPicker';
 
 // eslint-disable-next-line import/extensions
 import { ConnectState } from '../../../typings';
@@ -21,8 +22,10 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
 }) => {
   useEffect(() => {
     updateMenuStore();
-    return () => { };
+    return () => {};
   });
+
+  const [displayColorPicker, setDisplayColorPicker] = useState(false);
 
   const onMenuClick = (param: ClickParam) => {
     console.log(param);
@@ -30,6 +33,15 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
 
   const onHeaderTrigger = () => {
     updateMenuStore({ collapsed: !collapsed });
+  };
+
+  const onHeaderRightClick = (event: any) => {
+    // .getAttribute('data-color-picker')
+    if (event.target.dataset.colorPicker === 'ColorPicker') {
+      setDisplayColorPicker(true)
+    } else {
+      setDisplayColorPicker(false)
+    }
   };
 
   const menu = (
@@ -60,8 +72,9 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
         <MooseBreadcrumb />
       </Col>
 
-      <Col span={6} className="moose-global-header-right">
+      <Col span={6} className="moose-global-header-right" onClick={onHeaderRightClick}>
         <Icon type="bell" style={{ fontSize: 18 }} />
+        <ColorPicker type="chrome" displayColorPicker={displayColorPicker} />
         <Dropdown overlay={menu} trigger={['hover']}>
           <span className="action">
             <Avatar className="avatar" size="small" icon="user" />

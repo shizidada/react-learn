@@ -1,0 +1,18 @@
+.color-picker-container {
+  position: relative;
+  width: 80px;
+  height: 20px;
+  margin: 0 16px;
+  cursor: pointer;
+
+  .color-picker-popover {
+    position: absolute;
+    z-index: 2;
+    .color-picker-wrapper {
+      position: inherit;
+      z-index: 100;
+      top: 25px;
+      left: -140px;
+    }
+  }
+}

@@ -20,3 +20,13 @@ interface System {
 }
 
 declare const System: System;
+
+// interface Window {
+//   less: any;
+// }
+
+declare global {
+  interface Window {
+    less: any;
+  }
+}
