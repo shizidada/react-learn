@@ -77,7 +77,8 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
         <ColorPicker type="chrome" displayColorPicker={displayColorPicker} />
         <Dropdown overlay={menu} trigger={['hover']}>
           <span className="action">
-            <Avatar className="avatar" size="small" icon="user" />
+            {/* <Avatar className="avatar" size="small" icon="user" /> */}
+              <Avatar className="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
             <span>Tom</span>
           </span>
         </Dropdown>

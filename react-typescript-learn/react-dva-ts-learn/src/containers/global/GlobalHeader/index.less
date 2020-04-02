@@ -3,41 +3,41 @@
 @pro-header-hover-bg: rgba(0, 0, 0, 0.025);
 
 .moose-global-header-container {
-  position   : relative;
-  display    : flex;
+  position: relative;
+  display: flex;
   align-items: center;
-  height     : 64px;
-  padding    : 0;
-  background : #fff;
-  box-shadow : 0 1px 4px rgba(0, 21, 41, .08);
+  height: 64px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .moose-global-header-trigger {
-    height     : 64px;
+    height: 64px;
     line-height: 64px;
-    padding    : 0px 24px;
-    font-size  : 20px;
-    cursor     : pointer;
-    transition : all 0.3s, padding 0s;
+    padding: 0px 24px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s, padding 0s;
   }
 
   .moose-global-header-right {
-    display        : flex;
-    align-items    : center;
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
-    line-height    : 64px;
-    text-align     : right;
+    line-height: 64px;
+    text-align: right;
 
     .action {
-      display     : inline-block;
-      height      : 100%;
-      padding     : 0 12px;
+      display: flex;
+      align-items: center;
+      height: 100%;
       margin-right: 24px;
-      cursor      : pointer;
-      transition  : all 0.3s;
+      cursor: pointer;
+      transition: all 0.3s;
 
       .avatar {
-        margin        : 20px 8px 20px 0;
-        color         : @primary-color;
+        margin: 0 16px;
+        color: @primary-color;
         // background    : rgba(255, 255, 255, 0.85);
         vertical-align: top;
       }
@@ -46,7 +46,6 @@
 }
 
 .moose-global-header-menu {
-
   .ant-dropdown-menu-item {
     width: 160px;
   }

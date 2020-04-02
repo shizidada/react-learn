@@ -1,0 +1,84 @@
+.personal-center-page-contaienr {
+  position: relative;
+
+  .ant-card-body {
+    .personal-header-wrapper {
+      position: relative;
+      width: 1200px;
+      margin: 10px auto;
+      box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+
+      .picture-picture-wrapper {
+        height: 200px;
+        position: relative;
+        background-image: url(./guide-cover-2.4c501852.jpg);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .upload-picture-button {
+          position: absolute;
+          right: 16px;
+          top: 16px;
+          display: inline-block;
+          padding: 0 16px;
+          font-size: 14px;
+          line-height: 32px;
+          text-align: center;
+          cursor: pointer;
+          background: none;
+          color: #fff;
+          border: 1px solid #fff;
+          border-radius: 3px;
+        }
+      }
+
+      .profile-info-wrapper {
+        position: relative;
+
+        .profile-avatar-box {
+          position: relative;
+          margin: 0 20px 24px;
+
+          .profile-avatar {
+            position: absolute;
+            top: -74px;
+            left: 0;
+            z-index: 1;
+
+            img {
+              border-radius: 4px;
+            }
+          }
+
+          .profile-content-box {
+            padding-top: 16px;
+            padding-left: 32px;
+            border-left: 164px solid transparent;
+
+            .profile-content-name {
+            }
+
+            .profile-content-detail {
+              margin-top: 16px;
+            }
+
+            .profile-content-footer {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .expand-detail-info {
+                cursor: pointer;
+
+                i {
+                  margin: 0 16px 0 4px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
