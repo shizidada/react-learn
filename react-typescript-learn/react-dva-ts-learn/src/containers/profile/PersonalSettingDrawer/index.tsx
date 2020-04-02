@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Form, Drawer, Button, Col, Row, Input, Select, Avatar } from 'antd';
+import { Form, Drawer, Button, Col, Row, Input, Typography, Radio, Icon } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
 
 import './index.less';
 
-const { Option } = Select;
+const { Title } = Typography;
 
 interface PersonalSettingDrawerProps extends FormComponentProps {
   visible?: boolean;
@@ -33,100 +33,50 @@ const PersonalSettingDrawer: FunctionComponent<PersonalSettingDrawerProps> = ({
     >
       <div className="personal-setting-drawer-body">
         <Form layout="vertical">
-          <div className="drawer-avatar-item">
-            <div className="user-avatar">
-              <img
-                width={160}
-                height={160}
-                src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png"
-                alt=""
-              />
+          <Row className="drawer-avatar-item">
+            <div className="drawer-avatar-box">
+              <div className="user-avatar">
+                <img
+                  width={160}
+                  height={160}
+                  src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png"
+                  alt=""
+                />
+              </div>
+              <label htmlFor="upload-avatar-input">
+                <input
+                  id="upload-avatar-input"
+                  className="upload-avatar"
+                  type="file"
+                  accept="image/png,image/jpeg"
+                />
+                <div className="upload-avatar-mask-box">
+                  <div className="mask-inner"></div>
+                  <div className="mask-content">
+                    <Icon type="camera" style={{ fontSize: 32 }} />
+                    <div className="avatar-editor-text">修改我的头像</div>
+                  </div>
+                </div>
+              </label>
             </div>
-            <label htmlFor="upload-avatar-input">
-              <input
-                id="upload-avatar-input"
-                className="upload-avatar"
-                type="file"
-                accept="image/png,image/jpeg"
-              />
+          </Row>
 
-              <div className="upload-avatar-mask"></div>
-            </label>
-          </div>
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item label="Name">
-                {getFieldDecorator('name', {
-                  rules: [{ required: true, message: 'Please enter user name' }],
-                })(<Input placeholder="Please enter user name" />)}
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item label="Url">
-                {getFieldDecorator('url', {
-                  rules: [{ required: true, message: 'Please enter url' }],
-                })(
-                  <Input
-                    style={{ width: '100%' }}
-                    addonBefore="http://"
-                    addonAfter=".com"
-                    placeholder="Please enter url"
-                  />,
-                )}
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item label="Owner">
-                {getFieldDecorator('owner', {
-                  rules: [{ required: true, message: 'Please select an owner' }],
-                })(
-                  <Select placeholder="Please select an owner">
-                    <Option value="xiao">Xiaoxiao Fu</Option>
-                    <Option value="mao">Maomao Zhou</Option>
-                  </Select>,
-                )}
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item label="Type">
-                {getFieldDecorator('type', {
-                  rules: [{ required: true, message: 'Please choose the type' }],
-                })(
-                  <Select placeholder="Please choose the type">
-                    <Option value="private">Private</Option>
-                    <Option value="public">Public</Option>
-                  </Select>,
-                )}
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item label="Approver">
-                {getFieldDecorator('approver', {
-                  rules: [{ required: true, message: 'Please choose the approver' }],
-                })(
-                  <Select placeholder="Please choose the approver">
-                    <Option value="jack">Jack Ma</Option>
-                    <Option value="tom">Tom Liu</Option>
-                  </Select>,
-                )}
-              </Form.Item>
+          <Row gutter={16} className="account-name-item">
+            <Col span={24}>
+              <Title>Tom</Title>
+              {/* <Form.Item>
+                {getFieldDecorator('accountName', {
+                  initialValue: 'Tom',
+                })(<Input />)}
+              </Form.Item> */}
             </Col>
           </Row>
           <Row gutter={16}>
             <Col span={24}>
-              <Form.Item label="Description">
+              <Form.Item label="个人简介">
                 {getFieldDecorator('description', {
-                  rules: [
-                    {
-                      required: true,
-                      message: 'please enter url description',
-                    },
-                  ],
-                })(<Input.TextArea rows={4} placeholder="please enter url description" />)}
+                  initialValue: '但行好事，莫问前程。',
+                })(<Input.TextArea rows={4} />)}
               </Form.Item>
             </Col>
           </Row>

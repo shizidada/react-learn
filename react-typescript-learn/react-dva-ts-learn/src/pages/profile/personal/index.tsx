@@ -43,10 +43,11 @@ const PersonalCenterPage: FunctionComponent = () => {
                 style={{
                   overflow: 'hidden',
                   transition: 'height 300ms ease-out 0s',
-                  height: isExpand ? '80px' : '0px',
+                  height: isExpand ? '100px' : '0px',
                 }}
               >
-                所在行业
+                <Title level={3}>简介: 但行好事，莫问前程。</Title>
+                <Title level={3}>所在行业: </Title>
               </div>
               <div className="profile-content-footer">
                 <div className="expand-detail-info" onClick={expandDetailInfo}>
