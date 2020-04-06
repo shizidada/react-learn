@@ -72,11 +72,11 @@ const LoginModel: LoginModelType = {
       try {
         console.log('register', action);
         const { payload } = action;
-        const { accountName } = payload;
+        const { phone, verifyCode, smsToken } = payload;
         let { password, repassword: rePassword } = payload;
         password = MD5(password);
         rePassword = MD5(rePassword);
-        const res = yield call(register, { accountName, password, rePassword });
+        const res = yield call(register, { phone, verifyCode, smsToken, password, rePassword });
         yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: false } });
         console.log('register res :: ', res, action);
       } catch (error) {
