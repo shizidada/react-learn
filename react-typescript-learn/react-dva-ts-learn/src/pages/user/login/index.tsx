@@ -12,6 +12,7 @@ import { ConnectState } from '../../../typings';
 import { LoginModelState } from '../../../models/login';
 
 import './index.less';
+import Websocket from '../../../components/websocket';
 
 const { Item } = Form;
 const { Title } = Typography;
@@ -30,7 +31,7 @@ const LoginPage: React.FunctionComponent<LoginPageProps> = ({ form,
   errorMessage,
   login,
   register,
-  updateLoginStore, }) => {
+  updateLoginStore }) => {
   const thirdAccountLogin = (type: string) => {
     console.log('thirdAccountLogin', type);
   };
@@ -107,6 +108,8 @@ const LoginPage: React.FunctionComponent<LoginPageProps> = ({ form,
           <Icon type="wechat" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('wechat')} />
         </Item>
       </Form>
+
+      <Websocket />
     </div>
   );
 };
