@@ -27,7 +27,7 @@ const lessLoader = {
     { loader: "style-loader", options: { sourceMap: isDev } },
     { loader: "css-loader", options: { sourceMap: isDev } },
     { loader: "postcss-loader", options: { sourceMap: isDev } },
-    { loader: "less-loader", options: { sourceMap: isDev } }
+    { loader: "less-loader", options: { sourceMap: isDev, javascriptEnabled: true } }
   ]
 };
 
