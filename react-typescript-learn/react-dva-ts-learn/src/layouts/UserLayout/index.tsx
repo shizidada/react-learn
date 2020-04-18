@@ -11,7 +11,7 @@ export interface UserLayoutProps {
 
 const UserLayout: SFC<UserLayoutProps> = ({ view }) => {
   return (
-    <Layout style={{ height: '100vh' }}>
+    <Layout>
       <Content>{view}</Content>
     </Layout>
   );

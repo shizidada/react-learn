@@ -9,6 +9,7 @@ import { MenuModelState } from '../../../models/menu';
 import BaseMenu from './BaseMenu';
 
 import './index.less';
+import { Link } from 'dva/router';
 
 const { Sider } = Layout;
 
@@ -30,7 +31,9 @@ const SliderMenu: FunctionComponent<SliderMenuProps> = ({ collapsed, onCollapse 
       collapsed={collapsed}
       onCollapse={onSiderCollapseHandle}
     >
-      <div className="slider-menu-logo" >M</div>
+      <Link to="/index.html">
+        <div className="slider-menu-logo" >M</div>
+      </Link>
       <BaseMenu />
     </Sider>
   );

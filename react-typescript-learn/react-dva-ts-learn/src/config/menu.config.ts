@@ -6,7 +6,7 @@ export interface MenuConfig {
 }
 
 export const menus: MenuConfig[] = [
-  { icon: 'pie-chart', name: '首页', path: '/' },
+  { icon: 'pie-chart', name: '首页', path: '/home' },
   {
     icon: 'user',
     name: '用户管理',

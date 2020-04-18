@@ -20,7 +20,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/list'),
+            loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/ListPage'),
             loading() {
               return <Loading />;
             },
@@ -37,7 +37,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
+            loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/PersonalPage'),
             loading() {
               return <Loading />;
             },
@@ -54,7 +54,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/list'),
+            loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/ListPage'),
             loading() {
               return <Loading />;
             },
@@ -71,7 +71,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
+            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/ListPage'),
             loading() {
               return <Loading />;
             },
@@ -89,7 +89,9 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'),
+            loader: () => import(
+              /* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/AdvertisementPage'
+              ),
             loading() {
               return <Loading />;
             },
@@ -101,11 +103,11 @@ const BasicRoute = () => (
     {/* setting router config end */}
 
     <Route
-      path="/"
+      path="/home"
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "home.page" */ '../pages/home'),
+            loader: () => import(/* webpackChunkName: "home.page" */ '../pages/HomePage'),
             loading() {
               return <Loading />;
             },
@@ -115,7 +117,7 @@ const BasicRoute = () => (
       }
     />
 
-    <Redirect from="/home" to="/" />
+    <Redirect from="/" to="/index.html" />
   </Switch>
 );
 

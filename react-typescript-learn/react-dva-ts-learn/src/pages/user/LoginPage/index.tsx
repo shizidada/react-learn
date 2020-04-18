@@ -17,7 +17,7 @@ import Websocket from '../../../components/websocket';
 const { Item } = Form;
 const { Title } = Typography;
 
-interface LoginPageProps extends LoginModelState, FormComponentProps {
+interface UserLoginPageProps extends LoginModelState, FormComponentProps {
   localtion: Location<{}>;
   updateLoginStore: (type: object) => void;
   login: (type: object) => void;
@@ -25,7 +25,7 @@ interface LoginPageProps extends LoginModelState, FormComponentProps {
   redirect: () => void;
 }
 
-const LoginPage: React.FunctionComponent<LoginPageProps> = ({ form,
+const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({ form,
   loginType,
   isLoading,
   errorMessage,
@@ -133,4 +133,4 @@ export default connect(
       dispatch({ type: 'login/redirect' });
     },
   }),
-)(Form.create({ name: 'LoginPage' })(LoginPage));
+)(Form.create({ name: 'UserLoginPage' })(UserLoginPage));
