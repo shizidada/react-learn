@@ -1,13 +1,11 @@
 import React from 'react';
 
-import IndexTopHeader from '../../components/IndexTopHeader'
+import './loadsh.test'
 
-import './index.less'
+import './index.less';
 
 const IndexPage: React.FunctionComponent = () => {
-  return <div className="index-page-contaienr">
-    <IndexTopHeader />
-  </div>
+  return <div className="index-page-contaienr"></div>;
 };
 
 export default IndexPage;
