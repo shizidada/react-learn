@@ -27,6 +27,7 @@
     "braft-extensions": "^0.1.0",
     "dva": "^2.4.1",
     "lodash": "^4.17.15",
+    "lorem-ipsum": "^2.0.3",
     "path-to-regexp": "^3.1.0",
     "qs": "^6.7.0",
     "react": "^16.8.6",
