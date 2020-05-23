@@ -1,0 +1,9 @@
+https://github.com/ant-design/ant-design/issues/14432#issuecomment-455769662
+https://codesandbox.io/s/1y93okjw97
+
+https://stackoverflow.com/questions/53669448/very-slow-input-elements-in-ant-design-form/57534351#57534351
+
+https://github.com/ant-design/ant-design/issues/13063
+
+
+https://www.npmjs.com/package/react-debounce-input

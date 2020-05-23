@@ -8,7 +8,7 @@ export interface ConnectState {
   [key: string]: GlobalModelState | HomeModelState | LoginModelState | FileModelState;
   global: GlobalModelState;
   menu: MenuModelState;
-  hoem: HomeModelState;
+  home: HomeModelState;
   login: LoginModelState;
   file: FileModelState;
 }

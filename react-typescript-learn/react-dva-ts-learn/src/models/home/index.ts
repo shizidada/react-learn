@@ -1,8 +1,24 @@
 import { Model } from 'dva';
-
+import { loremIpsum } from 'lorem-ipsum';
 export const NAMESPACE = 'home';
 
 const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
+
+const list: any[] = Array(12000)
+  .fill({})
+  .map((val, idx) => {
+    return {
+      id: idx,
+      name: 'John Doe',
+      image: 'http://via.placeholder.com/40',
+      text: loremIpsum({
+        count: 1,
+        units: 'sentences',
+        sentenceLowerBound: 4,
+        sentenceUpperBound: 8,
+      }),
+    };
+  });
 
 export interface HomeModelType extends Model {
   state: HomeModelState;
@@ -11,6 +27,7 @@ export interface HomeModelType extends Model {
 export interface HomeModelState {
   name: string;
   count: number;
+  list: any[];
 }
 
 const HomeModel: HomeModelType = {
@@ -19,6 +36,7 @@ const HomeModel: HomeModelType = {
   state: {
     name: 'TypeScript from dva',
     count: 0,
+    list: list,
   },
 
   reducers: {
@@ -39,7 +57,7 @@ const HomeModel: HomeModelType = {
 
   subscriptions: {
     setup({ history }): void {
-      history.listen(({ pathname, search }): void => { });
+      history.listen(({ pathname, search }): void => {});
     },
   },
 };

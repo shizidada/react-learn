@@ -101,6 +101,22 @@ const BasicRoute = () => (
       }
     />
     {/* setting router config end */}
+    <Route
+      path="/learn"
+      render={routeProps =>
+        createElement<object>(
+          Loadable({
+            loader: () => import(
+              /* webpackChunkName: "learn.page" */ '../pages/LearnPage'
+              ),
+            loading() {
+              return <Loading />;
+            },
+          }),
+          { ...routeProps },
+        )
+      }
+    />
 
     <Route
       path="/home"
