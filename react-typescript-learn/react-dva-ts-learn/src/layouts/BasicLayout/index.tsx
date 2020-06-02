@@ -1,4 +1,4 @@
-import React, { SFC, useEffect } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Location } from 'history';
 // import { connect } from 'dva';
 // import { Dispatch } from 'redux';
@@ -21,7 +21,7 @@ interface BasicLayoutProps extends ConnectState {
 
 const OLD_LESS_ID = `less:${BASE_NAME ? `${BASE_NAME}-` : ''}color:old`;
 
-const BasicLayout: SFC<BasicLayoutProps> = ({ location, login }) => {
+const BasicLayout: FunctionComponent<BasicLayoutProps> = ({ location, login }) => {
   // 初始化主题？
   const initTheme = () => {
     const themeStyleContent = window.localStorage.getItem('THEME_STYLE_CONTENT');

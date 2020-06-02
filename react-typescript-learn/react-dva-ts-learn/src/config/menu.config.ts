@@ -39,7 +39,7 @@ export const menus: MenuConfig[] = [
   },
   {
     icon: 'setting',
-    name: 'Learn',
-    path: '/learn',
+    name: 'Mock',
+    path: '/mock',
   },
 ];

@@ -1,11 +1,11 @@
-import React, { SFC } from 'react';
+import React, { FunctionComponent } from 'react';
 import { SortableElement } from 'react-sortable-hoc';
 
 interface SortableSpanProps {
   value: string;
 }
 
-const SortableSpan: SFC<SortableSpanProps> = value => {
+const SortableSpan: FunctionComponent<SortableSpanProps> = value => {
   return <span className="sortable-item">{value}</span>;
 };
 

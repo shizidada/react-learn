@@ -8,9 +8,9 @@ import { ConnectState } from '../../typings';
 
 import './index.less';
 
-interface LearnPageProps extends ConnectState {}
+interface MockPageProps extends ConnectState {}
 
-const LearnPage: FunctionComponent<LearnPageProps> = ({ home }) => {
+const MockPage: FunctionComponent<MockPageProps> = ({ home }) => {
   const { list = [] } = home;
   const renderItem = ({ index, isScrolling, key, style }: ListRowProps) => {
     return (
@@ -30,7 +30,7 @@ const LearnPage: FunctionComponent<LearnPageProps> = ({ home }) => {
   };
 
   return (
-    <div className="learn-page-container">
+    <div className="mock-page-container">
       <div className="list-wrapper">
         <List
           height={800}
@@ -53,4 +53,4 @@ export default connect(
     };
   },
   (dispatch: Dispatch) => ({}),
-)(LearnPage);
+)(MockPage);

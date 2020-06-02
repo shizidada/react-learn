@@ -5,20 +5,20 @@ import { Location } from 'history';
 import { Form, Icon, Button, Typography, Divider } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 
-import LoginForm from '../../../containers/login/LoginForm';
-import RegisterForm from '../../../containers/register/RegisterForm';
+import LoginForm from '../../containers/login/LoginForm';
+import RegisterForm from '../../containers/register/RegisterForm';
 
-import { ConnectState } from '../../../typings';
-import { LoginModelState } from '../../../models/login';
+import { ConnectState } from '../../typings';
+import { LoginModelState } from '../../models/login';
 
 import './index.less';
-import Websocket from '../../../components/websocket';
+import Websocket from '../../components/websocket';
 
 const { Item } = Form;
 const { Title } = Typography;
 
 interface UserLoginPageProps extends LoginModelState, FormComponentProps {
-  localtion: Location<{}>;
+  location: Location<{}>;
   updateLoginStore: (type: object) => void;
   login: (type: object) => void;
   register: (type: object) => void;

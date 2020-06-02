@@ -1,4 +1,4 @@
-import React, { useState, useEffect, SFC } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -10,7 +10,7 @@ interface MarkedownProps {
   onToggleFullScreenChange(value: boolean): void;
 }
 
-const Markedown: SFC<MarkedownProps> = ({ onMarkedownInputChange, onToggleFullScreenChange }) => {
+const Markedown: FunctionComponent<MarkedownProps> = ({ onMarkedownInputChange, onToggleFullScreenChange }) => {
   const [isFullScreen, onToggleFullScreen] = useState<boolean>(false);
   const [markedownText, markedownOnChange] = useState<string>('');
 

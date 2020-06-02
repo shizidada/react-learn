@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FunctionComponent } from 'react';
 // import { Location } from "history";
 
 import { Layout } from 'antd';
@@ -9,7 +9,7 @@ export interface UserLayoutProps {
   view: React.ReactNode;
 }
 
-const UserLayout: SFC<UserLayoutProps> = ({ view }) => {
+const UserLayout: FunctionComponent<UserLayoutProps> = ({ view }) => {
   return (
     <Layout>
       <Content>{view}</Content>

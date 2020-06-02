@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  title: "react-dva-ts-learn",
+  title: "FaS",
   filename: "index.html", //Name of file in ./dist/
   template: "../public/index.html", //Name of template in ./src
   hash: true,

@@ -20,7 +20,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/ListPage'),
+            loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/list'),
             loading() {
               return <Loading />;
             },
@@ -37,7 +37,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/PersonalPage'),
+            loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
             loading() {
               return <Loading />;
             },
@@ -54,7 +54,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/ListPage'),
+            loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/list'),
             loading() {
               return <Loading />;
             },
@@ -71,7 +71,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/ListPage'),
+            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
             loading() {
               return <Loading />;
             },
@@ -90,7 +90,7 @@ const BasicRoute = () => (
         createElement<object>(
           Loadable({
             loader: () => import(
-              /* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/AdvertisementPage'
+              /* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'
               ),
             loading() {
               return <Loading />;
@@ -102,12 +102,12 @@ const BasicRoute = () => (
     />
     {/* setting router config end */}
     <Route
-      path="/learn"
+      path="/mock"
       render={routeProps =>
         createElement<object>(
           Loadable({
             loader: () => import(
-              /* webpackChunkName: "learn.page" */ '../pages/LearnPage'
+              /* webpackChunkName: "mock.page" */ '../pages/mock'
               ),
             loading() {
               return <Loading />;
@@ -123,7 +123,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "home.page" */ '../pages/HomePage'),
+            loader: () => import(/* webpackChunkName: "home.page" */ '../pages/home'),
             loading() {
               return <Loading />;
             },

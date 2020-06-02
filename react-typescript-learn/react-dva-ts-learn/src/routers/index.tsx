@@ -8,7 +8,7 @@ import Loadable from 'react-loadable';
 import BasicLayout from '../layouts/BasicLayout';
 import UserLayout, { UserLayoutProps } from '../layouts/UserLayout';
 
-import Error from '../pages/ErrorPage';
+import Error from '../pages/error';
 
 const { ConnectedRouter } = routerRedux;
 
@@ -35,7 +35,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
               ...routeProps,
               view: createElement<any>(
                 Loadable({
-                  loader: () => import(/* webpackChunkName: "user.index" */ '../pages/IndexPage'),
+                  loader: () => import(/* webpackChunkName: "user.index" */ '../pages/index'),
                   loading() {
                     return <Loading />
                   },
@@ -52,7 +52,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
               ...routeProps,
               view: createElement<any>(
                 Loadable({
-                  loader: () => import(/* webpackChunkName: "user.login" */ '../pages/user/LoginPage'),
+                  loader: () => import(/* webpackChunkName: "login.page" */ '../pages/login'),
                   loading() {
                     return <Loading />
                   },

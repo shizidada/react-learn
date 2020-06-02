@@ -4,7 +4,8 @@ import { connect } from 'dva';
 
 import { ConnectState } from '../../typings';
 
-import './loadsh.test';
+import './lodash.test';
+
 import './index.less';
 
 interface IndexPageProps extends ConnectState {}
