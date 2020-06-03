@@ -37,6 +37,9 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
   };
 
   const getSubMenuOrItem = (item: MenuConfig) => {
+    if (item.hide) {
+      return null;
+    }
     if (item.children) {
       return (
         <SubMenu

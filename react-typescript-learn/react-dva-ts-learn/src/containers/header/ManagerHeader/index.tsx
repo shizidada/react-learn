@@ -7,16 +7,16 @@ import ColorPicker from '../../../components/ColorPicker';
 
 // eslint-disable-next-line import/extensions
 import { ConnectState } from '../../../typings';
-import MooseBreadcrumb from '../Breadcrumb';
+import MooseBreadcrumb from '../../global/Breadcrumb';
 
 import './index.less';
 
-interface MooseGlobalHeaderProps extends ConnectState {
+interface ManagerHeaderProps extends ConnectState {
   onSliderMenuToggle: () => void;
   updateMenuStore: (collapsed?: object) => void;
 }
 
-const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
+const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({
   updateMenuStore,
   collapsed,
 }) => {
@@ -45,7 +45,7 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
   };
 
   const menu = (
-    <Menu className="moose-global-header-menu" selectedKeys={[]} onClick={onMenuClick}>
+    <Menu className="moose-manger-header-menu" selectedKeys={[]} onClick={onMenuClick}>
       <Menu.Item key="userCenter">
         <Icon type="user" />
         个人中心
@@ -62,9 +62,9 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
     </Menu>
   );
   return (
-    <Row className="moose-global-header-container">
+    <Row className="moose-manger-header-container">
       <Col span={2}>
-        <span className="moose-global-header-trigger" onClick={() => onHeaderTrigger()}>
+        <span className="moose-manger-header-trigger" onClick={() => onHeaderTrigger()}>
           <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
         </span>
       </Col>
@@ -72,7 +72,7 @@ const MooseGlobalHeader: FunctionComponent<MooseGlobalHeaderProps> = ({
         <MooseBreadcrumb />
       </Col>
 
-      <Col span={6} className="moose-global-header-right" onClick={onHeaderRightClick}>
+      <Col span={6} className="moose-manger-header-right" onClick={onHeaderRightClick}>
         <Icon type="bell" style={{ fontSize: 18 }} />
         <ColorPicker type="chrome" displayColorPicker={displayColorPicker} />
         <Dropdown overlay={menu} trigger={['hover']}>
@@ -98,4 +98,4 @@ export default connect(
       dispatch({ type: 'menu/updateMenuStore', payload: record });
     },
   }),
-)(MooseGlobalHeader);
+)(ManagerHeader);

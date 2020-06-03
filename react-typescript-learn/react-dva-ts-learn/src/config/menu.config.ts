@@ -2,6 +2,7 @@ export interface MenuConfig {
   icon: string;
   name: string;
   path: string;
+  hide?: boolean;
   children?: MenuConfig[];
 }
 
@@ -11,18 +12,21 @@ export const menus: MenuConfig[] = [
     icon: 'user',
     name: '用户管理',
     path: '/user',
+    hide: true,
     children: [{ icon: 'compass', name: '用户列表', path: '/user/list' }],
   },
   {
     icon: 'to-top',
     name: '订单管理',
     path: '/order',
+    hide: true,
     children: [{ icon: 'bars', name: '订单列表', path: '/order/list' }],
   },
   {
     icon: 'gold',
     name: '商品管理',
     path: '/product',
+    hide: true,
     children: [{ icon: 'bars', name: '商品列表', path: '/product/list' }],
   },
   {
@@ -35,6 +39,7 @@ export const menus: MenuConfig[] = [
     icon: 'setting',
     name: '设置管理',
     path: '/setting',
+    hide: true,
     children: [{ icon: 'compass', name: '广告设置', path: '/setting/advertisement' }],
   },
   {

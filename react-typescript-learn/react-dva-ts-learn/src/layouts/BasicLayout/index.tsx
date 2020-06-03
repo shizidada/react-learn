@@ -4,7 +4,7 @@ import { Location } from 'history';
 // import { Dispatch } from 'redux';
 import { Layout } from 'antd';
 import SliderMenu from '../../containers/global/SliderMenu';
-import GlobalHeader from '../../containers/global/GlobalHeader';
+import ManagerHeader from '../../containers/header/ManagerHeader';
 import BasicRoute from '../../routers/BasicRoute';
 
 // eslint-disable-next-line import/extensions
@@ -43,7 +43,7 @@ const BasicLayout: FunctionComponent<BasicLayoutProps> = ({ location, login }) =
     <Layout className="basic-layout-container">
       <SliderMenu />
       <Layout className="basic-layout-content">
-        <GlobalHeader />
+        <ManagerHeader />
         <Content className="basic-layout-wrapper">
           <BasicRoute />
         </Content>

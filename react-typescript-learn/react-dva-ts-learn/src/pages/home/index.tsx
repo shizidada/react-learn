@@ -29,7 +29,7 @@ const HomePage: FunctionComponent = () => {
       </Row>
 
       <Row gutter={[24, 24]} className="home-page-container">
-        <Col span={16}>
+        <Col span={18}>
           <Row gutter={[24, 24]}>
             <Col span={24}>
               <ImportBrokenLine renderId="ImportBrokenLine_1" />
@@ -57,7 +57,7 @@ const HomePage: FunctionComponent = () => {
           </Row>
         </Col>
 
-        <Col span={8}>
+        <Col span={6}>
           <UserActivityList />
         </Col>
       </Row>
