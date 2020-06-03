@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
+const MyFirstWebpackPlugin = require('./webpack-plugin/my-first-webpack-plugin')
+
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   title: 'FaS',
   filename: 'index.html', // Name of file in ./dist/
@@ -28,10 +30,14 @@ const hotModulePlugin = new webpack.HotModuleReplacementPlugin();
 // 跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误
 const noEmitErrorPlugin = new webpack.NoEmitOnErrorsPlugin();
 
+const myFirstWebpackPlugin = new MyFirstWebpackPlugin();
+
 module.exports = {
   htmlWebpackPlugin,
   miniCssExtractPlugin,
   checkerPlugin,
   hotModulePlugin,
   noEmitErrorPlugin,
+
+  myFirstWebpackPlugin,
 };

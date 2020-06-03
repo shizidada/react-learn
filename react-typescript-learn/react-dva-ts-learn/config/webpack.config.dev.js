@@ -19,5 +19,5 @@ module.exports = merge(baseConfig, {
     hot: true, // enable HMR on the server
     historyApiFallback: true,
   },
-  plugins: [plugin.hotModulePlugin],
+  plugins: [plugin.hotModulePlugin, plugin.myFirstWebpackPlugin],
 });
