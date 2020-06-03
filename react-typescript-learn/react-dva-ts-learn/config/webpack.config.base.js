@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
-const loader = require("./loader");
-const plugin = require("./plugin");
+const loader = require('./loader');
+const plugin = require('./plugin');
 
 const basePath = __dirname;
 
 module.exports = {
-  context: path.join(basePath, "..", "src"),
+  context: path.join(basePath, '..', 'src'),
 
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
 
   module: {

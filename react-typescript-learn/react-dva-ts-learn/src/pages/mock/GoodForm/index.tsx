@@ -1,5 +1,5 @@
-import React, { FunctionComponent, CSSProperties } from 'react';
-import { Form, Input } from 'antd';
+import React, { FunctionComponent } from 'react';
+import { Form } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 
 import GoodListView from './GoodListView';

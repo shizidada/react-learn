@@ -1,1 +1,3 @@
-console.log('object');
+export default class Test {
+
+}

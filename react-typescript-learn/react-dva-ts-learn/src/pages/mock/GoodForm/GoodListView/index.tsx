@@ -1,11 +1,9 @@
-import React, { Component, useState, useEffect, ChangeEvent } from 'react';
+import React, { Component } from 'react';
 import Form, { FormComponentProps } from 'antd/lib/form';
 
 import { DebounceInput } from 'react-debounce-input';
 
-import { debounce, throttle } from 'lodash';
-
-import useDebounce from './useDebounce';
+import { debounce } from 'lodash';
 
 import GoodFormItem from './GoodFormItem';
 
@@ -44,20 +42,21 @@ class GoodListView extends Component<GoodListViewProps, GoodListViewState> {
   };
 
   onInputChange = (value: any, index: number, filedName: string) => {
-    let goodList = this.state.goodList.concat();
-    goodList[index][filedName] = value;
-    this.setState({ goodList });
+    const { goodList } = this.state;
+    const tempGoodList = goodList.concat();
+    tempGoodList[index][filedName] = value;
+    this.setState({ goodList: tempGoodList });
   };
 
   render() {
     const { goodList = [], value } = this.state;
     const { form } = this.props;
-    console.log('render goodList :: ', goodList);
+    // console.log('render goodList :: ', goodList);
     return (
       <Form {...formItemLayout}>
         {goodList.map((item, index: number) => (
           <GoodFormItem
-            key={index}
+            key={`${item.id}`}
             form={form}
             goodIndex={index}
             goodInfo={item}

@@ -17,12 +17,13 @@ interface RouterConfigProps {
   app: DvaInstance;
 }
 
-
 const Loading = () => {
-  return <div style={{ fontSize: 20, textAlign: 'center' }}>
-    <Spin size="large" />
-  </div>
-}
+  return (
+    <div style={{ fontSize: 20, textAlign: 'center' }}>
+      <Spin size="large" />
+    </div>
+  );
+};
 
 function RouterConfig({ history, app }: RouterConfigProps) {
   return (
@@ -37,7 +38,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
                 Loadable({
                   loader: () => import(/* webpackChunkName: "user.index" */ '../pages/index'),
                   loading() {
-                    return <Loading />
+                    return <Loading />;
                   },
                 }),
                 { ...routeProps },
@@ -54,7 +55,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
                 Loadable({
                   loader: () => import(/* webpackChunkName: "login.page" */ '../pages/login'),
                   loading() {
-                    return <Loading />
+                    return <Loading />;
                   },
                 }),
                 { ...routeProps },

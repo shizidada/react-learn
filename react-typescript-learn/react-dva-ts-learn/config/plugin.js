@@ -1,12 +1,12 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CheckerPlugin } = require("awesome-typescript-loader");
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  title: "FaS",
-  filename: "index.html", //Name of file in ./dist/
-  template: "../public/index.html", //Name of template in ./src
+  title: 'FaS',
+  filename: 'index.html', // Name of file in ./dist/
+  template: '../public/index.html', // Name of template in ./src
   hash: true,
   // minify: {
   //   removeRedundantAttributes: true, // 删除多余的属性
@@ -18,8 +18,8 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 });
 
 const miniCssExtractPlugin = new MiniCssExtractPlugin({
-  filename: "assets/css/[name].css",
-  chunkFilename: "assets/css/[id].css",
+  filename: 'assets/css/[name].css',
+  chunkFilename: 'assets/css/[id].css',
 });
 
 const checkerPlugin = new CheckerPlugin();

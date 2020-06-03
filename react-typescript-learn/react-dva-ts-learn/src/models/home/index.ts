@@ -1,5 +1,6 @@
 import { Model } from 'dva';
 import { loremIpsum } from 'lorem-ipsum';
+
 export const NAMESPACE = 'home';
 
 const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
@@ -36,7 +37,7 @@ const HomeModel: HomeModelType = {
   state: {
     name: 'TypeScript from dva',
     count: 0,
-    list: list,
+    list,
   },
 
   reducers: {

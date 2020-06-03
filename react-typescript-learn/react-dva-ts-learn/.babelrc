@@ -1,25 +1,27 @@
 {
-    "presets": [
-        [
-            "@babel/preset-env",
-            {
-                "useBuiltIns": "entry",
-                "corejs": 3
-            }
-        ]
-    ],
+    // "presets": [
+    //     [
+    //         "@babel/preset-env",
+    //         "@babel/preset-react",
+    //         "@babel/preset-typescript",
+    //         {
+    //             "useBuiltIns": "entry",
+    //             "corejs": 3
+    //         }
+    //     ]
+    // ],
     "plugins": [
         [
             "import",
             {
                 "libraryName": "antd",
-                "style": true // or 'css'
+                "style": true
             }
         ],
-
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-arrow-functions",
         "@babel/plugin-transform-modules-commonjs",
-        "@babel/plugin-transform-runtime"
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-proposal-class-properties"
     ]
 }
