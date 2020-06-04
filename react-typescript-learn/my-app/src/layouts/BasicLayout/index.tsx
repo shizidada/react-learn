@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 
-import SliderMenu from "../containers/SliderMenu";
-import CustomHeader from "../containers/CustomHeader";
-import PageTab from "../containers/PageTab";
+import SliderMenu from "../../containers/SliderMenu";
+import CustomHeader from "../../containers/CustomHeader";
+import PageTab from "../../containers/PageTab";
 
-import "./BasicLayout.less";
+import "./index.less";
+import PageTabs from "../../containers/PageTabs";
 
 const { Content, Footer } = Layout;
 
@@ -14,6 +15,7 @@ interface BasicLayoutProps {}
 interface BasicLayoutState {}
 
 export default class BasicLayout extends Component<BasicLayoutProps, BasicLayoutState> {
+
   render() {
     const { children } = this.props;
     return (
@@ -22,6 +24,8 @@ export default class BasicLayout extends Component<BasicLayoutProps, BasicLayout
         <Layout>
           <CustomHeader />
           <PageTab />
+
+          <PageTabs />
 
           <Content style={{ margin: "24px 16px 0" }}>
             <div style={{ padding: 24, background: "#fff", minHeight: 660 }}>{children}</div>

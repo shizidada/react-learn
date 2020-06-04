@@ -6,17 +6,14 @@ import { AppState } from "../store";
 
 import Counter from "../components/Counter";
 
-function mapStateToProps({ counterReducer }: AppState) {
+const mapStateToProps = ({ counterReducer }: AppState) => {
   return { ...counterReducer };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch<CounterAction>) {
+const mapDispatchToProps = (dispatch: Dispatch<CounterAction>) => {
   return {
     onIncrement: () => dispatch(increment()),
     onDecrement: () => dispatch(decrement()),
   };
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter);
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

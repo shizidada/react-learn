@@ -56,6 +56,7 @@ module.exports = {
   rules: {
     "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-indent-props": [2, "first"],
+    "react/prop-types": "off",
 
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/explicit-function-return-type": [

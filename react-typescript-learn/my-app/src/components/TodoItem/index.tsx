@@ -1,43 +1,38 @@
-import * as React from "react";
+import React, { useState, FunctionComponent } from "react";
+import { Input, Button, Timeline } from "antd";
 
-interface IProps {}
+import "./index.less"
 
-interface IState {
-  value: string;
-  list: Array<any>;
-}
+interface TodoItemProps {}
 
-export default class TodoItem extends React.Component<IProps, IState> {
-  readonly state: Readonly<IState> = {
-    value: "",
-    list: [],
+const TodoItem: FunctionComponent<TodoItemProps> = () => {
+  const [inputValue, setInputValue] = useState<string>("");
+  const [todoList, setTodoList] = useState<string[]>([]);
+
+  // val: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  const addTodoHandle = () => {
+    if (inputValue === "") return;
+    const lists = todoList.concat();
+    lists.push(inputValue);
+    setTodoList(lists);
+    setInputValue("");
   };
 
-  addTodoHandle = (val: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    // console.log("object", this.state)
-    const { value, list } = this.state;
-    const lists = list.concat();
-    lists.push(value);
-    this.setState({ list: lists });
+  const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
   };
 
-  inputChange = (val: React.ChangeEvent<HTMLInputElement>) => {
-    const value = val.target.value;
-    this.setState({ value });
-  };
-
-  render() {
-    const { list } = this.state;
-    return (
-      <div className="todo-container">
-        <input type="text" onChange={val => this.inputChange(val)} />
-        <button onClick={val => this.addTodoHandle(val)}>添加</button>
-        <ul>
-          {list.map((item: string, index: number) => {
-            return <li key={index}>{item}</li>;
-          })}
-        </ul>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="todo-container">
+      <Input type="text" value={inputValue} onChange={val => inputChange(val)} />
+      <Button onClick={() => addTodoHandle()}>添加</Button>
+      <Timeline>
+        {todoList.map((item: string, index: number) => {
+          return <Timeline.Item key={index}>{item}</Timeline.Item>;
+        })}
+      </Timeline>
+    </div>
+  );
+};
+export default TodoItem;

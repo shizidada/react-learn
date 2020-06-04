@@ -5,7 +5,8 @@ import { Layout, Menu, Icon } from "antd";
 import { addTabFromSlidMenu } from "../../store/system/actions";
 import { AppState } from "../../store";
 
-import { menus, SliderMenuConfig } from "./menu-config";
+import { SliderMenuConfig } from "../../typings";
+import { menus } from "./menu-config";
 
 import "./index.less";
 
@@ -13,7 +14,7 @@ const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 interface SliderMenuProps {
-  isCloseSlider: boolean;
+  isCloseSlide: boolean;
   currentTab: string;
   addTabFromSlidMenu: (payload: SliderMenuConfig) => void;
 }
@@ -29,19 +30,17 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
 
   render() {
     console.log(SliderMenu.name, this.props);
-    const { isCloseSlider, currentTab } = this.props;
+    const { isCloseSlide, currentTab } = this.props;
     return (
-      // {/* light dark */}
       <Sider
         className="slider-menu-container"
         breakpoint="lg"
         theme="light"
         trigger={null}
         collapsible
-        collapsed={isCloseSlider}
+        collapsed={isCloseSlide}
       >
         <div className="logo" />
-        {/* light dark */}
         <Menu
           theme="light"
           mode="inline"
@@ -61,18 +60,18 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
             }
             return (
               <SubMenu
-                key={`${item.activeKey}`}
+                key={`${item.path}`}
                 title={
                   <span>
                     <Icon type={item.type} />
-                    {item.name}
+                    <span className="nav-text">{item.name}</span>
                   </span>
                 }
               >
                 {item.childs &&
                   item.childs.map((item: SliderMenuConfig) => {
                     return (
-                      <Menu.Item key={`${item.activeKey}`} onClick={() => this.menuItemClick(item)}>
+                      <Menu.Item key={`${item.path}`} onClick={() => this.menuItemClick(item)}>
                         <span className="nav-text">{item.name}</span>
                         <Link to={`${item.path}`}></Link>
                       </Menu.Item>
@@ -81,20 +80,6 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
               </SubMenu>
             );
           })}
-          {/* <SubMenu
-            key="sub2"
-            title={
-              <span>
-                <Icon type="laptop" />
-                subnav 2
-              </span>
-            }
-          >
-            <Menu.Item key="5">option5</Menu.Item>
-            <Menu.Item key="6">option6</Menu.Item>
-            <Menu.Item key="7">option7</Menu.Item>
-            <Menu.Item key="8">option8</Menu.Item>
-          </SubMenu> */}
         </Menu>
       </Sider>
     );
@@ -104,7 +89,4 @@ class SliderMenu extends Component<SliderMenuProps, SliderMenuState> {
 function mapStateToProps({ system }: AppState) {
   return { ...system };
 }
-export default connect(
-  mapStateToProps,
-  { addTabFromSlidMenu }
-)(SliderMenu);
+export default connect(mapStateToProps, { addTabFromSlidMenu })(SliderMenu);

@@ -12,3 +12,10 @@
 !== 只有相同类型才会比较。
 
 ```
+
+```json
+// "webpack": "4.43.0",
+// "webpack-cli": "^3.3.11",
+// "webpack-dev-server": "3.11.0",
+// "webpack-merge": "^4.2.2"
+```

@@ -13,6 +13,9 @@ import homeModel from './models/home';
 import fileModel from './models/file';
 import menuModel from './models/menu';
 
+// eslint-disable-next-line import/extensions
+// import 'lib-flexible/flexible.js';
+
 import './global.less';
 
 const app = dva({

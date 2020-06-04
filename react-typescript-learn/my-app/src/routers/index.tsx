@@ -2,9 +2,9 @@ import * as React from "react";
 // , Redirect
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Loadable from "react-loadable";
+import { Spin } from "antd";
 
 import BasicLayout from "../layouts/BasicLayout";
-import Loading from "../components/Loading";
 
 import { routes } from "./router";
 const allRoutes = routes.map(item => {
@@ -14,7 +14,7 @@ const allRoutes = routes.map(item => {
     component: Loadable({
       loader: () => component,
       loading() {
-        return <Loading />;
+        return <Spin />;
       },
     }),
     ...reset,

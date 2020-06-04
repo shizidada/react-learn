@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Menu, Icon } from "antd";
+import { Menu } from "antd";
 import { addTabFromSlidMenu } from "../../store/system/actions";
-import { SliderMenuConfig } from "../SliderMenu/menu-config";
 
+import { SliderMenuConfig } from "../../typings";
 import { AppState } from "../../store";
 
 import "./index.less";
-const { Item } = Menu;
 
 interface PageTabProps {
   tabs: SliderMenuConfig[];
@@ -30,7 +29,7 @@ class PageTab extends Component<PageTabProps, {}> {
 
   render() {
     const { tabs, currentTab } = this.props;
-    console.log("PageTab :: tabs", this.props.tabs);
+    // console.log("PageTab :: tabs", this.props.tabs);
     return (
       <div>
         <Menu mode="horizontal" selectedKeys={[`${currentTab}`]}>

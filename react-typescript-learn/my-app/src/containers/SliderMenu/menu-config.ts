@@ -1,16 +1,8 @@
-export interface SliderMenuConfig {
-  type: string;
-  activeKey: string;
-  name: string;
-  path?: string;
-  childs?: SliderMenuConfig[];
-}
+import { SliderMenuConfig } from "../../typings";
 
 export const menus: SliderMenuConfig[] = [
   { type: "book", activeKey: "home", name: "首页", path: "/" },
-  { type: "user", activeKey: "login", name: "Login", path: "/login" },
-  { type: "skin", activeKey: "skin", name: "Skin", path: "/skin" },
-  { type: "setting", activeKey: "setting", name: "Setting", path: "/setting" },
+  { type: "user", activeKey: "login", name: "Login", path: "/login", closable: true },
   {
     type: "laptop",
     activeKey: "options",
@@ -21,32 +13,73 @@ export const menus: SliderMenuConfig[] = [
         activeKey: "option1",
         name: "option1",
         path: "/option1",
+        closable: true,
       },
       {
         type: "",
         activeKey: "option2",
         name: "option2",
-        path: "/option1",
+        path: "/option2",
+        closable: true,
+      },
+      {
+        type: "",
+        activeKey: "option3",
+        name: "option3",
+        path: "/option3",
+        closable: true,
+      },
+      {
+        type: "",
+        activeKey: "option4",
+        name: "option4",
+        path: "/option4",
+        closable: true,
+      },
+      {
+        type: "",
+        activeKey: "option5",
+        name: "option5",
+        path: "/option5",
+        closable: true,
+      },
+      {
+        type: "",
+        activeKey: "option6",
+        name: "option6",
+        path: "/option6",
+        closable: true,
+      },
+      {
+        type: "",
+        activeKey: "option7",
+        name: "option7",
+        path: "/option7",
+      },
+      {
+        type: "",
+        activeKey: "option8",
+        name: "option8",
+        path: "/option8",
+      },
+      {
+        type: "",
+        activeKey: "option9",
+        name: "option9",
+        path: "/option9",
+      },
+      {
+        type: "",
+        activeKey: "option10",
+        name: "option10",
+        path: "/option10",
+      },
+      {
+        type: "",
+        activeKey: "option11",
+        name: "option11",
+        path: "/option11",
       },
     ],
   },
 ];
-
-// <Menu.Item key="1" onClick={this.menuItemClick}>
-//   <Icon type="book" />
-//   <span className="nav-text">Home</span>
-//   <Link to="/">Home</Link>
-// </Menu.Item>
-// <Menu.Item key="2">
-//   <Icon type="user" />
-//   <span className="nav-text">Login</span>
-//   <Link to="/login">Login</Link>
-// </Menu.Item>
-// <Menu.Item key="3">
-//   <Icon type="skin" />
-//   <span className="nav-text">Skin</span>
-// </Menu.Item>
-// <Menu.Item key="4">
-//   <Icon type="setting" />
-//   <span className="nav-text">Setting</span>
-// </Menu.Item>

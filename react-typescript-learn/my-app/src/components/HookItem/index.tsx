@@ -1,8 +1,8 @@
-import * as React from "react";
+import React, { useState, FunctionComponent } from "react";
 import { Button } from "antd";
 
-const HookItem: React.FC = () => {
-  const [hide, setHide] = React.useState(false);
+const HookItem: FunctionComponent = () => {
+  const [hide, setHide] = useState(false);
   // console.log("HookItem :: ", hide);
   return (
     <Button

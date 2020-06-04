@@ -15,7 +15,5 @@ export type AppState = ReturnType<typeof rootReducer>;
 export default function() {
   const middlewares = [thunkMiddleware];
   const middleWareEnhancer = applyMiddleware(...middlewares);
-
-  const store = createStore(rootReducer, composeWithDevTools(middleWareEnhancer));
-  return store;
+  return createStore(rootReducer, composeWithDevTools(middleWareEnhancer));;
 }

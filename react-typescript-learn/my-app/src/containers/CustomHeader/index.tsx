@@ -14,21 +14,21 @@ import "./index.less";
 const { Header } = Layout;
 
 interface HeaderProps {
-  isCloseSlider: boolean;
+  isCloseSlide: boolean;
   onToggleSliderMenu: () => void;
 }
 interface HeaderState {}
 
 class CustomHeader extends Component<HeaderProps, HeaderState> {
   render() {
-    const { isCloseSlider, onToggleSliderMenu } = this.props;
+    const { isCloseSlide, onToggleSliderMenu } = this.props;
     return (
       <Header className="custom-header-container" style={{ background: "#fff", padding: 0 }}>
         <Row>
           <Col span={4} order={1}>
             <Icon
               className="trigger"
-              type={isCloseSlider ? "menu-unfold" : "menu-fold"}
+              type={isCloseSlide ? "menu-unfold" : "menu-fold"}
               onClick={onToggleSliderMenu}
             />
           </Col>

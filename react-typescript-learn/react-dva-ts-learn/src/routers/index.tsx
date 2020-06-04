@@ -19,7 +19,7 @@ interface RouterConfigProps {
 
 const Loading = () => {
   return (
-    <div style={{ fontSize: 20, textAlign: 'center' }}>
+    <div className="global-loading">
       <Spin size="large" />
     </div>
   );
