@@ -6,3 +6,8 @@ export interface SliderMenuConfig {
   closable?: boolean;
   childs?: SliderMenuConfig[];
 }
+
+export interface TodoItemConfig {
+  title: string;
+  time: number;
+}

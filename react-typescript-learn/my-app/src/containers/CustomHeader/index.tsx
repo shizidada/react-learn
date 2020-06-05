@@ -13,13 +13,14 @@ import "./index.less";
 
 const { Header } = Layout;
 
-interface HeaderProps {
+interface CustomHeaderProps {
   isCloseSlide: boolean;
   onToggleSliderMenu: () => void;
 }
-interface HeaderState {}
 
-class CustomHeader extends Component<HeaderProps, HeaderState> {
+interface CustomHeaderState {}
+
+class CustomHeader extends Component<CustomHeaderProps, CustomHeaderState> {
   render() {
     const { isCloseSlide, onToggleSliderMenu } = this.props;
     return (
@@ -45,15 +46,13 @@ class CustomHeader extends Component<HeaderProps, HeaderState> {
   }
 }
 
-function mapStateToProps({ system }: AppState) {
+const mapStateToProps = ({ system }: AppState) => {
   return { ...system };
-}
-function mapDispatchToProps(dispatch: Dispatch<SystemAction>) {
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<SystemAction>) => {
   return {
     onToggleSliderMenu: () => dispatch(toggleSliderMenu()),
   };
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CustomHeader);
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CustomHeader);

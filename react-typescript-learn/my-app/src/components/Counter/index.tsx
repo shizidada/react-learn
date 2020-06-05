@@ -1,45 +1,29 @@
-import * as React from "react";
-import ReactPlaceholder from "react-placeholder";
-import "react-placeholder/lib/reactPlaceholder.css";
+import React, { FunctionComponent, Fragment } from "react";
+// import ReactPlaceholder from "react-placeholder";
+// import "react-placeholder/lib/reactPlaceholder.css";
 
-import { Button } from "antd";
+import { Badge, Button } from "antd";
 
-interface IProps {}
+interface CounterProps {
+  count: number;
+  name: string;
+  onIncrement: () => void;
+  onDecrement: () => void;
+}
 
-interface IState {
+interface CounterState {
   ready: boolean;
 }
 
-export default class Counter extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      ready: false,
-    };
-  }
+const Counter: FunctionComponent<CounterProps> = ({ count, name, onDecrement, onIncrement }) => {
+  return (
+    <Fragment>
+      <p>{name}</p>
+      <Button onClick={() => onDecrement()}>-</Button>
+      <Badge count={count} />
+      <Button onClick={() => onIncrement()}>+</Button>
+    </Fragment>
+  );
+};
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        ready: true,
-      });
-    }, 500);
-  }
-
-  render() {
-    // console.log("Counter :: ", this.props);
-    return (
-      <div>
-        <ReactPlaceholder
-          rows={70}
-          ready={this.state.ready}
-          showLoadingAnimation={true}
-          delay={1000}
-          color="#eff9fa"
-        >
-          <Button>{Counter.name}</Button>
-        </ReactPlaceholder>
-      </div>
-    );
-  }
-}
+export default Counter;

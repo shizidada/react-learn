@@ -6,8 +6,8 @@ import { AppState } from "../store";
 
 import Counter from "../components/Counter";
 
-const mapStateToProps = ({ counterReducer }: AppState) => {
-  return { ...counterReducer };
+const mapStateToProps = ({ counter }: AppState) => {
+  return { ...counter };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<CounterAction>) => {

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Fragment } from "react";
+import React, { FunctionComponent } from "react";
 import { connect } from "react-redux";
 import { SortStart, SortEnd, SortEvent } from "react-sortable-hoc";
 import { SliderMenuConfig } from "../../typings";
@@ -53,23 +53,21 @@ const PageTabs: FunctionComponent<PageTabsProps> = ({
   };
 
   return (
-    <Fragment>
-      <DraggableTabsBar
-        dataSource={dataSource as SliderMenuConfig[]}
-        itemWrapper={(itemJsx: any, item: any, wrapperClassName: any) => {
-          return (
-            <div className={wrapperClassName} onContextMenu={e => handleRightClick(e, item)}>
-              {itemJsx}
-            </div>
-          );
-        }}
-        onSortEnd={handleSortEnd}
-        onSortStart={handleSortStart}
-        onClose={handleClose}
-        onClick={handleClick}
-        activeKey={activeKey}
-      />
-    </Fragment>
+    <DraggableTabsBar
+      dataSource={dataSource as SliderMenuConfig[]}
+      itemWrapper={(itemJsx: any, item: any, wrapperClassName: any) => {
+        return (
+          <div className={wrapperClassName} onContextMenu={e => handleRightClick(e, item)}>
+            {itemJsx}
+          </div>
+        );
+      }}
+      onSortEnd={handleSortEnd}
+      onSortStart={handleSortStart}
+      onClose={handleClose}
+      onClick={handleClick}
+      activeKey={activeKey}
+    />
   );
 };
 

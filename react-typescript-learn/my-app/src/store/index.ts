@@ -7,7 +7,7 @@ import { counterReducer } from "./counter/reducers";
 
 const rootReducer = combineReducers({
   system: systemReducer,
-  counterReducer: counterReducer,
+  counter: counterReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

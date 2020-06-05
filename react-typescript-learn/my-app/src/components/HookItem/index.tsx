@@ -10,7 +10,7 @@ const HookItem: FunctionComponent = () => {
         setHide(!hide);
       }}
     >
-      {HookItem.name}
+      {hide ? HookItem.name : 'show name ?'}
     </Button>
   );
 };
