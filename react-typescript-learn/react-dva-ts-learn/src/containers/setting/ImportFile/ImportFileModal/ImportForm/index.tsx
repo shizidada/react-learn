@@ -6,7 +6,7 @@ import { RcFile } from 'antd/lib/upload';
 import { UploadFile } from 'antd/lib/upload/interface';
 import { connect } from 'dva';
 import axios from 'axios';
-import { ConnectState } from '../../../../../typings';
+import { AppState } from '../../../../../typings';
 
 const { Option } = Select;
 
@@ -110,7 +110,7 @@ const ImportForm: FunctionComponent<ImportFormProps> = ({ form }) => {
   );
 };
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.file,
     };

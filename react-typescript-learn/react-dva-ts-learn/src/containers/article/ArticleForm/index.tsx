@@ -5,7 +5,7 @@ import { Form, Input, Button, message, Card } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 
 import './index.less';
 import Markedown from '../Markedown';
@@ -91,7 +91,7 @@ const ArticleForm: FunctionComponent<ArticleFormProps> = ({ form }) => {
   );
 };
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.menu,
     };

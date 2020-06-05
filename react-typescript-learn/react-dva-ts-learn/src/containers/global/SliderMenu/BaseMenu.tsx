@@ -7,7 +7,7 @@ import { connect } from 'dva';
 import { Menu, Icon } from 'antd';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 import { MenuModelState } from '../../../models/menu';
 import { MenuConfig } from '../../../config/menu.config';
 
@@ -24,7 +24,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
   menuData,
   selectedKeys,
   openKeys,
-  rootSubmenuKeys,
+  rootSubMenuKeys,
 }) => {
   const getNavMenuItems = (item: MenuConfig) => {
     return (
@@ -64,7 +64,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
 
   const onSliderOpenChange = (openKeyParams: string[]) => {
     const latestOpenKey = (openKeyParams.find(key => openKeys.indexOf(key) === -1) as string) || '';
-    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+    if (rootSubMenuKeys.indexOf(latestOpenKey) === -1) {
       changeSliderMenuSelect({ openKeys: openKeys as string[] });
     } else {
       changeSliderMenuSelect({ openKeys: latestOpenKey ? [latestOpenKey] : [] });
@@ -92,7 +92,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
   );
 };
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.menu,
     };

@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Layout, Row, Col, Card } from 'antd';
 
-import { ConnectState } from '../../typings';
+import { AppState } from '../../typings';
 
 import IndexHeader from '../../containers/index/IndexHeader';
 import SelectionRow from '../../containers/index/SelectionRow';
@@ -17,7 +17,7 @@ import MainContent from '../../containers/index/MainContent';
 
 const { Content, Footer } = Layout;
 
-interface IndexPageProps extends ConnectState {}
+interface IndexPageProps extends AppState {}
 
 const IndexPage: FunctionComponent<IndexPageProps> = ({ home }) => {
   return (
@@ -47,7 +47,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({ home }) => {
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       home: state.home,
     };

@@ -4,11 +4,11 @@ import { connect } from 'dva';
 import { List, ListRowProps } from 'react-virtualized';
 
 import GoodForm from './GoodForm';
-import { ConnectState } from '../../typings';
+import { AppState } from '../../typings';
 
 import './index.less';
 
-interface MockPageProps extends ConnectState {}
+interface MockPageProps extends AppState {}
 
 const MockPage: FunctionComponent<MockPageProps> = ({ home }) => {
   const { list = [] } = home;
@@ -47,7 +47,7 @@ const MockPage: FunctionComponent<MockPageProps> = ({ home }) => {
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       home: state.home,
     };

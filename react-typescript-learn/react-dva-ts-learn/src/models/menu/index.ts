@@ -11,7 +11,7 @@ export interface MenuModelType extends Model {
 export interface MenuModelState {
   menuData: MenuConfig[];
 
-  rootSubmenuKeys: string[];
+  rootSubMenuKeys: string[];
 
   // SliderMenu selected key
   selectedKeys: string[];
@@ -26,7 +26,7 @@ const MenuModel: MenuModelType = {
 
   state: {
     menuData: menus,
-    rootSubmenuKeys: getRootSubmenuKey(menus),
+    rootSubMenuKeys: getRootSubmenuKey(menus),
 
     collapsed: false,
     selectedKeys: ['/'],

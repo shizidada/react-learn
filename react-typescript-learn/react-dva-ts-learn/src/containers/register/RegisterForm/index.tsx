@@ -5,7 +5,7 @@ import { FormComponentProps } from 'antd/lib/form';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 import { LoginModelState } from '../../../models/login';
 
 const { Item } = Form;
@@ -81,7 +81,7 @@ const RegisterForm: FunctionComponent<RegisterFormProps> = ({ form, isLoading, u
 }
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.login,
     };

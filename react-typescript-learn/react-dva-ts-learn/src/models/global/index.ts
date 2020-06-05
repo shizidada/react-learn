@@ -1,5 +1,6 @@
 import { Model } from 'dva';
 import { routerRedux } from 'dva/router';
+import { SliderMenuConfig } from '../../typings';
 
 export const NAMESPACE = 'global';
 
@@ -8,12 +9,20 @@ export interface GlobalModelType extends Model {
 }
 
 export interface GlobalModelState {
-
+  globalTabs: SliderMenuConfig[];
 }
 
 const GlobalModel: GlobalModelType = {
   namespace: NAMESPACE,
   state: {
+    globalTabs: [
+      {
+        type: '',
+        activeKey: 'home',
+        name: '首页',
+        path: '/home',
+      },
+    ],
   },
   reducers: {
     updateGlobalStore(state, { payload }) {
@@ -29,8 +38,7 @@ const GlobalModel: GlobalModelType = {
   },
   subscriptions: {
     setup({ history, dispatch }): void {
-      history.listen(({ pathname, search }): void => {
-      });
+      history.listen(({ pathname, search }): void => {});
     },
   },
 };

@@ -6,12 +6,12 @@ import { Icon, Menu, Dropdown, Avatar, Row, Col } from 'antd';
 import ColorPicker from '../../../components/ColorPicker';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 import MooseBreadcrumb from '../../global/Breadcrumb';
 
 import './index.less';
 
-interface ManagerHeaderProps extends ConnectState {
+interface ManagerHeaderProps extends AppState {
   onSliderMenuToggle: () => void;
   updateMenuStore: (collapsed?: object) => void;
 }
@@ -88,7 +88,7 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.menu,
     };

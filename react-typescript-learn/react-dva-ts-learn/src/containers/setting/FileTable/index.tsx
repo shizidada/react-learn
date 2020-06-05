@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Table, Divider, Tag } from 'antd';
 
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 
 interface FileTableProps {
   recordList: [];
@@ -98,7 +98,7 @@ const FileTable: FunctionComponent<FileTableProps> = ({
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.file,
     };

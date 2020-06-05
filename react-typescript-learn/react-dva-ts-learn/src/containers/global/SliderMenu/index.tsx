@@ -4,7 +4,7 @@ import { connect } from 'dva';
 import { Layout } from 'antd';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 import { MenuModelState } from '../../../models/menu';
 import BaseMenu from './BaseMenu';
 
@@ -40,7 +40,7 @@ const SliderMenu: FunctionComponent<SliderMenuProps> = ({ collapsed, onCollapse 
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.menu,
     };

@@ -4,7 +4,7 @@ import { connect } from 'dva';
 import { Breadcrumb } from 'antd';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 // import { NAMESPACE } from '../../models/global/constants';
 import { MenuModelState } from '../../../models/menu';
 import { findNameByPath } from '../../../config/menu.util';
@@ -25,7 +25,7 @@ const MooseBreadcrumb: React.FunctionComponent<MooseBreadcrumbProps> = ({ select
 };
 
 export default connect(
-  ({ menu }: ConnectState) => {
+  ({ menu }: AppState) => {
     return {
       ...menu,
     };

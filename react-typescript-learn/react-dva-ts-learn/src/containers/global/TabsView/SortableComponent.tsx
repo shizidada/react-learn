@@ -2,9 +2,9 @@ import React, { FunctionComponent, useState } from 'react';
 import { arrayMove, SortEnd, SortEvent } from 'react-sortable-hoc';
 import SortableContainer from './SortableContainer';
 
-interface SortableComponentPorps {}
+interface SortableComponentProps {}
 
-const SortableComponent: FunctionComponent<SortableComponentPorps> = () => {
+const SortableComponent: FunctionComponent<SortableComponentProps> = () => {
   const defaultItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'];
 
   const [items, setItems] = useState(defaultItems);

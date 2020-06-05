@@ -8,7 +8,7 @@ import { FormComponentProps } from 'antd/lib/form';
 import LoginForm from '../../containers/login/LoginForm';
 import RegisterForm from '../../containers/register/RegisterForm';
 
-import { ConnectState } from '../../typings';
+import { AppState } from '../../typings';
 import { LoginModelState } from '../../models/login';
 
 import './index.less';
@@ -114,7 +114,7 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({ form,
   );
 };
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.login,
     };

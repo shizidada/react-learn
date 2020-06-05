@@ -5,13 +5,13 @@ import { Link } from 'dva/router';
 import { Layout, Input } from 'antd';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 
 import './index.less';
 
 const { Header } = Layout;
 
-interface IndexHeaderProps extends ConnectState {
+interface IndexHeaderProps extends AppState {
   onSliderMenuToggle: () => void;
   updateMenuStore: (collapsed?: object) => void;
 }
@@ -53,7 +53,7 @@ const IndexHeader: FunctionComponent<IndexHeaderProps> = ({ updateMenuStore, col
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.menu,
     };

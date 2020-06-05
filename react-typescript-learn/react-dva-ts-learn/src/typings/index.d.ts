@@ -4,7 +4,7 @@ import { LoginModelState } from '../models/login';
 import { FileModelState } from '../models/file';
 import { MenuModelState } from '../models/menu';
 
-export interface ConnectState {
+export interface AppState {
   [key: string]: GlobalModelState | HomeModelState | LoginModelState | FileModelState;
   global: GlobalModelState;
   menu: MenuModelState;
@@ -13,7 +13,7 @@ export interface ConnectState {
   file: FileModelState;
 }
 
-declare const ConnectState: ConnectState;
+declare const AppState: AppState;
 
 interface System {
   import<T = any>(module: string): Promise<T>;
@@ -29,4 +29,13 @@ declare global {
   interface Window {
     less: any;
   }
+}
+
+export interface SliderMenuConfig {
+  type: string;
+  activeKey: string;
+  name: string;
+  path?: string;
+  closable?: boolean;
+  childs?: SliderMenuConfig[];
 }

@@ -8,7 +8,7 @@ import { Button } from 'antd';
 import ImportFileModal from './ImportFileModal';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 
 interface ImportFileProps {}
 
@@ -32,7 +32,7 @@ const ImportFile: FunctionComponent<ImportFileProps> = () => {
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.file,
     };

@@ -1,7 +1,7 @@
 import { Model } from 'dva';
 import { getExcelInfo } from './service';
 
-// import { ConnectState } from "../../typings";
+// import { AppState } from "../../typings";
 export const NAMESPACE = 'file';
 
 export interface FileModelType extends Model {

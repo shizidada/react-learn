@@ -5,7 +5,7 @@ import { MD5 } from '../../util/MD5Util';
 
 import { login, register } from './service';
 
-// import { ConnectState } from "../../typings";
+// import { AppState } from "../../typings";
 
 export const NAMESPACE = 'login';
 
@@ -42,7 +42,7 @@ const LoginModel: LoginModelType = {
       yield put({ type: 'updateLoginStore', payload: { errorMessage: '', isLoading: true } });
       const { payload } = action;
       // yield call(delay, 500);
-      // let state: LoginModelState = yield select((state: ConnectState) => state[NAMESPACE]);
+      // let state: LoginModelState = yield select((state: AppState) => state[NAMESPACE]);
       const { accountName } = payload;
       let { password } = payload;
       password = MD5(password);

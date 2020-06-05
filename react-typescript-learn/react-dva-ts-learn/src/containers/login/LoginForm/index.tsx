@@ -5,7 +5,7 @@ import { Form, Icon, Input, Checkbox } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 // eslint-disable-next-line import/extensions
-import { ConnectState } from '../../../typings';
+import { AppState } from '../../../typings';
 import { LoginModelState } from '../../../models/login';
 
 import './index.less';
@@ -66,7 +66,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({
 };
 
 export default connect(
-  (state: ConnectState) => {
+  (state: AppState) => {
     return {
       ...state.login,
     };

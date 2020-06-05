@@ -1,34 +1,47 @@
-import * as React from "react";
-// , Redirect
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { createElement } from "react";
 import Loadable from "react-loadable";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Spin } from "antd";
 
 import BasicLayout from "../layouts/BasicLayout";
 
-import { routes } from "./router";
-const allRoutes = routes.map(item => {
-  const { path, component, ...reset } = item;
-  return {
-    path: path,
-    component: Loadable({
-      loader: () => component,
-      loading() {
-        return <Spin />;
-      },
-    }),
-    ...reset,
-  };
-});
+const Loading = () => {
+  return (
+    <div style={{ fontSize: 20, textAlign: 'center' }}>
+      <Spin size="large" />
+    </div>
+  );
+};
 
 const BasicRouter = () => (
   <BrowserRouter>
     <BasicLayout>
       <Switch>
-        {allRoutes.map(item => {
-          const { id, path, component: Component } = item;
-          return <Route exact key={id} path={path} component={Component} />;
-        })}
+        <Route
+          exact
+          path={"/"}
+          render={routeProps =>
+            createElement<object>(
+              Loadable({
+                loader: () => import(/* webpackChunkName: "home.page" */ "../pages/home"),
+                loading() {
+                  return <Loading />;
+                },
+              }),
+              { ...routeProps }
+            )
+          }
+        />
+        <Route
+          exact
+          path={"/login"}
+          component={Loadable({
+            loader: () => import(/* webpackChunkName: "login.page" */ "../pages/login"),
+            loading() {
+              return <Spin />;
+            },
+          })}
+        />
       </Switch>
     </BasicLayout>
   </BrowserRouter>
