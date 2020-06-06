@@ -1,14 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { Layout, Row, Col, Card } from 'antd';
+import { Layout } from 'antd';
 
 import { AppState } from '../../typings';
 
 import IndexHeader from '../../containers/index/IndexHeader';
 import SelectionRow from '../../containers/index/SelectionRow';
-
-import ImportBrokenLine from '../../components/chart/ImportBrokenLine';
 
 import './index.less';
 

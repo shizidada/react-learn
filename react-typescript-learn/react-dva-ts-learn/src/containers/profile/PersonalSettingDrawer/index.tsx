@@ -1,10 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Form, Drawer, Button, Col, Row, Input, Typography, Tooltip, Divider, Radio, Icon } from 'antd';
+import { Form, Drawer, Button, Col, Row, Input, Tooltip, Divider, Icon } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
 
 import './index.less';
-
-const { Title } = Typography;
 
 interface PersonalSettingDrawerProps extends FormComponentProps {
   visible?: boolean;
@@ -26,8 +24,6 @@ const PersonalSettingDrawer: FunctionComponent<PersonalSettingDrawerProps> = ({
   const onEditorAccount = () => {
     setIsEditorAccount(true)
   }
-
-  const { getFieldDecorator } = form;
 
   return (
     <Drawer

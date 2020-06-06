@@ -15,7 +15,6 @@ import { SliderMenuConfig, AppState } from '../../../../typings';
 
 import './index.less';
 import { Dispatch } from 'redux';
-import { GlobalModelState } from '../../../../models/global';
 
 const SortableItem = SortableElement((props: any) => {
   const { children } = props;

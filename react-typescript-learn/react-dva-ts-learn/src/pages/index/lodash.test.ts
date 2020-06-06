@@ -1,4 +1,4 @@
-import { includes, omit } from 'lodash';
+import { omit } from 'lodash';
 
 const s1: any = {
   installRequire: {

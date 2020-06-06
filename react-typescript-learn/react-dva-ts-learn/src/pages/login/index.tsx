@@ -75,7 +75,6 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({ form,
     form.resetFields();
   };
 
-  const { getFieldDecorator } = form;
   return (
     <div className="login-page-container">
       <Form onSubmit={handleSubmit} className="login-form-wrapper">

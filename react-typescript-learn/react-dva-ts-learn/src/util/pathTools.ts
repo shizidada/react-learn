@@ -35,7 +35,7 @@ export const getRootSubMenuKey = (data: SliderMenuConfig[]) => {
   const keys: string[] = [];
   data.map((item: SliderMenuConfig) => {
     if (item.children) {
-      // findRootSubmenuKes(item.children);
+      // findRootSubMenuKes(item.children);
     }
     keys.push(item.path as string);
   });

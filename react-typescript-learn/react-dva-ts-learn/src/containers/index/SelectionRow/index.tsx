@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
 
-import { Skeleton } from 'antd';
-
 import './index.less';
 
 interface SelectionRowProps {}
