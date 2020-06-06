@@ -15,6 +15,7 @@ import { SliderMenuConfig, AppState } from '../../../../typings';
 
 import './index.less';
 import { Dispatch } from 'redux';
+import { GlobalModelState } from '../../../../models/global';
 
 const SortableItem = SortableElement((props: any) => {
   const { children } = props;
@@ -50,7 +51,7 @@ const SortableContainerList = SortableContainer((props: any) => {
         const { activeKey: currentActiveKey, name, closable } = item;
         const isActive = activeKey === currentActiveKey;
         let itemJsx: React.ReactNode[] | JSX.Element = [
-          <div key="item" className="item-inner" onClick={e => onClick && onClick(item, e)}>
+          <div key={`item-${index}`} className="item-inner" onClick={e => onClick && onClick(item, e)}>
             {name}
           </div>,
           closable ? (
@@ -81,7 +82,6 @@ const SortableContainerList = SortableContainer((props: any) => {
 
 interface DraggableTabBarProps {
   dataSource: SliderMenuConfig[];
-  type?: string;
   activeKey?: string;
   name?: string;
   path?: string;
@@ -105,21 +105,11 @@ class DraggableTabBar extends Component<DraggableTabBarProps, DraggableTabBarSta
 
   constructor(props: DraggableTabBarProps) {
     super(props);
-
     this.state = {
       mouseIn: false,
       isSorting: false,
     };
   }
-
-  menuItemClick = (payload: SliderMenuConfig) => {
-    const params: SliderMenuConfig = {
-      ...payload,
-    };
-
-    // TODO:
-    // addTabFromSlidMenu(params);
-  };
 
   setTabsWidth = () => {
     const { mouseIn } = this.state;
@@ -204,7 +194,7 @@ class DraggableTabBar extends Component<DraggableTabBarProps, DraggableTabBarSta
       itemWrapper,
     };
 
-    console.log('DraggableTabBar :: dataSource', dataSource);
+    console.log('DraggableTabBar :: dataSource', this.props);
     return (
       <div
         style={{ width: '100%' }}
@@ -222,6 +212,7 @@ export default connect(
   (state: AppState) => {
     return {
       ...state.menu,
+      ...state.global
     };
   },
   (dispatch: Dispatch) => ({}),

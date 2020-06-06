@@ -4,8 +4,9 @@ import { Location } from 'history';
 // import { Dispatch } from 'redux';
 import H from 'history';
 import { Layout } from 'antd';
-import SliderMenu from '../../containers/global/SliderMenu';
+import SliderMenuView from '../../containers/global/SliderMenuView';
 import ManagerHeader from '../../containers/header/ManagerHeader';
+import DraggableTabView from '../../containers/global/DraggableTabView';
 import BasicRoute from '../../routers/BasicRoute';
 
 // eslint-disable-next-line import/extensions
@@ -13,7 +14,6 @@ import { AppState } from '../../typings';
 import { BASE_NAME } from '../../config/less.config';
 
 import './index.less';
-import DraggableTabView from '../../containers/global/DraggableTabView';
 
 const { Content, Footer } = Layout;
 
@@ -44,7 +44,7 @@ const BasicLayout: FunctionComponent<BasicLayoutProps> = ({ location, history, l
 
   return (
     <Layout className="basic-layout-container">
-      <SliderMenu />
+      <SliderMenuView />
       <Layout className="basic-layout-content">
         <ManagerHeader />
         <DraggableTabView history={history} />

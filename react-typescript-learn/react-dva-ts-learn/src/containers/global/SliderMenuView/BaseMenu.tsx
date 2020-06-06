@@ -5,18 +5,20 @@ import { connect } from 'dva';
 // import { SelectParam } from 'antd/lib/menu';
 // import { TitleEventEntity } from 'antd/lib/menu/SubMenu';
 import { Menu, Icon } from 'antd';
+import { isEmpty } from 'lodash';
 
 // eslint-disable-next-line import/extensions
-import { AppState } from '../../../typings';
+import { AppState, SliderMenuConfig } from '../../../typings';
 import { MenuModelState } from '../../../models/menu';
-import { MenuConfig } from '../../../config/menu.config';
+import { GlobalModelState } from '../../../models/global';
 
 const { SubMenu } = Menu;
 
-interface BaseMenuProps extends MenuModelState {
+interface BaseMenuProps extends MenuModelState, GlobalModelState {
   collapsed: boolean;
   onCollapse: (collapsed: boolean) => void;
   changeSliderMenuSelect: (selectedKeys: object) => void;
+  updateGlobalStore: (record: object) => void;
 }
 
 const BaseMenu: FunctionComponent<BaseMenuProps> = ({
@@ -25,10 +27,23 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
   selectedKeys,
   openKeys,
   rootSubMenuKeys,
+  globalTabs,
+  updateGlobalStore,
 }) => {
-  const getNavMenuItems = (item: MenuConfig) => {
+  const sliderMenuItemClick = (item: SliderMenuConfig) => {
+    const existItem = globalTabs.filter((tab: SliderMenuConfig) => tab.name === item.name);
+    if (isEmpty(existItem)) {
+      globalTabs.push(item);
+      updateGlobalStore({ globalTabs, activeKey: item.activeKey });
+    } else {
+      console.log(item );
+      updateGlobalStore({ activeKey: item.activeKey });
+    }
+  };
+
+  const getNavMenuItems = (item: SliderMenuConfig) => {
     return (
-      <Menu.Item key={`${item.path}`} onClick={() => { }}>
+      <Menu.Item key={`${item.path}`} onClick={() => sliderMenuItemClick(item)}>
         <Icon type={item.icon} />
         <span className="nav-text">{item.name}</span>
         <Link to={`${item.path}`}></Link>
@@ -36,7 +51,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
     );
   };
 
-  const getSubMenuOrItem = (item: MenuConfig) => {
+  const getSubMenuOrItem = (item: SliderMenuConfig) => {
     if (item.hide) {
       return null;
     }
@@ -44,7 +59,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
       return (
         <SubMenu
           key={`${item.path}`}
-          onTitleClick={() => { }}
+          onTitleClick={() => {}}
           title={
             <span className="nav-text">
               <Icon type={item.icon} />
@@ -53,7 +68,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
           }
         >
           {item.children &&
-            item.children.map((childItem: MenuConfig) => {
+            item.children.map((childItem: SliderMenuConfig) => {
               return getSubMenuOrItem(childItem);
             })}
         </SubMenu>
@@ -63,6 +78,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
   };
 
   const onSliderOpenChange = (openKeyParams: string[]) => {
+    console.log('openKeyParams :: ', openKeyParams);
     const latestOpenKey = (openKeyParams.find(key => openKeys.indexOf(key) === -1) as string) || '';
     if (rootSubMenuKeys.indexOf(latestOpenKey) === -1) {
       changeSliderMenuSelect({ openKeys: openKeys as string[] });
@@ -82,7 +98,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
       // openKeys={collapsed ? [] : openKeys}
       onOpenChange={onSliderOpenChange}
     >
-      {menuData.map((item: MenuConfig) => {
+      {menuData.map((item: SliderMenuConfig) => {
         if (!item.children) {
           return getNavMenuItems(item);
         }
@@ -95,12 +111,19 @@ export default connect(
   (state: AppState) => {
     return {
       ...state.menu,
+      ...state.global,
     };
   },
   (dispatch: Dispatch) => ({
     changeSliderMenuSelect(record: object) {
       dispatch({
         type: 'menu/updateMenuStore',
+        payload: record,
+      });
+    },
+    updateGlobalStore(record: object) {
+      dispatch({
+        type: 'global/updateGlobalStore',
         payload: record,
       });
     },

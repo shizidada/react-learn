@@ -10,6 +10,7 @@ export interface GlobalModelType extends Model {
 
 export interface GlobalModelState {
   globalTabs: SliderMenuConfig[];
+  activeKey: string;
 }
 
 const GlobalModel: GlobalModelType = {
@@ -17,16 +18,16 @@ const GlobalModel: GlobalModelType = {
   state: {
     globalTabs: [
       {
-        type: '',
-        activeKey: 'home',
         name: '首页',
         path: '/home',
+        activeKey: 'home',
       },
     ],
+
+    activeKey: 'home'
   },
   reducers: {
     updateGlobalStore(state, { payload }) {
-      console.log('MooseGlobalHeader :: ', payload);
       return { ...state, ...payload };
     },
   },

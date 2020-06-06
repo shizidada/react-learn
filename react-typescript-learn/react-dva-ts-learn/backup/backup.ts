@@ -2,7 +2,7 @@
 // /Users/taohua/works/Web/react-learn/react-typescript-learn/react-dva-ts-learn
 
 class BackUp {
-  private sliderMenuItemClickHandle = (params: MenuConfig) => {
+  private sliderMenuItemClickHandle = (params: SliderMenuConfig) => {
     console.log('sliderMenuItemClickHandle :: ', params);
   };
 

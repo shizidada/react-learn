@@ -12,12 +12,14 @@ interface DraggableTabViewProps {
   dataSource?: SliderMenuConfig[];
   history: H.History;
   activeKey: string;
+  updateGlobalStore: (record: object) => void;
 }
 
 const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
   dataSource,
   history,
   activeKey,
+  updateGlobalStore,
 }) => {
   const handleSortStart = (sort: SortStart, event: SortEvent) => {
     console.log('handleSortStart :: ', sort, event);
@@ -29,7 +31,7 @@ const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
 
     // 元素移动
     newDataSource.splice(newIndex, 0, newDataSource.splice(oldIndex, 1)[0]);
-    console.log('handleSortEnd :: ', newDataSource);
+    updateGlobalStore({ globalTabs: newDataSource });
     // console.log("handleSortEnd :: ", sort, event);
   };
 
@@ -40,7 +42,8 @@ const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
   const handleClick = (item: SliderMenuConfig, event: any) => {
     const { path } = item;
     history.push(path as string);
-    console.log('handleClick :: ', item, event);
+    updateGlobalStore({ activeKey: item.activeKey });
+    // console.log('handleClick :: ', item, event);
   };
 
   const handleRightClick = (e: any, item: any) => {
@@ -72,5 +75,12 @@ export default connect(
       dataSource: global.globalTabs,
     };
   },
-  (dispatch: Dispatch) => ({}),
+  (dispatch: Dispatch) => ({
+    updateGlobalStore(record: object) {
+      dispatch({
+        type: 'global/updateGlobalStore',
+        payload: record,
+      });
+    },
+  }),
 )(DraggableTabView);

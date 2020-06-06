@@ -1,14 +1,14 @@
 import pathToRegexp from 'path-to-regexp';
-import { MenuConfig } from '../config/menu.config';
+import { SliderMenuConfig } from '../typings';
 
 export function urlToList(url: string) {
-  const urllist = url.split('/').filter(i => i);
-  return urllist.map((urlItem, index) => `/${urllist.slice(0, index + 1).join('/')}`);
+  const urlList = url.split('/').filter(i => i);
+  return urlList.map((urlItem, index) => `/${urlList.slice(0, index + 1).join('/')}`);
 }
 
-export const getFlatMenuKeys = (menuData: MenuConfig[]) => {
+export const getFlatMenuKeys = (menuData: SliderMenuConfig[]) => {
   let keys: string[] = [];
-  menuData.forEach((item: MenuConfig) => {
+  menuData.forEach((item: SliderMenuConfig) => {
     if (item.path) keys.push(item.path);
     if (item.children) {
       keys = keys.concat(getFlatMenuKeys(item.children));
@@ -31,9 +31,9 @@ export const getDefaultCollapsedSubMenus = (pathname: string, flatMenuKeys: stri
     .filter(item => item);
 };
 
-export const getRootSubmenuKey = (data: MenuConfig[]) => {
+export const getRootSubMenuKey = (data: SliderMenuConfig[]) => {
   const keys: string[] = [];
-  data.map((item: MenuConfig) => {
+  data.map((item: SliderMenuConfig) => {
     if (item.children) {
       // findRootSubmenuKes(item.children);
     }

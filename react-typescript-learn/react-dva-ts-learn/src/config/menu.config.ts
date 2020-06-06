@@ -1,18 +1,13 @@
-export interface MenuConfig {
-  icon: string;
-  name: string;
-  path: string;
-  hide?: boolean;
-  children?: MenuConfig[];
-}
+import { SliderMenuConfig } from '../typings';
 
-export const menus: MenuConfig[] = [
-  { icon: 'pie-chart', name: '首页', path: '/home' },
+export const menus: SliderMenuConfig[] = [
+  { icon: 'pie-chart', name: '首页', path: '/home', activeKey: 'home' },
   {
     icon: 'user',
     name: '用户管理',
     path: '/user',
     hide: true,
+    activeKey: 'user',
     children: [{ icon: 'compass', name: '用户列表', path: '/user/list' }],
   },
   {
@@ -46,5 +41,7 @@ export const menus: MenuConfig[] = [
     icon: 'setting',
     name: 'Mock',
     path: '/mock',
+    activeKey: 'mock',
+    closable: true,
   },
 ];

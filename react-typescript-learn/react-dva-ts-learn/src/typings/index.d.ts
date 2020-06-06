@@ -32,10 +32,11 @@ declare global {
 }
 
 export interface SliderMenuConfig {
-  type: string;
-  activeKey: string;
   name: string;
-  path?: string;
+  path: string;
+  icon?: string;
+  hide?: boolean;
+  activeKey?: string;
   closable?: boolean;
-  childs?: SliderMenuConfig[];
+  children?: SliderMenuConfig[];
 }

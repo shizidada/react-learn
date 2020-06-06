@@ -1,6 +1,7 @@
 import { Model } from 'dva';
-import { getFlatMenuKeys, getDefaultCollapsedSubMenus, getRootSubmenuKey } from '../../util/pathTools';
-import { menus, MenuConfig } from '../../config/menu.config';
+import { getFlatMenuKeys, getDefaultCollapsedSubMenus, getRootSubMenuKey } from '../../util/pathTools';
+import { menus } from '../../config/menu.config';
+import { SliderMenuConfig } from '../../typings';
 
 export const NAMESPACE = 'menu';
 
@@ -9,7 +10,7 @@ export interface MenuModelType extends Model {
 }
 
 export interface MenuModelState {
-  menuData: MenuConfig[];
+  menuData: SliderMenuConfig[];
 
   rootSubMenuKeys: string[];
 
@@ -26,7 +27,7 @@ const MenuModel: MenuModelType = {
 
   state: {
     menuData: menus,
-    rootSubMenuKeys: getRootSubmenuKey(menus),
+    rootSubMenuKeys: getRootSubMenuKey(menus),
 
     collapsed: false,
     selectedKeys: ['/'],
