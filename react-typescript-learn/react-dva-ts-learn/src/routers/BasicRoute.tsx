@@ -13,7 +13,6 @@ const Loading = () => {
 
 const BasicRoute = () => (
   <Switch>
-
     {/* user router config start */}
     <Route
       path="/user/list"
@@ -37,7 +36,8 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
+            loader: () =>
+              import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
             loading() {
               return <Loading />;
             },
@@ -71,7 +71,8 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
+            loader: () =>
+              import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
             loading() {
               return <Loading />;
             },
@@ -82,15 +83,15 @@ const BasicRoute = () => (
     />
     {/* product router config end */}
 
-
     {/* setting router config start */}
     <Route
       path="/setting/advertisement"
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(
-              /* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'
+            loader: () =>
+              import(
+                /* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'
               ),
             loading() {
               return <Loading />;
@@ -106,9 +107,7 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () => import(
-              /* webpackChunkName: "mock.page" */ '../pages/mock'
-              ),
+            loader: () => import(/* webpackChunkName: "mock.page" */ '../pages/mock'),
             loading() {
               return <Loading />;
             },

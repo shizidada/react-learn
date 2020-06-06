@@ -50,7 +50,11 @@ const SortableContainerList = SortableContainer((props: any) => {
         const { activeKey: currentActiveKey, name, closable } = item;
         const isActive = activeKey === currentActiveKey;
         let itemJsx: React.ReactNode[] | JSX.Element = [
-          <div key={`item-${index}`} className="item-inner" onClick={e => onClick && onClick(item, e)}>
+          <div
+            key={`item-${activeKey}`}
+            className="item-inner"
+            onClick={e => onClick && onClick(item, e)}
+          >
             {name}
           </div>,
           closable ? (
@@ -211,7 +215,7 @@ export default connect(
   (state: AppState) => {
     return {
       ...state.menu,
-      ...state.global
+      ...state.global,
     };
   },
   (dispatch: Dispatch) => ({}),

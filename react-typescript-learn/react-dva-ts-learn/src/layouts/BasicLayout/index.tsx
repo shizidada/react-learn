@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useEffect } from 'react';
-import { Location } from 'history';
+import H, { Location } from 'history';
 // import { connect } from 'dva';
 // import { Dispatch } from 'redux';
-import H from 'history';
 import { Layout } from 'antd';
 import SliderMenuView from '../../containers/global/SliderMenuView';
 import ManagerHeader from '../../containers/header/ManagerHeader';

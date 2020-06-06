@@ -18,7 +18,6 @@ interface ColorPickerProps {
 }
 
 const ColorPicker: FunctionComponent<ColorPickerProps> = ({ type, displayColorPicker }) => {
-
   const [lessLoaded, setLessLoaded] = useState(false);
   const [currentColor, setCurrentColor] = useState('#1890ff');
 

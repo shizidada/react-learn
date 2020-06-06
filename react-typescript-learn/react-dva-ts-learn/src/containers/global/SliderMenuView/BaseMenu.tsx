@@ -36,7 +36,6 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
       globalTabs.push(item);
       updateGlobalStore({ globalTabs, activeKey: item.activeKey });
     } else {
-      console.log(item );
       updateGlobalStore({ activeKey: item.activeKey });
     }
   };

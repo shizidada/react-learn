@@ -48,7 +48,6 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
-    'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/anchor-is-valid': 'off',
     'linebreak-style': 0,
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
@@ -58,6 +57,8 @@ module.exports = {
     // Too restrictive: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
+    'react/sort-comp': 'off',
+    'no-return-assign': 'off',
     // Use function hoisting to improve code readability
     'no-use-before-define': ['error', { functions: false, classes: true, variables: true }],
     // Makes no sense to allow type inferrence for expression parameters, but require typing the response

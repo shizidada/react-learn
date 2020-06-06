@@ -56,7 +56,7 @@ class GoodListView extends Component<GoodListViewProps, GoodListViewState> {
       <Form {...formItemLayout}>
         {goodList.map((item, index: number) => (
           <GoodFormItem
-            key={`${index}`}
+            // key={`${index}`}
             form={form}
             goodIndex={index}
             goodInfo={item}

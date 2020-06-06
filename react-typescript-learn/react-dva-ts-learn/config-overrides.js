@@ -1,4 +1,4 @@
-const { override, useBabelRc, fixBabelImports, addLessLoader } = require('customize-cra');
+const { override, useBabelRc, useEslintRc, fixBabelImports, addLessLoader } = require('customize-cra');
 
 const dropConsole = () => {
   return (config) => {
@@ -15,6 +15,8 @@ const dropConsole = () => {
 
 module.exports = override(
   useBabelRc(),
+
+  useEslintRc(),
 
   fixBabelImports('import', {
     libraryName: 'antd',
