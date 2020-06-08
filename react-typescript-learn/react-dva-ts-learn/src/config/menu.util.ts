@@ -7,7 +7,7 @@ export const findNameByPath = (selectedKeys: string[]) => {
       if (`${parentItem.path}` === selectedKey) {
         currentSelect = {
           parentName: menus[parentIndex].name,
-          path: `${menus[parentIndex].path}`,
+          path: `${menus[parentIndex].path}`
         };
       } else if (parentItem.children) {
         parentItem.children.find(childItem => {
@@ -15,7 +15,7 @@ export const findNameByPath = (selectedKeys: string[]) => {
             currentSelect = {
               parentName: menus[parentIndex].name,
               childName: childItem.name,
-              path: `${childItem.path}`,
+              path: `${childItem.path}`
             };
           }
         });

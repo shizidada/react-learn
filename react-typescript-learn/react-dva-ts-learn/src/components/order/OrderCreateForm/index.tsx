@@ -4,10 +4,10 @@ import { Form, Input, Button } from 'antd';
 const OrderCreateForm: FunctionComponent = () => {
   const formItemLayout = {
     labelCol: { span: 4 },
-    wrapperCol: { span: 14 },
+    wrapperCol: { span: 14 }
   };
   const buttonItemLayout = {
-    wrapperCol: { span: 14, offset: 4 },
+    wrapperCol: { span: 14, offset: 4 }
   };
   return (
     <div>

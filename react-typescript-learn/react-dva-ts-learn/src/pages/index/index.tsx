@@ -23,7 +23,6 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({ home }) => {
       <IndexHeader />
 
       <Content className="content-container">
-
         <nav className="view-nav">
           <ul className="view-list">
             <li className="nav-item active">推荐</li>
@@ -32,11 +31,9 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({ home }) => {
         </nav>
 
         <div className="content-wrapper">
-
           <SelectionRow />
 
           <MainContent />
-
         </div>
       </Content>
       <Footer className="footer-container">create by 江景 2020</Footer>
@@ -47,8 +44,8 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({ home }) => {
 export default connect(
   (state: AppState) => {
     return {
-      home: state.home,
+      home: state.home
     };
   },
-  (dispatch: Dispatch) => ({}),
+  (dispatch: Dispatch) => ({})
 )(IndexPage);

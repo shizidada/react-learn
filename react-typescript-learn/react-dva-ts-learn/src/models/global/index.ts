@@ -20,28 +20,28 @@ const GlobalModel: GlobalModelType = {
       {
         name: '首页',
         path: '/home',
-        activeKey: 'home',
-      },
+        activeKey: 'home'
+      }
     ],
 
-    activeKey: 'home',
+    activeKey: 'home'
   },
   reducers: {
     updateGlobalStore(state, { payload }) {
       return { ...state, ...payload };
-    },
+    }
   },
 
   effects: {
     *redirect(action, { call, put, select }) {
       yield put(routerRedux.push('/login'));
-    },
+    }
   },
   subscriptions: {
     setup({ history, dispatch }): void {
       history.listen(({ pathname, search }): void => {});
-    },
-  },
+    }
+  }
 };
 
 export default GlobalModel;

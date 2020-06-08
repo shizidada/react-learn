@@ -3,8 +3,8 @@ import { omit } from 'lodash';
 const s1: any = {
   installRequire: {
     needDemolish: 'needDemolish',
-    noCeiling: 'noCeiling',
-  },
+    noCeiling: 'noCeiling'
+  }
 };
 
 // const s2: string[] = ['isCeiling', 'noCeiling', 'sunRoom'];
@@ -21,12 +21,12 @@ const s1: any = {
 const s3 = {
   isCeiling: [],
   noCeiling: [],
-  sunRoom: [],
+  sunRoom: []
 };
 
 const { noCeiling: current, ...rest } = s3;
 
-s1.installRequire = omit(s1.installRequire, Object.keys(rest))
+s1.installRequire = omit(s1.installRequire, Object.keys(rest));
 console.log(s1);
 
 // console.log(current, Object.keys(rest));

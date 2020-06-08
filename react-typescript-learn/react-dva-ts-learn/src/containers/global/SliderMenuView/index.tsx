@@ -26,13 +26,9 @@ const SliderMenu: FunctionComponent<SliderMenuProps> = ({ collapsed, onCollapse 
   };
 
   return (
-    <Sider
-      className="slider-menu-container"
-      collapsed={collapsed}
-      onCollapse={onSiderCollapseHandle}
-    >
+    <Sider className="slider-menu-container" collapsed={collapsed} onCollapse={onSiderCollapseHandle}>
       <Link to="/index.html">
-        <div className="slider-menu-logo" >M</div>
+        <div className="slider-menu-logo">M</div>
       </Link>
       <BaseMenu />
     </Sider>
@@ -42,8 +38,8 @@ const SliderMenu: FunctionComponent<SliderMenuProps> = ({ collapsed, onCollapse 
 export default connect(
   (state: AppState) => {
     return {
-      ...state.menu,
+      ...state.menu
     };
   },
-  (dispatch: Dispatch) => ({}),
+  (dispatch: Dispatch) => ({})
 )(SliderMenu);

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react';
 
 import { Table, Divider, Tag } from 'antd';
 
@@ -8,17 +8,17 @@ const OrderList: FunctionComponent = () => {
       title: '商品名称',
       dataIndex: 'orderName',
       key: 'orderName',
-      render: (text: string) => <a>{text}</a>,
+      render: (text: string) => <a>{text}</a>
     },
     {
       title: '数量',
       dataIndex: 'orderNum',
-      key: 'orderNum',
+      key: 'orderNum'
     },
     {
       title: '收货地址',
       dataIndex: 'orderAddress',
-      key: 'orderAddress',
+      key: 'orderAddress'
     },
     {
       title: '状态',
@@ -38,7 +38,7 @@ const OrderList: FunctionComponent = () => {
             );
           })}
         </span>
-      ),
+      )
     },
     {
       title: '操作',
@@ -49,8 +49,8 @@ const OrderList: FunctionComponent = () => {
           <Divider type="vertical" />
           <a>查看</a>
         </span>
-      ),
-    },
+      )
+    }
   ];
 
   const data = [
@@ -59,17 +59,17 @@ const OrderList: FunctionComponent = () => {
       orderName: '2029 New HUAWEI mate pro 129',
       orderNum: 12,
       orderAddress: 'ShenZhen',
-      orderStatus: ['nice', 'developer'],
+      orderStatus: ['nice', 'developer']
     },
     {
       key: '2',
       orderName: '2039 New Apple iPhone 20 pro',
       orderNum: 9,
       orderAddress: 'New York',
-      orderStatus: ['just so so'],
-    },
+      orderStatus: ['just so so']
+    }
   ];
-  return <Table columns={columns} dataSource={data} />
-}
+  return <Table columns={columns} dataSource={data} />;
+};
 
-export default OrderList
+export default OrderList;

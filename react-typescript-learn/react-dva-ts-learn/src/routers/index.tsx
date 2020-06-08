@@ -39,10 +39,10 @@ function RouterConfig({ history, app }: RouterConfigProps) {
                   loader: () => import(/* webpackChunkName: "user.index" */ '../pages/index'),
                   loading() {
                     return <Loading />;
-                  },
+                  }
                 }),
-                { ...routeProps },
-              ),
+                { ...routeProps }
+              )
             })
           }
         />
@@ -56,10 +56,10 @@ function RouterConfig({ history, app }: RouterConfigProps) {
                   loader: () => import(/* webpackChunkName: "login.page" */ '../pages/login'),
                   loading() {
                     return <Loading />;
-                  },
+                  }
                 }),
-                { ...routeProps },
-              ),
+                { ...routeProps }
+              )
             })
           }
         />

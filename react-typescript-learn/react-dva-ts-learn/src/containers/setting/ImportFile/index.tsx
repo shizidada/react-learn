@@ -34,14 +34,14 @@ const ImportFile: FunctionComponent<ImportFileProps> = () => {
 export default connect(
   (state: AppState) => {
     return {
-      ...state.file,
+      ...state.file
     };
   },
   (dispatch: Dispatch) => {
     return {
       updateFileStore(record: object) {
         dispatch({ type: 'file/updateFileStore', payload: record });
-      },
+      }
     };
-  },
+  }
 )(ImportFile);

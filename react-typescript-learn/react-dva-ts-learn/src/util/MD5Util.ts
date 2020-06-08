@@ -5,4 +5,4 @@ export const MD5 = (str: string) => {
   md5.update(str);
   const cstr = md5.digest('hex');
   return cstr;
-}
+};

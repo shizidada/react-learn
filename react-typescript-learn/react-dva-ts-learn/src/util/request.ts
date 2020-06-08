@@ -13,7 +13,7 @@ axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
 const instance = axios.create({
   baseURL: BASE_URL,
   timeout: 15000,
-  withCredentials: true,
+  withCredentials: true
 });
 
 instance.interceptors.request.use(
@@ -25,7 +25,7 @@ instance.interceptors.request.use(
   (error: ErrorMessage) => {
     // eslint-disable-next-line no-console
     console.log('instance.interceptors.request.error :: ', error);
-  },
+  }
 );
 
 instance.interceptors.response.use(
@@ -44,7 +44,7 @@ instance.interceptors.response.use(
     // eslint-disable-next-line no-console
     console.log('instance.interceptors.response.error :: ', error);
     return Promise.reject(error);
-  },
+  }
 );
 
 export const get = (url: string, data: object = {}) => {

@@ -19,12 +19,12 @@ interface GoodListViewState {
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 10 },
+    sm: { span: 10 }
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 14 },
-  },
+    sm: { span: 14 }
+  }
 };
 
 class GoodListView extends Component<GoodListViewProps, GoodListViewState> {
@@ -32,7 +32,7 @@ class GoodListView extends Component<GoodListViewProps, GoodListViewState> {
     super(props);
     this.state = {
       goodList: [{}, {}, {}],
-      value: '',
+      value: ''
     };
     this.onInputChange = debounce(this.onInputChange, 500);
   }

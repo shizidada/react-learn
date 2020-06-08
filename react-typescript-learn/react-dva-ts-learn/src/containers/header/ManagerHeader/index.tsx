@@ -16,10 +16,7 @@ interface ManagerHeaderProps extends AppState {
   updateMenuStore: (collapsed?: object) => void;
 }
 
-const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({
-  updateMenuStore,
-  collapsed,
-}) => {
+const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({ collapsed, updateMenuStore }) => {
   useEffect(() => {
     updateMenuStore();
     return () => {};
@@ -38,9 +35,9 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({
   const onHeaderRightClick = (event: any) => {
     // .getAttribute('data-color-picker')
     if (event.target.dataset.colorPicker === 'ColorPicker') {
-      setDisplayColorPicker(true)
+      setDisplayColorPicker(true);
     } else {
-      setDisplayColorPicker(false)
+      setDisplayColorPicker(false);
     }
   };
 
@@ -78,7 +75,7 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({
         <Dropdown overlay={menu} trigger={['hover']}>
           <span className="action">
             {/* <Avatar className="avatar" size="small" icon="user" /> */}
-              <Avatar className="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
+            <Avatar className="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
             <span>Tom</span>
           </span>
         </Dropdown>
@@ -90,12 +87,12 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({
 export default connect(
   (state: AppState) => {
     return {
-      ...state.menu,
+      ...state.menu
     };
   },
   (dispatch: Dispatch) => ({
     updateMenuStore(record: object) {
       dispatch({ type: 'menu/updateMenuStore', payload: record });
-    },
-  }),
+    }
+  })
 )(ManagerHeader);

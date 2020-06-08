@@ -8,7 +8,7 @@ export interface FileModelType extends Model {
   state: FileModelState;
 }
 
-export interface FileModelState { }
+export interface FileModelState {}
 
 const FileModel: FileModelType = {
   namespace: NAMESPACE,
@@ -16,14 +16,14 @@ const FileModel: FileModelType = {
   state: {
     message: '',
     isLoading: false,
-    recordList: [],
+    recordList: []
   },
 
   reducers: {
     // change model data
     updateFileStore(state, { payload }) {
       return { ...state, ...payload };
-    },
+    }
   },
 
   effects: {
@@ -39,8 +39,8 @@ const FileModel: FileModelType = {
       yield put({ type: 'updateFileStore', payload: { message: '', isLoading: true } });
       const { payload } = action;
       const params = {
-        ...payload,
-      }
+        ...payload
+      };
       console.log('getExcelInfo :: ', { ...payload });
       try {
         const data = yield call(getExcelInfo, params);
@@ -48,18 +48,18 @@ const FileModel: FileModelType = {
           const { list } = data;
           yield put({
             type: 'updateFileStore',
-            payload: { message: '获取数据成功', recordList: list, isLoading: false },
+            payload: { message: '获取数据成功', recordList: list, isLoading: false }
           });
         }
       } catch (error) {
         console.error('getExcelInfo :: ', error);
         yield put({
           type: 'updateFileStore',
-          payload: { message: error.message, isLoading: false },
+          payload: { message: error.message, isLoading: false }
         });
       }
-    },
-  },
+    }
+  }
 
   // subscriptions: {
   //   setup({ history }): void {

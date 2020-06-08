@@ -11,11 +11,11 @@ function updatePartialTodo(todo: Todo, fieldsToUpdate: Partial<Todo>) {
 updatePartialTodo(
   {
     title: 'organize desk',
-    description: 'clear clutter',
+    description: 'clear clutter'
   },
   {
-    description: 'throw out trash',
-  },
+    description: 'throw out trash'
+  }
 );
 
 function updateRequiredTodo(todo: Todo, fieldsToUpdate: Required<Todo>) {
@@ -24,17 +24,17 @@ function updateRequiredTodo(todo: Todo, fieldsToUpdate: Required<Todo>) {
 updateRequiredTodo(
   {
     title: 'organize desk',
-    description: 'clear clutter',
+    description: 'clear clutter'
   },
   {
     title: '',
-    description: '',
-  },
+    description: ''
+  }
 );
 
 const readonlyTodo: Readonly<Todo> = {
   title: 'readonly title',
-  description: 'readonly description',
+  description: 'readonly description'
 };
 // readonlyTodo.description = 'write description ...';
 console.log(readonlyTodo.description);
@@ -48,12 +48,12 @@ type Page = 'home' | 'about' | 'contact';
 const x: Record<Page, PageInfo> = {
   about: { title: 'about' },
   contact: { title: 'contact' },
-  home: { title: 'home' },
+  home: { title: 'home' }
 };
 
-console.log(x)
+console.log(x);
 
 const sym1 = Symbol('key');
-console.log(sym1)
+console.log(sym1);
 
 export default () => <h2>TypeScript Test Demo Page</h2>;

@@ -22,9 +22,9 @@ const BasicRoute = () => (
             loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/list'),
             loading() {
               return <Loading />;
-            },
+            }
           }),
-          { ...routeProps },
+          { ...routeProps }
         )
       }
     />
@@ -36,13 +36,12 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () =>
-              import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
+            loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
             loading() {
               return <Loading />;
-            },
+            }
           }),
-          { ...routeProps },
+          { ...routeProps }
         )
       }
     />
@@ -57,9 +56,9 @@ const BasicRoute = () => (
             loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/list'),
             loading() {
               return <Loading />;
-            },
+            }
           }),
-          { ...routeProps },
+          { ...routeProps }
         )
       }
     />
@@ -71,13 +70,12 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () =>
-              import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
+            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
             loading() {
               return <Loading />;
-            },
+            }
           }),
-          { ...routeProps },
+          { ...routeProps }
         )
       }
     />
@@ -89,15 +87,12 @@ const BasicRoute = () => (
       render={routeProps =>
         createElement<object>(
           Loadable({
-            loader: () =>
-              import(
-                /* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'
-              ),
+            loader: () => import(/* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'),
             loading() {
               return <Loading />;
-            },
+            }
           }),
-          { ...routeProps },
+          { ...routeProps }
         )
       }
     />
@@ -110,9 +105,9 @@ const BasicRoute = () => (
             loader: () => import(/* webpackChunkName: "mock.page" */ '../pages/mock'),
             loading() {
               return <Loading />;
-            },
+            }
           }),
-          { ...routeProps },
+          { ...routeProps }
         )
       }
     />
@@ -125,9 +120,9 @@ const BasicRoute = () => (
             loader: () => import(/* webpackChunkName: "home.page" */ '../pages/home'),
             loading() {
               return <Loading />;
-            },
+            }
           }),
-          { ...routeProps },
+          { ...routeProps }
         )
       }
     />

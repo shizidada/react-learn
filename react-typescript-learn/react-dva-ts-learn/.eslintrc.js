@@ -9,7 +9,7 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'prettier/react',
-    'prettier/@typescript-eslint',
+    'prettier/@typescript-eslint'
   ],
   plugins: ['@typescript-eslint', 'eslint-comments', 'jest', 'unicorn', 'react-hooks'],
   env: {
@@ -18,7 +18,7 @@ module.exports = {
     es6: true,
     mocha: true,
     jest: true,
-    jasmine: true,
+    jasmine: true
   },
   rules: {
     'react/jsx-wrap-multilines': 0,
@@ -29,7 +29,7 @@ module.exports = {
     'function-paren-newline': 0,
     // 禁止使用外部包
     'import/no-unresolved': [2, { ignore: ['typings'] }],
-    'import/order': 'warn',
+    'import/order': 'off',
     'import/no-extraneous-dependencies': [
       1,
       {
@@ -41,9 +41,9 @@ module.exports = {
           '**/**.test.{ts,js,jsx,tsx}',
           '**/_mock.{ts,js,jsx,tsx}',
           '**/example/**.{ts,js,jsx,tsx}',
-          '**/examples/**.{ts,js,jsx,tsx}',
-        ],
-      },
+          '**/examples/**.{ts,js,jsx,tsx}'
+        ]
+      }
     ],
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'jsx-a11y/click-events-have-key-events': 0,
@@ -62,13 +62,10 @@ module.exports = {
     // Use function hoisting to improve code readability
     'no-use-before-define': ['error', { functions: false, classes: true, variables: true }],
     // Makes no sense to allow type inferrence for expression parameters, but require typing the response
-    '@typescript-eslint/explicit-function-return-type': [
-      'off',
-      { allowTypedFunctionExpressions: true },
-    ],
+    '@typescript-eslint/explicit-function-return-type': ['off', { allowTypedFunctionExpressions: true }],
     '@typescript-eslint/no-use-before-define': [
       'error',
-      { functions: false, classes: true, variables: true, typedefs: true },
+      { functions: false, classes: true, variables: true, typedefs: true }
     ],
     '@typescript-eslint/no-var-requires': 0,
 
@@ -76,7 +73,6 @@ module.exports = {
     'unicorn/prevent-abbreviations': 'off',
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/interface-name-prefix': 0,
-    // add TODO:
     // ts 空 interface
     '@typescript-eslint/no-empty-interface': 'off',
 
@@ -86,7 +82,6 @@ module.exports = {
     // issue https://github.com/facebook/react/issues/15204
     'react-hooks/exhaustive-deps': 'off', // Checks effect dependencies
 
-    // add TODO:
     'react/prefer-stateless-function': 'off',
 
     // Conflict with prettier
@@ -99,20 +94,19 @@ module.exports = {
     'no-param-reassign': 1,
     'space-before-function-paren': 0,
 
-    // add TODO:
     'max-len': ['error', 120],
-    'comma-dangle': 'warn',
+    'comma-dangle': 'off',
     'spaced-comment': 'warn',
     'no-script-url': 'warn',
     // 'sort-imports': 'error',
     'array-callback-return': 'off',
     'arrow-body-style': 'off',
     'consistent-return': 'off',
-    'no-console': 1,
+    'no-console': 1
   },
   settings: {
     // support import modules from TypeScript files in JavaScript files
     'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
-    polyfills: ['fetch', 'Promise', 'URL', 'object-assign'],
-  },
+    polyfills: ['fetch', 'Promise', 'URL', 'object-assign']
+  }
 };

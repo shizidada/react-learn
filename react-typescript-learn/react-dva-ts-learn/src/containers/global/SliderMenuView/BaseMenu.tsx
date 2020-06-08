@@ -28,7 +28,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
   openKeys,
   rootSubMenuKeys,
   globalTabs,
-  updateGlobalStore,
+  updateGlobalStore
 }) => {
   const sliderMenuItemClick = (item: SliderMenuConfig) => {
     const existItem = globalTabs.filter((tab: SliderMenuConfig) => tab.name === item.name);
@@ -110,21 +110,21 @@ export default connect(
   (state: AppState) => {
     return {
       ...state.menu,
-      ...state.global,
+      ...state.global
     };
   },
   (dispatch: Dispatch) => ({
     changeSliderMenuSelect(record: object) {
       dispatch({
         type: 'menu/updateMenuStore',
-        payload: record,
+        payload: record
       });
     },
     updateGlobalStore(record: object) {
       dispatch({
         type: 'global/updateGlobalStore',
-        payload: record,
+        payload: record
       });
-    },
-  }),
+    }
+  })
 )(BaseMenu);

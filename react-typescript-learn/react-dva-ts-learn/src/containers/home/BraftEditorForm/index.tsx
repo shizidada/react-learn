@@ -45,7 +45,7 @@ const defaultControls: ControlType[] = [
   'separator',
   'media',
   'separator',
-  'clear',
+  'clear'
 ];
 
 interface BraftEditorFormProps {
@@ -60,7 +60,7 @@ const BraftEditorForm: FunctionComponent<BraftEditorFormProps> = ({ form }) => {
     form.validateFields((error, values) => {
       if (!error) {
         const submitData = {
-          content: values.content.toHTML(), // or values.content.toHTML()
+          content: values.content.toHTML() // or values.content.toHTML()
         };
         console.log(submitData);
       }
@@ -89,7 +89,7 @@ const BraftEditorForm: FunctionComponent<BraftEditorFormProps> = ({ form }) => {
           validateTrigger: 'onBlur',
           rules: [
             {
-              required: false,
+              required: false
               // validator: (_, value, callback) => {
               //   if (value.isEmpty()) {
               //     callback('请输入正文内容');
@@ -97,15 +97,15 @@ const BraftEditorForm: FunctionComponent<BraftEditorFormProps> = ({ form }) => {
               //     callback();
               //   }
               // },
-            },
-          ],
+            }
+          ]
         })(
           <BraftEditor
             className="home-form-editor"
             readOnly={!isEditor}
             placeholder={isEditor ? '请输入正文内容...' : ''}
             controls={isEditor ? defaultControls : []}
-          />,
+          />
         )}
       </Form.Item>
       {/* <div dangerouslySetInnerHTML={{ __html: this.state.content }}></div> */}

@@ -7,5 +7,5 @@
  * 注：此文件修改之后，需要重新启动webpack才能生效：yarn start
  * */
 export default {
-  '@primary-color': 'red', // 全局主色
+  '@primary-color': 'red' // 全局主色
 };

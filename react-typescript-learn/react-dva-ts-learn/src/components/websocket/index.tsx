@@ -48,7 +48,7 @@ const MooseWebsocket: FunctionComponent = () => {
       description: message.content || 'This is the content of the notification. ',
       onClick: () => {
         console.log('Notification Clicked!');
-      },
+      }
     });
   };
 
@@ -73,7 +73,7 @@ const MooseWebsocket: FunctionComponent = () => {
 
   const initWebsocket = () => {
     const socket = new WebSocket(
-      'ws://192.168.2.215:7000/im/socket.io?access_token=eef368ed-aa4e-49cd-9c3d-fc55ae7123b2',
+      'ws://192.168.2.215:7000/im/socket.io?access_token=eef368ed-aa4e-49cd-9c3d-fc55ae7123b2'
     );
 
     socket.onmessage = onMessage;

@@ -18,7 +18,7 @@ const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
   dataSource,
   history,
   activeKey,
-  updateGlobalStore,
+  updateGlobalStore
 }) => {
   const handleSortStart = (sort: SortStart, event: SortEvent) => {
     console.log('handleSortStart :: ', sort, event);
@@ -75,15 +75,15 @@ export default connect(
   ({ global }: AppState) => {
     return {
       dataSource: global.globalTabs,
-      activeKey: global.activeKey,
+      activeKey: global.activeKey
     };
   },
   (dispatch: Dispatch) => ({
     updateGlobalStore(record: object) {
       dispatch({
         type: 'global/updateGlobalStore',
-        payload: record,
+        payload: record
       });
-    },
-  }),
+    }
+  })
 )(DraggableTabView);

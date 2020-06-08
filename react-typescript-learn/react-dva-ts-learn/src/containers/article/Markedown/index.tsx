@@ -27,7 +27,7 @@ const Markedown: FunctionComponent<MarkedownProps> = ({ onMarkedownInputChange, 
       <SimpleMDE
         options={{
           placeholder: 'please input content ...',
-          onToggleFullScreen,
+          onToggleFullScreen
         }}
         onChange={markedownOnChange}
       />

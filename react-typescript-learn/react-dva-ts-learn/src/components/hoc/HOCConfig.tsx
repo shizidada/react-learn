@@ -9,9 +9,7 @@ interface HOCProps {
   history: History;
 }
 
-export const HOCConfig = (options: HOCConfig) => <P extends HOCProps>(
-  Component: React.ComponentType<P>,
-) => {
+export const HOCConfig = (options: HOCConfig) => <P extends HOCProps>(Component: React.ComponentType<P>) => {
   return class extends React.Component<P> {
     public componentDidMount() {
       const { permission } = options;

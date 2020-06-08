@@ -31,7 +31,7 @@ const MenuModel: MenuModelType = {
 
     collapsed: false,
     selectedKeys: ['/'],
-    openKeys: ['/'],
+    openKeys: ['/']
   },
 
   effects: {},
@@ -41,13 +41,13 @@ const MenuModel: MenuModelType = {
       const { payload } = action;
       return {
         ...state,
-        ...payload,
+        ...payload
       };
     },
 
     changeSelectKeys(state, action) {
       const {
-        payload: { selectedKeys, pathname },
+        payload: { selectedKeys, pathname }
       } = action;
       const { menuData } = state;
       const keys = getFlatMenuKeys(menuData);
@@ -55,9 +55,9 @@ const MenuModel: MenuModelType = {
       return {
         ...state,
         openKeys,
-        selectedKeys,
+        selectedKeys
       };
-    },
+    }
   },
 
   subscriptions: {
@@ -67,12 +67,12 @@ const MenuModel: MenuModelType = {
           type: 'changeSelectKeys',
           payload: {
             pathname,
-            selectedKeys: [pathname],
-          },
+            selectedKeys: [pathname]
+          }
         });
       });
-    },
-  },
+    }
+  }
 };
 
 export default MenuModel;

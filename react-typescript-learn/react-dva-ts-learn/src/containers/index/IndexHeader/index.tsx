@@ -55,12 +55,12 @@ const IndexHeader: FunctionComponent<IndexHeaderProps> = ({ updateMenuStore, col
 export default connect(
   (state: AppState) => {
     return {
-      ...state.menu,
+      ...state.menu
     };
   },
   (dispatch: Dispatch) => ({
     updateMenuStore(record: object) {
       dispatch({ type: 'menu/updateMenuStore', payload: record });
-    },
-  }),
+    }
+  })
 )(IndexHeader);

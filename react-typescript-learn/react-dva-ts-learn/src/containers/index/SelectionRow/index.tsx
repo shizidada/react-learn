@@ -9,14 +9,10 @@ const SelectionRow: FunctionComponent<SelectionRowProps> = () => {
     <div className="selection-row-container">
       <div className="selection-row-wrapper">
         <div className="selection-left">
-          <div className="image-box">
-
-          </div>
+          <div className="image-box"></div>
         </div>
         <div className="selection-right">
-          <div className="item-box">
-
-          </div>
+          <div className="item-box"></div>
         </div>
       </div>
     </div>

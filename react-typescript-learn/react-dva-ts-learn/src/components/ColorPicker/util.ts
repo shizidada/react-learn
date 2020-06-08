@@ -16,5 +16,6 @@ export function loadScript(src: string): Promise<any> {
 
 export function getRandomColor(): string {
   return `hsl(${Math.round(Math.random() * 360)},${Math.round(Math.random() * 100)}%,${Math.round(
-    Math.random() * 100)}%)`;
+    Math.random() * 100
+  )}%)`;
 }

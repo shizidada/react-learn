@@ -32,13 +32,7 @@ const MockPage: FunctionComponent<MockPageProps> = ({ home }) => {
   return (
     <div className="mock-page-container">
       <div className="list-wrapper">
-        <List
-          height={800}
-          width={300}
-          rowHeight={100}
-          rowCount={list.length}
-          rowRenderer={renderItem}
-        />
+        <List height={800} width={300} rowHeight={100} rowCount={list.length} rowRenderer={renderItem} />
       </div>
 
       <GoodForm />
@@ -49,8 +43,8 @@ const MockPage: FunctionComponent<MockPageProps> = ({ home }) => {
 export default connect(
   (state: AppState) => {
     return {
-      home: state.home,
+      home: state.home
     };
   },
-  (dispatch: Dispatch) => ({}),
+  (dispatch: Dispatch) => ({})
 )(MockPage);

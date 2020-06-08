@@ -27,7 +27,7 @@ const ColorPicker: FunctionComponent<ColorPickerProps> = ({ type, displayColorPi
         .modifyVars({
           ...theme,
           '@primary-color': color,
-          '@transparent-color': color,
+          '@transparent-color': color
         })
         .then(() => {
           // 先清除缓存样式
@@ -57,8 +57,8 @@ const ColorPicker: FunctionComponent<ColorPickerProps> = ({ type, displayColorPi
         // less.js 加载完成就会触发一次转换，需要传入变量
         modifyVars: {
           ...theme,
-          '@primary-color': color,
-        },
+          '@primary-color': color
+        }
       };
       loadScript(LESS_URL).then(() => {
         setLessLoaded(true);
@@ -81,11 +81,7 @@ const ColorPicker: FunctionComponent<ColorPickerProps> = ({ type, displayColorPi
       {displayColorPicker ? (
         <div className="color-picker-popover">
           <div className="color-picker-wrapper">
-            <Picker
-              color={currentColor}
-              onChange={handleChange}
-              onChangeComplete={handleChangeComplete}
-            />
+            <Picker color={currentColor} onChange={handleChange} onChangeComplete={handleChangeComplete} />
           </div>
         </div>
       ) : null}

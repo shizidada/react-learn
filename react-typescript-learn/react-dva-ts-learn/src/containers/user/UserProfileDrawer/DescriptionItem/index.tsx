@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react';
 
 interface DescriptionItemProps {
   title: string;
@@ -11,14 +11,14 @@ const DescriptionItem: FunctionComponent<DescriptionItemProps> = ({ title, conte
       fontSize: 14,
       lineHeight: '22px',
       marginBottom: 7,
-      color: 'rgba(0,0,0,0.65)',
+      color: 'rgba(0,0,0,0.65)'
     }}
   >
     <p
       style={{
         marginRight: 8,
         display: 'inline-block',
-        color: 'rgba(0,0,0,0.85)',
+        color: 'rgba(0,0,0,0.85)'
       }}
     >
       {title}:
@@ -27,4 +27,4 @@ const DescriptionItem: FunctionComponent<DescriptionItemProps> = ({ title, conte
   </div>
 );
 
-export default DescriptionItem
+export default DescriptionItem;

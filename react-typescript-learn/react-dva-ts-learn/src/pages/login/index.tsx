@@ -25,13 +25,15 @@ interface UserLoginPageProps extends LoginModelState, FormComponentProps {
   redirect: () => void;
 }
 
-const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({ form,
+const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({
+  form,
   loginType,
   isLoading,
   errorMessage,
   login,
   register,
-  updateLoginStore }) => {
+  updateLoginStore
+}) => {
   const thirdAccountLogin = (type: string) => {
     console.log('thirdAccountLogin', type);
   };
@@ -70,7 +72,7 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({ form,
   const changeType = () => {
     updateLoginStore({
       loginType: loginType === 'login' ? 'registe' : 'login',
-      errorMessage: '',
+      errorMessage: ''
     });
     form.resetFields();
   };
@@ -79,18 +81,11 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({ form,
     <div className="login-page-container">
       <Form onSubmit={handleSubmit} className="login-form-wrapper">
         <Title level={2}>用户{loginType === 'login' ? '登录' : '注册'}</Title>
-        {
-          loginType === 'login' ? <LoginForm form={form} /> : <RegisterForm form={form} />
-        }
+        {loginType === 'login' ? <LoginForm form={form} /> : <RegisterForm form={form} />}
         {/* error tips */}
         {errorMessage !== '' && <span className="login-failed-message">{errorMessage}</span>}
         <Item>
-          <Button
-            loading={isLoading}
-            type="primary"
-            htmlType="submit"
-            className="login-button"
-          >
+          <Button loading={isLoading} type="primary" htmlType="submit" className="login-button">
             {loginType === 'login' ? '登录' : '注册'}
           </Button>
         </Item>
@@ -115,7 +110,7 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({ form,
 export default connect(
   (state: AppState) => {
     return {
-      ...state.login,
+      ...state.login
     };
   },
   (dispatch: Dispatch) => ({
@@ -130,6 +125,6 @@ export default connect(
     },
     redirect() {
       dispatch({ type: 'login/redirect' });
-    },
-  }),
+    }
+  })
 )(Form.create({ name: 'UserLoginPage' })(UserLoginPage));

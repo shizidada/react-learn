@@ -27,9 +27,9 @@ const MooseBreadcrumb: React.FunctionComponent<MooseBreadcrumbProps> = ({ select
 export default connect(
   ({ menu }: AppState) => {
     return {
-      ...menu,
+      ...menu
     };
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (dispatch: Dispatch) => ({}),
+  (dispatch: Dispatch) => ({})
 )(MooseBreadcrumb);

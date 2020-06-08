@@ -13,14 +13,11 @@ import './index.less';
 const { Item } = Form;
 
 interface LoginFormProps extends LoginModelState {
-  form: WrappedFormUtils,
+  form: WrappedFormUtils;
   updateLoginStore: (type: object) => void;
 }
 
-const LoginForm: FunctionComponent<LoginFormProps> = ({
-  form,
-  updateLoginStore,
-}) => {
+const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }) => {
   const inputChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateLoginStore({ errorMessage: '' });
   };
@@ -31,35 +28,37 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({
       <Item>
         {getFieldDecorator('accountName', {
           initialValue: 'admin',
-          rules: [{ required: true, message: '请输入用户名' }],
+          rules: [{ required: true, message: '请输入用户名' }]
         })(
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="请输入用户名"
             onChange={e => inputChangeHandle(e)}
-          />,
+          />
         )}
       </Item>
       <Item>
         {getFieldDecorator('password', {
           initialValue: 'admin',
-          rules: [{ required: true, message: '请输入密码' }],
+          rules: [{ required: true, message: '请输入密码' }]
         })(
           <Input.Password
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             placeholder="请输入密码"
             onChange={e => inputChangeHandle(e)}
-          />,
+          />
         )}
       </Item>
       <Item>
         {getFieldDecorator('remember', {
           valuePropName: 'checked',
-          initialValue: true,
+          initialValue: true
         })(<Checkbox>记住我</Checkbox>)}
         {/* eslint-disable-next-line no-script-url */}
-        <a className="login-form-forgot" href="javascript:void(0)">忘记密码</a>
+        <a className="login-form-forgot" href="javascript:void(0)">
+          忘记密码
+        </a>
       </Item>
     </div>
   );
@@ -68,12 +67,12 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({
 export default connect(
   (state: AppState) => {
     return {
-      ...state.login,
+      ...state.login
     };
   },
   (dispatch: Dispatch) => ({
     updateLoginStore(record: object) {
       dispatch({ type: 'login/updateLoginStore', payload: record });
-    },
-  }),
+    }
+  })
 )(LoginForm);

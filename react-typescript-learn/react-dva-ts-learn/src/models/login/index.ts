@@ -27,14 +27,14 @@ const LoginModel: LoginModelType = {
   state: {
     loginType: 'login', // login registe reset
     isLoading: false,
-    errorMessage: '',
+    errorMessage: ''
   },
 
   reducers: {
     // change model data
     updateLoginStore(state, { payload }) {
       return { ...state, ...payload };
-    },
+    }
   },
 
   effects: {
@@ -56,13 +56,13 @@ const LoginModel: LoginModelType = {
           // login failed
           yield put({
             type: 'updateLoginStore',
-            payload: { errorMessage: data.message, isLoading: false },
+            payload: { errorMessage: data.message, isLoading: false }
           });
         }
       } catch (error) {
         yield put({
           type: 'updateLoginStore',
-          payload: { errorMessage: error.message, isLoading: false },
+          payload: { errorMessage: error.message, isLoading: false }
         });
       }
     },
@@ -82,11 +82,11 @@ const LoginModel: LoginModelType = {
       } catch (error) {
         yield put({
           type: 'updateLoginStore',
-          payload: { errorMessage: error.message, isLoading: false },
+          payload: { errorMessage: error.message, isLoading: false }
         });
       }
-    },
-  },
+    }
+  }
 
   // subscriptions: {
   //   setup({ history }): void {

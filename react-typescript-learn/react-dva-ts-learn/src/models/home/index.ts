@@ -16,8 +16,8 @@ const list: any[] = Array(12000)
         count: 1,
         units: 'sentences',
         sentenceLowerBound: 4,
-        sentenceUpperBound: 8,
-      }),
+        sentenceUpperBound: 8
+      })
     };
   });
 
@@ -37,7 +37,7 @@ const HomeModel: HomeModelType = {
   state: {
     name: 'TypeScript from dva',
     count: 0,
-    list,
+    list
   },
 
   reducers: {
@@ -46,21 +46,21 @@ const HomeModel: HomeModelType = {
     },
     minus(state: HomeModelState, { payload }) {
       return { ...state, count: state.count - 1 };
-    },
+    }
   },
 
   effects: {
     *addWithDelay(action, { call, put, select }) {
       yield call(delay, 500);
       yield put({ type: 'add' });
-    },
+    }
   },
 
   subscriptions: {
     setup({ history }): void {
       history.listen(({ pathname, search }): void => {});
-    },
-  },
+    }
+  }
 };
 
 export default HomeModel;

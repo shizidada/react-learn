@@ -13,7 +13,7 @@ import Markedown from '../Markedown';
 message.config({
   top: 100,
   duration: 2,
-  maxCount: 3,
+  maxCount: 3
 });
 
 interface ArticleFormProps {
@@ -68,12 +68,12 @@ const ArticleForm: FunctionComponent<ArticleFormProps> = ({ form }) => {
           help={articleTitleError || ''}
         >
           {getFieldDecorator('articleTitle', {
-            rules: [{ required: true, message: 'Please Article Title!' }],
+            rules: [{ required: true, message: 'Please Article Title!' }]
           })(
             <Input
               // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Please Article Title ."
-            />,
+            />
           )}
         </Form.Item>
         <Form.Item>
@@ -93,8 +93,8 @@ const ArticleForm: FunctionComponent<ArticleFormProps> = ({ form }) => {
 export default connect(
   (state: AppState) => {
     return {
-      ...state.menu,
+      ...state.menu
     };
   },
-  (dispatch: Dispatch) => ({}),
+  (dispatch: Dispatch) => ({})
 )(Form.create({ name: 'ArticleForm' })(ArticleForm));

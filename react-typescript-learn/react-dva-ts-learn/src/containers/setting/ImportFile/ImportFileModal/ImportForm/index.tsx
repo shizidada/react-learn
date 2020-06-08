@@ -53,9 +53,9 @@ const ImportForm: FunctionComponent<ImportFormProps> = ({ form }) => {
           withCredentials: true,
           url: '/api/v1/excel/import',
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'multipart/form-data'
           },
-          data: formData,
+          data: formData
         })
           .then(res => {
             console.log(res);
@@ -74,31 +74,26 @@ const ImportForm: FunctionComponent<ImportFormProps> = ({ form }) => {
     <Form layout="horizontal" onSubmit={handleSubmit}>
       <Form.Item label="选择类型" hasFeedback {...formItemLayout}>
         {getFieldDecorator('platform', {
-          rules: [{ required: true, message: '请选择类型！' }],
+          rules: [{ required: true, message: '请选择类型！' }]
         })(
           <Select placeholder="请选择类型！">
             <Option value="tianpeng">天蓬</Option>
             <Option value="xiaoming">小茗</Option>
-          </Select>,
+          </Select>
         )}
       </Form.Item>
       <Form.Item label="上传文件" {...formItemLayout}>
         {getFieldDecorator('file', {
           rules: [{ required: true, message: '请选择上传文件！' }],
           valuePropName: 'fileList',
-          getValueFromEvent: uploadFile,
+          getValueFromEvent: uploadFile
         })(
-          <Upload.Dragger
-            accept=".xlsx"
-            name="file"
-            onRemove={onRemove}
-            beforeUpload={beforeUpload}
-          >
+          <Upload.Dragger accept=".xlsx" name="file" onRemove={onRemove} beforeUpload={beforeUpload}>
             <p className="ant-upload-drag-icon">
               <Icon type="inbox" />
             </p>
             <p className="ant-upload-text">点击或拖拽上传文件</p>
-          </Upload.Dragger>,
+          </Upload.Dragger>
         )}
       </Form.Item>
       <Form.Item {...buttonItemLayout}>
@@ -112,8 +107,8 @@ const ImportForm: FunctionComponent<ImportFormProps> = ({ form }) => {
 export default connect(
   (state: AppState) => {
     return {
-      ...state.file,
+      ...state.file
     };
   },
-  (dispatch: Dispatch) => ({}),
+  (dispatch: Dispatch) => ({})
 )(Form.create({ name: 'ImportForm' })(ImportForm));

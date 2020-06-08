@@ -19,11 +19,7 @@ interface FileTableRecord {
   address: string;
 }
 
-const FileTable: FunctionComponent<FileTableProps> = ({
-  recordList = [],
-  isLoading,
-  getExcelInfo,
-}) => {
+const FileTable: FunctionComponent<FileTableProps> = ({ recordList = [], isLoading, getExcelInfo }) => {
   useEffect(() => {
     getExcelInfo({ pageSize: 10, pageNum: 10 });
     return () => {};
@@ -34,22 +30,22 @@ const FileTable: FunctionComponent<FileTableProps> = ({
       title: 'SIM卡卡号',
       dataIndex: 'iccid',
       key: 'iccid',
-      render: (text: string) => <a>{text}</a>,
+      render: (text: string) => <a>{text}</a>
     },
     {
       title: '运营商',
       dataIndex: 'operators',
-      key: 'operators',
+      key: 'operators'
     },
     {
       title: '收货人',
       dataIndex: 'receiver',
-      key: 'receiver',
+      key: 'receiver'
     },
     {
       title: '收货地址',
       dataIndex: 'address',
-      key: 'address',
+      key: 'address'
     },
     {
       title: '标签',
@@ -69,7 +65,7 @@ const FileTable: FunctionComponent<FileTableProps> = ({
             );
           })}
         </span>
-      ),
+      )
     },
     {
       title: '操作',
@@ -80,8 +76,8 @@ const FileTable: FunctionComponent<FileTableProps> = ({
           <Divider type="vertical" />
           <a>Delete</a>
         </span>
-      ),
-    },
+      )
+    }
   ];
 
   return (
@@ -100,12 +96,12 @@ const FileTable: FunctionComponent<FileTableProps> = ({
 export default connect(
   (state: AppState) => {
     return {
-      ...state.file,
+      ...state.file
     };
   },
   (dispatch: Dispatch) => ({
     getExcelInfo(record: object) {
       dispatch({ type: 'file/getExcelInfo', payload: record });
-    },
-  }),
+    }
+  })
 )(FileTable);

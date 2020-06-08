@@ -7,7 +7,7 @@ import './index.less';
 const { Title } = Typography;
 
 const PersonalCenterPage: FunctionComponent = () => {
-  const [isVisiblePersonalSetting, setVisiblePersonalSetting] = useState(true);
+  const [isVisiblePersonalSetting, setVisiblePersonalSetting] = useState(false);
   const [isExpand, setExpand] = useState(false);
 
   const expandDetailInfo = () => {
@@ -43,7 +43,7 @@ const PersonalCenterPage: FunctionComponent = () => {
                 style={{
                   overflow: 'hidden',
                   transition: 'height 300ms ease-out 0s',
-                  height: isExpand ? '100px' : '0px',
+                  height: isExpand ? '100px' : '0px'
                 }}
               >
                 <Title level={3}>简介: 但行好事，莫问前程。</Title>
@@ -59,10 +59,7 @@ const PersonalCenterPage: FunctionComponent = () => {
           </div>
         </Row>
       </div>
-      <PersonalSettingDrawer
-        visible={isVisiblePersonalSetting}
-        onClosePersonalSetting={setVisiblePersonalSetting}
-      />
+      <PersonalSettingDrawer visible={isVisiblePersonalSetting} onClosePersonalSetting={setVisiblePersonalSetting} />
     </Card>
   );
 };

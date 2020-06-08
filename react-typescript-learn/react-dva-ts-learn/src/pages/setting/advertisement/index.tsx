@@ -4,13 +4,9 @@ import { Card } from 'antd';
 
 import './index.less';
 
-interface AdvertisementPageProps { }
+interface AdvertisementPageProps {}
 
 const AdvertisementPage: FunctionComponent<AdvertisementPageProps> = () => {
-  return (
-    <Card className="advertisement-page-container">
-      AdvertisementPage
-    </Card>
-  );
-}
-export default AdvertisementPage
+  return <Card className="advertisement-page-container">AdvertisementPage</Card>;
+};
+export default AdvertisementPage;

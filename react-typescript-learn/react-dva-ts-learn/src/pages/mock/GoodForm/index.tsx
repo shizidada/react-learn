@@ -7,7 +7,7 @@ import GoodListView from './GoodListView';
 interface GoodFormProps extends FormComponentProps {}
 
 const GoodForm: FunctionComponent<GoodFormProps> = ({ form }) => {
-  return <GoodListView form={form}/>;
+  return <GoodListView form={form} />;
 };
 
 export default Form.create({ name: 'GoodForm' })(GoodForm);

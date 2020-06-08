@@ -15,7 +15,7 @@ const ImportBrokenLine: FunctionComponent<ImportBrokenLineProps> = ({ renderId }
       container: renderId,
       forceFit: true,
       height: 220,
-      padding: [20, 20, 60, 60], // 上右下左
+      padding: [20, 20, 60, 60] // 上右下左
     });
     chart.source(importData);
     chart.tooltip({
@@ -48,24 +48,24 @@ const ImportBrokenLine: FunctionComponent<ImportBrokenLineProps> = ({ renderId }
     chart.axis('date', {
       label: {
         textStyle: {
-          fill: '#aaaaaa',
-        },
-      },
+          fill: '#aaaaaa'
+        }
+      }
     });
     chart.axis('value', {
       label: {
         textStyle: {
-          fill: '#aaaaaa',
+          fill: '#aaaaaa'
         },
         formatter: function formatter(text) {
           return text.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
-        },
-      },
+        }
+      }
     });
     // chart.legend(false);
     // chart.legend({ position: 'bottom' });
     chart.legend({
-      position: 'bottom',
+      position: 'bottom'
     });
 
     chart
@@ -77,7 +77,7 @@ const ImportBrokenLine: FunctionComponent<ImportBrokenLineProps> = ({ renderId }
 
     chart.showTooltip({
       x: 80,
-      y: 100,
+      y: 100
     });
 
     chart.render();
