@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Dispatch } from 'redux';
 // import PropTypes from "prop-types";
 // import { Link } from "react-router-dom";
 import { connect } from 'dva';
@@ -14,7 +15,6 @@ import classNames from 'classnames';
 import { SliderMenuConfig, AppState } from '../../../../typings';
 
 import './index.less';
-import { Dispatch } from 'redux';
 
 const SortableItem = SortableElement((props: any) => {
   const { children } = props;
@@ -83,7 +83,7 @@ const SortableContainerList = SortableContainer((props: any) => {
   );
 });
 
-interface DraggableTabBarProps {
+export interface DraggableTabBarProps {
   dataSource: SliderMenuConfig[];
   activeKey?: string;
   name?: string;
@@ -99,7 +99,7 @@ interface DraggableTabBarProps {
 }
 
 interface DraggableTabBarState {
-  mouseIn?: any;
+  mouseIn?: boolean;
   isSorting?: boolean;
 }
 
@@ -145,6 +145,7 @@ class DraggableTabBar extends Component<DraggableTabBarProps, DraggableTabBarSta
   componentDidUpdate(prevProps: any) {
     const { dataSource } = this.props;
     const { dataSource: prevDataSource } = prevProps;
+    console.log('componentDidUpdate dataSource :: ', this.props, ' prevDataSource :: ', prevProps)
 
     // tabs 个数有变，调整宽度
     if (prevDataSource.length !== dataSource.length) {
@@ -215,7 +216,6 @@ export default connect(
   (state: AppState) => {
     return {
       ...state.menu,
-      ...state.global,
     };
   },
   (dispatch: Dispatch) => ({}),

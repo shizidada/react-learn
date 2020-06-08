@@ -24,7 +24,7 @@ const GlobalModel: GlobalModelType = {
       },
     ],
 
-    activeKey: 'home'
+    activeKey: 'home',
   },
   reducers: {
     updateGlobalStore(state, { payload }) {

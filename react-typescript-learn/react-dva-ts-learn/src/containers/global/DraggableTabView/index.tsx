@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react';
+import { Dispatch } from 'redux';
+import { SortStart, SortEnd, SortEvent } from 'react-sortable-hoc';
 import { connect } from 'dva';
 import H from 'history';
-import { SortStart, SortEnd, SortEvent } from 'react-sortable-hoc';
 
 import { SliderMenuConfig, AppState } from '../../../typings';
-
-import DraggableTabBar from './DraggableTabBar';
-import { Dispatch } from 'redux';
+import DraggableTabBar, { DraggableTabBarProps } from './DraggableTabBar';
 
 interface DraggableTabViewProps {
   dataSource?: SliderMenuConfig[];
@@ -40,9 +39,10 @@ const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
   };
 
   const handleClick = (item: SliderMenuConfig, event: any) => {
+    updateGlobalStore({ activeKey: item.activeKey });
+
     const { path } = item;
     history.push(path as string);
-    updateGlobalStore({ activeKey: item.activeKey });
     // console.log('handleClick :: ', item, event);
   };
 
@@ -50,10 +50,13 @@ const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
     console.log('handleRightClick :: ', e, item);
   };
 
+  console.log('DraggableTabView :: dataSource', dataSource);
+
   return (
     <DraggableTabBar
       dataSource={dataSource as SliderMenuConfig[]}
-      itemWrapper={(itemJsx: any, item: any, wrapperClassName: any) => {
+      activeKey={activeKey}
+      itemWrapper={(itemJsx: React.ReactNode[] | JSX.Element, item: DraggableTabBarProps, wrapperClassName: string) => {
         return (
           <div className={wrapperClassName} onContextMenu={e => handleRightClick(e, item)}>
             {itemJsx}
@@ -64,7 +67,6 @@ const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
       onSortStart={handleSortStart}
       onClose={handleClose}
       onClick={handleClick}
-      activeKey={activeKey}
     />
   );
 };
@@ -73,6 +75,7 @@ export default connect(
   ({ global }: AppState) => {
     return {
       dataSource: global.globalTabs,
+      activeKey: global.activeKey,
     };
   },
   (dispatch: Dispatch) => ({
