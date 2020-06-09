@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import './index.less';
+import RowItem from './RowItem';
 
 interface SelectionRowProps {}
 
@@ -12,7 +13,12 @@ const SelectionRow: FunctionComponent<SelectionRowProps> = () => {
           <div className="image-box"></div>
         </div>
         <div className="selection-right">
-          <div className="item-box"></div>
+          <div className="item-box">
+            <p className="item-title">精选</p>
+            <RowItem />
+            <RowItem />
+            <RowItem />
+          </div>
         </div>
       </div>
     </div>

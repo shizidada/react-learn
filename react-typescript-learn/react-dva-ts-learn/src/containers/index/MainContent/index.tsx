@@ -25,7 +25,6 @@ const MainContent: FunctionComponent = () => {
       <div className="main-content">
         <Row gutter={[24, 24]}>
           <Col span={18}>
-            <CouponCard />
             <Skeleton avatar title loading />
             {contentList.length > 0 && (
               <TransitionGroup>
@@ -37,6 +36,7 @@ const MainContent: FunctionComponent = () => {
           </Col>
 
           <Col span={6}>
+            <CouponCard />
             <Card title="About">
               <Button onClick={handleAddContent}>ADD</Button>
               <Button onClick={handleCleanContent}>CLEAN</Button>
