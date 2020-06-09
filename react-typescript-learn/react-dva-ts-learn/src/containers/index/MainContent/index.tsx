@@ -1,15 +1,17 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Row, Col, Card, Button, Skeleton } from 'antd';
+import { TransitionGroup } from 'react-transition-group';
+
+import ContentItem from '../../../components/content/ContentItem';
 
 import './index.less';
-import ContentItem from '../../../components/content/ContentItem';
 
 const MainContent: FunctionComponent = () => {
   const [contentList, setContentList] = useState<string[]>([`${Date.now()}`]);
 
   const handleAddContent = () => {
     const temp = contentList.concat();
-    temp.push(`${Date.now()}`);
+    temp.unshift(`${Date.now()}`);
     setContentList(temp);
   };
 
@@ -23,9 +25,13 @@ const MainContent: FunctionComponent = () => {
         <Row gutter={[24, 24]}>
           <Col span={18}>
             <Skeleton avatar title loading />
-            {contentList.map((item: string) => {
-              return <ContentItem key={item} />;
-            })}
+            {contentList.length > 0 && (
+              <TransitionGroup>
+                {contentList.map((item: string, index: number) => {
+                  return <ContentItem key={item} transitionIn={index >= 0} />;
+                })}
+              </TransitionGroup>
+            )}
           </Col>
 
           <Col span={6}>

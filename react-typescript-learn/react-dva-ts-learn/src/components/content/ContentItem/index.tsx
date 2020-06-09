@@ -1,21 +1,23 @@
 import React, { FunctionComponent } from 'react';
-import { Transition, CSSTransition } from 'react-transition-group';
-import 'animate.css';
+import { CSSTransition } from 'react-transition-group';
 
 import './index.less';
 
 interface ContentItemProps {
   className?: string;
+  transitionIn: boolean;
 }
 
-const ContentItem: FunctionComponent<ContentItemProps> = () => {
+const ContentItem: FunctionComponent<ContentItemProps> = ({ transitionIn }) => {
   return (
-    <Transition
+    <CSSTransition
+      in={transitionIn}
       classNames={{
-        enter: 'animated',
-        enterActive: 'bounce',
-        exit: 'animated',
-        exitActive: 'tada'
+        enter: 'animate__animated',
+        enterActive: 'animate__fadeIn',
+        exit: 'animate__animated',
+        exitActive: 'animate__fadeOut',
+        exitDone: 'animate__fadeOut'
       }}
       addEndListener={() => {
         console.log('object');
@@ -48,7 +50,7 @@ const ContentItem: FunctionComponent<ContentItemProps> = () => {
 
         <div className="thumb"></div>
       </div>
-    </Transition>
+    </CSSTransition>
   );
 };
 
