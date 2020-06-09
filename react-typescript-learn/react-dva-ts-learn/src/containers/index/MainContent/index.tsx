@@ -3,6 +3,7 @@ import { Row, Col, Card, Button, Skeleton } from 'antd';
 import { TransitionGroup } from 'react-transition-group';
 
 import ContentItem from '../../../components/content/ContentItem';
+import CouponCard from '../../../components/common/CouponCard';
 
 import './index.less';
 
@@ -24,6 +25,7 @@ const MainContent: FunctionComponent = () => {
       <div className="main-content">
         <Row gutter={[24, 24]}>
           <Col span={18}>
+            <CouponCard />
             <Skeleton avatar title loading />
             {contentList.length > 0 && (
               <TransitionGroup>
@@ -36,7 +38,6 @@ const MainContent: FunctionComponent = () => {
 
           <Col span={6}>
             <Card title="About">
-              <Skeleton loading />
               <Button onClick={handleAddContent}>ADD</Button>
               <Button onClick={handleCleanContent}>CLEAN</Button>
             </Card>
