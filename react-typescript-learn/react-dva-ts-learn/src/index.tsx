@@ -15,6 +15,7 @@ import menuModel from './models/menu';
 
 // import 'lib-flexible/flexible.js';
 import 'animate.css/animate.css';
+import 'normalize.css/normalize.css'
 
 import './global.less';
 
