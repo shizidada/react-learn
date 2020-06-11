@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const px2rem = require("postcss-px2rem");
 
 const path = require("./path");
 
@@ -32,9 +33,9 @@ const cssLoader = {
   exclude: /node_modules/,
 };
 
-const sassLoader = {
-  test: /\.(sa|sc)ss$/,
-  use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"],
+const lessLoader = {
+  test: /\.less$/,
+  use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "less-loader"],
   include: [path.contextPath],
   exclude: /node_modules/,
 };
@@ -54,6 +55,6 @@ module.exports = {
   tsLoader,
   eslintLoader,
   cssLoader,
-  sassLoader,
+  lessLoader,
   fileLoader,
 };

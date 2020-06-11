@@ -1,23 +1,20 @@
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
-import { increment, decrement } from "../store/counter/actions";
-import { CounterAction } from "../store/counter/types";
-import { AppState } from "../store";
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { increment, decrement } from '../store/counter/actions';
+import { CounterAction } from '../store/counter/types';
+import { AppState } from '../store';
 
-import Hello from "../components/Counter";
+import Counter from '../components/Counter';
 
-function mapStateToProps({ counterReducer }: AppState) {
+const mapStateToProps = ({ counterReducer }: AppState) => {
   return { ...counterReducer };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch<CounterAction>) {
+const mapDispatchToProps = (dispatch: Dispatch<CounterAction>) => {
   return {
     onIncrement: () => dispatch(increment()),
-    onDecrement: () => dispatch(decrement()),
+    onDecrement: () => dispatch(decrement())
   };
-}
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Hello);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

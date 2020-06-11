@@ -1,7 +1,8 @@
-import * as React from "react";
+import React, { FunctionComponent } from 'react';
 
-export default class ArticlePage extends React.Component {
-  public render() {
-    return <div>ArticlePage</div>;
-  }
-}
+import './index.less';
+
+const ArticlePage: FunctionComponent = () => {
+  return <div className="article-container">ArticlePage</div>;
+};
+export default ArticlePage;

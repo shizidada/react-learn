@@ -3,7 +3,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es6: true,
+    es6: true
     // "node": true,
     // "commonjs": true,
   },
@@ -11,62 +11,62 @@ module.exports = {
     react: {
       // Regex for Component Factory to use,
       // default to "createReactClass"
-      createClass: "createReactClass",
+      createClass: 'createReactClass',
 
       // Pragma to use, default to "React"
-      pragma: "React",
+      pragma: 'React',
 
       // React version. "detect" automatically picks the version you have installed.
-      version: "detect",
+      version: 'detect',
 
       // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
       // default to latest and warns if missing
       // It will default to "detect" in the future
-      flowVersion: "0.53", // Flow version
+      flowVersion: '0.53' // Flow version
     },
     propWrapperFunctions: [
       // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn"t set, any propTypes wrapped in a function will be skipped.
-      "forbidExtraProps",
-      { property: "freeze", object: "Object" },
-      { property: "myFavoriteWrapper" },
+      'forbidExtraProps',
+      { property: 'freeze', object: 'Object' },
+      { property: 'myFavoriteWrapper' }
     ],
     linkComponents: [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
-      "Hyperlink",
-      { name: "Link", linkAttribute: "to" },
-    ],
+      'Hyperlink',
+      { name: 'Link', linkAttribute: 'to' }
+    ]
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module",
+    sourceType: 'module',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
 
   extends: [
     // "eslint:recommended",
-    "plugin:react/recommended",
+    'plugin:react/recommended'
     // 不能同时使用？？？
     // "plugin:@typescript-eslint/recommended",
   ],
 
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
-    "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     // "react/jsx-indent-props": ["error", 4],
 
-    "@typescript-eslint/indent": ["error", 2],
-    "@typescript-eslint/explicit-function-return-type": [
+    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/explicit-function-return-type': [
       // "warn",
-      "off",
+      'off',
       {
         allowExpressions: true,
-        allowTypedFunctionExpressions: true,
-      },
+        allowTypedFunctionExpressions: true
+      }
     ],
-    "@typescript-eslint/interface-name-prefix": "off",
+    '@typescript-eslint/interface-name-prefix': 'off',
 
     // "@typescript-eslint/explicit-member-accessibility": ["error", { accessibility: "no-public" }],
 
@@ -76,18 +76,18 @@ module.exports = {
 
     // "@typescript-eslint/camelcase": ["off", { properties: "always" }],
 
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
       {
-        vars: "all",
-        args: "none",
-        ignoreRestSiblings: true,
-      },
+        vars: 'all',
+        args: 'none',
+        ignoreRestSiblings: true
+      }
     ],
     // - eslint
-    // "no-console": "warn",
+    'no-console': 'warn'
     // "semi": ["error", "always"],
     // "quotes": ["error", "double"],
     // "arrow-parens": 0,
-  },
+  }
 };

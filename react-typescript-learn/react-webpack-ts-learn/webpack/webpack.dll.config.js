@@ -4,7 +4,7 @@ const path = require("./path");
 const pkg = require("../package.json");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: {
     vendor: Object.keys(pkg.dependencies),
   },

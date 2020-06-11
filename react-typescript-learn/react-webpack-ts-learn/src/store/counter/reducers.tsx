@@ -1,9 +1,9 @@
-import { INCREMENT, DECREMENT, } from "./types";
-import { CounterState, CounterAction } from "./types";
+import { INCREMENT, DECREMENT } from './types';
+import { CounterState, CounterAction } from './types';
 
 const initSate: CounterState = {
   count: 1,
-  name: "TypeScript",
+  name: 'TypeScript'
 };
 
 export function counterReducer(state = initSate, action: CounterAction): CounterState {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const loader = require("./loader");
 const plugin = require("./plugin");
 const path = require("./path");
@@ -15,7 +14,7 @@ module.exports = {
       loader.eslintLoader,
       loader.tsLoader,
       loader.cssLoader,
-      loader.sassLoader,
+      loader.lessLoader,
       loader.fileLoader,
     ],
   },
@@ -24,6 +23,5 @@ module.exports = {
     plugin.htmlWebpackPlugin,
     plugin.miniCssExtractPlugin,
     plugin.checkerPlugin,
-    // plugin.dllReferencePlugin,
   ],
 };

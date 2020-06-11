@@ -18,7 +18,7 @@ let didError = false;
 let files = [];
 // const jsFiles = glob.sync('lib/**/*.js*', { ignore: ['**/node_modules/**', 'build/**'] });
 // const jsFiles = glob.sync('app/**', { ignore: ['**/node_modules/**', 'build/**', '**/assets/**'] });
-const jsFiles = glob.sync('config/**', { ignore: ['**/node_modules/**', 'build/**', '**/assets/**'] });
+const jsFiles = glob.sync('src/**', { ignore: ['**/node_modules/**', 'build/**', '**/assets/**'] });
 files = files.concat(jsFiles);
 
 files.forEach(file => {

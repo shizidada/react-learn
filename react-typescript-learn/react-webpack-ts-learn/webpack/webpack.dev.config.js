@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const plugin = require("./plugin");
 const path = require("./path");
 
@@ -19,6 +18,8 @@ module.exports = {
     stats: "errors-only",
     hot: true, // enable HMR on the server
     compress: true, // 开发服务器是否启动gzip等压缩
+    inline: true,
+    historyApiFallback: true,
   },
   plugins: [plugin.hotModulePlugin],
 };

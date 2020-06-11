@@ -8,11 +8,11 @@ class Person {
   }
 
   say() {
-    console.log("my name is", this.name, this.age);
+    console.log('my name is', this.name, this.age);
   }
 }
 
 const person1 = new Person();
-person1.setInfo("tom", 11);
+person1.setInfo('tom', 11);
 person1.say();
-console.log("this message from test.ts");
+console.log('this message from test.ts');

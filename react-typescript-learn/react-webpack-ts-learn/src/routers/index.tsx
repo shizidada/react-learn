@@ -1,24 +1,22 @@
-import * as React from "react";
-import { HashRouter, BrowserRouter, Switch, Route } from "react-router-dom";
-import Loadable from "react-loadable";
-import ReactLoading from "react-loading";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Loadable from 'react-loadable';
+import ReactLoading from 'react-loading';
 
 const Loading = () => {
-  return <ReactLoading type="spinningBubbles" color="red" />;
+  return <ReactLoading type="spinningBubbles" />;
 };
 
 const homePage = Loadable({
-  // /* webpackChunkName: 'page-home' */
-  loader: () => import("../pages/home"),
+  loader: () => import(/* webpackChunkName: 'home.page' */ '../pages/home'),
   loading: Loading,
-  delay: 30000, // 0.3 seconds
+  delay: 30000
 });
 
 const articlePage = Loadable({
-  // /* webpackChunkName: 'page-article' */
-  loader: () => import("../pages/article"),
+  loader: () => import(/* webpackChunkName: 'article.page' */ '../pages/article'),
   loading: Loading,
-  delay: 30000, // 0.3 seconds
+  delay: 30000
 });
 
 const BasicRoute = () => (

@@ -1,25 +1,24 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./index.scss";
+import './index.less';
 
-export interface Props {
+export interface CounterProps {
   name: string;
   count?: number;
   onIncrement?: () => void;
   onDecrement?: () => void;
 }
 
-export default class Counter extends React.Component<Props> {
-
+export default class Counter extends React.Component<CounterProps> {
   private getCounterMarks = (count: number) => {
-    return Array(count + 1).join("!");
-  }
+    console.log('object');
+    return Array(count + 1).join('!');
+  };
 
   public render() {
     const { name, count = 1, onIncrement, onDecrement } = this.props;
     return (
       <>
-        <img src={require("./pic.png")} width="120px" height="120px" />
         <div className="greeting">Hello {name + this.getCounterMarks(count)}</div>
         <div>
           <button onClick={onDecrement}>-</button>
@@ -29,24 +28,3 @@ export default class Counter extends React.Component<Props> {
     );
   }
 }
-
-// const Test: React.FC = () => {
-//   return <></>;
-// };
-
-// export default function Counter({ name, count = 1, onIncrement, onDecrement }: Props) {
-//   if (count <= 0) {
-//     throw new Error("You could be a little more enthusiastic. :D");
-//   }
-
-//   return (
-//     <>
-//       <img src={require("./pic.png")} width="120px" height="120px" />
-//       <div className="greeting">Hello {name + getCounterMarks(count)}</div>
-//       <div>
-//         <button onClick={onDecrement}>-</button>
-//         <button onClick={onIncrement}>+</button>
-//       </div>
-//     </>
-//   );
-// }

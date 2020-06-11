@@ -1,16 +1,15 @@
 import {
   createStore,
-  combineReducers,
+  combineReducers
   // applyMiddleware
-} from "redux";
+} from 'redux';
 // import thunkMiddleware from "redux-thunk";
 // import { composeWithDevTools } from "redux-devtools-extension";
 
 // import { HelloState } from "./hello/types/index";
 // import { CounterAction } from "./hello/types";
 
-import { counterReducer } from "./counter/reducers";
-
+import { counterReducer } from './counter/reducers';
 
 const rootReducer = combineReducers({
   counterReducer: counterReducer
@@ -18,12 +17,10 @@ const rootReducer = combineReducers({
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export default function () {
+export default function() {
   const store = createStore(rootReducer);
   return store;
 }
-
-
 
 // const rootReducer = combineReducers({
 //   enthusiasm: enthusiasm

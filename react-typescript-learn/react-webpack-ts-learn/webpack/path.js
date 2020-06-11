@@ -6,9 +6,11 @@ function resolve(dir) {
 
 module.exports = {
   contextPath: resolve("src"),
+
   outputPath: resolve("dist"),
 
   buildPath: resolve("build"),
+
   manifestPath: resolve("build/manifest.json"),
 
   templatePath: resolve("public/index.html"),
