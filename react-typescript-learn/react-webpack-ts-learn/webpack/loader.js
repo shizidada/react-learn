@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const px2rem = require("postcss-px2rem");
 
 const path = require("./path");
 

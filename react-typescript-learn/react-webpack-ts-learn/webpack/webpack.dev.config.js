@@ -20,6 +20,7 @@ module.exports = {
     compress: true, // 开发服务器是否启动gzip等压缩
     inline: true,
     historyApiFallback: true,
+    disableHostCheck: true,
   },
   plugins: [plugin.hotModulePlugin],
 };
