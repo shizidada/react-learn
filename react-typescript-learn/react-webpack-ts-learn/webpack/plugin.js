@@ -1,10 +1,9 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const path = require('./path');
 
@@ -28,25 +27,6 @@ const hotModulePlugin = new webpack.HotModuleReplacementPlugin();
 
 const progressPlugin = new webpack.ProgressPlugin();
 
-const dllReferencePlugin = new webpack.DllReferencePlugin({
-  manifest: require(path.manifestPath)
-});
-
-// 传递给 UglifyJS ：并行压缩输出JS代码
-const parallelUglifyPlugin = new ParallelUglifyPlugin({
-  uglifyJS: {
-    compress: {
-      warnings: false,
-      drop_debugger: true,
-      drop_console: true
-    },
-    output: { comments: false, beautify: false }
-  },
-  sourceMap: false
-});
-
-const uglifyJsPlugin = new UglifyJsPlugin();
-
 const terserPlugin = new TerserPlugin();
 
 const copyPlugin = new CopyPlugin([
@@ -58,14 +38,14 @@ const copyPlugin = new CopyPlugin([
 
 const optimizeCSSAssetsPlugin = new OptimizeCSSAssetsPlugin();
 
+const bundleAnalyzerPlugin = new BundleAnalyzerPlugin();
+
 module.exports = {
   htmlWebpackPlugin,
   hotModulePlugin,
   progressPlugin,
-  dllReferencePlugin,
-  parallelUglifyPlugin,
-  uglifyJsPlugin,
   terserPlugin,
   copyPlugin,
-  optimizeCSSAssetsPlugin
+  optimizeCSSAssetsPlugin,
+  bundleAnalyzerPlugin,
 };

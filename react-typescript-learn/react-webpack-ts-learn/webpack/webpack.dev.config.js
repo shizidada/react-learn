@@ -16,11 +16,6 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     disableHostCheck: true
-    // stats: 'errors-only',
-    // inline: true // Enable watch and live reload
-    // hot: true, // enable HMR on the server
-    // compress: true, // 开发服务器是否启动gzip等压缩
-    // inline: true
   },
-  plugins: []
+  plugins: [plugin.bundleAnalyzerPlugin]
 };

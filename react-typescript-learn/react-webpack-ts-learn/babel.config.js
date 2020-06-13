@@ -10,7 +10,7 @@ module.exports = function(api) {
         targets: {
           esmodules: true,
         },
-        useBuiltIns: "usage",
+        useBuiltIns: "entry",
         corejs: 3,
       },
     ],
@@ -19,7 +19,6 @@ module.exports = function(api) {
   const plugins = [
     "@babel/plugin-transform-runtime",
     "@babel/plugin-transform-object-assign",
-    "react-hot-loader/babel",
 
     // Stage 2 https://github.com/babel/babel/tree/master/packages/babel-preset-stage-2
     ["@babel/plugin-proposal-decorators", { legacy: true }],

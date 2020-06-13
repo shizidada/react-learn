@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esNext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -9,7 +9,7 @@
     // "strict": true,
     // "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "esNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     // "removeComments": false,
