@@ -11,7 +11,6 @@ export interface CounterProps {
 
 export default class Counter extends React.Component<CounterProps> {
   private getCounterMarks = (count: number) => {
-    console.log('object');
     return Array(count + 1).join('!');
   };
 

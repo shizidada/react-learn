@@ -3,16 +3,12 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es6: true
-    // "node": true,
-    // "commonjs": true,
+    es6: true,
+    node: true,
+    commonjs: true
   },
   settings: {
     react: {
-      // Regex for Component Factory to use,
-      // default to "createReactClass"
-      createClass: 'createReactClass',
-
       // Pragma to use, default to "React"
       pragma: 'React',
 
@@ -55,39 +51,11 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-    // "react/jsx-indent-props": ["error", 4],
 
-    '@typescript-eslint/indent': ['error', 2],
-    '@typescript-eslint/explicit-function-return-type': [
-      // "warn",
-      'off',
-      {
-        allowExpressions: true,
-        allowTypedFunctionExpressions: true
-      }
-    ],
-    '@typescript-eslint/interface-name-prefix': 'off',
-
-    // "@typescript-eslint/explicit-member-accessibility": ["error", { accessibility: "no-public" }],
-
-    // "@typescript-eslint/no-explicit-any": "off",
-
-    // "@typescript-eslint/no-use-before-define": "off",
-
-    // "@typescript-eslint/camelcase": ["off", { properties: "always" }],
-
-    '@typescript-eslint/no-unused-vars': [
-      'warn',
-      {
-        vars: 'all',
-        args: 'none',
-        ignoreRestSiblings: true
-      }
-    ],
     // - eslint
-    'no-console': 'warn'
-    // "semi": ["error", "always"],
-    // "quotes": ["error", "double"],
-    // "arrow-parens": 0,
+    'no-console': 'warn',
+    semi: ['error', 'always'],
+    quotes: ['error', 'single'],
+    'arrow-parens': 0
   }
 };

@@ -1,27 +1,16 @@
-const loader = require("./loader");
-const plugin = require("./plugin");
-const path = require("./path");
+const loader = require('./loader');
+const plugin = require('./plugin');
+const path = require('./path');
 
 module.exports = {
   context: path.contextPath,
 
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.less']
   },
 
   module: {
-    rules: [
-      loader.eslintLoader,
-      loader.tsLoader,
-      loader.cssLoader,
-      loader.lessLoader,
-      loader.fileLoader,
-    ],
+    rules: [loader.eslintLoader, loader.tsLoader, loader.cssLoader, loader.lessLoader, loader.fileLoader]
   },
-  plugins: [
-    plugin.progressPlugin,
-    plugin.htmlWebpackPlugin,
-    plugin.miniCssExtractPlugin,
-    plugin.checkerPlugin,
-  ],
+  plugins: [plugin.progressPlugin, plugin.htmlWebpackPlugin]
 };

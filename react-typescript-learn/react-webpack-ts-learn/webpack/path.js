@@ -1,17 +1,17 @@
-const path = require("path");
+const path = require('path');
 
 function resolve(dir) {
-  return path.join(__dirname, "..", dir);
+  return path.join(__dirname, '..', dir);
 }
 
 module.exports = {
-  contextPath: resolve("src"),
+  contextPath: resolve('src'),
 
-  outputPath: resolve("dist"),
+  outputPath: resolve('dist'),
 
-  buildPath: resolve("build"),
+  buildPath: resolve('build'),
 
-  manifestPath: resolve("build/manifest.json"),
+  manifestPath: resolve('build/manifest.json'),
 
-  templatePath: resolve("public/index.html"),
+  templatePath: resolve('public/index.html')
 };

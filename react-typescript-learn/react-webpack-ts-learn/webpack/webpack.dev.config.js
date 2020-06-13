@@ -1,26 +1,26 @@
-const plugin = require("./plugin");
-const path = require("./path");
+const plugin = require('./plugin');
+const path = require('./path');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
 
-  devtool: "cheap-module-eval-source-map",
+  devtool: 'cheap-module-eval-source-map',
 
   entry: {
-    app: ["@babel/polyfill", "./index.tsx"],
+    app: ['./index.tsx']
   },
 
   devServer: {
     contentBase: path.contextPath, // Content base
-    inline: true, // Enable watch and live reload
-    host: "localhost",
+    host: 'localhost',
     port: 3000,
-    stats: "errors-only",
-    hot: true, // enable HMR on the server
-    compress: true, // 开发服务器是否启动gzip等压缩
-    inline: true,
     historyApiFallback: true,
-    disableHostCheck: true,
+    disableHostCheck: true
+    // stats: 'errors-only',
+    // inline: true // Enable watch and live reload
+    // hot: true, // enable HMR on the server
+    // compress: true, // 开发服务器是否启动gzip等压缩
+    // inline: true
   },
-  plugins: [plugin.hotModulePlugin],
+  plugins: []
 };
