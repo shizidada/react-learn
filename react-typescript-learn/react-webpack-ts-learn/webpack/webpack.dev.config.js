@@ -12,10 +12,11 @@ module.exports = {
   },
 
   module: {
-    rules: [loader.eslintLoader]
+    rules: []
   },
 
-  plugins: [plugin.bundleAnalyzerPlugin, plugin.miniCssExtractPlugin, plugin.hotModulePlugin],
+  // plugin.bundleAnalyzerPlugin, 
+  plugins: [plugin.hotModulePlugin],
 
   devServer: {
     contentBase: path.contextPath, // Content base

@@ -1,23 +1,22 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('./path');
 
+const isProEnv = process.env.NODE_ENV === 'production';
+
 const tsLoader = {
   test: /\.(ts|tsx)$/,
   loader: 'awesome-typescript-loader',
   options: {
     useBabel: true,
-    babelCore: '@babel/core' // needed for Babel v7
-  },
-  include: [path.contextPath],
-  exclude: /node_modules/
+    babelCore: '@babel/core', // needed for Babel v7
+    plugin: [['import', { libraryName: 'antd-mobile', style: true }]]
+  }
 };
 
 const eslintLoader = {
   test: /\.(js|jsx|ts|tsx)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
-  include: [path.contextPath],
-  exclude: /node_modules/,
   options: {
     formatter: require('eslint-friendly-formatter')
   }
@@ -26,38 +25,36 @@ const eslintLoader = {
 const cssLoader = {
   test: /\.css$/,
   use: [
-    // 'style-loader',
-    MiniCssExtractPlugin.loader,
+    isProEnv ? MiniCssExtractPlugin.loader : 'style-loader',
     'css-loader',
     'postcss-loader'
-  ],
-  include: [path.contextPath],
-  exclude: /node_modules/
+  ]
 };
 
 const lessLoader = {
   test: /\.less$/,
   use: [
-    // 'style-loader',
-    MiniCssExtractPlugin.loader,
+    isProEnv ? MiniCssExtractPlugin.loader : 'style-loader',
     'css-loader',
     'postcss-loader',
-    'less-loader'
-  ],
-  include: [path.contextPath],
-  exclude: /node_modules/
+    {
+      loader: 'less-loader',
+      options: {
+        lessOptions: {
+          javascriptEnabled: true
+        }
+      }
+    }
+  ]
 };
 
 const fileLoader = {
   test: /\.(png|jpg|gif|svg)$/,
   loader: 'file-loader',
-  include: [path.contextPath],
-  exclude: /node_modules/,
   options: {
     limit: 10240,
     name: 'img/[name].[ext]?[hash]'
-  },
-  exclude: /node_modules/
+  }
 };
 
 module.exports = {

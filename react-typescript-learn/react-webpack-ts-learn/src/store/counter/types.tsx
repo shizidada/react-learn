@@ -1,5 +1,5 @@
 export interface CounterState {
-  count: number;
+  count?: number;
   name: string;
 }
 

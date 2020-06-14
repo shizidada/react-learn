@@ -6,7 +6,7 @@ module.exports = {
   context: path.contextPath,
 
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.less']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.less', '.css']
   },
 
   module: {

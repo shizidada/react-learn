@@ -1,61 +1,113 @@
+'use strict';
 module.exports = {
-  // 以当前目录为根目录，不再向上查找 .eslintrc.js
-  root: true,
+  extends: [
+    'airbnb',
+    'prettier',
+    'airbnb-typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:eslint-comments/recommended',
+    'plugin:jest/recommended',
+    'prettier/react',
+    'prettier/@typescript-eslint'
+  ],
+  plugins: ['@typescript-eslint', 'eslint-comments', 'jest', 'unicorn', 'react-hooks'],
   env: {
     browser: true,
-    es6: true,
     node: true,
-    commonjs: true
+    es6: true,
+    mocha: true,
+    jest: true,
+    jasmine: true
+  },
+  rules: {
+    'react/jsx-wrap-multilines': 0,
+    'react/prop-types': 0,
+    'react/forbid-prop-types': 0,
+    'react/jsx-one-expression-per-line': 0,
+    'generator-star-spacing': 0,
+    'function-paren-newline': 0,
+    // 禁止使用外部包
+    'import/no-unresolved': [2, { ignore: ['typings'] }],
+    'import/order': 'off',
+    'import/no-extraneous-dependencies': [
+      1,
+      {
+        optionalDependencies: true,
+        devDependencies: [
+          '**/tests/**.{ts,js,jsx,tsx}',
+          '**/_test_/**.{ts,js,jsx,tsx}',
+          '/mock/**/**.{ts,js,jsx,tsx}',
+          '**/**.test.{ts,js,jsx,tsx}',
+          '**/_mock.{ts,js,jsx,tsx}',
+          '**/example/**.{ts,js,jsx,tsx}',
+          '**/examples/**.{ts,js,jsx,tsx}'
+        ]
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/label-has-for': 0,
+    'jsx-a11y/anchor-is-valid': 0,
+    'linebreak-style': 0,
+    // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
+    'no-prototype-builtins': 'off',
+    'import/prefer-default-export': 'off',
+    'import/no-default-export': [0, 'camel-case'],
+    // Too restrictive: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md
+    'react/destructuring-assignment': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/sort-comp': 'off',
+    'no-return-assign': 'off',
+    // Use function hoisting to improve code readability
+    'no-use-before-define': ['error', { functions: false, classes: true, variables: true }],
+    // Makes no sense to allow type inferrence for expression parameters, but require typing the response
+    '@typescript-eslint/explicit-function-return-type': ['off', { allowTypedFunctionExpressions: true }],
+    '@typescript-eslint/no-use-before-define': [
+      'error',
+      { functions: false, classes: true, variables: true, typedefs: true }
+    ],
+    '@typescript-eslint/no-var-requires': 0,
+
+    // Common abbreviations are known and readable
+    'unicorn/prevent-abbreviations': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 0,
+    '@typescript-eslint/interface-name-prefix': 0,
+    // ts 空 interface
+    '@typescript-eslint/no-empty-interface': 'off',
+
+    'import/no-cycle': 0,
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+
+    // issue https://github.com/facebook/react/issues/15204
+    'react-hooks/exhaustive-deps': 'off', // Checks effect dependencies
+
+    'react/prefer-stateless-function': 'off',
+
+    // Conflict with prettier
+    'arrow-body-style': ['error', 'as-needed'],
+    'arrow-parens': 1,
+    'object-curly-newline': 0,
+    'implicit-arrow-linebreak': 0,
+    'operator-linebreak': 0,
+    'eslint-comments/no-unlimited-disable': 1,
+    'no-param-reassign': 1,
+    'space-before-function-paren': 0,
+
+    'max-len': ['error', 120],
+    'comma-dangle': 'off',
+    'spaced-comment': 'warn',
+    'no-script-url': 'warn',
+    // 'sort-imports': 'error',
+    'array-callback-return': 'off',
+    'arrow-body-style': 'off',
+    'consistent-return': 'off',
+    'no-console': 1
   },
   settings: {
-    react: {
-      // Pragma to use, default to "React"
-      pragma: 'React',
-
-      // React version. "detect" automatically picks the version you have installed.
-      version: 'detect',
-
-      // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
-      // default to latest and warns if missing
-      // It will default to "detect" in the future
-      flowVersion: '0.53' // Flow version
-    },
-    propWrapperFunctions: [
-      // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn"t set, any propTypes wrapped in a function will be skipped.
-      'forbidExtraProps',
-      { property: 'freeze', object: 'Object' },
-      { property: 'myFavoriteWrapper' }
-    ],
-    linkComponents: [
-      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
-      'Hyperlink',
-      { name: 'Link', linkAttribute: 'to' }
-    ]
-  },
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true
-    }
-  },
-  parser: '@typescript-eslint/parser',
-
-  extends: [
-    // "eslint:recommended",
-    'plugin:react/recommended'
-    // 不能同时使用？？？
-    // "plugin:@typescript-eslint/recommended",
-  ],
-
-  plugins: ['react', '@typescript-eslint'],
-  rules: {
-    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-
-    // - eslint
-    'no-console': 'warn',
-    semi: ['error', 'always'],
-    quotes: ['error', 'single'],
-    'arrow-parens': 0
+    // support import modules from TypeScript files in JavaScript files
+    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
+    polyfills: ['fetch', 'Promise', 'URL', 'object-assign']
   }
 };

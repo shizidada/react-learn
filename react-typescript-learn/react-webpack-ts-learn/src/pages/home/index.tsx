@@ -1,23 +1,26 @@
-import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FunctionComponent, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import H from 'history';
+
+import TabBarView from '../../containers/TabBarView';
 
 import { EXAMPLE_URL } from '../../config';
 
-import Counter from '../../containers/Counter';
-
 import './index.less';
 
-const HomePage: FunctionComponent = () => {
-  return (
-    <div className="home-page">
-      <Link to="/">home</Link>
-      <Link to="/article">article</Link>
-      <pre>
-        <code>{EXAMPLE_URL}</code>
-      </pre>
+interface HomePageProps {
+  history: H.History;
+}
 
-      <Counter />
-    </div>
-  );
+const HomePage: FunctionComponent<HomePageProps> = ({ history }) => {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      history.replace('/login');
+      return;
+    }
+  });
+
+  return <TabBarView />;
 };
-export default HomePage;
+export default withRouter(HomePage);

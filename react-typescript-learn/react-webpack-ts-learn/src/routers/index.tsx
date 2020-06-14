@@ -7,6 +7,12 @@ const Loading = () => {
   return <ReactLoading type="spinningBubbles" />;
 };
 
+const loginPage = Loadable({
+  loader: () => import(/* webpackChunkName: 'login.page' */ '../pages/login'),
+  loading: Loading,
+  delay: 30000
+});
+
 const homePage = Loadable({
   loader: () => import(/* webpackChunkName: 'home.page' */ '../pages/home'),
   loading: Loading,
@@ -22,8 +28,9 @@ const articlePage = Loadable({
 const BasicRoute = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={homePage} />
+      <Route exact path="/login" component={loginPage} />
       <Route exact path="/article" component={articlePage} />
+      <Route exact path="/" component={homePage} />
     </Switch>
   </BrowserRouter>
 );
