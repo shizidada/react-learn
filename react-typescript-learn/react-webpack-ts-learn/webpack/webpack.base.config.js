@@ -10,7 +10,7 @@ module.exports = {
   },
 
   module: {
-    rules: [loader.eslintLoader, loader.tsLoader, loader.cssLoader, loader.lessLoader, loader.fileLoader]
+    rules: [loader.tsLoader, loader.cssLoader, loader.lessLoader, loader.fileLoader]
   },
   plugins: [plugin.progressPlugin, plugin.htmlWebpackPlugin]
 };

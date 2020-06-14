@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('./path');
 
 const tsLoader = {
@@ -18,21 +19,31 @@ const eslintLoader = {
   include: [path.contextPath],
   exclude: /node_modules/,
   options: {
-    // 这里的配置项参数将会被传递到 eslint 的 CLIEngine
-    formatter: require('eslint-friendly-formatter') // 指定错误报告的格式规范
+    formatter: require('eslint-friendly-formatter')
   }
 };
 
 const cssLoader = {
   test: /\.css$/,
-  use: ['style-loader', 'css-loader', 'postcss-loader'],
+  use: [
+    // 'style-loader',
+    MiniCssExtractPlugin.loader,
+    'css-loader',
+    'postcss-loader'
+  ],
   include: [path.contextPath],
   exclude: /node_modules/
 };
 
 const lessLoader = {
   test: /\.less$/,
-  use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+  use: [
+    // 'style-loader',
+    MiniCssExtractPlugin.loader,
+    'css-loader',
+    'postcss-loader',
+    'less-loader'
+  ],
   include: [path.contextPath],
   exclude: /node_modules/
 };
