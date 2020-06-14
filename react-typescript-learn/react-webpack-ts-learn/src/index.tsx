@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import VConsole from 'vconsole';
 
 import configureStore from './store';
 
@@ -13,6 +14,8 @@ import BasicRoute from './routers';
 import './global.less';
 
 const store = configureStore();
+
+new VConsole();
 
 ReactDOM.render(
   <Provider store={store}>
