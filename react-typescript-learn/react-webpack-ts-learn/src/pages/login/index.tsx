@@ -54,45 +54,41 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({ history, ...rest }) => {
   });
 
   return (
-    <div className="login-page">
+    <div className="login-page" style={{ minHeight: 667 }}>
       <div className="wrapper">
-        <div className="logo-image">FaS</div>
-        <WingBlank>
-          <InputItem
-            placeholder="请输入账号"
-            clear
-            maxLength={50}
-            onChange={(value: any) => setAccountName(value)}
-          >
-            账号
-          </InputItem>
-
-          <WhiteSpace />
-
-          <InputItem
-            placeholder="请输入密码"
-            type="password"
-            clear
-            maxLength={32}
-            onChange={(value: any) => setPassword(value)}
-          >
-            密码
-          </InputItem>
-
-          <WhiteSpace />
-
-          <Flex>
-            <Flex.Item>
-              <AgreeItem onChange={e => console.log('checkbox', e)}>
-                记住账号
-              </AgreeItem>
-            </Flex.Item>
-            <Flex.Item>忘记密码</Flex.Item>
-          </Flex>
-          <Button type="primary" onClick={handleLogin}>
-            登录
-          </Button>
-        </WingBlank>
+        <div>
+          <div className="login-header"></div>
+          <span className="logo-image">FaS</span>
+          <WingBlank>
+            <InputItem
+              placeholder="请输入账号"
+              clear
+              maxLength={50}
+              onChange={(value: any) => setAccountName(value)}
+            ></InputItem>
+            <WhiteSpace />
+            <InputItem
+              placeholder="请输入密码"
+              type="password"
+              clear
+              maxLength={32}
+              onChange={(value: any) => setPassword(value)}
+            ></InputItem>
+            <WhiteSpace />
+            <Flex>
+              <Flex.Item>
+                <AgreeItem onChange={e => console.log('checkbox', e)}>
+                  记住账号
+                </AgreeItem>
+              </Flex.Item>
+              <Flex.Item>忘记密码</Flex.Item>
+            </Flex>
+            <WhiteSpace />
+            <Button type="primary" onClick={handleLogin}>
+              登录
+            </Button>
+          </WingBlank>
+        </div>
       </div>
     </div>
   );

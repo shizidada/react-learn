@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import VConsole from 'vconsole';
 
@@ -7,7 +7,6 @@ import configureStore from './store';
 
 import 'normalize.css/normalize.css';
 import 'lib-flexible/flexible.js';
-import 'antd-mobile/dist/antd-mobile.less';
 
 import BasicRoute from './routers';
 

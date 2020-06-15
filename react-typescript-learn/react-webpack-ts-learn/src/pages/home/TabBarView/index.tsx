@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Button, Result, TabBar, Carousel, ListView } from 'antd-mobile';
+import { TabBar } from 'antd-mobile';
 
 import IndexContent from '../IndexContent';
+import MyContent from '../MyContent';
 
 const TabBarView: FunctionComponent = () => {
-  const [selectedTab, setSelectedTab] = useState('blueTab');
+  const [selectedTab, setSelectedTab] = useState('My');
+  const [hiddenTabBar, setHiddenTabBar] = useState(true);
   return (
     <div
       style={{ position: 'fixed', height: '100%', width: '100%', bottom: 0 }}
@@ -14,6 +16,7 @@ const TabBarView: FunctionComponent = () => {
         tintColor="#33A3F4"
         barTintColor="white"
         tabBarPosition="bottom"
+        hidden={hiddenTabBar}
         prerenderingSiblingsNumber={0}
       >
         <TabBar.Item
@@ -39,10 +42,10 @@ const TabBarView: FunctionComponent = () => {
               }}
             />
           }
-          selected={selectedTab === 'blueTab'}
-          badge={1}
+          selected={selectedTab === 'Life'}
+          // badge={1}
           onPress={() => {
-            setSelectedTab('blueTab');
+            setSelectedTab('Life');
           }}
           data-seed="logId"
         >
@@ -71,10 +74,10 @@ const TabBarView: FunctionComponent = () => {
           }
           title="Koubei"
           key="Koubei"
-          badge={'new'}
-          selected={selectedTab === 'redTab'}
+          // badge={'new'}
+          selected={selectedTab === 'Koubei'}
           onPress={() => {
-            setSelectedTab('redTab');
+            setSelectedTab('Koubei');
           }}
           data-seed="logId1"
         >
@@ -103,10 +106,10 @@ const TabBarView: FunctionComponent = () => {
           }
           title="Friend"
           key="Friend"
-          dot
-          selected={selectedTab === 'greenTab'}
+          // dot
+          selected={selectedTab === 'Friend'}
           onPress={() => {
-            setSelectedTab('greenTab');
+            setSelectedTab('Friend');
           }}
         >
           Friend
@@ -122,12 +125,12 @@ const TabBarView: FunctionComponent = () => {
           }}
           title="My"
           key="my"
-          selected={selectedTab === 'yellowTab'}
+          selected={selectedTab === 'My'}
           onPress={() => {
-            setSelectedTab('yellowTab');
+            setSelectedTab('My');
           }}
         >
-          My
+          <MyContent />
         </TabBar.Item>
       </TabBar>
     </div>
