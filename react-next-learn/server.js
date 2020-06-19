@@ -24,26 +24,26 @@ app.prepare().then(() => {
   // Express
   const server = express();
 
-  server.get(/\/about$/, (req, res) => {
-    // require("fs").writeFile("./req.json", JSON.stringify(req), (err) => {
-    // })
-    // console.log("about-req2 ===> ", req.url, req.path);
-    const path = req.path;
-    const nameServer = "Name From Server";
-    const queryParams = { path, nameServer }
-    const pagePath = '/about'
-    return ssrCache({ req, res, pagePath, queryParams })
-  });
+  // server.get(/\/about$/, (req, res) => {
+  //   // require("fs").writeFile("./req.json", JSON.stringify(req), (err) => {
+  //   // })
+  //   // console.log("about-req2 ===> ", req.url, req.path);
+  //   const path = req.path;
+  //   const nameServer = "Name From Server";
+  //   const queryParams = { path, nameServer }
+  //   const pagePath = '/about'
+  //   return ssrCache({ req, res, pagePath, queryParams })
+  // });
 
-  server.get(/\/user\/detail$/, (req, res) => {
-    // require("fs").writeFile("./req.json", JSON.stringify(req), (err) => {
-    // })
-    const path = req.path;
-    const nameServer = "Name From Server";
-    const queryParams = { path, nameServer }
-    const pagePath = '/detail'
-    return ssrCache({ req, res, pagePath, queryParams })
-  });
+  // server.get(/\/user\/detail$/, (req, res) => {
+  //   // require("fs").writeFile("./req.json", JSON.stringify(req), (err) => {
+  //   // })
+  //   const path = req.path;
+  //   const nameServer = "Name From Server";
+  //   const queryParams = { path, nameServer }
+  //   const pagePath = '/detail'
+  //   return ssrCache({ req, res, pagePath, queryParams })
+  // });
 
   server.get('*', (req, res) => {
     return handle(req, res);
