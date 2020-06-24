@@ -5,7 +5,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const MarkedownView = () => {
   return (
     <div className="markedown-view-container">
-      <Editor />
+      <Editor editorClassName="markedownEditor" />
     </div>
   );
 };
