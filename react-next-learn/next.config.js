@@ -3,6 +3,10 @@ const withLess = require('@zeit/next-less');
 const path = require("path");
 // const fs = require("fs");
 
+if (typeof require !== 'undefined') {
+  require.extensions['.less'] = (file) => {}
+}
+
 module.exports = withCss(withLess({
   // less 3.0 
   lessLoaderOptions: {

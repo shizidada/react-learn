@@ -5,10 +5,12 @@
  * @Last Modified time: 2019-04-13 15:02:31
  */
 
-import React, { useState } from "react";
+import React from "react";
 import App, { Container } from "next/app";
 
 import "../common/interceptor";
+
+import "./global.less";
 
 class MooseApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -25,7 +27,9 @@ class MooseApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <Container>
-        <Component {...pageProps} />
+        <div className="moose-container">
+          <Component {...pageProps} />
+        </div>
       </Container>
     );
   }
