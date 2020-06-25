@@ -4,6 +4,8 @@ import SplitComponent from 'react-ace/lib/split';
 
 import 'ace-builds/src-noconflict/mode-mysql';
 import 'ace-builds/src-noconflict/mode-markdown';
+import 'ace-builds/src-noconflict/mode-java';
+import 'ace-builds/src-noconflict/mode-javascript';
 
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/theme-monokai';
