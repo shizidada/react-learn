@@ -63,6 +63,23 @@ function RouterConfig({ history, app }: RouterConfigProps) {
             })
           }
         />
+        <Route
+          path="/editor"
+          render={routeProps =>
+            createElement<UserLayoutProps>(UserLayout, {
+              ...routeProps,
+              view: createElement<any>(
+                Loadable({
+                  loader: () => import(/* webpackChunkName: "editor.page" */ '../pages/editor'),
+                  loading() {
+                    return <Loading />;
+                  }
+                }),
+                { ...routeProps }
+              )
+            })
+          }
+        />
         <Route path="/error" render={routeProps => createElement<any>(Error, { ...routeProps })} />
         <Route path="/" render={routeProps => createElement<any>(BasicLayout, { ...routeProps })} />
       </Switch>

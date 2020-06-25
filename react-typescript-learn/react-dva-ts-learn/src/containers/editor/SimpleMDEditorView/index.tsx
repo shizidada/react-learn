@@ -1,29 +1,31 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import 'easymde/dist/easymde.min.css';
 import './index.less';
 
-interface MarkedownProps {
-  onMarkedownInputChange(value: string): void;
-  onToggleFullScreenChange(value: boolean): void;
+interface SimpleMDEditorViewProps {
+  onSimpleMDEditorViewInputChange?(value: string): void;
+  onToggleFullScreenChange?(value: boolean): void;
 }
 
-const Markedown: FunctionComponent<MarkedownProps> = ({ onMarkedownInputChange, onToggleFullScreenChange }) => {
+const SimpleMDEditorView: FunctionComponent<SimpleMDEditorViewProps> = ({
+  onSimpleMDEditorViewInputChange,
+  onToggleFullScreenChange
+}) => {
   const [isFullScreen, onToggleFullScreen] = useState<boolean>(false);
   const [markedownText, markedownOnChange] = useState<string>('');
 
   useEffect(() => {
-    onMarkedownInputChange(markedownText);
+    onSimpleMDEditorViewInputChange && onSimpleMDEditorViewInputChange(markedownText);
   }, [markedownText]);
 
   useEffect(() => {
-    onToggleFullScreenChange(isFullScreen);
+    onToggleFullScreenChange && onToggleFullScreenChange(isFullScreen);
   }, [isFullScreen]);
 
   return (
-    <div className="markedown-container">
+    <div className="SimpleMDEditor-container">
       <SimpleMDE
         options={{
           placeholder: 'please input content ...',
@@ -35,4 +37,4 @@ const Markedown: FunctionComponent<MarkedownProps> = ({ onMarkedownInputChange, 
   );
 };
 
-export default Markedown;
+export default SimpleMDEditorView;

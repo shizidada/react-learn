@@ -104,11 +104,7 @@ module.exports = {
     'array-callback-return': 'off',
     'arrow-body-style': 'off',
     'consistent-return': 'off',
-    'no-console': 1
-  },
-  settings: {
-    // support import modules from TypeScript files in JavaScript files
-    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
-    polyfills: ['fetch', 'Promise', 'URL', 'object-assign']
+    'no-console': 1,
+    'no-unused-expressions': 'off'
   }
 };
