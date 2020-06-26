@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AceEditor, { split as SplitAceEditor } from 'react-ace';
 import SplitComponent from 'react-ace/lib/split';
+import ReactMarkdown from 'react-markdown';
 
 import 'ace-builds/src-noconflict/mode-mysql';
 import 'ace-builds/src-noconflict/mode-markdown';
@@ -39,6 +40,8 @@ const SplitAceEditorView = () => {
 
   const handleShowPreviewClick = () => {
     setShowPreview(!showPreview);
+
+    console.log(splitAceEditorRef);
   };
 
   useEffect(() => {
@@ -59,6 +62,7 @@ const SplitAceEditorView = () => {
           scrollMargin={[0, 80, 0, 0]}
           fontSize={18}
           value={markedContent}
+          ref={splitAceEditorRef}
           showPrintMargin={false}
           setOptions={{
             // readOnly: true,
@@ -90,8 +94,12 @@ const SplitAceEditorView = () => {
 
       {showPreview && (
         <div className="content-preview">
-          <div className="content-html"></div>
-          <div className="content-footer"></div>
+          <div className="content-wrapper">
+            <div className="content-html">
+              <ReactMarkdown source={markedContent} />
+            </div>
+            <div className="content-footer"></div>
+          </div>
         </div>
       )}
     </div>

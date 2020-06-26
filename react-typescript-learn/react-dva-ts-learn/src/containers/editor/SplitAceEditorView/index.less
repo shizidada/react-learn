@@ -42,19 +42,31 @@
   .content-preview {
     position: relative;
     flex: 1 1 50%;
-    height: 100%;
-    background: #fff;
+    // height: 100%;
+    // background: #fff;
     border-left: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #ebebeb;
+      outline: none;
+    }
 
     .content-html {
-      flex: 1;
+      flex: 1 1 50%;
     }
+
     .content-footer {
       height: 40px;
       background-color: #ebebeb;
+      z-index: 999;
     }
   }
 }

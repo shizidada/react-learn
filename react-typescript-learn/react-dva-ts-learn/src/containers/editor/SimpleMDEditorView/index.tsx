@@ -1,7 +1,9 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
-import SimpleMDE from 'react-simplemde-editor';
 
+import ReactMarkdown from 'react-markdown';
+import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
+
 import './index.less';
 
 interface SimpleMDEditorViewProps {
@@ -14,11 +16,11 @@ const SimpleMDEditorView: FunctionComponent<SimpleMDEditorViewProps> = ({
   onToggleFullScreenChange
 }) => {
   const [isFullScreen, onToggleFullScreen] = useState<boolean>(false);
-  const [markedownText, markedownOnChange] = useState<string>('');
+  const [markdownText, markdownChange] = useState<string>('');
 
   useEffect(() => {
-    onSimpleMDEditorViewInputChange && onSimpleMDEditorViewInputChange(markedownText);
-  }, [markedownText]);
+    onSimpleMDEditorViewInputChange && onSimpleMDEditorViewInputChange(markdownText);
+  }, [markdownText]);
 
   useEffect(() => {
     onToggleFullScreenChange && onToggleFullScreenChange(isFullScreen);
@@ -31,8 +33,9 @@ const SimpleMDEditorView: FunctionComponent<SimpleMDEditorViewProps> = ({
           placeholder: 'please input content ...',
           onToggleFullScreen
         }}
-        onChange={markedownOnChange}
+        onChange={markdownChange}
       />
+      <ReactMarkdown source={markdownText} />
     </div>
   );
 };
