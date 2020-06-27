@@ -36,6 +36,7 @@
     "draftjs-to-html": "^0.9.1",
     "draftjs-to-markdown": "^0.6.0",
     "dva": "^2.4.1",
+    "editor.md": "^1.5.0",
     "highlight.js": "^10.1.1",
     "lib-flexible": "^0.3.2",
     "lodash": "^4.17.15",
@@ -64,7 +65,8 @@
     "reselect": "^4.0.0",
     "rich-markdown-editor": "^10.2.0",
     "simditor": "^2.3.28",
-    "simplemde": "^1.11.2"
+    "simplemde": "^1.11.2",
+    "xgplayer": "^2.9.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",

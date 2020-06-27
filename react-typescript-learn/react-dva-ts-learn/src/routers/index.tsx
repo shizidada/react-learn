@@ -80,6 +80,24 @@ function RouterConfig({ history, app }: RouterConfigProps) {
             })
           }
         />
+
+        <Route
+          path="/video"
+          render={routeProps =>
+            createElement<UserLayoutProps>(UserLayout, {
+              ...routeProps,
+              view: createElement<any>(
+                Loadable({
+                  loader: () => import(/* webpackChunkName: "video.page" */ '../pages/video'),
+                  loading() {
+                    return <Loading />;
+                  }
+                }),
+                { ...routeProps }
+              )
+            })
+          }
+        />
         <Route path="/error" render={routeProps => createElement<any>(Error, { ...routeProps })} />
         <Route path="/" render={routeProps => createElement<any>(BasicLayout, { ...routeProps })} />
       </Switch>
