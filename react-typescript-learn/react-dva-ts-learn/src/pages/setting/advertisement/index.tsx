@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
 // import { Location, History } from 'history';
 import { Card } from 'antd';
-
+import React, { FunctionComponent } from 'react';
 import './index.less';
+
 
 interface AdvertisementPageProps {}
 

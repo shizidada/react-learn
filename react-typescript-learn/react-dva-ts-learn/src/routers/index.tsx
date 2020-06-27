@@ -1,14 +1,14 @@
-import React, { createElement } from 'react';
-import { DvaInstance } from 'dva';
 import { Spin } from 'antd';
-import { Switch, Route, routerRedux } from 'dva/router';
+import { DvaInstance } from 'dva';
+import { Route, routerRedux, Switch } from 'dva/router';
 import H from 'history';
+import React, { createElement } from 'react';
 import Loadable from 'react-loadable';
-
 import BasicLayout from '../layouts/BasicLayout';
 import UserLayout, { UserLayoutProps } from '../layouts/UserLayout';
-
 import Error from '../pages/error';
+
+
 
 const { ConnectedRouter } = routerRedux;
 
@@ -31,7 +31,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
       <Switch>
         <Route
           path="/index.html"
-          render={routeProps =>
+          render={(routeProps) =>
             createElement<UserLayoutProps>(UserLayout, {
               ...routeProps,
               view: createElement<any>(
@@ -48,7 +48,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
         />
         <Route
           path="/login"
-          render={routeProps =>
+          render={(routeProps) =>
             createElement<UserLayoutProps>(UserLayout, {
               ...routeProps,
               view: createElement<any>(
@@ -65,7 +65,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
         />
         <Route
           path="/editor"
-          render={routeProps =>
+          render={(routeProps) =>
             createElement<UserLayoutProps>(UserLayout, {
               ...routeProps,
               view: createElement<any>(
@@ -83,7 +83,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
 
         <Route
           path="/video"
-          render={routeProps =>
+          render={(routeProps) =>
             createElement<UserLayoutProps>(UserLayout, {
               ...routeProps,
               view: createElement<any>(
@@ -98,8 +98,8 @@ function RouterConfig({ history, app }: RouterConfigProps) {
             })
           }
         />
-        <Route path="/error" render={routeProps => createElement<any>(Error, { ...routeProps })} />
-        <Route path="/" render={routeProps => createElement<any>(BasicLayout, { ...routeProps })} />
+        <Route path="/error" render={(routeProps) => createElement<any>(Error, { ...routeProps })} />
+        <Route path="/" render={(routeProps) => createElement<any>(BasicLayout, { ...routeProps })} />
       </Switch>
     </ConnectedRouter>
   );

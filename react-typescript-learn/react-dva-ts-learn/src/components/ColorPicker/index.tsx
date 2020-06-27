@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useState } from 'react'; // , CSSProperties
-import { ChromePicker, SketchPicker, ChromePickerProps, ColorResult } from 'react-color';
+import { ChromePicker, ChromePickerProps, ColorResult, SketchPicker } from 'react-color';
+import { LESS_ID, LESS_URL, OLD_LESS_ID } from '../../config/less.config';
+import './index.less';
 import theme from './theme';
 import { loadScript } from './util';
-import { OLD_LESS_ID, LESS_ID, LESS_URL } from '../../config/less.config';
-
-import './index.less';
 
 interface Picker {
   [key: string]: React.ReactType<ChromePickerProps>;

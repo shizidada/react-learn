@@ -1,7 +1,7 @@
+import { FileModelState } from '../models/file';
 import { GlobalModelState } from '../models/global';
 import { HomeModelState } from '../models/home';
 import { LoginModelState } from '../models/login';
-import { FileModelState } from '../models/file';
 import { MenuModelState } from '../models/menu';
 
 export interface AppState {

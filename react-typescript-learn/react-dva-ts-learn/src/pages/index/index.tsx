@@ -1,17 +1,17 @@
+import { Layout } from 'antd';
+import { connect } from 'dva';
 import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
-import { connect } from 'dva';
-import { Layout } from 'antd';
-
-import { AppState } from '../../typings';
-
 import IndexHeader from '../../containers/index/IndexHeader';
-import SelectionRow from '../../containers/index/SelectionRow';
-
-import './index.less';
-
-import './lodash.test';
 import MainContent from '../../containers/index/MainContent';
+import SelectionRow from '../../containers/index/SelectionRow';
+import { AppState } from '../../typings';
+import './index.less';
+import './lodash.test';
+
+
+
+
 
 const { Content, Footer } = Layout;
 

@@ -1,13 +1,13 @@
-import React, { FunctionComponent } from 'react';
-import { Dispatch } from 'redux';
+import { Input, Layout } from 'antd';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Layout, Input } from 'antd';
-
+import React, { FunctionComponent } from 'react';
+import { Dispatch } from 'redux';
 // eslint-disable-next-line import/extensions
 import { AppState } from '../../../typings';
-
 import './index.less';
+
+
 
 const { Header } = Layout;
 

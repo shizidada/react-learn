@@ -1,9 +1,9 @@
+import { Button } from 'antd';
 import React, { FunctionComponent, useEffect } from 'react';
 import Player from 'xgplayer';
-
-import { Button } from 'antd';
-
 import './index.less';
+
+
 
 const VideoPage: FunctionComponent = () => {
   let player: Player = null;
@@ -27,7 +27,7 @@ const VideoPage: FunctionComponent = () => {
             start: 0,
             txt: '长弹幕长弹幕长弹幕长弹幕长弹幕',
             style: {
-              //弹幕自定义样式
+              // 弹幕自定义样式
               color: '#ff9500',
               fontSize: '20px',
               border: 'solid 1px #ff9500',
@@ -73,7 +73,7 @@ const VideoPage: FunctionComponent = () => {
         start: 0,
         txt: `${Math.random() * 1000}`,
         style: {
-          //弹幕自定义样式
+          // 弹幕自定义样式
           color: '#ff9500',
           fontSize: '20px',
           border: 'solid 1px #ff9500',

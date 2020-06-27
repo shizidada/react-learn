@@ -1,15 +1,15 @@
-import React, { FunctionComponent, useState } from 'react';
-
-import { Form, Button } from 'antd';
+import { Button, Form } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
-
-// 引入编辑器样式
-import 'braft-editor/dist/index.css';
-
 // 引入编辑器组件
 import BraftEditor, { ControlType } from 'braft-editor';
-
+// 引入编辑器样式
+import 'braft-editor/dist/index.css';
+import React, { FunctionComponent, useState } from 'react';
 import './index.less';
+
+
+
+
 
 const defaultControls: ControlType[] = [
   'undo',

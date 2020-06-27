@@ -32,7 +32,7 @@ const mdParser = new MarkdownIt({
 function handleEditorChange({ html, text }) {
   console.log('handleEditorChange', html, text);
 }
-export default props => {
+export default (props) => {
   return (
     <MarkdownEditorLite
       value=""
@@ -40,7 +40,7 @@ export default props => {
         theme: 'github'
       }}
       // style={{ height: '500px' }}
-      renderHTML={text => mdParser.render(text)}
+      renderHTML={(text) => mdParser.render(text)}
       onChange={handleEditorChange}
     />
   );

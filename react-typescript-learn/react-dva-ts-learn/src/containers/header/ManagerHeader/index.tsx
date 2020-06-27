@@ -1,15 +1,14 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { Dispatch } from 'redux';
-import { connect } from 'dva';
+import { Avatar, Col, Dropdown, Icon, Menu, Row } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
-import { Icon, Menu, Dropdown, Avatar, Row, Col } from 'antd';
+import { connect } from 'dva';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { Dispatch } from 'redux';
 import ColorPicker from '../../../components/ColorPicker';
-
-// eslint-disable-next-line import/extensions
 import { AppState } from '../../../typings';
 import MooseBreadcrumb from '../../global/Breadcrumb';
-
 import './index.less';
+
+
 
 interface ManagerHeaderProps extends AppState {
   onSliderMenuToggle: () => void;

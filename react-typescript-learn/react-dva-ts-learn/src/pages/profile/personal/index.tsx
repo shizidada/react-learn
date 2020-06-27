@@ -1,8 +1,8 @@
+import { Button, Card, Icon, Row, Typography } from 'antd';
 import React, { FunctionComponent, useState } from 'react';
-import { Card, Button, Typography, Row, Icon } from 'antd';
 import PersonalSettingDrawer from '../../../containers/profile/PersonalSettingDrawer';
-
 import './index.less';
+
 
 const { Title } = Typography;
 

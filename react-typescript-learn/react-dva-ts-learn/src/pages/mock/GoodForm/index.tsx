@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
 import { Form } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
-
+import React, { FunctionComponent } from 'react';
 import GoodListView from './GoodListView';
+
 
 interface GoodFormProps extends FormComponentProps {}
 

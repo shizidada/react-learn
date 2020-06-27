@@ -1,7 +1,7 @@
+import { Col, Divider, Drawer, Row } from 'antd';
 import React, { FunctionComponent } from 'react';
-
-import { Drawer, Divider, Col, Row } from 'antd';
 import DescriptionItem from './DescriptionItem';
+
 
 const pStyle = {
   fontSize: 16,

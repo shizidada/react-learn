@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Dispatch } from 'redux';
-import { Button, Upload, Form, Icon, Select } from 'antd';
+import { Button, Form, Icon, Select, Upload } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { RcFile } from 'antd/lib/upload';
 import { UploadFile } from 'antd/lib/upload/interface';
-import { connect } from 'dva';
 import axios from 'axios';
+import { connect } from 'dva';
+import React, { FunctionComponent, useState } from 'react';
+import { Dispatch } from 'redux';
 import { AppState } from '../../../../../typings';
 
 const { Option } = Select;
@@ -57,10 +57,10 @@ const ImportForm: FunctionComponent<ImportFormProps> = ({ form }) => {
           },
           data: formData
         })
-          .then(res => {
+          .then((res) => {
             console.log(res);
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       }

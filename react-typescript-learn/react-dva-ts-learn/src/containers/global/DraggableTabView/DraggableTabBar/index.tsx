@@ -26,11 +26,11 @@ const SortableContainerList = SortableContainer((props: any) => {
         const { activeKey: currentActiveKey, name, closable } = item;
         const isActive = activeKey === currentActiveKey;
         let itemJsx: React.ReactNode[] | JSX.Element = [
-          <div key={`item-${activeKey}`} className="item-inner" onClick={e => onClick && onClick(item, e)}>
+          <div key={`item-${activeKey}`} className="item-inner" onClick={(e) => onClick && onClick(item, e)}>
             {name}
           </div>,
           closable ? (
-            <div key="close" className="close-wrapper" onClick={e => onClose && onClose(item, e)}>
+            <div key="close" className="close-wrapper" onClick={(e) => onClose && onClose(item, e)}>
               <Icon type="close" />
             </div>
           ) : null
@@ -160,7 +160,7 @@ class DraggableTabBar extends Component<DraggableTabBarProps, DraggableTabBarSta
     return (
       <div
         style={{ width: '100%' }}
-        ref={node => (this.container = node)}
+        ref={(node) => (this.container = node)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >

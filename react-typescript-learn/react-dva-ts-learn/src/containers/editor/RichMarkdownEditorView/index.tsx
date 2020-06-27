@@ -9,7 +9,7 @@ const RichMarkdownEditorView: FunctionComponent = () => {
   return (
     <div className="rich-markdown-editor-container">
       <RichMarkdownEditor
-        onChange={value => {
+        onChange={(value) => {
           console.log(value());
           setMarkedContent(value());
         }}

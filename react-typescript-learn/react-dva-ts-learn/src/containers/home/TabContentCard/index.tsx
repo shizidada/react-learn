@@ -1,7 +1,7 @@
+import { Badge, Card, Col, Icon, Row, Statistic, Tabs } from 'antd';
 import React, { FunctionComponent } from 'react';
-import { Card, Statistic, Icon, Badge, Row, Col, Tabs } from 'antd';
-
 import DemoItem from '../../../components/chart/DemoItem';
+
 
 const { Countdown } = Statistic;
 const { TabPane } = Tabs;

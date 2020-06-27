@@ -1,11 +1,11 @@
+import { Button, Card, Col, Row } from 'antd';
 import React, { FunctionComponent, useState } from 'react';
-import { Row, Col, Card, Button, Skeleton } from 'antd';
 import { TransitionGroup } from 'react-transition-group';
-
-import ContentItem from '../../../components/content/ContentItem';
 import CouponCard from '../../../components/common/CouponCard';
-
+import ContentItem from '../../../components/content/ContentItem';
 import './index.less';
+
+
 
 const coupons = [
   {
@@ -74,7 +74,7 @@ const MainContent: FunctionComponent = () => {
               </TransitionGroup>
             )}
             <div className="coupon-card-container">
-              {coupons.map(item => {
+              {coupons.map((item) => {
                 return (
                   <CouponCard
                     key={String(item.id)}

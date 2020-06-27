@@ -1,6 +1,6 @@
+import { Divider, Table, Tag } from 'antd';
 import React, { FunctionComponent } from 'react';
 
-import { Table, Divider, Tag } from 'antd';
 
 const OrderList: FunctionComponent = () => {
   const columns = [
@@ -26,7 +26,7 @@ const OrderList: FunctionComponent = () => {
       dataIndex: 'orderStatus',
       render: (tags: string[]) => (
         <span>
-          {tags.map(tag => {
+          {tags.map((tag) => {
             let color = tag.length > 5 ? 'geekblue' : 'green';
             if (tag === 'loser') {
               color = 'volcano';

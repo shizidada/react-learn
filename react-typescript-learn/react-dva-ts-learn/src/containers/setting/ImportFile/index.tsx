@@ -1,14 +1,13 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Dispatch } from 'redux';
-import { connect } from 'dva';
 // import { UploadChangeParam } from 'antd/lib/upload';
 // import { UploadFile } from 'antd/lib/upload/interface';
 import { Button } from 'antd';
-
+import { connect } from 'dva';
+import React, { FunctionComponent, useState } from 'react';
+import { Dispatch } from 'redux';
+import { AppState } from '../../../typings';
 import ImportFileModal from './ImportFileModal';
 
-// eslint-disable-next-line import/extensions
-import { AppState } from '../../../typings';
+
 
 interface ImportFileProps {}
 

@@ -1,18 +1,18 @@
-import React, { FunctionComponent, useEffect } from 'react';
-import H, { Location } from 'history';
 // import { connect } from 'dva';
 // import { Dispatch } from 'redux';
 import { Layout } from 'antd';
+import H, { Location } from 'history';
+import React, { FunctionComponent, useEffect } from 'react';
+import { BASE_NAME } from '../../config/less.config';
+import DraggableTabView from '../../containers/global/DraggableTabView';
 import SliderMenuView from '../../containers/global/SliderMenuView';
 import ManagerHeader from '../../containers/header/ManagerHeader';
-import DraggableTabView from '../../containers/global/DraggableTabView';
 import BasicRoute from '../../routers/BasicRoute';
-
 // eslint-disable-next-line import/extensions
 import { AppState } from '../../typings';
-import { BASE_NAME } from '../../config/less.config';
-
 import './index.less';
+
+
 
 const { Content, Footer } = Layout;
 

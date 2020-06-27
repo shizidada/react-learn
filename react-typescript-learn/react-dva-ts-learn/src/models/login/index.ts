@@ -1,9 +1,9 @@
 import { Model } from 'dva';
 import { routerRedux } from 'dva/router';
-
 import { MD5 } from '../../util/MD5Util';
-
 import { login, register } from './service';
+
+
 
 // import { AppState } from "../../typings";
 

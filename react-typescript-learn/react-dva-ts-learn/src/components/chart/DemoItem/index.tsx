@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useEffect } from 'react';
 import G2 from '@antv/g2';
+import React, { FunctionComponent, useEffect } from 'react';
 import { demoData } from './demo';
 
 const DemoItem: FunctionComponent = () => {

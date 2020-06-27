@@ -3,7 +3,7 @@ import { loremIpsum } from 'lorem-ipsum';
 
 export const NAMESPACE = 'home';
 
-const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
+const delay = (timeout: number) => new Promise((resolve) => setTimeout(resolve, timeout));
 
 const list: any[] = Array(12000)
   .fill({})

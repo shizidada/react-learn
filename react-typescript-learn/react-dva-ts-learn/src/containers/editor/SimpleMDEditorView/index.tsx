@@ -1,10 +1,10 @@
-import React, { useState, useEffect, FunctionComponent } from 'react';
-
+import 'easymde/dist/easymde.min.css';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import SimpleMDE from 'react-simplemde-editor';
-import 'easymde/dist/easymde.min.css';
-
 import './index.less';
+
+
 
 interface SimpleMDEditorViewProps {
   onSimpleMDEditorViewInputChange?(value: string): void;
@@ -20,11 +20,11 @@ const SimpleMDEditorView: FunctionComponent<SimpleMDEditorViewProps> = ({
 
   useEffect(() => {
     onSimpleMDEditorViewInputChange && onSimpleMDEditorViewInputChange(markdownText);
-  }, [markdownText]);
+  }, [markdownText, onSimpleMDEditorViewInputChange]);
 
   useEffect(() => {
     onToggleFullScreenChange && onToggleFullScreenChange(isFullScreen);
-  }, [isFullScreen]);
+  }, [isFullScreen, onToggleFullScreenChange]);
 
   return (
     <div className="SimpleMDEditor-container">

@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
 import { Drawer } from 'antd';
+import React, { FunctionComponent } from 'react';
 
 interface ProductAddDrawerProps {
   visible?: boolean;

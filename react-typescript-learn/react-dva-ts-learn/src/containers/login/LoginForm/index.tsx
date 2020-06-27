@@ -1,14 +1,14 @@
+import { Checkbox, Form, Icon, Input } from 'antd';
+import { WrappedFormUtils } from 'antd/lib/form/Form';
+import { connect } from 'dva';
 import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
-import { connect } from 'dva';
-import { Form, Icon, Input, Checkbox } from 'antd';
-import { WrappedFormUtils } from 'antd/lib/form/Form';
-
-// eslint-disable-next-line import/extensions
-import { AppState } from '../../../typings';
 import { LoginModelState } from '../../../models/login';
-
+import { AppState } from '../../../typings';
 import './index.less';
+
+
+
 
 const { Item } = Form;
 
@@ -33,7 +33,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="请输入用户名"
-            onChange={e => inputChangeHandle(e)}
+            onChange={(e) => inputChangeHandle(e)}
           />
         )}
       </Item>
@@ -46,7 +46,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             placeholder="请输入密码"
-            onChange={e => inputChangeHandle(e)}
+            onChange={(e) => inputChangeHandle(e)}
           />
         )}
       </Item>

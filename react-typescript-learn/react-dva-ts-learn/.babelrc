@@ -1,27 +1,17 @@
 {
-    // "presets": [
-    //     [
-    //         "@babel/preset-env",
-    //         "@babel/preset-react",
-    //         "@babel/preset-typescript",
-    //         {
-    //             "useBuiltIns": "entry",
-    //             "corejs": 3
-    //         }
-    //     ]
-    // ],
-    "plugins": [
-        [
-            "import",
-            {
-                "libraryName": "antd",
-                "style": true
-            }
-        ],
-        "@babel/plugin-syntax-dynamic-import",
-        "@babel/plugin-transform-arrow-functions",
-        "@babel/plugin-transform-modules-commonjs",
-        "@babel/plugin-transform-runtime",
-        "@babel/plugin-proposal-class-properties"
-    ]
+  "presets": ["react-app"],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ],
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-arrow-functions",
+    "@babel/plugin-transform-modules-commonjs",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties"
+  ]
 }

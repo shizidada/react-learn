@@ -58,7 +58,7 @@ const DraggableTabView: FunctionComponent<DraggableTabViewProps> = ({
       activeKey={activeKey}
       itemWrapper={(itemJsx: React.ReactNode[] | JSX.Element, item: DraggableTabBarProps, wrapperClassName: string) => {
         return (
-          <div className={wrapperClassName} onContextMenu={e => handleRightClick(e, item)}>
+          <div className={wrapperClassName} onContextMenu={(e) => handleRightClick(e, item)}>
             {itemJsx}
           </div>
         );

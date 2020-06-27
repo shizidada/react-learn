@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Form, Drawer, Button, Col, Row, Input, Tooltip, Divider, Icon } from 'antd';
+import { Button, Col, Divider, Drawer, Form, Icon, Input, Row, Tooltip } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
-
+import React, { FunctionComponent, useState } from 'react';
 import './index.less';
+
 
 interface PersonalSettingDrawerProps extends FormComponentProps {
   visible?: boolean;

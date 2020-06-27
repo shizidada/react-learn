@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
-import { Form, Input, Icon } from 'antd';
+import { Form, Icon, Input } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
+import React, { FunctionComponent } from 'react';
 
 const { Item } = Form;
 

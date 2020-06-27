@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
 import { Card, Tabs } from 'antd';
-
+import React, { FunctionComponent } from 'react';
 import OrderList from '../../../containers/order/OrderList';
+
 
 const { TabPane } = Tabs;
 

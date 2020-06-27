@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
 import { Modal } from 'antd';
+import React, { FunctionComponent } from 'react';
 import ImportForm from './ImportForm';
 
 interface ImportFileModalProps {

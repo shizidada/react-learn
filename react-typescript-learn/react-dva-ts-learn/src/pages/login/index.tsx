@@ -1,18 +1,18 @@
-import * as React from 'react';
-import { Dispatch } from 'redux';
+import { Button, Divider, Form, Icon, Typography } from 'antd';
+import { FormComponentProps } from 'antd/lib/form';
 import { connect } from 'dva';
 import { Location } from 'history';
-import { Form, Icon, Button, Typography, Divider } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
-
+import * as React from 'react';
+import { Dispatch } from 'redux';
+import Websocket from '../../components/websocket';
 import LoginForm from '../../containers/login/LoginForm';
 import RegisterForm from '../../containers/register/RegisterForm';
-
-import { AppState } from '../../typings';
 import { LoginModelState } from '../../models/login';
-
+import { AppState } from '../../typings';
 import './index.less';
-import Websocket from '../../components/websocket';
+
+
+
 
 const { Item } = Form;
 const { Title } = Typography;

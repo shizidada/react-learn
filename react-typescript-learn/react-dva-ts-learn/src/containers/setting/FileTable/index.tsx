@@ -1,9 +1,9 @@
+import { Divider, Table, Tag } from 'antd';
+import { connect } from 'dva';
 import React, { FunctionComponent, useEffect } from 'react';
 import { Dispatch } from 'redux';
-import { connect } from 'dva';
-import { Table, Divider, Tag } from 'antd';
-
 import { AppState } from '../../../typings';
+
 
 interface FileTableProps {
   recordList: [];
@@ -23,7 +23,7 @@ const FileTable: FunctionComponent<FileTableProps> = ({ recordList = [], isLoadi
   useEffect(() => {
     getExcelInfo({ pageSize: 10, pageNum: 10 });
     return () => {};
-  }, []);
+  }, [getExcelInfo]);
 
   const columns = [
     {
@@ -53,7 +53,7 @@ const FileTable: FunctionComponent<FileTableProps> = ({ recordList = [], isLoadi
       dataIndex: 'tags',
       render: (tags: string[] = ['xiha']) => (
         <span>
-          {tags.map(tag => {
+          {tags.map((tag) => {
             let color = tag.length > 5 ? 'geekblue' : 'green';
             if (tag === 'loser') {
               color = 'volcano';

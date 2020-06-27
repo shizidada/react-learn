@@ -1,6 +1,6 @@
-import React, { createElement } from 'react';
 import { Spin } from 'antd';
 import { Redirect, Route, Switch } from 'dva/router';
+import React, { createElement } from 'react';
 import Loadable from 'react-loadable';
 
 const Loading = () => {
@@ -16,7 +16,7 @@ const BasicRoute = () => (
     {/* user router config start */}
     <Route
       path="/user/list"
-      render={routeProps =>
+      render={(routeProps) =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/list'),
@@ -33,7 +33,7 @@ const BasicRoute = () => (
     {/* profile router config end */}
     <Route
       path="/profile"
-      render={routeProps =>
+      render={(routeProps) =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "profile.personal.page" */ '../pages/profile/personal'),
@@ -50,7 +50,7 @@ const BasicRoute = () => (
     {/* order router config start */}
     <Route
       path="/order/list"
-      render={routeProps =>
+      render={(routeProps) =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/list'),
@@ -67,7 +67,7 @@ const BasicRoute = () => (
     {/* product router config start */}
     <Route
       path="/product/list"
-      render={routeProps =>
+      render={(routeProps) =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
@@ -84,7 +84,7 @@ const BasicRoute = () => (
     {/* setting router config start */}
     <Route
       path="/setting/advertisement"
-      render={routeProps =>
+      render={(routeProps) =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'),
@@ -99,7 +99,7 @@ const BasicRoute = () => (
     {/* setting router config end */}
     <Route
       path="/mock"
-      render={routeProps =>
+      render={(routeProps) =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "mock.page" */ '../pages/mock'),
@@ -114,7 +114,7 @@ const BasicRoute = () => (
 
     <Route
       path="/home"
-      render={routeProps =>
+      render={(routeProps) =>
         createElement<object>(
           Loadable({
             loader: () => import(/* webpackChunkName: "home.page" */ '../pages/home'),

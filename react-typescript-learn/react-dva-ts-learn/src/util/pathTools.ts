@@ -2,7 +2,7 @@ import pathToRegexp from 'path-to-regexp';
 import { SliderMenuConfig } from '../typings';
 
 export function urlToList(url: string) {
-  const urlList = url.split('/').filter(i => i);
+  const urlList = url.split('/').filter((i) => i);
   return urlList.map((urlItem, index) => `/${urlList.slice(0, index + 1).join('/')}`);
 }
 
@@ -18,7 +18,7 @@ export const getFlatMenuKeys = (menuData: SliderMenuConfig[]) => {
 };
 
 export const getMenuMatches = (flatMenuKeys: string[], path: string) =>
-  flatMenuKeys.filter(item => {
+  flatMenuKeys.filter((item) => {
     if (item) {
       return pathToRegexp(item).test(path);
     }
@@ -27,8 +27,8 @@ export const getMenuMatches = (flatMenuKeys: string[], path: string) =>
 
 export const getDefaultCollapsedSubMenus = (pathname: string, flatMenuKeys: string[]) => {
   return urlToList(pathname)
-    .map(item => getMenuMatches(flatMenuKeys, item)[0])
-    .filter(item => item);
+    .map((item) => getMenuMatches(flatMenuKeys, item)[0])
+    .filter((item) => item);
 };
 
 export const getRootSubMenuKey = (data: SliderMenuConfig[]) => {

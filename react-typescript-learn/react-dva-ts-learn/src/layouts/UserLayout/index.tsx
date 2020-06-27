@@ -1,7 +1,6 @@
-import React, { FunctionComponent } from 'react';
 // import { Location } from "history";
-
 import { Layout } from 'antd';
+import React, { FunctionComponent } from 'react';
 
 const { Content } = Layout;
 

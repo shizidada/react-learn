@@ -78,7 +78,7 @@ const BaseMenu: FunctionComponent<BaseMenuProps> = ({
 
   const onSliderOpenChange = (openKeyParams: string[]) => {
     console.log('openKeyParams :: ', openKeyParams);
-    const latestOpenKey = (openKeyParams.find(key => openKeys.indexOf(key) === -1) as string) || '';
+    const latestOpenKey = (openKeyParams.find((key) => openKeys.indexOf(key) === -1) as string) || '';
     if (rootSubMenuKeys.indexOf(latestOpenKey) === -1) {
       changeSliderMenuSelect({ openKeys: openKeys as string[] });
     } else {

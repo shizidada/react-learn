@@ -1,8 +1,8 @@
+import { Avatar, Card, List } from 'antd';
 import React, { FunctionComponent, useState } from 'react';
-import { List, Avatar, Card } from 'antd';
-
-import userList from './user.json';
 import UserProfileDrawer from '../../../containers/user/UserProfileDrawer';
+import userList from './user.json';
+
 
 const UserListPage: FunctionComponent = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -11,7 +11,7 @@ const UserListPage: FunctionComponent = () => {
       <List
         dataSource={userList}
         bordered
-        renderItem={item => (
+        renderItem={(item) => (
           <List.Item
             key={item.name}
             actions={[

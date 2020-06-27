@@ -1,14 +1,14 @@
+import { Card, Col, Row } from 'antd';
 import React, { FunctionComponent } from 'react';
-import { Card, Row, Col } from 'antd';
-
 import ImportBrokenLine from '../../components/chart/ImportBrokenLine';
-
 import HomeStatisticCard from '../../containers/home/HomeStatisticCard';
 import TabContentCard from '../../containers/home/TabContentCard';
-
 import UserActivityList from '../../containers/home/UserActivityList';
-
 import './index.less';
+
+
+
+
 
 const HomePage: FunctionComponent = () => {
   return (

@@ -1,12 +1,12 @@
-import React, { FunctionComponent } from 'react';
-import { Dispatch } from 'redux';
 import { connect } from 'dva';
+import React, { FunctionComponent } from 'react';
 import { List, ListRowProps } from 'react-virtualized';
-
-import GoodForm from './GoodForm';
+import { Dispatch } from 'redux';
 import { AppState } from '../../typings';
-
+import GoodForm from './GoodForm';
 import './index.less';
+
+
 
 interface MockPageProps extends AppState {}
 

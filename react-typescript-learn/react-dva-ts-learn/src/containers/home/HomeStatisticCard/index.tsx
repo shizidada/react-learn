@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
 import { Card } from 'antd';
-
+import React, { FunctionComponent } from 'react';
 import './index.less';
+
 
 interface HomeStatisticCardProps {
   title: string;

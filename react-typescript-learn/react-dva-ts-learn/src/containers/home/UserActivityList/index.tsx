@@ -9,7 +9,7 @@ const UserActivityList: FunctionComponent = () => {
       <List
         dataSource={userList}
         bordered
-        renderItem={item => (
+        renderItem={(item) => (
           <List.Item
             key={item.name}
             actions={[

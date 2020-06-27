@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import { convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
+import React, { useState } from 'react';
 import { Editor, EditorState } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
 import './index.less';
+
 
 const DraftWysiwygEditorView = () => {
   const [editorState, setEditorState] = useState<EditorState>();

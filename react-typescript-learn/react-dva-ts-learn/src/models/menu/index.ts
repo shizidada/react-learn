@@ -1,7 +1,7 @@
 import { Model } from 'dva';
-import { getFlatMenuKeys, getDefaultCollapsedSubMenus, getRootSubMenuKey } from '../../util/pathTools';
 import { menus } from '../../config/menu.config';
 import { SliderMenuConfig } from '../../typings';
+import { getDefaultCollapsedSubMenus, getFlatMenuKeys, getRootSubMenuKey } from '../../util/pathTools';
 
 export const NAMESPACE = 'menu';
 

@@ -1,11 +1,11 @@
-import React, { FunctionComponent } from 'react';
 import { Form, Icon, Input } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
-import { Dispatch } from 'redux';
 import { connect } from 'dva';
-
-import { AppState } from '../../../typings';
+import React, { FunctionComponent } from 'react';
+import { Dispatch } from 'redux';
 import { LoginModelState } from '../../../models/login';
+import { AppState } from '../../../typings';
+
 
 const { Item } = Form;
 const { Search } = Input;
@@ -46,7 +46,7 @@ const RegisterForm: FunctionComponent<RegisterFormProps> = ({ form, isLoading, u
             minLength={6}
             maxLength={20}
             placeholder="请输入密码"
-            onChange={e => inputChangeHandle(e)}
+            onChange={(e) => inputChangeHandle(e)}
           />
         )}
       </Item>
