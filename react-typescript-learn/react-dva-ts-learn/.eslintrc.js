@@ -1,12 +1,14 @@
 'use strict';
 
 module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
   extends: ['react-app'],
-  plugins: [],
+  plugins: ['@typescript-eslint', 'eslint-comments', 'react-hooks'],
   env: {
     browser: true,
     node: true,
     es6: true
   },
-  rules: {}
+  rules: { semi: [2, 'always'], 'no-console': 1 }
 };

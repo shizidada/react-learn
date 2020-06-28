@@ -1,1 +1,5 @@
-export default class Test {}
+export default class Test {
+  public test() {
+    console.log('object');
+  }
+}
