@@ -15,10 +15,6 @@ import loginModel from './models/login';
 import menuModel from './models/menu';
 import Router from './routers';
 
-
-
-
-
 const app = dva({
   history: createHistory(),
   onError: (err, dispatch) => {

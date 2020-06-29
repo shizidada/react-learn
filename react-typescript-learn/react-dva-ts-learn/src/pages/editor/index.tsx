@@ -5,7 +5,8 @@ import React, { FunctionComponent } from 'react';
 // import SimpleMDEView from '../../containers/editor/SimpleMDEView';
 // import RichMarkdownEditorView from '../../containers/editor/RichMarkdownEditorView';
 // import MarkdownEditorLiteView from '../../containers/editor/MarkdownEditorLiteView';
-import CKEditorView from '../../containers/editor/CKEditorView';
+// import CKEditorView from '../../containers/editor/CKEditorView';
+import MarkdownEditorView from '../../containers/editor/MarkdownEditorView';
 import './index.less';
 
 const EditorPage: FunctionComponent = () => {
@@ -17,7 +18,8 @@ const EditorPage: FunctionComponent = () => {
       {/* <SimpleMDEView /> */}
       {/* <RichMarkdownEditorView /> */}
       {/* <MarkdownEditorLiteView /> */}
-      <CKEditorView />
+      {/* <CKEditorView /> */}
+      <MarkdownEditorView />
     </div>
   );
 };

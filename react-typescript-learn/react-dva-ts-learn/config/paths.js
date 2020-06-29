@@ -62,7 +62,9 @@ module.exports = {
   testsSetup: resolveModule(resolveApp, 'src/setupTests'),
   proxySetup: resolveApp('src/setupProxy.js'),
   appNodeModules: resolveApp('node_modules'),
-  publicUrlOrPath
+  publicUrlOrPath,
+
+  appEditorJs: resolveModule(resolveApp, 'src/editor'),
 };
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

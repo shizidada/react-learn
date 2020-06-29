@@ -28,6 +28,7 @@ declare const System: System;
 declare global {
   interface Window {
     less: any;
+    editormd: any
   }
 }
 

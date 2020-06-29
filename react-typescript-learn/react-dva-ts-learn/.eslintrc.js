@@ -10,5 +10,5 @@ module.exports = {
     node: true,
     es6: true
   },
-  rules: { semi: [2, 'always'], 'no-console': 1 }
+  rules: { semi: [2, 'always'], 'no-console': 1, 'react/style-prop-object': 2 }
 };
