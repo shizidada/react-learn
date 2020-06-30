@@ -1,6 +1,6 @@
 // import * as React from "react";
 // import 'lib-flexible/flexible.js';
-import 'animate.css/animate.css';
+// import 'animate.css/animate.css';
 import dva, { Router as DvaRouter } from 'dva';
 import { createBrowserHistory as createHistory } from 'history';
 import 'normalize.css/normalize.css';

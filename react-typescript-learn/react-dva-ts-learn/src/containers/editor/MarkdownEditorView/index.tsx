@@ -1,11 +1,10 @@
+import 'github-markdown-css/github-markdown.css';
 import React, { FunctionComponent, useEffect } from 'react';
 import './index.less';
 
-
-
 const MarkDownEditorView: FunctionComponent = () => {
   useEffect(() => {
-    // const testEditor = 
+    // const testEditor =
     window.editormd('test-editormd', {
       width: '90%',
       height: 900
@@ -14,7 +13,9 @@ const MarkDownEditorView: FunctionComponent = () => {
 
   return (
     <div id="test-editormd">
-      <textarea style={{ display: 'none' }}>###Hello world!</textarea>
+      <article className="markdown-body">
+        <textarea style={{ display: 'none' }}>###Hello world!</textarea>
+      </article>
     </div>
   );
 };
