@@ -1,10 +1,14 @@
 import React, { FunctionComponent, useEffect } from 'react';
+import './index.less';
+
+
 
 const MarkDownEditorView: FunctionComponent = () => {
   useEffect(() => {
-    const testEditor = window.editormd('test-editormd', {
+    // const testEditor = 
+    window.editormd('test-editormd', {
       width: '90%',
-      height: 640
+      height: 900
     });
   });
 

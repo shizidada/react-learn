@@ -5,6 +5,7 @@ import H from 'history';
 import React, { createElement } from 'react';
 import Loadable from 'react-loadable';
 import BasicLayout from '../layouts/BasicLayout';
+import EditorLayout, { EditorLayoutProps } from '../layouts/EditorLayout';
 import UserLayout, { UserLayoutProps } from '../layouts/UserLayout';
 import Error from '../pages/error';
 
@@ -66,7 +67,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
         <Route
           path="/editor"
           render={(routeProps) =>
-            createElement<UserLayoutProps>(UserLayout, {
+            createElement<EditorLayoutProps>(EditorLayout, {
               ...routeProps,
               view: createElement<any>(
                 Loadable({
