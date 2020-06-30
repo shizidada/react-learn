@@ -5,7 +5,8 @@
   <meta charset="utf-8" />
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#1890ff" />
   <!-- <title><%= htmlWebpackPlugin.options.title%></title> -->
@@ -15,6 +16,11 @@
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <link rel="stylesheet/less" type="text/css" href="%PUBLIC_URL%/color.less" />
+
+  <link rel="stylesheet" href="./editor.md/css/editormd.min.css" />
+  <link rel="stylesheet" href="./editor.md/css/editormd.logo.min.css" />
+  <link rel="stylesheet" href="./editor.md/css/editormd.preview.min.css" />
+  <link rel="stylesheet" href="./editor.md/lib/codemirror/lib/codemirror.css" />
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -25,6 +31,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>Moose</title>
+
+  <script src="./editor.md/js/jquery.min.js"></script>
+  <script src="./editor.md/lib/flowchart.min.js"></script>
+  <script src="./editor.md/lib/jquery.flowchart.min.js"></script>
+  <script src="./editor.md/lib/prettify.min.js"></script>
+  <script src="./editor.md/lib/marked.min.js"></script>
+  <script src="./editor.md/lib/underscore.min.js"></script>
+  <script src="./editor.md/lib/raphael.min.js"></script>
+  <script src="./editor.md/lib/sequence-diagram.min.js"></script>
+  <script src="./editor.md/lib/codemirror/lib/codemirror.js"></script>
+  <script src="./editor.md/editormd.js"></script>
 </head>
 
 <body>
