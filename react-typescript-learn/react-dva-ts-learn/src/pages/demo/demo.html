@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>背景连线动画</title>
 
+    <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+
     <style>
       html,
       body {
@@ -270,11 +272,19 @@
 
       init();
 
-      /*Credits and aknowledgements:
-Original Idea and Design by Luca Luzzatti
-
-Optimizing tips from Benjamin K?stner
-General tips from Salvatore Previti*/
+      /*
+        Credits and aknowledgements:
+        Original Idea and Design by Luca Luzzatti
+        Optimizing tips from Benjamin K?stner
+        General tips from Salvatore Previti
+      */
+    </script>
+    <script>
+      // 2100049389
+      var captcha = new TencentCaptcha('123', function(res) {
+        console.log(res)
+      });
+      // captcha.show();
     </script>
   </body>
 </html>

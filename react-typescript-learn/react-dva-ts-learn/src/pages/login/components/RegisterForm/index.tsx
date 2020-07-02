@@ -3,8 +3,8 @@ import { FormComponentProps } from 'antd/lib/form';
 import { connect } from 'dva';
 import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
-import { LoginModelState } from '../../../models/login';
-import { AppState } from '../../../typings';
+import { LoginModelState } from '../../../../models/login';
+import { AppState } from '../../../../typings';
 
 
 const { Item } = Form;

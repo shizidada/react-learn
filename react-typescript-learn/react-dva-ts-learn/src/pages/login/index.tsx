@@ -2,17 +2,14 @@ import { Button, Divider, Form, Icon, Typography } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import { connect } from 'dva';
 import { Location } from 'history';
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import Websocket from '../../components/websocket';
-import LoginForm from '../../containers/login/LoginForm';
-import RegisterForm from '../../containers/register/RegisterForm';
 import { LoginModelState } from '../../models/login';
 import { AppState } from '../../typings';
+import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
 import './index.less';
-
-
-
 
 const { Item } = Form;
 const { Title } = Typography;
@@ -34,10 +31,6 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({
   register,
   updateLoginStore
 }) => {
-  const thirdAccountLogin = (type: string) => {
-    console.log('thirdAccountLogin', type);
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     form.validateFields((err, values) => {
@@ -77,33 +70,42 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({
     form.resetFields();
   };
 
-  return (
-    <div className="login-page-container">
-      <Form onSubmit={handleSubmit} className="login-form-wrapper">
-        <Title level={2}>用户{loginType === 'login' ? '登录' : '注册'}</Title>
-        {loginType === 'login' ? <LoginForm form={form} /> : <RegisterForm form={form} />}
-        {/* error tips */}
-        {errorMessage !== '' && <span className="login-failed-message">{errorMessage}</span>}
-        <Item>
-          <Button loading={isLoading} type="primary" htmlType="submit" className="login-button">
-            {loginType === 'login' ? '登录' : '注册'}
-          </Button>
-        </Item>
-        <div className="login-form-register">
-          {/* eslint-disable-next-line no-script-url */}
-          <a href="javascript:void(0)" onClick={() => changeType()}>
-            {loginType === 'login' ? '立即注册' : '返回登录'}
-          </a>
-        </div>
-        <Item className="login-third">
-          <Divider />
-          <Icon type="github" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('github')} />
-          <Icon type="qq" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('qq')} />
-          <Icon type="wechat" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('wechat')} />
-        </Item>
-      </Form>
+  const thirdAccountLogin = (type: string) => {
+    console.log('thirdAccountLogin', type);
+  };
 
-      <Websocket />
+  useEffect(() => {
+    require('../../components/CircleCanvas');
+  });
+
+  return (
+    <div id="wrapper">
+      <canvas id="canvas" width="1950px" height="900px"></canvas>
+      <canvas id="canvasbg" width="1950px" height="900px"></canvas>
+      <div className="login-page-container">
+        <Form onSubmit={handleSubmit} className="login-form-wrapper">
+          <Title level={2}>{loginType === 'login' ? 'Login' : 'Register'}</Title>
+          {loginType === 'login' ? <LoginForm form={form} /> : <RegisterForm form={form} />}
+          {/* error tips */}
+          {errorMessage !== '' && <span className="login-failed-message">{errorMessage}</span>}
+          <Item>
+            <Button loading={isLoading} type="primary" htmlType="submit" className="login-button">
+              {loginType === 'login' ? 'Login' : 'Register'}
+            </Button>
+          </Item>
+          <Item className="login-form-register">
+            <span onClick={() => changeType()}>{loginType === 'login' ? 'Register' : 'Login'}</span>
+          </Item>
+          <Item className="login-third">
+            <Divider />
+            <Icon type="github" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('github')} />
+            <Icon type="qq" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('qq')} />
+            <Icon type="wechat" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('wechat')} />
+          </Item>
+        </Form>
+
+        <Websocket />
+      </div>
     </div>
   );
 };

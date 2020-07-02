@@ -3,12 +3,9 @@ import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { connect } from 'dva';
 import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
-import { LoginModelState } from '../../../models/login';
-import { AppState } from '../../../typings';
+import { LoginModelState } from '../../../../models/login';
+import { AppState } from '../../../../typings';
 import './index.less';
-
-
-
 
 const { Item } = Form;
 
@@ -33,7 +30,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="请输入用户名"
-            onChange={(e) => inputChangeHandle(e)}
+            onChange={e => inputChangeHandle(e)}
           />
         )}
       </Item>
@@ -46,19 +43,16 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             placeholder="请输入密码"
-            onChange={(e) => inputChangeHandle(e)}
+            onChange={e => inputChangeHandle(e)}
           />
         )}
       </Item>
-      <Item>
+      <Item className="login-remember-item">
         {getFieldDecorator('remember', {
           valuePropName: 'checked',
           initialValue: true
-        })(<Checkbox>记住我</Checkbox>)}
-        {/* eslint-disable-next-line no-script-url */}
-        <a className="login-form-forgot" href="javascript:void(0)">
-          忘记密码
-        </a>
+        })(<Checkbox>Remember Me</Checkbox>)}
+        <span className="login-forgot-pwd">忘记密码</span>
       </Item>
     </div>
   );
