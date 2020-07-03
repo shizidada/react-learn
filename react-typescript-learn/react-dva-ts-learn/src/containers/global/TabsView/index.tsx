@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from 'react';
 // , Icon, Row, Col, Avatar
 import { Tabs } from 'antd';
-
+import React, { FunctionComponent } from 'react';
 // import SortableComponent from './SortableComponent';
-
 import './index.less';
+
 
 const { TabPane } = Tabs;
 
@@ -16,7 +15,7 @@ const MooseTabsView: FunctionComponent<MooseTabsViewProps> = () => {
   };
 
   return (
-    <Tabs className="moose-tabs-view-container" defaultActiveKey="1" onChange={callback}>
+    <Tabs className="fas-tabs-view-container" defaultActiveKey="1" onChange={callback}>
       <TabPane tab="Tab 1" key="1">
         Content of Tab Pane 1
       </TabPane>

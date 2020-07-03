@@ -1,15 +1,15 @@
+import { Layout } from 'antd';
+import { connect } from 'dva';
+import { Link } from 'dva/router';
 import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
-import { connect } from 'dva';
-import { Layout } from 'antd';
-
+import { MenuModelState } from '../../../models/menu';
 // eslint-disable-next-line import/extensions
 import { AppState } from '../../../typings';
-import { MenuModelState } from '../../../models/menu';
 import BaseMenu from './BaseMenu';
-
 import './index.less';
-import { Link } from 'dva/router';
+
+
 
 const { Sider } = Layout;
 
@@ -28,7 +28,7 @@ const SliderMenu: FunctionComponent<SliderMenuProps> = ({ collapsed, onCollapse 
   return (
     <Sider className="slider-menu-container" collapsed={collapsed} onCollapse={onSiderCollapseHandle}>
       <Link to="/index.html">
-        <div className="slider-menu-logo">M</div>
+        <div className="slider-menu-logo">FaS</div>
       </Link>
       <BaseMenu />
     </Sider>

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 30px;
+  height: 40px;
   box-sizing: border-box;
   overflow: hidden;
   padding-left: 2px;
@@ -75,11 +75,17 @@ body > .draggable-tabs-bar-horizontal-item {
   align-items: center;
   position: relative;
   height: 100%;
-  min-width: 114px;
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
   font-size: 14px;
+  padding-left: 8px;
+}
+
+.draggable-tabs-bar-horizontal-item:hover {
+  .close-wrapper {
+    visibility: visible;
+  }
 }
 
 .draggable-tabs-bar-horizontal-item .close-wrapper {
@@ -87,10 +93,15 @@ body > .draggable-tabs-bar-horizontal-item {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 16px;
+  width: 32px;
   color: rgba(0, 0, 0, 0.45);
-  font-size: 12px;
   cursor: pointer;
+  visibility: hidden;
+}
+
+.draggable-tabs-bar-horizontal-item .close-wrapper .anticon {
+  font-size: 16px;
+  color: #ff4d4f;
 }
 
 .draggable-tabs-bar-horizontal-item .close-wrapper:after {

@@ -41,7 +41,7 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({ collapsed, updat
   };
 
   const menu = (
-    <Menu className="moose-manger-header-menu" selectedKeys={[]} onClick={onMenuClick}>
+    <Menu className="fas-manger-header-menu" selectedKeys={[]} onClick={onMenuClick}>
       <Menu.Item key="userCenter">
         <Icon type="user" />
         个人中心
@@ -58,9 +58,9 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({ collapsed, updat
     </Menu>
   );
   return (
-    <Row className="moose-manger-header-container">
+    <Row className="fas-manger-header-container">
       <Col span={2}>
-        <span className="moose-manger-header-trigger" onClick={() => onHeaderTrigger()}>
+        <span className="fas-manger-header-trigger" onClick={() => onHeaderTrigger()}>
           <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
         </span>
       </Col>
@@ -68,7 +68,7 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({ collapsed, updat
         <MooseBreadcrumb />
       </Col>
 
-      <Col span={6} className="moose-manger-header-right" onClick={onHeaderRightClick}>
+      <Col span={6} className="fas-manger-header-right" onClick={onHeaderRightClick}>
         <Icon type="bell" style={{ fontSize: 18 }} />
         <ColorPicker type="chrome" displayColorPicker={displayColorPicker} />
         <Dropdown overlay={menu} trigger={['hover']}>

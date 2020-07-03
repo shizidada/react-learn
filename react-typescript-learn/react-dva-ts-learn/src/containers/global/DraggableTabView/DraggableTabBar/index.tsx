@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Dispatch } from 'redux';
-import { connect } from 'dva';
 import { Icon } from 'antd';
-import { SortableContainer, SortableElement, SortStart, SortEnd, SortEvent } from 'react-sortable-hoc';
 import classNames from 'classnames';
-import { SliderMenuConfig, AppState } from '../../../../typings';
-
+import { connect } from 'dva';
+import React, { Component } from 'react';
+import { SortableContainer, SortableElement, SortEnd, SortEvent, SortStart } from 'react-sortable-hoc';
+import { Dispatch } from 'redux';
+import { AppState, SliderMenuConfig } from '../../../../typings';
 import './index.less';
+
 
 const SortableItem = SortableElement((props: any) => {
   const { children } = props;
@@ -31,7 +31,8 @@ const SortableContainerList = SortableContainer((props: any) => {
           </div>,
           closable ? (
             <div key="close" className="close-wrapper" onClick={(e) => onClose && onClose(item, e)}>
-              <Icon type="close" />
+              {/* <Icon type="close" /> */}
+              <Icon type="close-circle" />
             </div>
           ) : null
         ];
@@ -111,8 +112,8 @@ class DraggableTabBar extends Component<DraggableTabBarProps, DraggableTabBarSta
   }
 
   componentDidUpdate(prevProps: any) {
-    const { dataSource } = this.props;
-    const { dataSource: prevDataSource } = prevProps;
+    // const { dataSource } = this.props;
+    // const { dataSource: prevDataSource } = prevProps;
     console.log('componentDidUpdate dataSource :: ', this.props, ' prevDataSource :: ', prevProps);
     // tabs 个数有变，调整宽度
     // if (prevDataSource.length !== dataSource.length) {}
