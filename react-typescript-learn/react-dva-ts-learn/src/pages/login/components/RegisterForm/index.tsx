@@ -6,7 +6,6 @@ import { Dispatch } from 'redux';
 import { LoginModelState } from '../../../../models/login';
 import { AppState } from '../../../../typings';
 
-
 const { Item } = Form;
 const { Search } = Input;
 
@@ -30,6 +29,7 @@ const RegisterForm: FunctionComponent<RegisterFormProps> = ({ form, isLoading, u
           <Input
             type="text"
             maxLength={11}
+            size="large"
             prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="请输入手机号码"
           />
@@ -45,8 +45,9 @@ const RegisterForm: FunctionComponent<RegisterFormProps> = ({ form, isLoading, u
             type="password"
             minLength={6}
             maxLength={20}
+            size="large"
             placeholder="请输入密码"
-            onChange={(e) => inputChangeHandle(e)}
+            onChange={e => inputChangeHandle(e)}
           />
         )}
       </Item>
@@ -58,6 +59,7 @@ const RegisterForm: FunctionComponent<RegisterFormProps> = ({ form, isLoading, u
           <Input.Password
             minLength={6}
             maxLength={20}
+            size="large"
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             placeholder="请再次输入密码"
@@ -72,6 +74,7 @@ const RegisterForm: FunctionComponent<RegisterFormProps> = ({ form, isLoading, u
           <Search
             placeholder="请输入验证码"
             enterButton="发送验证码"
+            size="large"
             maxLength={6}
             // onSearch={value => console.log(value)}
           />

@@ -1,4 +1,4 @@
-import { Checkbox, Form, Icon, Input } from 'antd';
+import { Form, Icon, Input } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { connect } from 'dva';
 import React, { FunctionComponent } from 'react';
@@ -28,6 +28,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }
           rules: [{ required: true, message: '请输入用户名' }]
         })(
           <Input
+            size="large"
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             placeholder="请输入用户名"
             onChange={e => inputChangeHandle(e)}
@@ -40,6 +41,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }
           rules: [{ required: true, message: '请输入密码' }]
         })(
           <Input.Password
+            size="large"
             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             placeholder="请输入密码"
@@ -47,13 +49,13 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ form, updateLoginStore }
           />
         )}
       </Item>
-      <Item className="login-remember-item">
+      {/* <Item className="login-remember-item">
         {getFieldDecorator('remember', {
           valuePropName: 'checked',
           initialValue: true
         })(<Checkbox>Remember Me</Checkbox>)}
         <span className="login-forgot-pwd">忘记密码</span>
-      </Item>
+      </Item> */}
     </div>
   );
 };

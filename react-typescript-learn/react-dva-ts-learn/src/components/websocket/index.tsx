@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useEffect } from 'react';
 import { notification } from 'antd';
+import React, { FunctionComponent, useEffect } from 'react';
 
 interface MessageItem {
   title: string;

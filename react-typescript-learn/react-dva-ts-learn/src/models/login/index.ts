@@ -1,7 +1,7 @@
 import { Model } from 'dva';
 import { routerRedux } from 'dva/router';
 import { MD5 } from '../../util/MD5Util';
-import { login, register } from './service';
+import { register } from './service';
 
 
 
@@ -9,7 +9,7 @@ import { login, register } from './service';
 
 export const NAMESPACE = 'login';
 
-// const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
+const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
 
 export interface LoginModelType extends Model {
   state: LoginModelState;
@@ -45,20 +45,31 @@ const LoginModel: LoginModelType = {
       // let state: LoginModelState = yield select((state: AppState) => state[NAMESPACE]);
       const { accountName } = payload;
       let { password } = payload;
-      password = MD5(password);
+      // password = MD5(password);
       try {
-        const data = yield call(login, { accountName, password });
-        console.log('login data :: ', data);
-        if (data.status) {
-          yield put(routerRedux.replace('/'));
+        if (accountName === 'admin' && password === 'admin') {
+          yield call(delay, 1000);
+          yield put(routerRedux.replace('/home'));
           yield put({ type: 'updateLoginStore', payload: { isLoading: false } });
-        } else {
+        }else {
           // login failed
           yield put({
             type: 'updateLoginStore',
-            payload: { errorMessage: data.message, isLoading: false }
+            payload: { errorMessage: '账号或密码错误', isLoading: false }
           });
         }
+        // const data = yield call(login, { accountName, password });
+        // console.log('login data :: ', data);
+        // if (data.status) {
+        //   yield put(routerRedux.replace('/'));
+        //   yield put({ type: 'updateLoginStore', payload: { isLoading: false } });
+        // } else {
+        //   // login failed
+        //   yield put({
+        //     type: 'updateLoginStore',
+        //     payload: { errorMessage: data.message, isLoading: false }
+        //   });
+        // }
       } catch (error) {
         yield put({
           type: 'updateLoginStore',

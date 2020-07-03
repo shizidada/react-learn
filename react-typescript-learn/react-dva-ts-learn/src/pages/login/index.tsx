@@ -1,10 +1,9 @@
-import { Button, Divider, Form, Icon, Typography } from 'antd';
+import { Button, Form, Typography } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import { connect } from 'dva';
 import { Location } from 'history';
 import React, { useEffect } from 'react';
 import { Dispatch } from 'redux';
-import Websocket from '../../components/websocket';
 import { LoginModelState } from '../../models/login';
 import { AppState } from '../../typings';
 import LoginForm from './components/LoginForm';
@@ -83,28 +82,30 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({
       <canvas id="canvas" width="1950px" height="900px"></canvas>
       <canvas id="canvasbg" width="1950px" height="900px"></canvas>
       <div className="login-page-container">
-        <Form onSubmit={handleSubmit} className="login-form-wrapper">
-          <Title level={2}>{loginType === 'login' ? 'Login' : 'Register'}</Title>
+        <Form onSubmit={handleSubmit} className="login-form-wrap">
+          <div className="login-logo-wrap">
+            <Title level={2}>{loginType === 'login' ? 'Login' : 'Register'}</Title>
+          </div>
           {loginType === 'login' ? <LoginForm form={form} /> : <RegisterForm form={form} />}
           {/* error tips */}
           {errorMessage !== '' && <span className="login-failed-message">{errorMessage}</span>}
           <Item>
-            <Button loading={isLoading} type="primary" htmlType="submit" className="login-button">
+            <Button loading={isLoading} size="large" type="primary" htmlType="submit" className="login-button">
               {loginType === 'login' ? 'Login' : 'Register'}
             </Button>
           </Item>
-          <Item className="login-form-register">
+
+          {/* <Item className="login-form-register">
             <span onClick={() => changeType()}>{loginType === 'login' ? 'Register' : 'Login'}</span>
-          </Item>
-          <Item className="login-third">
+          </Item> */}
+
+          {/* <Item className="login-third">
             <Divider />
             <Icon type="github" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('github')} />
             <Icon type="qq" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('qq')} />
             <Icon type="wechat" style={{ fontSize: 20 }} onClick={() => thirdAccountLogin('wechat')} />
-          </Item>
+          </Item> */}
         </Form>
-
-        <Websocket />
       </div>
     </div>
   );
