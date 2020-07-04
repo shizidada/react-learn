@@ -28,6 +28,8 @@ const BasicLayout: FunctionComponent<BasicLayoutProps> = ({ location, history, l
   const initTheme = () => {
     const themeStyleContent = window.localStorage.getItem('THEME_STYLE_CONTENT');
     if (themeStyleContent) {
+      const oldStyle = document.getElementById(OLD_LESS_ID);
+      if (oldStyle) return;
       const themeStyle = document.createElement('style');
       themeStyle.type = 'text/css';
       themeStyle.id = OLD_LESS_ID;

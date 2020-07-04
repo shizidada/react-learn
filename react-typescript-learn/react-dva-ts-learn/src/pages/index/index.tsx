@@ -1,17 +1,13 @@
-import { Layout } from 'antd';
+import { Layout, Button } from 'antd';
 import { connect } from 'dva';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Dispatch } from 'redux';
-import IndexHeader from '../../containers/index/IndexHeader';
+import IndexHeader from '../../containers/header/IndexHeader';
 import MainContent from '../../containers/index/MainContent';
 import SelectionRow from '../../containers/index/SelectionRow';
 import { AppState } from '../../typings';
 import './index.less';
 import './lodash.test';
-
-
-
-
 
 const { Content, Footer } = Layout;
 

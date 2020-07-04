@@ -15,7 +15,7 @@ const PersonalCenterPage: FunctionComponent = () => {
   };
 
   return (
-    <Card className="personal-center-page-contaienr">
+    <Card className="personal-center-page-container">
       <div className="personal-header-wrapper">
         <Row className="picture-picture-wrapper">
           <span className="upload-picture-button">

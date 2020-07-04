@@ -1,13 +1,11 @@
-import { Input, Layout } from 'antd';
+import { Input, Layout, Avatar } from 'antd';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Dispatch } from 'redux';
 // eslint-disable-next-line import/extensions
 import { AppState } from '../../../typings';
 import './index.less';
-
-
 
 const { Header } = Layout;
 
@@ -16,7 +14,7 @@ interface IndexHeaderProps extends AppState {
   updateMenuStore: (collapsed?: object) => void;
 }
 
-const IndexHeader: FunctionComponent<IndexHeaderProps> = ({ updateMenuStore, collapsed }) => {
+const IndexHeader: FunctionComponent<IndexHeaderProps> = ({ isLogin }) => {
   return (
     <Header className="header-container">
       <div className="header-wrapper">
@@ -41,10 +39,20 @@ const IndexHeader: FunctionComponent<IndexHeaderProps> = ({ updateMenuStore, col
               <Input.Search />
             </li>
 
-            <li className="nav-item nav-auth">
-              <span className="login">登录</span>
-              <span>注册</span>
-            </li>
+            {isLogin ? (
+              <li className="nav-item nav-auth">
+                <Link to="/home">
+                  <Avatar src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-item nav-auth">
+                <Link to="/login" className="login">
+                  登录
+                </Link>
+                <Link to="/register">注册</Link>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
@@ -55,7 +63,7 @@ const IndexHeader: FunctionComponent<IndexHeaderProps> = ({ updateMenuStore, col
 export default connect(
   (state: AppState) => {
     return {
-      ...state.menu
+      isLogin: state.login.isLogin
     };
   },
   (dispatch: Dispatch) => ({

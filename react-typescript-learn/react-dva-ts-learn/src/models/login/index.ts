@@ -19,15 +19,17 @@ export interface LoginModelState {
   loginType: string;
   isLoading: boolean;
   errorMessage: string;
+  isLogin: boolean;
 }
 
 const LoginModel: LoginModelType = {
   namespace: NAMESPACE,
 
   state: {
-    loginType: 'login', // login registe reset
+    loginType: 'login', // login register reset
     isLoading: false,
-    errorMessage: ''
+    errorMessage: '',
+    isLogin: false,
   },
 
   reducers: {

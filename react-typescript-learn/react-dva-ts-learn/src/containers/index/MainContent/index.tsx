@@ -5,8 +5,6 @@ import CouponCard from '../../../components/common/CouponCard';
 import ContentItem from '../../../components/content/ContentItem';
 import './index.less';
 
-
-
 const coupons = [
   {
     id: 10001,
@@ -65,7 +63,7 @@ const MainContent: FunctionComponent = () => {
     <div className="main-content-wrapper">
       <div className="main-content">
         <Row>
-          <Col span={17} className="content-left">
+          <Col span={16} className="content-left">
             {contentList.length > 0 && (
               <TransitionGroup>
                 {contentList.map((item: string, index: number) => {
@@ -74,7 +72,7 @@ const MainContent: FunctionComponent = () => {
               </TransitionGroup>
             )}
             <div className="coupon-card-container">
-              {coupons.map((item) => {
+              {coupons.map(item => {
                 return (
                   <CouponCard
                     key={String(item.id)}
@@ -87,7 +85,7 @@ const MainContent: FunctionComponent = () => {
             </div>
           </Col>
 
-          <Col span={6} className="content-right">
+          <Col className="content-right" span={7} offset={1}>
             <Card title="About">
               <Button onClick={handleAddContent}>ADD</Button>
               <Button onClick={handleCleanContent}>CLEAN</Button>

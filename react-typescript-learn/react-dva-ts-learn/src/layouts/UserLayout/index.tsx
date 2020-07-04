@@ -2,6 +2,8 @@
 import { Layout } from 'antd';
 import React, { FunctionComponent } from 'react';
 
+import './index.less';
+
 const { Content } = Layout;
 
 export interface UserLayoutProps {
@@ -10,7 +12,7 @@ export interface UserLayoutProps {
 
 const UserLayout: FunctionComponent<UserLayoutProps> = ({ view }) => {
   return (
-    <Layout>
+    <Layout className="user-layout-container">
       <Content>{view}</Content>
     </Layout>
   );
