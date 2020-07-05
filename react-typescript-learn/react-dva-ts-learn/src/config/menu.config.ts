@@ -28,6 +28,7 @@ export const menus: SliderMenuConfig[] = [
     icon: 'crown',
     name: '个人中心',
     path: '/profile',
+    hide: true,
     children: [{ icon: 'skin', name: '个人信息', closable: true, path: '/profile/personal' }]
   },
   {

@@ -1,6 +1,7 @@
 // import { Location } from "history";
 import { Layout } from 'antd';
 import React, { FunctionComponent } from 'react';
+import IndexHeader from '../../containers/header/IndexHeader';
 
 import './index.less';
 
@@ -13,7 +14,8 @@ export interface UserLayoutProps {
 const UserLayout: FunctionComponent<UserLayoutProps> = ({ view }) => {
   return (
     <Layout className="user-layout-container">
-      <Content>{view}</Content>
+      <IndexHeader />
+      <Content className="user-layout-content">{view}</Content>
     </Layout>
   );
 };

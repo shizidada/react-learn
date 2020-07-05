@@ -7,9 +7,9 @@ import Loadable from 'react-loadable';
 import BasicLayout from '../layouts/BasicLayout';
 import EditorLayout, { EditorLayoutProps } from '../layouts/EditorLayout';
 import UserLayout, { UserLayoutProps } from '../layouts/UserLayout';
+import BlankLayout, { BlankLayoutProps } from '../layouts/BlankLayout';
+
 import Error from '../pages/error';
-
-
 
 const { ConnectedRouter } = routerRedux;
 
@@ -32,7 +32,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
       <Switch>
         <Route
           path="/index.html"
-          render={(routeProps) =>
+          render={routeProps =>
             createElement<UserLayoutProps>(UserLayout, {
               ...routeProps,
               view: createElement<any>(
@@ -48,9 +48,26 @@ function RouterConfig({ history, app }: RouterConfigProps) {
           }
         />
         <Route
-          path="/login"
-          render={(routeProps) =>
+          path="/detail"
+          render={routeProps =>
             createElement<UserLayoutProps>(UserLayout, {
+              ...routeProps,
+              view: createElement<any>(
+                Loadable({
+                  loader: () => import(/* webpackChunkName: "detail.index" */ '../pages/detail'),
+                  loading() {
+                    return <Loading />;
+                  }
+                }),
+                { ...routeProps }
+              )
+            })
+          }
+        />
+        <Route
+          path="/login"
+          render={routeProps =>
+            createElement<UserLayoutProps>(BlankLayout, {
               ...routeProps,
               view: createElement<any>(
                 Loadable({
@@ -64,9 +81,10 @@ function RouterConfig({ history, app }: RouterConfigProps) {
             })
           }
         />
+
         <Route
           path="/editor"
-          render={(routeProps) =>
+          render={routeProps =>
             createElement<EditorLayoutProps>(EditorLayout, {
               ...routeProps,
               view: createElement<any>(
@@ -84,7 +102,7 @@ function RouterConfig({ history, app }: RouterConfigProps) {
 
         <Route
           path="/video"
-          render={(routeProps) =>
+          render={routeProps =>
             createElement<UserLayoutProps>(UserLayout, {
               ...routeProps,
               view: createElement<any>(
@@ -99,8 +117,8 @@ function RouterConfig({ history, app }: RouterConfigProps) {
             })
           }
         />
-        <Route path="/error" render={(routeProps) => createElement<any>(Error, { ...routeProps })} />
-        <Route path="/" render={(routeProps) => createElement<any>(BasicLayout, { ...routeProps })} />
+        <Route path="/error" render={routeProps => createElement<any>(Error, { ...routeProps })} />
+        <Route path="/" render={routeProps => createElement<any>(BasicLayout, { ...routeProps })} />
       </Switch>
     </ConnectedRouter>
   );

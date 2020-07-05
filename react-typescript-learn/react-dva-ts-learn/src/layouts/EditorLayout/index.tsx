@@ -6,7 +6,7 @@ export interface EditorLayoutProps {
 }
 
 const EditorLayout: FunctionComponent<EditorLayoutProps> = ({ view }) => {
-  return <div>{view}</div>;
+  return <div className="editor-layout-container">{view}</div>;
 };
 
 export default EditorLayout;

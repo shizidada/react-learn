@@ -16,9 +16,7 @@ interface IndexPageProps extends AppState {}
 const IndexPage: FunctionComponent<IndexPageProps> = ({ home }) => {
   return (
     <div className="index-page-container">
-      <IndexHeader />
-
-      <Content className="content-container">
+      <Content className="index-page-content">
         <nav className="view-nav">
           <ul className="view-list">
             <li className="nav-item active">推荐</li>

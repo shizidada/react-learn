@@ -1,14 +1,13 @@
 import { Avatar, Col, Dropdown, Icon, Menu, Row } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Dispatch } from 'redux';
 import ColorPicker from '../../../components/ColorPicker';
 import { AppState } from '../../../typings';
 import MooseBreadcrumb from '../../global/Breadcrumb';
 import './index.less';
-
-
 
 interface ManagerHeaderProps extends AppState {
   onSliderMenuToggle: () => void;
@@ -44,7 +43,9 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({ collapsed, updat
     <Menu className="fas-manger-header-menu" selectedKeys={[]} onClick={onMenuClick}>
       <Menu.Item key="userCenter">
         <Icon type="user" />
-        个人中心
+        <span>
+          <Link to="/profile/personal">个人中心</Link>
+        </span>
       </Menu.Item>
       <Menu.Item key="userinfo">
         <Icon type="setting" />
@@ -53,7 +54,9 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({ collapsed, updat
       <Menu.Divider />
       <Menu.Item key="logout">
         <Icon type="logout" />
-        退出登录
+        <span>
+          <Link to="/logout">退出登录</Link>
+        </span>
       </Menu.Item>
     </Menu>
   );
@@ -71,6 +74,7 @@ const ManagerHeader: FunctionComponent<ManagerHeaderProps> = ({ collapsed, updat
       <Col span={6} className="fas-manger-header-right" onClick={onHeaderRightClick}>
         <Icon type="bell" style={{ fontSize: 18 }} />
         <ColorPicker type="chrome" displayColorPicker={displayColorPicker} />
+        {/* visible */}
         <Dropdown overlay={menu} trigger={['hover']}>
           <span className="action">
             {/* <Avatar className="avatar" size="small" icon="user" /> */}

@@ -2,7 +2,7 @@ import { Button, Card, Col, Row } from 'antd';
 import React, { FunctionComponent, useState } from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import CouponCard from '../../../components/common/CouponCard';
-import ContentItem from '../../../components/content/ContentItem';
+import ContentItem from './components/ContentItem';
 import './index.less';
 
 const coupons = [
@@ -72,7 +72,7 @@ const MainContent: FunctionComponent = () => {
               </TransitionGroup>
             )}
             <div className="coupon-card-container">
-              {coupons.map(item => {
+              {coupons.map((item) => {
                 return (
                   <CouponCard
                     key={String(item.id)}
@@ -85,7 +85,7 @@ const MainContent: FunctionComponent = () => {
             </div>
           </Col>
 
-          <Col className="content-right" span={7} offset={1}>
+          <Col span={7} className="content-right">
             <Card title="About">
               <Button onClick={handleAddContent}>ADD</Button>
               <Button onClick={handleCleanContent}>CLEAN</Button>
