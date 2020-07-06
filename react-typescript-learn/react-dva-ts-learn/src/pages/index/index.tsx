@@ -1,8 +1,7 @@
-import { Layout, Button } from 'antd';
+import { Layout } from 'antd';
 import { connect } from 'dva';
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
-import IndexHeader from '../../containers/header/IndexHeader';
 import MainContent from '../../containers/index/MainContent';
 import SelectionRow from '../../containers/index/SelectionRow';
 import { AppState } from '../../typings';
@@ -24,13 +23,12 @@ const IndexPage: FunctionComponent<IndexPageProps> = ({ home }) => {
           </ul>
         </nav>
 
-        <div className="content-wrapper">
+        <div className="index-content-wrapper">
           <SelectionRow />
 
           <MainContent />
         </div>
       </Content>
-      <Footer className="footer-container">create by 江景 2020</Footer>
     </div>
   );
 };

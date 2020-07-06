@@ -41,7 +41,7 @@ const coupons = [
 ];
 
 const MainContent: FunctionComponent = () => {
-  const [contentList, setContentList] = useState<string[]>([`${Date.now()}`]);
+  const [contentList, setContentList] = useState<string[]>(['1', '2', '3', '4', '5']);
 
   const [couponInfo, setCouponInfo] = useState();
 
@@ -60,8 +60,8 @@ const MainContent: FunctionComponent = () => {
   };
 
   return (
-    <div className="main-content-wrapper">
-      <div className="main-content">
+    <div className="main-content-container">
+      <div className="main-content-wrapper">
         <Row>
           <Col span={16} className="content-left">
             {contentList.length > 0 && (
@@ -72,7 +72,7 @@ const MainContent: FunctionComponent = () => {
               </TransitionGroup>
             )}
             <div className="coupon-card-container">
-              {coupons.map((item) => {
+              {coupons.map(item => {
                 return (
                   <CouponCard
                     key={String(item.id)}
