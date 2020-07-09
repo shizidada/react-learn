@@ -29,7 +29,7 @@ const MenuModel: MenuModelType = {
     menuData: menus,
     rootSubMenuKeys: getRootSubMenuKey(menus),
 
-    collapsed: false,
+    collapsed: true,
     selectedKeys: ['/'],
     openKeys: ['/']
   },
