@@ -2,13 +2,13 @@ import { Layout } from 'antd';
 import { connect } from 'dva';
 import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
-import MainContent from '../../containers/index/MainContent';
-import SelectionRow from '../../containers/index/SelectionRow';
+import MainContent from './components/MainContent';
+import SelectionRow from './components/SelectionRow';
 import { AppState } from '../../typings';
 import './index.less';
 import './lodash.test';
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
 interface IndexPageProps extends AppState {}
 

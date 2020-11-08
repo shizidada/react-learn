@@ -61,26 +61,14 @@ const UserLoginPage: React.FunctionComponent<UserLoginPageProps> = ({
     });
   };
 
-  const changeType = () => {
-    updateLoginStore({
-      loginType: loginType === 'login' ? 'registe' : 'login',
-      errorMessage: ''
-    });
-    form.resetFields();
-  };
-
-  const thirdAccountLogin = (type: string) => {
-    console.log('thirdAccountLogin', type);
-  };
-
   useEffect(() => {
-    require('../../components/CircleCanvas');
+    // require('../../components/CircleCanvas');
   });
 
   return (
-    <div id="wrapper">
-      <canvas id="canvas" width="1950px" height="900px"></canvas>
-      <canvas id="canvasbg" width="1950px" height="900px"></canvas>
+    <div id="login-wrapper">
+      {/* <canvas id="canvas" width="1950px" height="900px"></canvas>
+      <canvas id="canvasbg" width="1950px" height="900px"></canvas> */}
       <div className="login-page-container">
         <Form onSubmit={handleSubmit} className="login-form-wrap">
           <div className="login-logo-wrap">

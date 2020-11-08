@@ -1,10 +1,7 @@
 import Form, { FormComponentProps } from 'antd/lib/form';
 import { debounce } from 'lodash';
 import React, { Component } from 'react';
-import { DebounceInput } from 'react-debounce-input';
 import GoodFormItem from './GoodFormItem';
-
-
 
 
 const { Item } = Form;
@@ -63,15 +60,6 @@ class GoodListView extends Component<GoodListViewProps, GoodListViewState> {
             onChange={(e) => this.handleChangeInput(e, index, 'userName')}
           />
         ))}
-        <Item label="DebounceInput" extra={`Input Value : ${value}`}>
-          <DebounceInput
-            className="ant-input"
-            minLength={2}
-            placeholder="输入..."
-            debounceTimeout={300}
-            onChange={(event) => this.setState({ value: event.target.value })}
-          />
-        </Item>
       </Form>
     );
   }

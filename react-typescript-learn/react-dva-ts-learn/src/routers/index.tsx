@@ -7,7 +7,7 @@ import Loadable from 'react-loadable';
 import BasicLayout from '../layouts/BasicLayout';
 import EditorLayout, { EditorLayoutProps } from '../layouts/EditorLayout';
 import UserLayout, { UserLayoutProps } from '../layouts/UserLayout';
-import BlankLayout, { BlankLayoutProps } from '../layouts/BlankLayout';
+import BlankLayout from '../layouts/BlankLayout';
 
 import Error from '../pages/error';
 

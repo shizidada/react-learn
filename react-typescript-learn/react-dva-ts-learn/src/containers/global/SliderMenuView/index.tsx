@@ -28,7 +28,7 @@ const SliderMenu: FunctionComponent<SliderMenuProps> = ({ collapsed, onCollapse 
   return (
     <Sider className="slider-menu-container" collapsed={collapsed} onCollapse={onSiderCollapseHandle}>
       <Link to="/index.html">
-        <div className="slider-menu-logo">FaS</div>
+        <div className="slider-menu-logo">轻享</div>
       </Link>
       <BaseMenu />
     </Sider>

@@ -1,0 +1,82 @@
+@import '~antd/lib/style/themes/default.less';
+
+.index-header-container {
+  border-bottom: 1px solid #f1f1f1;
+  background-color: #fff;
+
+  .header-wrapper {
+    max-width: 1056px;
+    height: 100%;
+    margin: auto;
+    // background-color: yellow;
+    display: flex;
+
+    .logo {
+      font-size: 32px;
+      margin-right: 32px;
+    }
+
+    .main-nav {
+      height: 100%;
+      flex: 1 0 auto;
+
+      .nav-item {
+        padding: 0 16px;
+        font-size: 16px;
+        // color: #71777c;
+        cursor: pointer;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        justify-items: flex-end;
+        position: relative;
+        height: 100%;
+        margin: 0;
+
+        .nav-list {
+          flex: 1 1 auto;
+          display: flex;
+          .title-list {
+            display: flex;
+
+            .title-item {
+            }
+          }
+        }
+
+        .nav-search {
+          flex: 1;
+          justify-content: flex-end;
+          cursor: auto;
+        }
+
+        .nav-auth {
+          display: flex;
+          align-items: center;
+          // margin-left: 16px;
+          // margin-right: 24px;
+          // color: #007fff;
+
+          .login {
+            &::after {
+              content: '·';
+              margin: 0 2px;
+            }
+
+            &:hover {
+              // color: #0371df;
+            }
+          }
+
+          .register {
+            &:hover {
+              // color: #0371df;
+            }
+          }
+        }
+      }
+    }
+  }
+}

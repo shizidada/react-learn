@@ -1,24 +1,16 @@
-// import { connect } from 'dva';
-// import { Dispatch } from 'redux';
-import { Layout } from 'antd';
-import H, { Location } from 'history';
 import React, { FunctionComponent, useEffect } from 'react';
+import { Layout } from 'antd';
 import { BASE_NAME } from '../../config/less.config';
 import DraggableTabView from '../../containers/global/DraggableTabView';
 import SliderMenuView from '../../containers/global/SliderMenuView';
-import ManagerHeader from '../../containers/header/ManagerHeader';
+import ManagerHeader from '../../pages/home/components/ManagerHeader';
 import BasicRoute from '../../routers/BasicRoute';
-// eslint-disable-next-line import/extensions
 import { AppState } from '../../typings';
 import './index.less';
-
-
 
 const { Content, Footer } = Layout;
 
 interface BasicLayoutProps extends AppState {
-  location: Location<{}>;
-  history: H.History;
 }
 
 const OLD_LESS_ID = `less:${BASE_NAME ? `${BASE_NAME}-` : ''}color:old`;
@@ -41,7 +33,7 @@ const BasicLayout: FunctionComponent<BasicLayoutProps> = ({ location, history, l
   useEffect(() => {
     initTheme();
     return () => {};
-  }, [location.pathname]);
+  });
 
   return (
     <Layout className="basic-layout-container">
@@ -52,7 +44,7 @@ const BasicLayout: FunctionComponent<BasicLayoutProps> = ({ location, history, l
         <Content className="basic-layout-wrapper">
           <BasicRoute />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>©2019 Created by 江景</Footer>
+        <Footer style={{ textAlign: 'center' }}>©轻享 {new Date().getFullYear()}</Footer>
       </Layout>
     </Layout>
   );

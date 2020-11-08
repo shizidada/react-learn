@@ -1,7 +1,7 @@
 // import { Location } from "history";
 import { Layout } from 'antd';
 import React, { FunctionComponent } from 'react';
-import IndexHeader from '../../containers/header/IndexHeader';
+import IndexHeader from '../../pages/index/components/IndexHeader';
 import './index.less';
 
 
@@ -16,7 +16,7 @@ const UserLayout: FunctionComponent<UserLayoutProps> = ({ view }) => {
     <Layout className="user-layout-container">
       <IndexHeader />
       <Content className="user-layout-content">{view}</Content>
-      <Footer className="footer-container">create by 江景 2020</Footer>
+      <Footer className="footer-container">©轻享 {new Date().getFullYear()}</Footer>
     </Layout>
   );
 };

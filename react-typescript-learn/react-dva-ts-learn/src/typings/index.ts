@@ -1,16 +1,14 @@
-import { FileModelState } from '../models/file';
 import { GlobalModelState } from '../models/global';
 import { HomeModelState } from '../models/home';
 import { LoginModelState } from '../models/login';
 import { MenuModelState } from '../models/menu';
 
 export interface AppState {
-  [key: string]: GlobalModelState | HomeModelState | LoginModelState | FileModelState;
+  [key: string]: GlobalModelState | HomeModelState | LoginModelState | MenuModelState;
   global: GlobalModelState;
   menu: MenuModelState;
   home: HomeModelState;
   login: LoginModelState;
-  file: FileModelState;
 }
 
 declare const AppState: AppState;

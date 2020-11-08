@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState } from 'react';
-// import { List, ListRowProps } from 'react-virtualized';
 import { DragDropContext, Draggable, Droppable, DropResult, ResponderProvided } from 'react-beautiful-dnd';
 import './index.less';
 

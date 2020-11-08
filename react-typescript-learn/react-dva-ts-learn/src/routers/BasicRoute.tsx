@@ -13,23 +13,6 @@ const Loading = () => {
 
 const BasicRoute = () => (
   <Switch>
-    {/* user router config start */}
-    <Route
-      path="/user/list"
-      render={(routeProps) =>
-        createElement<object>(
-          Loadable({
-            loader: () => import(/* webpackChunkName: "user.list.page" */ '../pages/user/list'),
-            loading() {
-              return <Loading />;
-            }
-          }),
-          { ...routeProps }
-        )
-      }
-    />
-    {/* user router config end */}
-
     {/* profile router config end */}
     <Route
       path="/profile"
@@ -47,56 +30,6 @@ const BasicRoute = () => (
     />
     {/* profile router config end */}
 
-    {/* order router config start */}
-    <Route
-      path="/order/list"
-      render={(routeProps) =>
-        createElement<object>(
-          Loadable({
-            loader: () => import(/* webpackChunkName: "order.list.page" */ '../pages/order/list'),
-            loading() {
-              return <Loading />;
-            }
-          }),
-          { ...routeProps }
-        )
-      }
-    />
-    {/* order router config end */}
-
-    {/* product router config start */}
-    <Route
-      path="/product/list"
-      render={(routeProps) =>
-        createElement<object>(
-          Loadable({
-            loader: () => import(/* webpackChunkName: "product.list.page" */ '../pages/product/list'),
-            loading() {
-              return <Loading />;
-            }
-          }),
-          { ...routeProps }
-        )
-      }
-    />
-    {/* product router config end */}
-
-    {/* setting router config start */}
-    <Route
-      path="/setting/advertisement"
-      render={(routeProps) =>
-        createElement<object>(
-          Loadable({
-            loader: () => import(/* webpackChunkName: "setting.advertisement.page" */ '../pages/setting/advertisement'),
-            loading() {
-              return <Loading />;
-            }
-          }),
-          { ...routeProps }
-        )
-      }
-    />
-    {/* setting router config end */}
     <Route
       path="/mock"
       render={(routeProps) =>
@@ -127,7 +60,7 @@ const BasicRoute = () => (
       }
     />
 
-    <Redirect from="/" to="/index.html" />
+    <Redirect from="/" to="/home" />
   </Switch>
 );
 

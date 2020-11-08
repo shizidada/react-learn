@@ -15,7 +15,7 @@ const MooseTabsView: FunctionComponent<MooseTabsViewProps> = () => {
   };
 
   return (
-    <Tabs className="fas-tabs-view-container" defaultActiveKey="1" onChange={callback}>
+    <Tabs className="tabs-view-container" defaultActiveKey="1" onChange={callback}>
       <TabPane tab="Tab 1" key="1">
         Content of Tab Pane 1
       </TabPane>

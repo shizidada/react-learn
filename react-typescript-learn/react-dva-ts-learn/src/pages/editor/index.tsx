@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import MarkdownEditorView from '../../containers/editor/MarkdownEditorView';
+import MarkdownEditorView from './components/MarkdownEditorView';
 import './index.less';
 
 const EditorPage: FunctionComponent = () => {
