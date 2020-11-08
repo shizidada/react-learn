@@ -27,7 +27,7 @@
     "@ant-design/pro-layout": "^4.11.4",
     "antd": "^3.26.17",
     "classnames": "^2.2.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-color": "^2.18.1",
     "react-dom": "^16.13.1",
