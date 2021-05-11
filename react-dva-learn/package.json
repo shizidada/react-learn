@@ -15,7 +15,7 @@
     "dva": "^2.4.1",
     "fingerprintjs2": "^2.0.6",
     "history": "^4.9.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.3",
